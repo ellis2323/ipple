@@ -1,3 +1,16 @@
+<!-- BACKGROUND IMAGE TOP  -->
+    <div class="image_de_fond">
+        <div class="container-fluid">
+            <div class="logo-wrapper">
+                <h2>Besoin d'espace</h2>
+                <h3>Faites de la place chez vous</h3>
+                <h4>Nous récupérons, stockons et livrons vos affaires à la demande</h4>
+                <p><a class="btn btn-lg btn-primary" href="creation compte.html" role="button" style="background-color:#65b7f2;color:white">Je démarre</a></p>
+            </div>
+        </div>
+    </div>           
+<!-- BACKGROUND IMAGE TOP  -->
+
 
 <div class="container-fluid">
 <!-- DEBUT SECTION 1-->

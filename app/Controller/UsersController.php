@@ -47,24 +47,25 @@ class UsersController extends AppController {
 							));
 
 						// Si tout est ok, on sauvegarde
-						$this->User->save();
+						if($this->User->save()){
 
-						// Envoie de l'email d'activation
-						App::uses('CakeEmail', 'Network/Email');
+							// Envoie de l'email d'activation
+							App::uses('CakeEmail', 'Network/Email');
 
-						$CakeEmail = new CakeEmail('default');
-						$CakeEmail->to($this->request->data['User']['email']);
-						$CakeEmail->subject('Dezordre: Confirmation de votre inscription');
-						$CakeEmail->viewVars($this->request->data['User'] + array(
-							'token' => $token,
-							'id'	=> $this->User->id,
+							$CakeEmail = new CakeEmail('default');
+							$CakeEmail->to($this->request->data['User']['email']);
+							$CakeEmail->subject('Dezordre: Confirmation de votre inscription');
+							$CakeEmail->viewVars($this->request->data['User'] + array(
+								'token' => $token,
+								'id'	=> $this->User->id,
 
-							));
-						$CakeEmail->emailFormat('text');
-						$CakeEmail->template('register');
-						$CakeEmail->send();
+								));
+							$CakeEmail->emailFormat('text');
+							$CakeEmail->template('register');
+							$CakeEmail->send();
 
-						$this->Session->setFlash("Inscription ok, un email vous sera envoyé afin de valider votre compte.");
+							$this->Session->setFlash("Inscription ok, un email vous sera envoyé afin de valider votre compte.");
+							}
 					}
 
 					else {
