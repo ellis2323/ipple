@@ -76,9 +76,37 @@ class UsersController extends AppController {
 
 		}
 
-		public function activate() {
+		public function activate($user_id, $token) {
+			$user = $this->User->find('first', array(
 
-			
+					'fields'		=> array('id'),
+					'conditions'	=> array(
+												'id' => $user_id,
+												'token' => $token
+											)
+
+					));
+
+			// Si on ne trouve pas le lien
+			if(empty($user)){
+
+					$this->Session->setFlash('Ce lien d\'activation est incorrect');
+					return $this->redirect('/');
+
+
+			}
+
+
+			$this->Session->setFlash('Votre compte à bien été activé');
+			// Sinon on active le compte 
+			$this->User->save(array(
+						'id' 		=> $user['User']['id'],
+						'active'	=> 1,
+						'token'		=> '',
+				));
+
+			return $this->redirect(array('action' => 'login'));
+
 		}
 
 

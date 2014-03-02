@@ -12,7 +12,7 @@
 	email : <?= $email;?>
 
 
-	lien d'activation : 
+	lien d'activation : <?= $this->Html->url(array('controller' => 'users', 'action' => 'activate', $id, $token)); ?>
 
 </body>
 </html>
