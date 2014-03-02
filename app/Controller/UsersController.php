@@ -45,7 +45,7 @@ class UsersController extends AppController {
 							));
 
 							$this->User->save();
-							$this->Session->setFlash("Merci de vous être inscrit, un email vous sera envoyé afin de valider votre compte.");
+							$this->Session->setFlash("Inscription ok, un email vous sera envoyé afin de valider votre compte.");
 						}
 
 					else {
