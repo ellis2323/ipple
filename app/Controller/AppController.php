@@ -32,5 +32,13 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	public $components = array('Session', 'Cookie', 'Auth');
-}
+		public $components = array(
+		    'Session',
+		    'Auth' => array(
+		        'authenticate' => array(
+		            'Form' => array(
+		                'fields' => array('username' => 'email')
+		            )
+		        )
+		    )
+		);}

@@ -82,7 +82,16 @@
                                     )
                                 );?>
                             </li>   
-
+                            <li>
+                            <?php echo $this->Html->link(
+                                    'Logout',
+                                    array(
+                                        'controller' => 'users',
+                                        'action' => 'logout',
+                                        'full_base' => true
+                                    )
+                                );?>
+                            </li>   
 
                             <li><a href="commander des bacs.html">Commander des bacs</a>
                             </li>
@@ -110,6 +119,8 @@
    
 
         <?= $this->Session->flash();?>
+        <?= $this->Session->flash('auth');?>
+
       	<?= $this->fetch('content'); ?>
 
 <!-- FIN CONTENT -->

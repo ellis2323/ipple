@@ -51,7 +51,7 @@ class User extends AppModel {
 		),
 
 		// Validation du nom
-		'nom' => array(
+		'lastname' => array(
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
 			),
@@ -64,7 +64,7 @@ class User extends AppModel {
 		),
 
 		// Validation du prenom
-		'prenom' => array(
+		'firstname' => array(
 							'notEmpty' => array(
 				'rule' => 'notEmpty',
 			),

@@ -2660,3 +2660,3635 @@ Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.
 Stack Trace:
 #0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2014-03-02 17:55:13 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 17:55:13 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:01:14 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:01:14 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:01:22 Error: [ConfigureException] /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Config/email.php not found.
+Request URL: /dezordre/index.php/users/register
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Network/Email/CakeEmail.php(1097): CakeEmail->_applyConfig('default')
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Network/Email/CakeEmail.php(349): CakeEmail->config('default')
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php(49): CakeEmail->__construct('default')
+#3 [internal function]: UsersController->register()
+#4 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#5 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#6 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#7 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#8 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#9 {main}
+2014-03-02 18:01:22 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:01:22 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:01:58 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:01:58 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:02:08 Error: [SocketException] You need to specify at least one destination for to, cc or bcc.
+Request URL: /dezordre/index.php/users/register
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php(59): CakeEmail->send()
+#1 [internal function]: UsersController->register()
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#4 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#5 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#7 {main}
+2014-03-02 18:02:08 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:02:08 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:02:38 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:02:38 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:02:44 Error: [MissingViewException] View file "/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/View/Emails/html/register.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/View/Emails/html/register.ctp',
+)
+Request URL: /dezordre/index.php/users/register
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/View/View.php(457): View->_getViewFileName('register')
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Network/Email/CakeEmail.php(1652): View->render('register', 'default')
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Network/Email/CakeEmail.php(1509): CakeEmail->_renderTemplates('')
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Network/Email/CakeEmail.php(1120): CakeEmail->_render(Array)
+#4 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php(59): CakeEmail->send()
+#5 [internal function]: UsersController->register()
+#6 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#8 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#9 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#11 {main}
+2014-03-02 18:02:45 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:02:45 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:05:11 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:05:11 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:05:16 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:05:16 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:07:23 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:07:24 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:07:36 Error: [MissingViewException] View file "/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/View/Emails/html/register.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/View/Emails/html/register.ctp',
+)
+Request URL: /dezordre/index.php/users/register
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/View/View.php(457): View->_getViewFileName('register')
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Network/Email/CakeEmail.php(1652): View->render('register', 'default')
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Network/Email/CakeEmail.php(1509): CakeEmail->_renderTemplates('')
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Network/Email/CakeEmail.php(1120): CakeEmail->_render(Array)
+#4 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php(65): CakeEmail->send()
+#5 [internal function]: UsersController->register()
+#6 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#8 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#9 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#11 {main}
+2014-03-02 18:07:36 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:07:36 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:09:05 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:09:05 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:09:18 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:09:18 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:11:28 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:11:28 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:23:29 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:23:29 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:25:38 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:25:38 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:25:50 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:25:50 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:27:28 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:27:28 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:28:10 Error: [SocketException] Operation timed out
+Request URL: /dezordre/index.php/users/register
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Network/Email/SmtpTransport.php(99): CakeSocket->connect()
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Network/Email/SmtpTransport.php(59): SmtpTransport->_connect()
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Network/Email/CakeEmail.php(1122): SmtpTransport->send(Object(CakeEmail))
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php(65): CakeEmail->send()
+#4 [internal function]: UsersController->register()
+#5 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#6 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#7 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#8 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#10 {main}
+2014-03-02 18:45:35 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:45:35 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:46:27 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:46:27 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:47:00 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:47:00 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:47:11 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:47:11 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:47:26 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:47:26 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:48:23 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:48:23 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:48:52 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:48:53 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:48:56 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:48:57 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:48:58 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:48:58 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:49:01 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:49:01 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:53:16 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/cakeboostrap.js
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:53:16 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:53:16 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:53:18 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/cakeboostrap.js
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:53:18 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:53:18 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:54:11 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:54:11 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:55:04 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:55:04 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:55:29 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:55:29 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:55:37 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:55:37 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:56:58 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 18:56:58 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:02:40 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:02:40 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:03:46 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:03:46 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:04:01 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:04:02 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:06:39 Error: [MissingControllerException] Controller class Controller could not be found.
+Exception Attributes: array (
+  'class' => 'Controller',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/index.php/
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#2 {main}
+2014-03-02 19:06:39 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:06:39 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:08:52 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:08:52 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:08:55 Error: Fatal Error (4): syntax error, unexpected T_STRING in [/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php, line 81]
+2014-03-02 19:08:55 Error: [FatalErrorException] syntax error, unexpected T_STRING
+Request URL: /dezordre/index.php/users/activate
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/X...', 81)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/X...', 81, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/X...', 81, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-02 19:08:56 Error: Fatal Error (4): syntax error, unexpected T_STRING in [/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php, line 81]
+2014-03-02 19:08:56 Error: [FatalErrorException] syntax error, unexpected T_STRING
+Request URL: /dezordre/index.php/users/activate
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/X...', 81)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/X...', 81, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/X...', 81, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-02 19:08:56 Error: Fatal Error (4): syntax error, unexpected T_STRING in [/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php, line 81]
+2014-03-02 19:08:56 Error: [FatalErrorException] syntax error, unexpected T_STRING
+Request URL: /dezordre/index.php/users/activate
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/X...', 81)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/X...', 81, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/X...', 81, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-02 19:08:58 Error: Fatal Error (4): syntax error, unexpected T_STRING in [/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php, line 81]
+2014-03-02 19:08:58 Error: [FatalErrorException] syntax error, unexpected T_STRING
+Request URL: /dezordre/index.php/users/activate
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/X...', 81)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/X...', 81, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/X...', 81, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-02 19:09:35 Error: Fatal Error (4): syntax error, unexpected T_STRING in [/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php, line 81]
+2014-03-02 19:09:35 Error: [FatalErrorException] syntax error, unexpected T_STRING
+Request URL: /dezordre/index.php/users/activate
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/X...', 81)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/X...', 81, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/X...', 81, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-02 19:09:42 Error: Fatal Error (4): syntax error, unexpected '!' in [/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php, line 81]
+2014-03-02 19:09:42 Error: [FatalErrorException] syntax error, unexpected '!'
+Request URL: /dezordre/index.php/users/activate
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/X...', 81)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/X...', 81, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/X...', 81, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-02 19:10:12 Error: Fatal Error (4): syntax error, unexpected ')' in [/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php, line 113]
+2014-03-02 19:10:12 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /dezordre/index.php/users/activate
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/X...', 113)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/X...', 113, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/X...', 113, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-02 19:10:32 Error: Fatal Error (4): syntax error, unexpected ')' in [/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php, line 113]
+2014-03-02 19:10:32 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /dezordre/index.php/users/activate
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/X...', 113)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/X...', 113, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/X...', 113, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-02 19:50:48 Error: Fatal Error (1): Call to undefined method UsersController::setFlash() in [/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php, line 36]
+2014-03-02 19:50:48 Error: [FatalErrorException] Call to undefined method UsersController::setFlash()
+Request URL: /dezordre/index.php/users/login
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/X...', 36)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/X...', 36, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/X...', 36, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-02 19:50:49 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:50:49 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:51:04 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'setFlash' at line 1
+Request URL: /dezordre/index.php/users/login
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('setFlash', Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('setFlash', Array, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Model/Datasource/DboSource.php(609): DboSource->fetchAll('setFlash', Array, Array)
+#4 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Model/Model.php(800): DboSource->query('setFlash', Array, Object(User))
+#5 [internal function]: Model->__call('setFlash', Array)
+#6 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php(36): User->setFlash('Identifiants in...')
+#7 [internal function]: UsersController->login()
+#8 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#10 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#11 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#13 {main}
+2014-03-02 19:51:05 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:51:05 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:51:21 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:51:21 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:51:30 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:51:30 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:51:32 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:51:32 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:51:34 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:51:34 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:51:35 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:51:35 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:51:35 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:51:35 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:51:58 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:51:58 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:52:00 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:52:00 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:52:33 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:52:33 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:52:57 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:52:57 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:53:17 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:53:17 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:53:21 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:53:21 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:53:38 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:53:38 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:53:52 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:53:52 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:53:58 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:53:58 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:54:06 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:54:06 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:54:15 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:54:15 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:56:27 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:56:27 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:56:51 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:56:51 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:57:36 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:57:36 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:57:40 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:57:40 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:59:22 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:59:22 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:59:30 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 19:59:30 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:00:50 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:00:50 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:00:52 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:00:52 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:00:55 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:00:55 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:00:57 Error: [MissingActionException] Action UsersController::index.html() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'index.html',
+)
+Request URL: /dezordre/index.php/users/index.html
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#4 {main}
+2014-03-02 20:00:57 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:00:57 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:01:03 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:01:03 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:01:05 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:01:05 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:01:10 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:01:10 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:01:15 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:01:15 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:01:33 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:01:33 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:01:38 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:01:38 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:05:35 Error: [MissingActionException] Action UsersController::account() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'account',
+)
+Request URL: /dezordre/index.php/users/account
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#4 {main}
+2014-03-02 20:05:35 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:05:35 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:05:47 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:05:47 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:07:01 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:07:01 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:07:05 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:07:05 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:09:04 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:09:04 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:09:32 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:09:32 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:10:08 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:10:08 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:11:13 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:11:13 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:11:26 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:11:26 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:11:31 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:11:31 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:11:34 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:11:34 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:11:36 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:11:36 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:14:17 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:14:17 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:18:02 Error: [MissingControllerException] Controller class Controller could not be found.
+Exception Attributes: array (
+  'class' => 'Controller',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/index.php/
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#2 {main}
+2014-03-02 20:18:02 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:18:02 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:18:14 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:18:14 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:18:24 Error: Fatal Error (4): syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in [/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php, line 11]
+2014-03-02 20:18:24 Error: [FatalErrorException] syntax error, unexpected T_CONSTANT_ENCAPSED_STRING
+Request URL: /dezordre/index.php/users/login
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/X...', 11)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/X...', 11, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/X...', 11, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-02 20:18:26 Error: Fatal Error (4): syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in [/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php, line 11]
+2014-03-02 20:18:26 Error: [FatalErrorException] syntax error, unexpected T_CONSTANT_ENCAPSED_STRING
+Request URL: /dezordre/index.php/users/logout
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/X...', 11)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/X...', 11, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/X...', 11, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-02 20:18:30 Error: Fatal Error (4): syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in [/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php, line 11]
+2014-03-02 20:18:30 Error: [FatalErrorException] syntax error, unexpected T_CONSTANT_ENCAPSED_STRING
+Request URL: /dezordre/index.php/users/
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/X...', 11)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/X...', 11, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/X...', 11, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-02 20:18:37 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:18:37 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:18:42 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:18:42 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:18:43 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:18:43 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:18:46 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:18:46 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:18:49 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:18:49 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:18:57 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:18:57 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:19:04 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:19:04 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:19:40 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:19:40 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:19:55 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:19:55 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:20:42 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:20:42 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:21:06 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:21:06 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:21:19 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:21:19 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:21:27 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:21:27 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:21:34 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:21:34 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:21:46 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:21:46 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:23:13 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:23:13 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:23:18 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:23:18 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:24:16 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:24:16 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:24:24 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:24:24 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:24:32 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:24:32 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:25:13 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:25:13 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:27:19 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:27:19 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:27:30 Error: [MissingControllerException] Controller class Controller could not be found.
+Exception Attributes: array (
+  'class' => 'Controller',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/index.php/
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#2 {main}
+2014-03-02 20:27:31 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:27:31 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:27:36 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:27:36 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:27:40 Error: [MissingControllerException] Controller class Controller could not be found.
+Exception Attributes: array (
+  'class' => 'Controller',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/index.php/
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#2 {main}
+2014-03-02 20:27:40 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:27:40 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:28:23 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:28:23 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:28:27 Error: [MissingViewException] View file "/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/View/Users/logout.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/View/Users/logout.ctp',
+)
+Request URL: /dezordre/index.php/users/logout
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/View/View.php(457): View->_getViewFileName(NULL)
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Controller/Controller.php(952): View->render(NULL, NULL)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#6 {main}
+2014-03-02 20:28:27 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:28:27 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:28:51 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:28:51 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:28:56 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:28:56 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:28:58 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:28:58 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:29:10 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:29:10 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:32:51 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:32:51 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:35:12 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:35:12 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:35:18 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:35:18 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:35:32 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:35:32 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:35:37 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:35:37 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:35:43 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:35:43 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:37:22 Error: Fatal Error (4): syntax error, unexpected ')', expecting ',' or ';' in [/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php, line 14]
+2014-03-02 20:37:22 Error: [FatalErrorException] syntax error, unexpected ')', expecting ',' or ';'
+Request URL: /dezordre/index.php/users/login
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/X...', 14)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/X...', 14, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/X...', 14, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-02 20:37:52 Error: [MissingComponentException] Component class authenticateComponent could not be found.
+Exception Attributes: array (
+  'class' => 'authenticateComponent',
+  'plugin' => false,
+)
+Request URL: /dezordre/index.php/users/login
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Controller/ComponentCollection.php(53): ComponentCollection->load('authenticate', Array)
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Controller/Controller.php(643): ComponentCollection->init(Object(UsersController))
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(181): Controller->constructClasses()
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#6 {main}
+2014-03-02 20:37:53 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:37:53 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:39:55 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:39:55 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:41:31 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:41:31 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:41:40 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:41:40 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:42:26 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:42:26 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:42:33 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:42:33 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:42:39 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:42:39 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:42:43 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:42:43 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:42:49 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:42:49 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:42:58 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:42:58 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:43:25 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:43:25 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:43:45 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:43:45 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:43:48 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:43:48 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:44:24 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:44:24 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:44:28 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:44:28 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:44:32 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:44:32 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:44:43 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:44:43 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:45:31 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:45:31 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:45:46 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:45:46 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:45:50 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:45:50 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:46:03 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:46:03 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:46:15 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:46:15 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:46:24 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:46:24 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:46:29 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:46:29 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:47:01 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:47:01 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:47:13 Error: [MissingControllerException] Controller class Controller could not be found.
+Exception Attributes: array (
+  'class' => 'Controller',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/index.php/
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#2 {main}
+2014-03-02 20:47:14 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:47:14 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:47:30 Error: [MissingActionException] Action UsersController::pages() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'pages',
+)
+Request URL: /dezordre/index.php/users/pages/home
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#4 {main}
+2014-03-02 20:47:30 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:47:30 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:47:40 Error: [MissingActionException] Action UsersController::pages() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'pages',
+)
+Request URL: /dezordre/index.php/users/pages/display/home
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#4 {main}
+2014-03-02 20:47:40 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:47:40 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:48:42 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:48:42 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:48:59 Error: [MissingActionException] Action PagesController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'index',
+)
+Request URL: /dezordre/index.php/pages
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#4 {main}
+2014-03-02 20:48:59 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:48:59 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:49:04 Error: [MissingActionException] Action PagesController::home() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'home',
+)
+Request URL: /dezordre/index.php/pages/home
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#4 {main}
+2014-03-02 20:49:04 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:49:04 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:49:12 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:49:12 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:49:23 Error: [MissingControllerException] Controller class Controller could not be found.
+Exception Attributes: array (
+  'class' => 'Controller',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/index.php/
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#2 {main}
+2014-03-02 20:49:23 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:49:23 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:49:27 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:49:27 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:53:15 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:53:15 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:53:28 Error: [MissingActionException] Action UsersController::pages() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'pages',
+)
+Request URL: /dezordre/index.php/users/pages/home
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#4 {main}
+2014-03-02 20:53:29 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:53:29 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:54:50 Error: Fatal Error (4): syntax error, unexpected ')' in [/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/UsersController.php, line 48]
+2014-03-02 20:54:50 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /dezordre/index.php/users/logout
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/X...', 48)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/X...', 48, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/X...', 48, Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-02 20:54:59 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:54:59 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:55:05 Error: [MissingControllerException] Controller class Controller could not be found.
+Exception Attributes: array (
+  'class' => 'Controller',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/index.php/
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#2 {main}
+2014-03-02 20:55:05 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:55:05 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:55:14 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:55:14 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:55:22 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:55:22 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:55:39 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:55:39 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:55:43 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:55:43 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:55:48 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:55:48 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:55:53 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:55:53 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:55:57 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:55:57 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:56:32 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:56:32 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:57:03 Error: [MissingViewException] View file "/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/View/Pages/test.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/Applications/XAMPP/xamppfiles/htdocs/dezordre/app/View/Pages/test.ctp',
+)
+Request URL: /dezordre/index.php/pages/display/test
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/View/View.php(457): View->_getViewFileName('test')
+#1 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Controller/Controller.php(952): View->render('test', NULL)
+#2 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/Controller/PagesController.php(77): Controller->render('test')
+#3 [internal function]: PagesController->display('test')
+#4 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#5 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#6 /Applications/XAMPP/xamppfiles/htdocs/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest), Object(CakeResponse))
+#7 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#8 /Applications/XAMPP/xamppfiles/htdocs/dezordre/index.php(41): require('/Applications/X...')
+#9 {main}
+2014-03-02 20:57:03 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:57:03 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:57:49 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:57:49 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:58:00 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:58:00 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:58:04 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/js/jquery.min.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-03-02 20:58:04 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.css.map
+Stack Trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

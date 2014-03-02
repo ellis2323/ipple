@@ -12,7 +12,10 @@
                             <div class="form-group">
                                 <label for="nom" class="col-lg-4 col-md-4 col-sm-4 control-label">Nom<span class="blue">*</span></label>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
-									<?= $this->Form->input('nom', array('label' => "")); ?>
+									<?= $this->Form->input('lastname', array(
+                                    'label' => "", 
+                                    'class' => 'form-control'
+                                    )); ?>
                                 </div>
                             </div>
                             <p><br></p>
@@ -22,7 +25,10 @@
                             <div class="form-group">
                                 <label for="nom" class="col-lg-4 col-md-4 col-sm-4 control-label">Prenom<span class="blue">*</span></label>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
-									<?= $this->Form->input('prenom', array('label' => "")); ?>
+									<?= $this->Form->input('firstname', array(
+                                    'label' => "", 
+                                    'class' => 'form-control'
+                                    )); ?>
                                 </div>
                             </div>
                             <p><br></p>
@@ -31,7 +37,10 @@
                             <div class="form-group">
                                 <label for="prenom" class="col-lg-4 col-md-4 col-sm-4 control-label">Email<span class="blue">*</span></label>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
-									<?= $this->Form->input('email', array('label' => "")); ?>
+									<?= $this->Form->input('email', array(
+                                    'label' => "", 
+                                    'class' => 'form-control'
+                                    )); ?>
                                 </div>
                             </div>
                             <p><br></p>
@@ -40,7 +49,10 @@
                             <div class="form-group">
                                 <label for="password" class="col-lg-4 col-md-4 col-sm-4 control-label">Mot de passe<span class="blue">*</span></label>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
-									<?= $this->Form->input('password', array('label' => "")); ?>
+									<?= $this->Form->input('password', array(
+                                    'label' => "", 
+                                    'class' => 'form-control'
+                                    )); ?>
                                 </div>
                             </div>
                             <p><br></p>
@@ -49,7 +61,10 @@
                             <div class="form-group">
                                 <label for="password" class="col-lg-4 col-md-4 col-sm-4 control-label">Vérifiez le mot de passe<span class="blue">*</span></label>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
-									<?= $this->Form->input('password2', array('type' => "password", 'label' => "")); ?>
+									<?= $this->Form->input('password2', array(
+                                    'label' => "", 
+                                    'class' => 'form-control'
+                                    )); ?>
                                     <p><span class="blue">*</span> Champs obligatoires</p>
                                 </div>
                             </div>
