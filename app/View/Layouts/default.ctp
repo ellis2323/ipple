@@ -83,7 +83,7 @@
                                 );?>
                             </li>   
 
-                                                
+
                             <li><a href="commander des bacs.html">Commander des bacs</a>
                             </li>
                             <li><a href="mes affaires.html">Mes affaires</a>
@@ -164,6 +164,7 @@
     <?= $this->Html->script('jquery-1.10.2'); ?>
     <?= $this->Html->script('bootstrap'); ?>
     <?= $this->Html->script('modern-business'); ?>
+    <?= $this->Html->script('cakebootstrap'); ?>
 
 </body>
 
