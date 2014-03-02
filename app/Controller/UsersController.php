@@ -32,21 +32,40 @@ class UsersController extends AppController {
 				if(!empty($this->request->data)){
 					$this->User->create($this->request->data);
 
+
+					// Validation des données
 					if($this->User->validates()) {
 
 						$token = md5(time() .' - '. uniqid());
 
 						$this->User->create(array(
-							"email" => $this->request->data['User']['email'],
-							"password" => $this->Auth->password($this->request->data['User']['password']),
-							"nom" => $this->request->data['User']['nom'],
-							"prenom" => $this->request->data['User']['prenom'],
-							"token" => $token
+							"email" 		=> $this->request->data['User']['email'],
+							"password" 		=> $this->Auth->password($this->request->data['User']['password']),
+							"nom" 			=> $this->request->data['User']['nom'],
+							"prenom" 		=> $this->request->data['User']['prenom'],
+							"token" 		=> $token
 							));
 
-							$this->User->save();
-							$this->Session->setFlash("Inscription ok, un email vous sera envoyé afin de valider votre compte.");
-						}
+						// Si tout est ok, on sauvegarde
+						$this->User->save();
+
+						// Envoie de l'email d'activation
+						App::uses('CakeEmail', 'Network/Email');
+
+						$CakeEmail = new CakeEmail('default');
+						$CakeEmail->to($this->request->data['User']['email']);
+						$CakeEmail->subject('Dezordre: Confirmation de votre inscription');
+						$CakeEmail->viewVars($this->request->data['User'] + array(
+							'token' => $token,
+							'id'	=> $this->User->id,
+
+							));
+						$CakeEmail->emailFormat('text');
+						$CakeEmail->template('register');
+						$CakeEmail->send();
+
+						$this->Session->setFlash("Inscription ok, un email vous sera envoyé afin de valider votre compte.");
+					}
 
 					else {
 
@@ -56,6 +75,12 @@ class UsersController extends AppController {
 				}
 
 		}
+
+		public function activate() {
+
+			
+		}
+
 
 
 }
