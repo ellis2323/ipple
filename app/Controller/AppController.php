@@ -37,8 +37,27 @@ class AppController extends Controller {
 		    'Auth' => array(
 		        'authenticate' => array(
 		            'Form' => array(
-		                'fields' => array('username' => 'email')
+		                'fields' 	=> array(
+		                	'username' => 'email'
+		                	),
+		                'scope'		=> array('User.active' => 1
+
+		                	),
 		            )
 		        )
 		    )
-		);}
+		);
+
+		public function beforeFilter(){
+			parent::beforeFilter();
+
+		}
+
+		public function isAuthorized($user = null){
+				return true;
+
+				//return $user['role'] == '99'; 
+		}
+
+
+	}

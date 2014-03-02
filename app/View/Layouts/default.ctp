@@ -35,46 +35,18 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#comment">Comment ça marche?</a>
-                    </li>
-                    <li><a href="#prix">Prix</a>
-                    </li>
-                    <li><a href="#securite">Sécurité</a>
-                    </li>
-                    <li>
-                        <a href="faq.html">FAQ</a>
-                        
-                    </li>
-                    <li>
-                        <a href="#contact">Contact</a>
-                        
-                    </li>
+
+
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Se connecter<b class="caret"></b></a>
+
+
+                        <?php if($this->Session->read('Auth.User.id')):?>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte<b class="caret"></b></a>
                         <ul class="dropdown-menu">
+
                             <li>
                             <?php echo $this->Html->link(
-                                    'Créer un compte',
-                                    array(
-                                        'controller' => 'users',
-                                        'action' => 'register',
-                                        'full_base' => true
-                                    )
-                                );?>
-                            </li>
-                            <li>
-                            <?php echo $this->Html->link(
-                                    'Login',
-                                    array(
-                                        'controller' => 'users',
-                                        'action' => 'login',
-                                        'full_base' => true
-                                    )
-                                );?>
-                            </li>
-                            <li>
-                            <?php echo $this->Html->link(
-                                    'Mon compte',
+                                    'Dashboard',
                                     array(
                                         'controller' => 'users',
                                         'action' => 'index',
@@ -93,16 +65,36 @@
                                 );?>
                             </li>   
 
-                            <li><a href="commander des bacs.html">Commander des bacs</a>
-                            </li>
-                            <li><a href="mes affaires.html">Mes affaires</a>
-                            </li>
-                            <li><a href="faq.html">FAQ</a>
-                            </li>
-                            <li><a href="404.html">404</a>
-                            </li>
-                            <li><a href="">Se déconnecter</a>
-                            </li>
+                            <?php
+                            else:
+                            ?>
+
+                                <li>
+                                <?php echo $this->Html->link(
+                                        "S'enregistrer",
+                                        array(
+                                            'controller' => 'users',
+                                            'action' => 'register',
+                                            'full_base' => true
+                                        )
+                                    );?>
+                                </li>
+                               <li>
+                                <?php echo $this->Html->link(
+                                        'Login',
+                                        array(
+                                            'controller' => 'users',
+                                            'action' => 'login',
+                                            'full_base' => true
+                                        )
+                                    );?>
+                                </li>
+
+
+                            <?php
+                            endif;
+                            ?>
+
                         </ul>
                     </li>
                 </ul>
