@@ -63,7 +63,8 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6">
 									<?= $this->Form->input('password2', array(
                                     'label' => "", 
-                                    'class' => 'form-control'
+                                    'class' => 'form-control',
+                                    'type' => 'password',
                                     )); ?>
                                     <p><span class="blue">*</span> Champs obligatoires</p>
                                 </div>

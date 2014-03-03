@@ -192,7 +192,6 @@ class UsersController extends AppController {
 					$this->redirect('/');
 				}
 				else {
-					
 						$user = $this->User->find('first', array(
 
 								'fields'		=> array('id'),
@@ -205,15 +204,13 @@ class UsersController extends AppController {
 
 						// Si on ne trouve pas le lien
 						if(empty($user)){
-
-								$this->Session->setFlash('Ce lien d\'activation est incorrect');
-								return $this->redirect('/');
-
-
+							$this->Session->setFlash('Ce lien d\'activation est incorrect');
+							return $this->redirect('/');
 						}
 
 
 						$this->Session->setFlash('Votre compte à bien été activé');
+						
 						// Sinon on active le compte 
 						$this->User->save(array(
 									'id' 		=> $user['User']['id'],

@@ -6292,3 +6292,355 @@ Request URL: /dezordre/app/webroot/index.php/dezordre/app/webroot/css/bootstrap.
 Stack Trace:
 #0 /Applications/XAMPP/xamppfiles/htdocs/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2014-03-03 12:12:44 Error: [MissingControllerException] Controller class DezordreController could not be found.
+Exception Attributes: array (
+  'class' => 'DezordreController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/index.php/dezordre/
+Stack Trace:
+#0 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#2 {main}
+2014-03-03 12:16:59 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'dezordre\'',
+  'enabled' => true,
+)
+Request URL: /dezordre/index.php/users/register
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/dezordre/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/dezordre/lib/Cake/Model/Model.php(3476): ConnectionManager::getDataSource('default')
+#3 /var/www/dezordre/lib/Cake/Model/Model.php(1126): Model->setDataSource('default')
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(3498): Model->setSource('users')
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(1355): Model->getDataSource()
+#6 /var/www/dezordre/lib/Cake/View/Helper/FormHelper.php(207): Model->schema()
+#7 /var/www/dezordre/lib/Cake/View/Helper/FormHelper.php(459): FormHelper->_introspectModel('User', 'fields')
+#8 /var/www/dezordre/app/View/Users/register.ctp(3): FormHelper->create('User')
+#9 /var/www/dezordre/lib/Cake/View/View.php(929): include('/var/www/dezord...')
+#10 /var/www/dezordre/lib/Cake/View/View.php(891): View->_evaluate('/var/www/dezord...', Array)
+#11 /var/www/dezordre/lib/Cake/View/View.php(460): View->_render('/var/www/dezord...')
+#12 /var/www/dezordre/lib/Cake/Controller/Controller.php(952): View->render(NULL, NULL)
+#13 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#14 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#15 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#17 {main}
+2014-03-03 12:18:15 Error: Fatal Error (4): syntax error, unexpected '}' in [/var/www/dezordre/app/Config/database.php, line 26]
+2014-03-03 12:18:15 Error: [FatalErrorException] syntax error, unexpected '}'
+Request URL: /dezordre/index.php/users/register
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 26)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 26, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 26, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 12:18:27 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [2005] Unknown MySQL server host \'db517293562.db.1and1.com\' (2)',
+  'enabled' => true,
+)
+Request URL: /dezordre/index.php/users/register
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/dezordre/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/dezordre/lib/Cake/Model/Model.php(3476): ConnectionManager::getDataSource('default')
+#3 /var/www/dezordre/lib/Cake/Model/Model.php(1126): Model->setDataSource('default')
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(3498): Model->setSource('users')
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(1355): Model->getDataSource()
+#6 /var/www/dezordre/lib/Cake/View/Helper/FormHelper.php(207): Model->schema()
+#7 /var/www/dezordre/lib/Cake/View/Helper/FormHelper.php(459): FormHelper->_introspectModel('User', 'fields')
+#8 /var/www/dezordre/app/View/Users/register.ctp(3): FormHelper->create('User')
+#9 /var/www/dezordre/lib/Cake/View/View.php(929): include('/var/www/dezord...')
+#10 /var/www/dezordre/lib/Cake/View/View.php(891): View->_evaluate('/var/www/dezord...', Array)
+#11 /var/www/dezordre/lib/Cake/View/View.php(460): View->_render('/var/www/dezord...')
+#12 /var/www/dezordre/lib/Cake/Controller/Controller.php(952): View->render(NULL, NULL)
+#13 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#14 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#15 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#17 {main}
+2014-03-03 12:19:06 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'dezordre\'',
+  'enabled' => true,
+)
+Request URL: /dezordre/index.php/users/register
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/dezordre/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/dezordre/lib/Cake/Model/Model.php(3476): ConnectionManager::getDataSource('default')
+#3 /var/www/dezordre/lib/Cake/Model/Model.php(1126): Model->setDataSource('default')
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(3498): Model->setSource('users')
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(1355): Model->getDataSource()
+#6 /var/www/dezordre/lib/Cake/View/Helper/FormHelper.php(207): Model->schema()
+#7 /var/www/dezordre/lib/Cake/View/Helper/FormHelper.php(459): FormHelper->_introspectModel('User', 'fields')
+#8 /var/www/dezordre/app/View/Users/register.ctp(3): FormHelper->create('User')
+#9 /var/www/dezordre/lib/Cake/View/View.php(929): include('/var/www/dezord...')
+#10 /var/www/dezordre/lib/Cake/View/View.php(891): View->_evaluate('/var/www/dezord...', Array)
+#11 /var/www/dezordre/lib/Cake/View/View.php(460): View->_render('/var/www/dezord...')
+#12 /var/www/dezordre/lib/Cake/Controller/Controller.php(952): View->render(NULL, NULL)
+#13 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#14 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#15 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#17 {main}
+2014-03-03 13:00:21 Error: Fatal Error (4): syntax error, unexpected ')', expecting T_STRING or T_VARIABLE or '{' or '$' in [/var/www/dezordre/app/Controller/BacsController.php, line 22]
+2014-03-03 13:00:21 Error: [FatalErrorException] syntax error, unexpected ')', expecting T_STRING or T_VARIABLE or '{' or '$'
+Request URL: /dezordre/index.php/bacs/index
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 22)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 22, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 22, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 13:01:12 Error: Fatal Error (4): syntax error, unexpected ')', expecting T_STRING or T_VARIABLE or '{' or '$' in [/var/www/dezordre/app/Controller/BacsController.php, line 22]
+2014-03-03 13:01:12 Error: [FatalErrorException] syntax error, unexpected ')', expecting T_STRING or T_VARIABLE or '{' or '$'
+Request URL: /dezordre/index.php/bacs/index
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 22)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 22, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 22, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 13:02:29 Error: [SocketException] Could not send email.
+Request URL: /dezordre/index.php/users/register
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Network/Email/MailTransport.php(51): MailTransport->_mail('test@test.fr', 'Dezordre: Confi...', 'Merci de vous ?...', 'From: contact@d...', NULL)
+#1 /var/www/dezordre/lib/Cake/Network/Email/CakeEmail.php(1122): MailTransport->send(Object(CakeEmail))
+#2 /var/www/dezordre/app/Controller/UsersController.php(170): CakeEmail->send()
+#3 [internal function]: UsersController->register()
+#4 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#5 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#6 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#7 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#8 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#9 {main}
+2014-03-03 13:03:50 Error: Fatal Error (1): Call to a member function find() on a non-object in [/var/www/dezordre/app/Controller/BacsController.php, line 21]
+2014-03-03 13:03:50 Error: [FatalErrorException] Call to a member function find() on a non-object
+Request URL: /dezordre/index.php/bacs/index
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/var/www/dezord...', 21)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/var/www/dezord...', 21, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/var/www/dezord...', 21, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 13:04:10 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'user_id' in 'where clause'
+Request URL: /dezordre/index.php/bacs/index
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT `Bac`.`i...', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('SELECT `Bac`.`i...', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1077): DboSource->fetchAll('SELECT `Bac`.`i...', false)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(2902): DboSource->read(Object(Bac), Array)
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(2874): Model->_readDataSource('all', Array)
+#6 /var/www/dezordre/app/Controller/BacsController.php(21): Model->find('all', Array)
+#7 [internal function]: BacsController->index()
+#8 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(BacsController), Array)
+#9 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#10 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(BacsController), Object(CakeRequest), Object(CakeResponse))
+#11 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#13 {main}
+2014-03-03 13:05:16 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'user_id' in 'where clause'
+Request URL: /dezordre/index.php/bacs/index
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT `Bac`.`i...', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('SELECT `Bac`.`i...', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1077): DboSource->fetchAll('SELECT `Bac`.`i...', false)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(2902): DboSource->read(Object(Bac), Array)
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(2874): Model->_readDataSource('all', Array)
+#6 /var/www/dezordre/app/Controller/BacsController.php(21): Model->find('all', Array)
+#7 [internal function]: BacsController->index()
+#8 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(BacsController), Array)
+#9 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#10 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(BacsController), Object(CakeRequest), Object(CakeResponse))
+#11 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#13 {main}
+2014-03-03 13:32:20 Error: [NotFoundException] Not Found
+Request URL: /dezordre/index.php/bacs/edit/100000
+Stack Trace:
+#0 [internal function]: BacsController->edit('100000')
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(BacsController), Array)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(BacsController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-03 13:34:15 Error: [NotFoundException] Not Found
+Request URL: /dezordre/index.php/bacs/edit/100000
+Stack Trace:
+#0 [internal function]: BacsController->edit('100000')
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(BacsController), Array)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(BacsController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-03 13:35:11 Error: [NotFoundException] Not Found
+Request URL: /dezordre/index.php/bacs/edit/100000
+Stack Trace:
+#0 [internal function]: BacsController->edit('100000')
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(BacsController), Array)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(BacsController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-03 13:41:19 Error: Fatal Error (4): syntax error, unexpected ':' in [/var/www/dezordre/app/Controller/BacsController.php, line 34]
+2014-03-03 13:41:19 Error: [FatalErrorException] syntax error, unexpected ':'
+Request URL: /dezordre/index.php/bacs/index
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 34)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 34, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 34, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 13:41:34 Error: Fatal Error (4): syntax error, unexpected T_ENDFOREACH in [/var/www/dezordre/app/View/Bacs/index.ctp, line 21]
+2014-03-03 13:41:34 Error: [FatalErrorException] syntax error, unexpected T_ENDFOREACH
+Request URL: /dezordre/index.php/bacs/index
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 21)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 21, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 21, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 13:47:47 Error: Fatal Error (4): syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ')' in [/var/www/dezordre/app/Controller/BacsController.php, line 23]
+2014-03-03 13:47:47 Error: [FatalErrorException] syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ')'
+Request URL: /dezordre/index.php/bacs/index
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 23)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 23, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 23, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 14:17:51 Error: Fatal Error (4): syntax error, unexpected ',' in [/var/www/dezordre/app/Controller/BacsController.php, line 58]
+2014-03-03 14:17:51 Error: [FatalErrorException] syntax error, unexpected ','
+Request URL: /dezordre/index.php/bacs/edit/10000
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 58)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 58, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 58, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 14:18:31 Error: [NotFoundException] Not Found
+Request URL: /dezordre/index.php/bacs/edit/10001
+Stack Trace:
+#0 [internal function]: BacsController->edit('10001')
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(BacsController), Array)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(BacsController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-03 14:34:45 Error: Fatal Error (1): Call to undefined method BacsController::validates() in [/var/www/dezordre/app/Controller/BacsController.php, line 56]
+2014-03-03 14:34:45 Error: [FatalErrorException] Call to undefined method BacsController::validates()
+Request URL: /dezordre/index.php/bacs/edit/10000
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/var/www/dezord...', 56)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/var/www/dezord...', 56, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/var/www/dezord...', 56, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 14:41:17 Error: Fatal Error (1): Call to a member function create() on a non-object in [/var/www/dezordre/app/Controller/BacsController.php, line 57]
+2014-03-03 14:41:17 Error: [FatalErrorException] Call to a member function create() on a non-object
+Request URL: /dezordre/index.php/bacs/edit/10000
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/var/www/dezord...', 57)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/var/www/dezord...', 57, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/var/www/dezord...', 57, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 14:43:42 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Request URL: /dezordre/index.php/bacs/edit/10000
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('update', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('update', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(609): DboSource->fetchAll('update', Array, Array)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(800): DboSource->query('update', Array, Object(Bac))
+#5 /var/www/dezordre/app/Controller/BacsController.php(61): Model->__call('update', Array)
+#6 /var/www/dezordre/app/Controller/BacsController.php(61): Bac->update(Array)
+#7 [internal function]: BacsController->edit('10000')
+#8 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(BacsController), Array)
+#9 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#10 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(BacsController), Object(CakeRequest), Object(CakeResponse))
+#11 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#13 {main}
+2014-03-03 14:43:49 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /dezordre/index.php/bacs/edit/10000
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('INSERT INTO `de...', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1004): DboSource->execute('INSERT INTO `de...')
+#3 /var/www/dezordre/lib/Cake/Model/Model.php(1832): DboSource->create(Object(Bac), Array, Array)
+#4 /var/www/dezordre/app/Controller/BacsController.php(63): Model->save()
+#5 [internal function]: BacsController->edit('10000')
+#6 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(BacsController), Array)
+#7 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#8 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(BacsController), Object(CakeRequest), Object(CakeResponse))
+#9 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#11 {main}
+2014-03-03 14:45:29 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /dezordre/index.php/bacs/edit/10000
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('INSERT INTO `de...', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1004): DboSource->execute('INSERT INTO `de...')
+#3 /var/www/dezordre/lib/Cake/Model/Model.php(1832): DboSource->create(Object(Bac), Array, Array)
+#4 /var/www/dezordre/app/Controller/BacsController.php(61): Model->save(Array)
+#5 [internal function]: BacsController->edit('10000')
+#6 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(BacsController), Array)
+#7 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#8 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(BacsController), Object(CakeRequest), Object(CakeResponse))
+#9 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#11 {main}
+2014-03-03 14:50:04 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /dezordre/index.php/bacs/edit/10000
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('INSERT INTO `de...', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1004): DboSource->execute('INSERT INTO `de...')
+#3 /var/www/dezordre/lib/Cake/Model/Model.php(1832): DboSource->create(Object(Bac), Array, Array)
+#4 /var/www/dezordre/app/Controller/BacsController.php(63): Model->save(Array)
+#5 [internal function]: BacsController->edit('10000')
+#6 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(BacsController), Array)
+#7 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#8 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(BacsController), Object(CakeRequest), Object(CakeResponse))
+#9 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#11 {main}
+2014-03-03 14:54:12 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /dezordre/index.php/bacs/edit/10000
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('INSERT INTO `de...', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1004): DboSource->execute('INSERT INTO `de...')
+#3 /var/www/dezordre/lib/Cake/Model/Model.php(1832): DboSource->create(Object(Bac), Array, Array)
+#4 /var/www/dezordre/app/Controller/BacsController.php(67): Model->save(Array)
+#5 [internal function]: BacsController->edit('10000')
+#6 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(BacsController), Array)
+#7 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#8 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(BacsController), Object(CakeRequest), Object(CakeResponse))
+#9 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#11 {main}
