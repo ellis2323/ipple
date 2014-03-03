@@ -6786,3 +6786,110 @@ Stack Trace:
 #2 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
 #4 {main}
+2014-03-03 18:10:22 Error: [PrivateActionException] Private Action UsersController::admin_index() is not directly accessible.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_index',
+)
+Request URL: /dezordre/index.php/users/admin_index
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#4 {main}
+2014-03-03 18:11:11 Error: [MissingViewException] View file "/var/www/dezordre/app/View/Users/admin_index.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/var/www/dezordre/app/View/Users/admin_index.ctp',
+)
+Request URL: /dezordre/index.php/admin/users/
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/View/View.php(457): View->_getViewFileName(NULL)
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(952): View->render(NULL, NULL)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-03 18:14:02 Error: [NotFoundException] Not Found
+Request URL: /dezordre/index.php/admin/users/
+Stack Trace:
+#0 [internal function]: UsersController->admin_index()
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-03 18:14:21 Error: [MissingActionException] Action UsersController::admin_logout() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_logout',
+)
+Request URL: /dezordre/index.php/admin/users/logout
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#4 {main}
+2014-03-03 18:19:07 Error: Fatal Error (4): syntax error, unexpected T_PUBLIC in [/var/www/dezordre/app/Controller/UsersController.php, line 281]
+2014-03-03 18:19:07 Error: [FatalErrorException] syntax error, unexpected T_PUBLIC
+Request URL: /dezordre/index.php/admin/users
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 281)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 281, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 281, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 18:33:07 Error: Fatal Error (1): Call to a member function find() on a non-object in [/var/www/dezordre/app/Controller/UsersController.php, line 285]
+2014-03-03 18:33:07 Error: [FatalErrorException] Call to a member function find() on a non-object
+Request URL: /dezordre/index.php/admin/users/edit/4
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/var/www/dezord...', 285)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/var/www/dezord...', 285, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/var/www/dezord...', 285, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 18:34:07 Error: Fatal Error (4): syntax error, unexpected '}' in [/var/www/dezordre/app/Controller/UsersController.php, line 314]
+2014-03-03 18:34:07 Error: [FatalErrorException] syntax error, unexpected '}'
+Request URL: /dezordre/index.php/admin/users/edit/4
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 314)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 314, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 314, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 18:45:49 Error: Fatal Error (1): Call to a member function find() on a non-object in [/var/www/dezordre/app/Controller/BacsController.php, line 93]
+2014-03-03 18:45:49 Error: [FatalErrorException] Call to a member function find() on a non-object
+Request URL: /dezordre/index.php/admin/bacs
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/var/www/dezord...', 93)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/var/www/dezord...', 93, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/var/www/dezord...', 93, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 18:46:07 Error: Fatal Error (1): Call to a member function find() on a non-object in [/var/www/dezordre/app/Controller/BacsController.php, line 111]
+2014-03-03 18:46:07 Error: [FatalErrorException] Call to a member function find() on a non-object
+Request URL: /dezordre/index.php/admin/bacs/edit/10001
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/var/www/dezord...', 111)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/var/www/dezord...', 111, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/var/www/dezord...', 111, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 18:48:04 Error: Fatal Error (1): Call to a member function save() on a non-object in [/var/www/dezordre/app/Controller/BacsController.php, line 132]
+2014-03-03 18:48:04 Error: [FatalErrorException] Call to a member function save() on a non-object
+Request URL: /dezordre/index.php/admin/bacs/edit/10001
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/var/www/dezord...', 132)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/var/www/dezord...', 132, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/var/www/dezord...', 132, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
