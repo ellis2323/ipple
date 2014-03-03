@@ -40,7 +40,10 @@
                     <li class="dropdown">
 
 
-                        <?php if($this->Session->read('Auth.User.id')):?>
+                        <?php // #### Menu loggé ####
+                        if($this->Session->read('Auth.User.id')):
+                        ?>
+
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte<b class="caret"></b></a>
                         <ul class="dropdown-menu">
 
@@ -54,6 +57,29 @@
                                     )
                                 );?>
                             </li>   
+
+                            <li>
+                            <?php echo $this->Html->link(
+                                    'Mes bacs',
+                                    array(
+                                        'controller' => 'bacs',
+                                        'action' => 'index',
+                                        'full_base' => true
+                                    )
+                                );?>
+                            </li>  
+
+                            <li>
+                            <?php echo $this->Html->link(
+                                    'Modifier infos compte',
+                                    array(
+                                        'controller' => 'users',
+                                        'action' => 'edit',
+                                        'full_base' => true
+                                    )
+                                );?>
+                            </li>  
+
                             <li>
                             <?php echo $this->Html->link(
                                     'Logout',
@@ -63,9 +89,10 @@
                                         'full_base' => true
                                     )
                                 );?>
-                            </li>   
+                            </li>  
 
                             <?php
+                            // #### Menu non loggé ####
                             else:
                             ?>
 

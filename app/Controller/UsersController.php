@@ -31,7 +31,6 @@ class UsersController extends AppController {
 				}*/	
 		}
 
-
 		/* Connexion */
 		public function login() {
 			if(!empty($this->request->data)){
@@ -182,6 +181,41 @@ class UsersController extends AppController {
 			}
 		}
 
+		/* Editer un bac */
+		public function edit() {
+
+				// Si on reçoit des données post
+				if(!empty($this->request->data)){
+					$this->User->id = $this->Session->read('Auth.User.id'); // On associe l'id du bac à l'objet 
+
+					// On valide les champs envoyés
+					if($this->User->validates() ){
+
+
+						$this->Session->setFlash('Données correctement sauvegardées');
+
+						// On enregistre les données
+						$this->User->save(array(
+							'email'			=> $this->request->data['Users']['email'],
+							'password' 		=> $this->Auth->password($this->request->data['Users']['password']),
+						));
+
+					}
+				}
+
+				// On affiche les données déjà entré par l'user
+				$user= $this->User->find('first',
+					array(
+							'conditions' =>
+							array(
+									'id' => $this->Session->read('Auth.User.id'),
+								)
+
+						)
+					);
+				$this->set(compact('user'));
+			}
+
 
 		/* Activer un compte nouvellement crée */
 		public function activate($user_id, $token) {
@@ -223,6 +257,17 @@ class UsersController extends AppController {
 			}
 		}
 
+
+		/* ############### ADMIN ############### */
+
+		public function admin_index(){
+			if($this->Session->read('Auth.User.role') >= 90) {
+
+				
+			}
+
+
+		}
 
 
 }

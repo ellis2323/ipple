@@ -6,14 +6,14 @@ class BacsController extends AppController {
 
 
 
-
+		// Autorisation
 		public function beforeFilter() {
 
 			parent::beforeFilter();
 			$this->Auth->deny();
-
 		}
 
+		/* Liste des bacs utilisateur */
 		public function index() {
 
 			// On list toutes les bacs utilisateurs
@@ -25,17 +25,14 @@ class BacsController extends AppController {
 					) 
 			);
 
-			if(empty($bacs)){
-					$this->Session->setFlash('Vous n\'avez aucun bac en stock');
-			}
-			else {
-				// Si on a des bacs, on liste les bacs / VUE A FAIRE
+			if(!empty($bacs)){
+				// Si on a des bacs, on liste les bacs
+
 				$this->set(compact('bacs'));
 			}
 		}
 
-
-
+		/* Editer un bac */
 		public function edit($bac_id) {
 			$bac_edit = $this->Bac->find('first', 
 				array(
@@ -79,13 +76,18 @@ class BacsController extends AppController {
 
 						)
 					);
-				$this->set(compact('bac'));
+					$this->set(compact('bac'));
 			}
 			// sinon erreur 404
 			else {
 				throw new NotFoundException;
 			}
-
 		}
+
+
+		public function order() {
+			
+		}
+
 
 }

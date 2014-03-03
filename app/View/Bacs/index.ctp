@@ -1,3 +1,10 @@
+<?php
+// Si l'utilisateur à des bacs
+if(!empty($bacs)){
+// If
+
+?>
+
 <table>
   <tr>
     <th>ID</th>
@@ -8,12 +15,45 @@
 
   </tr>
 
+ <?php 
+  foreach($bacs as $key):
+  // Debut foreach
 
- <?php foreach($bacs as $key){?>
-  <tr>
-  	<td><?php echo $key['Bac']['id']; ?></td>
-  	<td><?php echo $key['Bac']['title']; ?></td>
+    ?>
+    <tr>
+    	<td><?php echo $key['Bac']['id']; ?></td>
+      <td><?php echo $key['Bac']['title']; ?></td>
+      <td><?php echo $key['Bac']['description']; ?></td>
+      <td><?php echo $key['Bac']['user_id']; ?></td>
+      <td><?php echo $key['Bac']['state']; ?></td>
 
-  </tr>
-<?php }?>
+    	<td>
+<?= $this->Html->link("Editer",
+                  array(
+                        'controller' => 'bacs', 
+                        'action' => 'edit', $key['Bac']['id']), true); ?>
+      </td>
+
+    </tr>
+  <?php 
+  endforeach;
+  // Fin foreach
+
+  ?>
+
 </table>
+
+<?php
+// Fin du if
+}
+
+
+// Sinon on le notifie qu'il n'a aucun bac
+else {
+?>
+
+<h1>Vous n'avez aucun bac</h1>
+
+<?php
+}
+?>

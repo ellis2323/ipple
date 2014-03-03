@@ -6644,3 +6644,145 @@ Stack Trace:
 #9 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #10 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
 #11 {main}
+2014-03-03 15:08:45 Error: Fatal Error (4): syntax error, unexpected ')' in [/var/www/dezordre/app/Controller/UsersController.php, line 201]
+2014-03-03 15:08:45 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /dezordre/index.php/users/edit
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 201)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 201, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 201, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 15:09:08 Error: Fatal Error (4): syntax error, unexpected T_PUBLIC in [/var/www/dezordre/app/Controller/UsersController.php, line 223]
+2014-03-03 15:09:08 Error: [FatalErrorException] syntax error, unexpected T_PUBLIC
+Request URL: /dezordre/index.php/users/edit
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 223)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 223, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 223, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 15:12:37 Error: [SocketException] Could not send email.
+Request URL: /dezordre/index.php/users/register
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Network/Email/MailTransport.php(51): MailTransport->_mail('corentingc@gmai...', 'Dezordre: Confi...', 'Merci de vous ?...', 'From: contact@d...', NULL)
+#1 /var/www/dezordre/lib/Cake/Network/Email/CakeEmail.php(1122): MailTransport->send(Object(CakeEmail))
+#2 /var/www/dezordre/app/Controller/UsersController.php(169): CakeEmail->send()
+#3 [internal function]: UsersController->register()
+#4 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#5 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#6 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#7 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#8 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#9 {main}
+2014-03-03 15:18:48 Error: Fatal Error (4): syntax error, unexpected '}' in [/var/www/dezordre/app/View/Bacs/index.ctp, line 25]
+2014-03-03 15:18:48 Error: [FatalErrorException] syntax error, unexpected '}'
+Request URL: /dezordre/index.php/bacs
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 25)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 25, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 25, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 15:19:28 Error: Fatal Error (4): syntax error, unexpected ':', expecting ';' in [/var/www/dezordre/app/View/Bacs/index.ctp, line 37]
+2014-03-03 15:19:28 Error: [FatalErrorException] syntax error, unexpected ':', expecting ';'
+Request URL: /dezordre/index.php/bacs
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 37)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 37, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 37, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 15:19:36 Error: Fatal Error (4): syntax error, unexpected T_ENDIF in [/var/www/dezordre/app/View/Bacs/index.ctp, line 37]
+2014-03-03 15:19:36 Error: [FatalErrorException] syntax error, unexpected T_ENDIF
+Request URL: /dezordre/index.php/bacs
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 37)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 37, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 37, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 15:25:31 Error: Fatal Error (4): syntax error, unexpected ';', expecting ')' in [/var/www/dezordre/app/View/Bacs/index.ctp, line 31]
+2014-03-03 15:25:31 Error: [FatalErrorException] syntax error, unexpected ';', expecting ')'
+Request URL: /dezordre/index.php/bacs
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 31)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 31, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 31, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 15:56:31 Error: [MissingControllerException] Controller class AdminController could not be found.
+Exception Attributes: array (
+  'class' => 'AdminController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/index.php/admin
+Stack Trace:
+#0 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#2 {main}
+2014-03-03 15:56:36 Error: Fatal Error (4): syntax error, unexpected '{', expecting '(' in [/var/www/dezordre/app/Controller/UsersController.php, line 263]
+2014-03-03 15:56:36 Error: [FatalErrorException] syntax error, unexpected '{', expecting '('
+Request URL: /dezordre/index.php/users/admin_index
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 263)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 263, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 263, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-03 15:57:29 Error: [PrivateActionException] Private Action UsersController::admin_index() is not directly accessible.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_index',
+)
+Request URL: /dezordre/index.php/users/admin_index
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#4 {main}
+2014-03-03 15:57:47 Error: [MissingActionException] Action UsersController::admin_admin_index() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_admin_index',
+)
+Request URL: /dezordre/index.php/admin/users/admin_index
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#4 {main}
+2014-03-03 15:57:51 Error: [MissingViewException] View file "/var/www/dezordre/app/View/Users/admin_index.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/var/www/dezordre/app/View/Users/admin_index.ctp',
+)
+Request URL: /dezordre/index.php/admin/users/index
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/View/View.php(457): View->_getViewFileName(NULL)
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(952): View->render(NULL, NULL)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-03 15:58:08 Error: [PrivateActionException] Private Action UsersController::admin_index() is not directly accessible.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_index',
+)
+Request URL: /dezordre/index.php/users/admin_index
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#4 {main}
