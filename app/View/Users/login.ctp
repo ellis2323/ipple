@@ -41,6 +41,7 @@
 							<?= $this->Form->end("Se connecter"); ?>                                    
                        		</label>
                        		</div>
+                            <?= $this->Html->link('Mot de passe oublié', array('action' => 'forgot' )); ?>
                        	</div>
 
                     </div>
