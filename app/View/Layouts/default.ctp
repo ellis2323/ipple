@@ -46,7 +46,8 @@
                                         array(
                                             'controller' => 'users',
                                             'action' => 'admin_index',
-                                            'full_base' => true
+                                            'full_base' => true,
+                                            'admin' => true
                                         )
                                     );?>
                                 </li>   
@@ -57,7 +58,8 @@
                                         array(
                                             'controller' => 'bacs',
                                             'action' => 'admin_index',
-                                            'full_base' => true
+                                            'full_base' => true,
+                                            'admin' => true
                                         )
                                     );?>
                                 </li>  
@@ -68,7 +70,8 @@
                                         array(
                                             'controller' => 'orders',
                                             'action' => 'admin_index',
-                                            'full_base' => true
+                                            'full_base' => true,
+                                            'admin' => true
                                         )
                                     );?>
                                 </li>
