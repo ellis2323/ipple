@@ -12,16 +12,18 @@ class Order extends AppModel {
  *
  * @var array
  */
+
+
+// Aftersave
+//Si une livraison est associé à la commande, la mettre à jour (date) / A FAIRE
+//J-1 > bloquer l'edition de commande
+
+
 	public $validate = array(
 
-		// Validation de l'email
-		'email' => array( 
-			'notEmpty' => array(
-				'rule' => 'notEmpty',
-			),
+		'nb_bacs' => array( 
+			'rule' => 'naturalNumber',
 		),
-
-
 	// Fin du array	
 	);
 

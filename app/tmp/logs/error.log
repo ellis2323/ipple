@@ -6981,3 +6981,660 @@ Stack Trace:
 #2 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
 #4 {main}
+2014-03-04 11:08:50 Error: Fatal Error (4): syntax error, unexpected '}' in [/var/www/dezordre/app/Controller/OrdersController.php, line 36]
+2014-03-04 11:08:50 Error: [FatalErrorException] syntax error, unexpected '}'
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 36)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 36, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 36, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 11:35:37 Error: [NotFoundException] Not Found
+Request URL: /dezordre/index.php/orders/edit/1
+Stack Trace:
+#0 [internal function]: OrdersController->edit('1')
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(OrdersController), Array)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-04 12:00:06 Error: [MissingViewException] View file "/var/www/dezordre/app/View/Orders/add.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/var/www/dezordre/app/View/Orders/add.ctp',
+)
+Request URL: /dezordre/index.php/orders/add
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/View/View.php(457): View->_getViewFileName(NULL)
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(952): View->render(NULL, NULL)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-04 12:04:15 Error: Fatal Error (4): syntax error, unexpected '*', expecting ')' in [/var/www/dezordre/app/Model/Order.php, line 36]
+2014-03-04 12:04:15 Error: [FatalErrorException] syntax error, unexpected '*', expecting ')'
+Request URL: /dezordre/index.php/orders/add
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 36)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 36, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 36, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 12:04:29 Error: Fatal Error (4): syntax error, unexpected ';', expecting ')' in [/var/www/dezordre/app/Model/Order.php, line 38]
+2014-03-04 12:04:29 Error: [FatalErrorException] syntax error, unexpected ';', expecting ')'
+Request URL: /dezordre/index.php/orders/add
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 38)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 38, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 38, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 12:04:31 Error: Fatal Error (4): syntax error, unexpected ';', expecting ')' in [/var/www/dezordre/app/Model/Order.php, line 38]
+2014-03-04 12:04:31 Error: [FatalErrorException] syntax error, unexpected ';', expecting ')'
+Request URL: /dezordre/index.php/orders/add
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 38)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 38, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 38, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 12:06:44 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'validate' at line 1
+Request URL: /dezordre/index.php/orders/add
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('validate', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('validate', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(609): DboSource->fetchAll('validate', Array, Array)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(800): DboSource->query('validate', Array, Object(Order))
+#5 /var/www/dezordre/app/Controller/OrdersController.php(93): Model->__call('validate', Array)
+#6 /var/www/dezordre/app/Controller/OrdersController.php(93): Order->validate()
+#7 [internal function]: OrdersController->add()
+#8 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(OrdersController), Array)
+#9 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#10 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#11 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#13 {main}
+2014-03-04 12:20:29 Error: Fatal Error (4): syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ')' in [/var/www/dezordre/app/Controller/OrdersController.php, line 96]
+2014-03-04 12:20:29 Error: [FatalErrorException] syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ')'
+Request URL: /dezordre/index.php/orders/add
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 96)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 96, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 96, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 12:20:44 Error: Fatal Error (4): syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ')' in [/var/www/dezordre/app/Controller/OrdersController.php, line 96]
+2014-03-04 12:20:44 Error: [FatalErrorException] syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ')'
+Request URL: /dezordre/index.php/orders/add
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 96)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 96, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 96, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 12:23:29 Error: Fatal Error (4): syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ')' in [/var/www/dezordre/app/Controller/OrdersController.php, line 96]
+2014-03-04 12:23:29 Error: [FatalErrorException] syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ')'
+Request URL: /dezordre/index.php/orders/add
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 96)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 96, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 96, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 13:55:04 Error: Fatal Error (4): syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ')' in [/var/www/dezordre/app/Controller/OrdersController.php, line 162]
+2014-03-04 13:55:04 Error: [FatalErrorException] syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ')'
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 162)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 162, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 162, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 13:56:14 Error: [MissingViewException] View file "/var/www/dezordre/app/View/Orders/cancel.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/var/www/dezordre/app/View/Orders/cancel.ctp',
+)
+Request URL: /dezordre/index.php/orders/cancel/8
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/View/View.php(457): View->_getViewFileName(NULL)
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(952): View->render(NULL, NULL)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-04 13:57:12 Error: [MissingViewException] View file "/var/www/dezordre/app/View/Orders/cancel.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/var/www/dezordre/app/View/Orders/cancel.ctp',
+)
+Request URL: /dezordre/index.php/orders/cancel/8
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/View/View.php(457): View->_getViewFileName(NULL)
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(952): View->render(NULL, NULL)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-04 13:58:03 Error: [NotFoundException] Not Found
+Request URL: /dezordre/index.php/orders/cancel/8
+Stack Trace:
+#0 [internal function]: OrdersController->cancel('8')
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(OrdersController), Array)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-04 13:58:17 Error: [MissingViewException] View file "/var/www/dezordre/app/View/Orders/cancel.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/var/www/dezordre/app/View/Orders/cancel.ctp',
+)
+Request URL: /dezordre/index.php/orders/cancel/8
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/View/View.php(457): View->_getViewFileName(NULL)
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(952): View->render(NULL, NULL)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-04 14:00:15 Error: [NotFoundException] Not Found
+Request URL: /dezordre/index.php/orders/cancel/8
+Stack Trace:
+#0 [internal function]: OrdersController->cancel('8')
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(OrdersController), Array)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-04 14:00:27 Error: [MissingActionException] Action OrdersController::login() could not be found.
+Exception Attributes: array (
+  'controller' => 'OrdersController',
+  'action' => 'login',
+)
+Request URL: /dezordre/index.php/orders/login
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#4 {main}
+2014-03-04 14:01:07 Error: [MissingActionException] Action OrdersController::login() could not be found.
+Exception Attributes: array (
+  'controller' => 'OrdersController',
+  'action' => 'login',
+)
+Request URL: /dezordre/index.php/orders/login
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#4 {main}
+2014-03-04 14:01:15 Error: [MissingActionException] Action OrdersController::login() could not be found.
+Exception Attributes: array (
+  'controller' => 'OrdersController',
+  'action' => 'login',
+)
+Request URL: /dezordre/index.php/orders/login
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#4 {main}
+2014-03-04 14:01:57 Error: [MissingActionException] Action OrdersController::login() could not be found.
+Exception Attributes: array (
+  'controller' => 'OrdersController',
+  'action' => 'login',
+)
+Request URL: /dezordre/index.php/orders/login
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#4 {main}
+2014-03-04 14:08:31 Error: Fatal Error (4): syntax error, unexpected ';' in [/var/www/dezordre/app/Controller/OrdersController.php, line 26]
+2014-03-04 14:08:31 Error: [FatalErrorException] syntax error, unexpected ';'
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 26)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 26, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 26, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 14:14:37 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Order.' in 'field list'
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT DISTINCT...', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('SELECT DISTINCT...', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1077): DboSource->fetchAll('SELECT DISTINCT...', false)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(2902): DboSource->read(Object(Order), Array)
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(2874): Model->_readDataSource('all', Array)
+#6 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(592): Model->find('all', Array)
+#7 /var/www/dezordre/lib/Cake/Model/Model.php(800): DboSource->query('findAllByState', Array, Object(Order))
+#8 /var/www/dezordre/app/Controller/OrdersController.php(26): Model->__call('findAllByState', Array)
+#9 /var/www/dezordre/app/Controller/OrdersController.php(26): Order->findAllByState('1', Array)
+#10 [internal function]: OrdersController->index()
+#11 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(OrdersController), Array)
+#12 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#13 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#14 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#16 {main}
+2014-03-04 14:14:49 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Order.' in 'field list'
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT DISTINCT...', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('SELECT DISTINCT...', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1077): DboSource->fetchAll('SELECT DISTINCT...', false)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(2902): DboSource->read(Object(Order), Array)
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(2874): Model->_readDataSource('all', Array)
+#6 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(592): Model->find('all', Array)
+#7 /var/www/dezordre/lib/Cake/Model/Model.php(800): DboSource->query('findAllByState', Array, Object(Order))
+#8 /var/www/dezordre/app/Controller/OrdersController.php(26): Model->__call('findAllByState', Array)
+#9 /var/www/dezordre/app/Controller/OrdersController.php(26): Order->findAllByState('1', Array)
+#10 [internal function]: OrdersController->index()
+#11 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(OrdersController), Array)
+#12 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#13 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#14 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#16 {main}
+2014-03-04 14:15:38 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Order.' in 'field list'
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT DISTINCT...', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('SELECT DISTINCT...', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1077): DboSource->fetchAll('SELECT DISTINCT...', false)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(2902): DboSource->read(Object(Order), Array)
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(2874): Model->_readDataSource('all', Array)
+#6 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(592): Model->find('all', Array)
+#7 /var/www/dezordre/lib/Cake/Model/Model.php(800): DboSource->query('findAllByState', Array, Object(Order))
+#8 /var/www/dezordre/app/Controller/OrdersController.php(26): Model->__call('findAllByState', Array)
+#9 /var/www/dezordre/app/Controller/OrdersController.php(26): Order->findAllByState('1', Array)
+#10 [internal function]: OrdersController->index()
+#11 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(OrdersController), Array)
+#12 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#13 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#14 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#16 {main}
+2014-03-04 14:15:56 Error: Fatal Error (4): syntax error, unexpected T_DOUBLE_ARROW in [/var/www/dezordre/app/Controller/OrdersController.php, line 21]
+2014-03-04 14:15:56 Error: [FatalErrorException] syntax error, unexpected T_DOUBLE_ARROW
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 21)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 21, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 21, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 14:16:32 Error: Fatal Error (4): syntax error, unexpected ')' in [/var/www/dezordre/app/Controller/OrdersController.php, line 22]
+2014-03-04 14:16:32 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 22)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 22, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 22, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 14:17:10 Error: Fatal Error (4): syntax error, unexpected ')' in [/var/www/dezordre/app/Controller/OrdersController.php, line 24]
+2014-03-04 14:17:10 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 24)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 24, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 24, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 14:17:40 Error: Fatal Error (4): syntax error, unexpected ')' in [/var/www/dezordre/app/Controller/OrdersController.php, line 24]
+2014-03-04 14:17:40 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 24)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 24, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 24, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 14:17:58 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'conditions' in 'order clause'
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT `Order`....', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('SELECT `Order`....', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1077): DboSource->fetchAll('SELECT `Order`....', false)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(2902): DboSource->read(Object(Order), Array)
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(2874): Model->_readDataSource('all', Array)
+#6 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(592): Model->find('all', Array)
+#7 /var/www/dezordre/lib/Cake/Model/Model.php(800): DboSource->query('findAllByState', Array, Object(Order))
+#8 /var/www/dezordre/app/Controller/OrdersController.php(24): Model->__call('findAllByState', Array)
+#9 /var/www/dezordre/app/Controller/OrdersController.php(24): Order->findAllByState('1', Array, Array)
+#10 [internal function]: OrdersController->index()
+#11 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(OrdersController), Array)
+#12 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#13 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#14 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#16 {main}
+2014-03-04 14:18:16 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '5' at line 1
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT `Order`....', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('SELECT `Order`....', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1077): DboSource->fetchAll('SELECT `Order`....', false)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(2902): DboSource->read(Object(Order), Array)
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(2874): Model->_readDataSource('all', Array)
+#6 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(592): Model->find('all', Array)
+#7 /var/www/dezordre/lib/Cake/Model/Model.php(800): DboSource->query('findAllByState', Array, Object(Order))
+#8 /var/www/dezordre/app/Controller/OrdersController.php(23): Model->__call('findAllByState', Array)
+#9 /var/www/dezordre/app/Controller/OrdersController.php(23): Order->findAllByState('1', Array, Array)
+#10 [internal function]: OrdersController->index()
+#11 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(OrdersController), Array)
+#12 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#13 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#14 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#16 {main}
+2014-03-04 14:19:20 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Order.5' in 'field list'
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT `Order`....', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('SELECT `Order`....', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1077): DboSource->fetchAll('SELECT `Order`....', false)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(2902): DboSource->read(Object(Order), Array)
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(2874): Model->_readDataSource('all', Array)
+#6 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(592): Model->find('all', Array)
+#7 /var/www/dezordre/lib/Cake/Model/Model.php(800): DboSource->query('findAllByState', Array, Object(Order))
+#8 /var/www/dezordre/app/Controller/OrdersController.php(23): Model->__call('findAllByState', Array)
+#9 /var/www/dezordre/app/Controller/OrdersController.php(23): Order->findAllByState('1', Array, Array)
+#10 [internal function]: OrdersController->index()
+#11 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(OrdersController), Array)
+#12 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#13 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#14 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#16 {main}
+2014-03-04 14:19:47 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Order.5' in 'field list'
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT `Order`....', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('SELECT `Order`....', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1077): DboSource->fetchAll('SELECT `Order`....', false)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(2902): DboSource->read(Object(Order), Array)
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(2874): Model->_readDataSource('all', Array)
+#6 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(592): Model->find('all', Array)
+#7 /var/www/dezordre/lib/Cake/Model/Model.php(800): DboSource->query('findAllByState', Array, Object(Order))
+#8 /var/www/dezordre/app/Controller/OrdersController.php(23): Model->__call('findAllByState', Array)
+#9 /var/www/dezordre/app/Controller/OrdersController.php(23): Order->findAllByState('1', Array, Array)
+#10 [internal function]: OrdersController->index()
+#11 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(OrdersController), Array)
+#12 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#13 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#14 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#16 {main}
+2014-03-04 14:21:20 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Order.user__id' in 'where clause'
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT `Order`....', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('SELECT `Order`....', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1077): DboSource->fetchAll('SELECT `Order`....', false)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(2902): DboSource->read(Object(Order), Array)
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(2874): Model->_readDataSource('all', Array)
+#6 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(592): Model->find('all', Array)
+#7 /var/www/dezordre/lib/Cake/Model/Model.php(800): DboSource->query('findAllByUser_I...', Array, Object(Order))
+#8 /var/www/dezordre/app/Controller/OrdersController.php(20): Model->__call('findAllByUser_I...', Array)
+#9 /var/www/dezordre/app/Controller/OrdersController.php(20): Order->findAllByUser_IdAndState('1', '5')
+#10 [internal function]: OrdersController->index()
+#11 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(OrdersController), Array)
+#12 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#13 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#14 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#16 {main}
+2014-03-04 14:22:47 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Order.stat' in 'where clause'
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT `Order`....', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('SELECT `Order`....', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1077): DboSource->fetchAll('SELECT `Order`....', false)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(2902): DboSource->read(Object(Order), Array)
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(2874): Model->_readDataSource('all', Array)
+#6 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(592): Model->find('all', Array)
+#7 /var/www/dezordre/lib/Cake/Model/Model.php(800): DboSource->query('findAllByUserId...', Array, Object(Order))
+#8 /var/www/dezordre/app/Controller/OrdersController.php(20): Model->__call('findAllByUserId...', Array)
+#9 /var/www/dezordre/app/Controller/OrdersController.php(20): Order->findAllByUserIdAndStat('1', '5')
+#10 [internal function]: OrdersController->index()
+#11 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(OrdersController), Array)
+#12 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#13 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#14 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#16 {main}
+2014-03-04 14:24:00 Error: Fatal Error (1): Call to a member function findAllByUserIdAndStat() on a non-object in [/var/www/dezordre/app/Controller/OrdersController.php, line 20]
+2014-03-04 14:24:00 Error: [FatalErrorException] Call to a member function findAllByUserIdAndStat() on a non-object
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/var/www/dezord...', 20)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/var/www/dezord...', 20, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/var/www/dezord...', 20, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 14:27:01 Error: Fatal Error (4): syntax error, unexpected '}' in [/var/www/dezordre/app/View/Orders/index.ctp, line 56]
+2014-03-04 14:27:01 Error: [FatalErrorException] syntax error, unexpected '}'
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 56)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 56, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 56, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 14:47:55 Error: [MissingControllerException] Controller class AddressesController could not be found.
+Exception Attributes: array (
+  'class' => 'AddressesController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/index.php/addresses
+Stack Trace:
+#0 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#2 {main}
+2014-03-04 14:48:42 Error: Fatal Error (1): Call to a member function findAllByUserId() on a non-object in [/var/www/dezordre/app/Controller/AddressesController.php, line 19]
+2014-03-04 14:48:42 Error: [FatalErrorException] Call to a member function findAllByUserId() on a non-object
+Request URL: /dezordre/index.php/addresses
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/var/www/dezord...', 19)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/var/www/dezord...', 19, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/var/www/dezord...', 19, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 14:48:55 Error: Fatal Error (1): Call to a member function findAllByUserId() on a non-object in [/var/www/dezordre/app/Controller/AddressesController.php, line 19]
+2014-03-04 14:48:55 Error: [FatalErrorException] Call to a member function findAllByUserId() on a non-object
+Request URL: /dezordre/index.php/addresses
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/var/www/dezord...', 19)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/var/www/dezord...', 19, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/var/www/dezord...', 19, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 14:49:04 Error: Fatal Error (64): Cannot redeclare class User in [/var/www/dezordre/app/Model/Address.php, line 21]
+2014-03-04 14:49:04 Error: [FatalErrorException] Cannot redeclare class User
+Request URL: /dezordre/index.php/addresses
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'Cannot redeclar...', '/var/www/dezord...', 21)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot redeclar...', '/var/www/dezord...', 21, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'Cannot redeclar...', '/var/www/dezord...', 21, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 14:49:21 Error: [MissingViewException] View file "/var/www/dezordre/app/View/Addresses/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/var/www/dezordre/app/View/Addresses/index.ctp',
+)
+Request URL: /dezordre/index.php/addresses
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/View/View.php(457): View->_getViewFileName(NULL)
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(952): View->render(NULL, NULL)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(192): Controller->render()
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(AddressesController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-04 14:53:54 Error: [NotFoundException] Not Found
+Request URL: /dezordre/index.php/orders/edit/1
+Stack Trace:
+#0 [internal function]: OrdersController->edit('1')
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(OrdersController), Array)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(OrdersController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-04 14:54:07 Error: Fatal Error (1): Call to a member function find() on a non-object in [/var/www/dezordre/app/Controller/AddressesController.php, line 29]
+2014-03-04 14:54:07 Error: [FatalErrorException] Call to a member function find() on a non-object
+Request URL: /dezordre/index.php/addresses/edit/1
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/var/www/dezord...', 29)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/var/www/dezord...', 29, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/var/www/dezord...', 29, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 14:55:57 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'where clause'
+Request URL: /dezordre/index.php/addresses/edit/1
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT `Address...', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('SELECT `Address...', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1077): DboSource->fetchAll('SELECT `Address...', false)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(2902): DboSource->read(Object(Address), Array)
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(2874): Model->_readDataSource('first', Array)
+#6 /var/www/dezordre/app/Controller/AddressesController.php(61): Model->find('first', Array)
+#7 [internal function]: AddressesController->edit('1')
+#8 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(AddressesController), Array)
+#9 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#10 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(AddressesController), Object(CakeRequest), Object(CakeResponse))
+#11 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#13 {main}
+2014-03-04 14:59:17 Error: Fatal Error (4): syntax error, unexpected T_ARRAY in [/var/www/dezordre/app/Controller/AddressesController.php, line 60]
+2014-03-04 14:59:17 Error: [FatalErrorException] syntax error, unexpected T_ARRAY
+Request URL: /dezordre/index.php/addresses/edit/1
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/var/www/dezord...', 60)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/var/www/dezord...', 60, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/var/www/dezord...', 60, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 15:01:46 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'where clause'
+Request URL: /dezordre/index.php/addresses/edit/1
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT `Address...', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('SELECT `Address...', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1077): DboSource->fetchAll('SELECT `Address...', false)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(2902): DboSource->read(Object(Address), Array)
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(2874): Model->_readDataSource('first', Array)
+#6 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(597): Model->find('first', Array)
+#7 /var/www/dezordre/lib/Cake/Model/Model.php(800): DboSource->query('findByIdAndUser...', Array, Object(Address))
+#8 /var/www/dezordre/app/Controller/AddressesController.php(60): Model->__call('findByIdAndUser...', Array)
+#9 /var/www/dezordre/app/Controller/AddressesController.php(60): Address->findByIdAndUserId(Array, '5')
+#10 [internal function]: AddressesController->edit('1')
+#11 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(AddressesController), Array)
+#12 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#13 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(AddressesController), Object(CakeRequest), Object(CakeResponse))
+#14 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#16 {main}
+2014-03-04 15:02:10 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'where clause'
+Request URL: /dezordre/index.php/addresses/edit/1
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT `Address...', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('SELECT `Address...', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1077): DboSource->fetchAll('SELECT `Address...', false)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(2902): DboSource->read(Object(Address), Array)
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(2874): Model->_readDataSource('first', Array)
+#6 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(597): Model->find('first', Array)
+#7 /var/www/dezordre/lib/Cake/Model/Model.php(800): DboSource->query('findByIdAndUser...', Array, Object(Address))
+#8 /var/www/dezordre/app/Controller/AddressesController.php(59): Model->__call('findByIdAndUser...', Array)
+#9 /var/www/dezordre/app/Controller/AddressesController.php(59): Address->findByIdAndUserId(Array, '5')
+#10 [internal function]: AddressesController->edit('1')
+#11 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(AddressesController), Array)
+#12 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#13 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(AddressesController), Object(CakeRequest), Object(CakeResponse))
+#14 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#16 {main}
+2014-03-04 15:03:09 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'where clause'
+Request URL: /dezordre/index.php/addresses/edit/1
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT `Address...', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('SELECT `Address...', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1077): DboSource->fetchAll('SELECT `Address...', false)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(2902): DboSource->read(Object(Address), Array)
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(2874): Model->_readDataSource('first', Array)
+#6 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(597): Model->find('first', Array)
+#7 /var/www/dezordre/lib/Cake/Model/Model.php(800): DboSource->query('findByIdAndUser...', Array, Object(Address))
+#8 /var/www/dezordre/app/Controller/AddressesController.php(59): Model->__call('findByIdAndUser...', Array)
+#9 /var/www/dezordre/app/Controller/AddressesController.php(59): Address->findByIdAndUserId(Array, '5')
+#10 [internal function]: AddressesController->edit('1')
+#11 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(AddressesController), Array)
+#12 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#13 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(AddressesController), Object(CakeRequest), Object(CakeResponse))
+#14 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#16 {main}
+2014-03-04 15:05:04 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'where clause'
+Request URL: /dezordre/index.php/addresses/edit/1
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('SELECT `Address...', Array)
+#2 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(665): DboSource->execute('SELECT `Address...', Array, Array)
+#3 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(1077): DboSource->fetchAll('SELECT `Address...', false)
+#4 /var/www/dezordre/lib/Cake/Model/Model.php(2902): DboSource->read(Object(Address), Array)
+#5 /var/www/dezordre/lib/Cake/Model/Model.php(2874): Model->_readDataSource('first', Array)
+#6 /var/www/dezordre/lib/Cake/Model/Datasource/DboSource.php(597): Model->find('first', Array)
+#7 /var/www/dezordre/lib/Cake/Model/Model.php(800): DboSource->query('findByIdAndUser...', Array, Object(Address))
+#8 /var/www/dezordre/app/Controller/AddressesController.php(59): Model->__call('findByIdAndUser...', Array)
+#9 /var/www/dezordre/app/Controller/AddressesController.php(59): Address->findByIdAndUserId(Array, '5')
+#10 [internal function]: AddressesController->edit('1')
+#11 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(AddressesController), Array)
+#12 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#13 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(AddressesController), Object(CakeRequest), Object(CakeResponse))
+#14 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#16 {main}

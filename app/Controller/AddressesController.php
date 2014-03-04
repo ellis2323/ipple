@@ -2,13 +2,12 @@
 App::uses('AppController', 'Controller');
 
 
-class BacsController extends AppController {
+class AddressesController extends AppController {
 
 
 
 		// Autorisation
 		public function beforeFilter() {
-
 			parent::beforeFilter();
 			$this->Auth->deny();
 		}
@@ -17,65 +16,52 @@ class BacsController extends AppController {
 		public function index() {
 
 			// On liste toutes les bacs utilisateurs
-			$bacs = $this->Bac->find('all', 
-				array(
-					'conditions' => 
-					array(
-						'user_id' => $this->Session->read('Auth.User.id')) 
-					) 
-			);
+			$addresses = $this->Address->findAllByUserId($this->Session->read('Auth.User.id'));
 
-			if(!empty($bacs)){
+			if(!empty($addresses)){
 				// Si on a des bacs, on liste les bacs
-
-				$this->set(compact('bacs'));
+				$this->set(compact('addresses'));
 			}
 		}
 
-		/* Editer un bac */
-		public function edit($bac_id) {
-			$bac_edit = $this->Bac->find('first', 
-				array(
-					'conditions' => 
-					array(
-						'id' => $bac_id, 
-						'user_id' => $this->Session->read('Auth.User.id')
-					) 
-				) 
-			);
 
+		public function add() {
+		}
+
+		/* Editer un bac */
+		public function edit($address_edit) {
+			$address = $this->Address->findByIdAndUserId($address_edit, $this->Session->read('Auth.User.id')); 
+			
 			// Si le bac existe et qu'il appartient bien à l'utilisateur
-			if(!empty($bac_edit)){
+			if(!empty($address)){
 				if(!empty($this->request->data)){
-					$this->Bac->id = $bac_id; // On associe l'id du bac à l'objet 
+					$this->Address->id = $address_edit; 
 
 					// On valide les champs envoyés
-					if($this->Bac->validates() ){
+					if($this->Address->validates() ){
 
 
 						$this->Session->setFlash('Données correctement sauvegardées');
 
 						// On enregistre les données
-						$this->Bac->save(array(
-							'title'			=> $this->request->data['Bacs']['title'],
-							'description' 	=> $this->request->data['Bacs']['description'],
+						$this->Address->save(array(
+							'firstname'			=> $this->request->data['Addresses']['firstname'],
+							'lastname'			=> $this->request->data['Addresses']['lastname'],
+							'city'				=> $this->request->data['Addresses']['city'],
+							'postal'			=> $this->request->data['Addresses']['postal'],
+							'street'			=> $this->request->data['Addresses']['address'],
+							'number'			=> $this->request->data['Addresses']['address'],
+							'digicode'			=> $this->request->data['Addresses']['digicode'],
+							'etage'				=> $this->request->data['Addresses']['etage'],
+							'tel'				=> $this->request->data['Addresses']['tel'],
+							'comment'			=> $this->request->data['Addresses']['comment'],
+
 						));
 
 					}
 				}
 				// On affiche les données déjà entré par l'user
-				$bac= $this->Bac->find('first',
-					array(
-							'conditions' =>
-							array(
-									'id' => $bac_id,
-									'user_id' => $this->Session->read('Auth.User.id')
-
-								)
-
-						)
-					);
-					$this->set(compact('bac'));
+				$this->set(compact('address'));
 			}
 			// sinon erreur 404
 			else {
@@ -83,8 +69,10 @@ class BacsController extends AppController {
 			}
 		}
 
-/* ############### ADMIN ############### */
 
+
+/* ############### ADMIN ############### */
+/*
 		// Lister tous les bacs
 		public function admin_index(){
 			// Si l'utilisateur est admin
@@ -157,6 +145,6 @@ class BacsController extends AppController {
 				throw new NotFoundException();
 			}
 		}
-
+*/
 }
 

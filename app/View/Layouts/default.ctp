@@ -58,6 +58,20 @@
                                 );?>
                             </li>   
 
+
+
+                            <li>
+                            <?php echo $this->Html->link(
+                                    'Commander des bacs',
+                                    array(
+                                        'controller' => 'orders',
+                                        'action' => 'add',
+                                        'full_base' => true
+                                    )
+                                );?>
+                            </li>
+
+
                             <li>
                             <?php echo $this->Html->link(
                                     'Mes bacs',
@@ -69,7 +83,6 @@
                                 );?>
                             </li>
 
-
                             <li>
                             <?php echo $this->Html->link(
                                     'Mes commandes',
@@ -80,6 +93,17 @@
                                     )
                                 );?>
                             </li>  
+
+                            <li>
+                            <?php echo $this->Html->link(
+                                    'Mes adresses',
+                                    array(
+                                        'controller' => 'addresses',
+                                        'action' => 'index',
+                                        'full_base' => true
+                                    )
+                                );?>
+                            </li>
 
                             <li>
                             <?php echo $this->Html->link(

@@ -7,13 +7,6 @@ App::uses('AppModel', 'Model');
 class Bac extends AppModel {
 
 /**
- * Display field
- *
- * @var string
- */
-
-
-/**
  * Validation rules
  *
  * @var array
