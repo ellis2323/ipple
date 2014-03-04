@@ -27,6 +27,11 @@ class OrdersController extends AppController {
 			else {
 				$this->Session->setFlash('Aucune commande');
 			}
+
+			$livraison = $this->Order->find('all');
+			debug($livraison);
+
+			//echo $livraison[0]['Deliveries'][0]['user_id'];
 		}
 
 		// Editer une commande 
@@ -135,8 +140,6 @@ class OrdersController extends AppController {
 						return $this->redirect(array('controller' => 'orders', 'action' => 'index'));
 
 					}
-
-
 			}
 			else {
 				throw new NotFoundException;

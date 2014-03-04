@@ -7,12 +7,7 @@ App::uses('AppModel', 'Model');
 class Order extends AppModel {
 
 
-/**
- * Validation rules
- *
- * @var array
- */
-
+	public $hasMany = 'Deliveries';
 
 // Aftersave
 //Si une livraison est associé à la commande, la mettre à jour (date) / A FAIRE

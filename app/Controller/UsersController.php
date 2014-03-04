@@ -22,13 +22,24 @@ class UsersController extends AppController {
 
 		/* Dashboard Utilisateur*/
 		public function index() {
-				// Si l'utilisateur est admin
-				/*if($this->Session->read('Auth.User.role') >= 90) {
+				/*
+					// Enlever une liaison
+					$this->User->unbindModel(
+						array('hasMany' => array('Bac'))
+					);
+					
 
-						$this->Session->setFlash('Bonjour admin :)');
-						//throw new NotFoundException();
+					// Ajouter une liaison
+					$this->User->bindModel(
+					array('hasMany' => array(
+						'Orders' => array(
+							'className' => 'Order'))
+					)
+				);
+				*/
 
-				}*/	
+				debug($this->User->find('all'));
+
 		}
 
 		/* Connexion */
@@ -36,7 +47,7 @@ class UsersController extends AppController {
 			if(!empty($this->request->data)){
 				if($this->Auth->login()) {
 
-					$this->redirect(array('controller' => 'users', 'action' => 'index'));
+					$this->redirect(array('controller' => 'bacs', 'action' => 'index'));
 					$this->Session->setFlash('connexion ok');
 				}
 				else {	
@@ -166,6 +177,7 @@ class UsersController extends AppController {
 							$CakeEmail->template('register');
 							$CakeEmail->send();
 
+							$this->redirect(array('controller' => 'users', 'action' => 'login'));
 							$this->Session->setFlash("Inscription ok, un email vous sera envoyé afin de valider votre compte.");
 							}
 					}
@@ -258,8 +270,13 @@ class UsersController extends AppController {
 
 		/* ############### ADMIN ############### */
 
+//$this->layout = 'admin';
+
+
 		// Lister tous les utilisateurs
 		public function admin_index(){
+			$this->layout = 'admin'; // Layout admin
+
 			// Si l'utilisateur est admin
 			if($this->Session->read('Auth.User.role') >= 90) {
 				// On liste toutes les utilisateurs
@@ -281,6 +298,8 @@ class UsersController extends AppController {
 
 		// Editer un utilisateur
 		public function admin_edit($user_id){
+			$this->layout = 'admin'; // Layout admin
+
 			// Si l'utilisateur est admin
 			if($this->Session->read('Auth.User.role') >= 90) {
 				$user_edit = $this->User->find('first', 
@@ -336,6 +355,9 @@ class UsersController extends AppController {
 
 		// Supprimer (desactiver) un user
 		public function admin_delete($user_id){
+			$this->layout = 'admin'; // Layout admin
+
+
 			// Si l'utilisateur est admin
 			if($this->Session->read('Auth.User.role') >= 90) {
 				

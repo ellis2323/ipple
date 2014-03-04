@@ -6,12 +6,13 @@ App::uses('AppModel', 'Model');
  */
 class User extends AppModel {
 
-/**
- * Display field
- *
- * @var string
- */
+
 	public $displayField = 'email';
+
+
+
+	public $hasMany = 'Bacs';
+
 
 /**
  * Validation rules

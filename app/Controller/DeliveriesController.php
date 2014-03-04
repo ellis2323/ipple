@@ -20,92 +20,10 @@ class DeliveriesController extends AppController {
 
 
 
-		/* Dashboard Utilisateur*/
 		public function index() {
-				// Si l'utilisateur est admin
-				/*if($this->Session->read('Auth.User.role') >= 90) {
 
-						$this->Session->setFlash('Bonjour admin :)');
-						//throw new NotFoundException();
-
-				}*/	
 		}
 
-		/* Editer un bac */
-		public function edit() {
-
-				// Si on reçoit des données post
-				if(!empty($this->request->data)){
-					$this->User->id = $this->Session->read('Auth.User.id'); // On associe l'id du bac à l'objet 
-
-					// On valide les champs envoyés
-					if($this->User->validates() ){
-
-
-						$this->Session->setFlash('Données correctement sauvegardées');
-
-						// On enregistre les données
-						$this->User->save(array(
-							'email'			=> $this->request->data['Users']['email'],
-							'password' 		=> $this->Auth->password($this->request->data['Users']['password']),
-						));
-
-					}
-				}
-
-				// On affiche les données déjà entré par l'user
-				$user= $this->User->find('first',
-					array(
-							'conditions' =>
-							array(
-									'id' => $this->Session->read('Auth.User.id'),
-								)
-
-						)
-					);
-				$this->set(compact('user'));
-		}
-
-
-		/* Anuler une comande */
-		public function cancel($user_id, $token) {
-
-			if(isset($user_id)){
-
-				if($this->Session->read('Auth.User.id')){
-					$this->redirect('/');
-				}
-				else {
-						$user = $this->User->find('first', array(
-
-								'fields'		=> array('id'),
-								'conditions'	=> array(
-															'id' => $user_id,
-															'token' => $token
-														)
-
-								));
-
-						// Si on ne trouve pas le lien
-						if(empty($user)){
-							$this->Session->setFlash('Ce lien d\'activation est incorrect');
-							return $this->redirect('/');
-						}
-
-
-						$this->Session->setFlash('Votre compte à bien été activé');
-						
-						// Sinon on active le compte 
-						$this->User->save(array(
-									'id' 		=> $user['User']['id'],
-									'active'	=> 1,
-									'token'		=> '',
-							));
-
-						return $this->redirect(array('controller' => 'order', 'action' => 'index'));
-				}
-			}
-		}
 
 
 		/* ############### ADMIN ############### */

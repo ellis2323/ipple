@@ -87,6 +87,10 @@ class BacsController extends AppController {
 
 		// Lister tous les bacs
 		public function admin_index(){
+			$this->layout = 'admin'; // Layout admin
+
+
+
 			// Si l'utilisateur est admin
 			if($this->Session->read('Auth.User.role') >= 90) {
 				// On liste toutes les utilisateurs
@@ -107,6 +111,10 @@ class BacsController extends AppController {
 
 		// Editer un bac
 		public function admin_edit($bac_id){
+			$this->layout = 'admin'; // Layout admin
+
+
+			
 			// Si l'utilisateur est admin
 			if($this->Session->read('Auth.User.role') >= 90) {
 				$bac_edit = $this->Bac->find('first', 
