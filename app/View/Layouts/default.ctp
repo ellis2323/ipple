@@ -67,6 +67,18 @@
                                         'full_base' => true
                                     )
                                 );?>
+                            </li>
+
+
+                            <li>
+                            <?php echo $this->Html->link(
+                                    'Mes commandes',
+                                    array(
+                                        'controller' => 'orders',
+                                        'action' => 'index',
+                                        'full_base' => true
+                                    )
+                                );?>
                             </li>  
 
                             <li>

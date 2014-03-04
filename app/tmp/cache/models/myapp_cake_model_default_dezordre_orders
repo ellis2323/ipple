@@ -1,0 +1,2 @@
+1393876063
+a:5:{s:2:"id";a:4:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;}s:7:"user_id";a:4:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;}s:11:"delivery_id";a:4:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;}s:14:"transaction_id";a:4:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;}s:5:"state";a:4:{s:4:"type";s:7:"boolean";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:1;}}

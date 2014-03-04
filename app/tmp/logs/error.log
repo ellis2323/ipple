@@ -6893,3 +6893,91 @@ Stack Trace:
 #3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2014-03-03 18:53:43 Error: [MissingActionException] Action UsersController::admin_login() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_login',
+)
+Request URL: /dezordre/index.php/admin/users/login
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#4 {main}
+2014-03-03 18:57:07 Error: [NotFoundException] Not Found
+Request URL: /dezordre/index.php/admin/users
+Stack Trace:
+#0 [internal function]: UsersController->admin_index()
+#1 /var/www/dezordre/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#6 {main}
+2014-03-03 20:42:42 Error: [MissingControllerException] Controller class OrdersController could not be found.
+Exception Attributes: array (
+  'class' => 'OrdersController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#2 {main}
+2014-03-03 20:47:14 Error: Fatal Error (64): Cannot redeclare class Commande in [/var/www/dezordre/app/Model/Order.php, line 29]
+2014-03-03 20:47:14 Error: [FatalErrorException] Cannot redeclare class Commande
+Request URL: /dezordre/index.php/orders
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'Cannot redeclar...', '/var/www/dezord...', 29)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot redeclar...', '/var/www/dezord...', 29, Array)
+#2 /var/www/dezordre/lib/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'Cannot redeclar...', '/var/www/dezord...', 29, Array)
+#3 /var/www/dezordre/lib/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-03-04 10:37:10 Error: [MissingActionException] Action UsersController::admin_login() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_login',
+)
+Request URL: /dezordre/index.php/admin/users/login
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#4 {main}
+2014-03-04 10:37:16 Error: [MissingControllerException] Controller class AdminController could not be found.
+Exception Attributes: array (
+  'class' => 'AdminController',
+  'plugin' => NULL,
+)
+Request URL: /dezordre/index.php/admin/admin/users
+Stack Trace:
+#0 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#2 {main}
+2014-03-04 10:49:54 Error: [MissingActionException] Action UsersController::admin_login() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_login',
+)
+Request URL: /dezordre/index.php/admin/users/login
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#4 {main}
+2014-03-04 10:49:59 Error: [MissingActionException] Action UsersController::admin_login() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_login',
+)
+Request URL: /dezordre/index.php/admin/users/login
+Stack Trace:
+#0 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(185): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/dezordre/lib/Cake/Routing/Dispatcher.php(160): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/dezordre/app/webroot/index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 /var/www/dezordre/index.php(41): require('/var/www/dezord...')
+#4 {main}

@@ -1,3 +1,7 @@
+<?php
+
+debug($this->Session->read());
+?>
 <table>
   <tr>
     <th>ID Bac</th>

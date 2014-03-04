@@ -31,5 +31,11 @@
                                     'value' => $user['User']['role'],
                                     )); 
 ?>
-
+<?= $this->Form->input('active', array(
+                                    'type' => 'text',
+                                    'label' => "Activation (0/1)", 
+                                    'class' => 'form-control',
+                                    'value' => $user['User']['active'],
+                                    )); 
+?>
 <?= $this->Form->end('Modifier'); ?>
