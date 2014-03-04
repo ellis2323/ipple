@@ -36,6 +36,46 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
 
+                            <?php
+                            // Si admin
+                            if($this->Session->read('Auth.User.role') >= 90):
+                            ?>
+                               <li>
+                                <?php echo $this->Html->link(
+                                        'Admin User',
+                                        array(
+                                            'controller' => 'users',
+                                            'action' => 'admin_index',
+                                            'full_base' => true
+                                        )
+                                    );?>
+                                </li>   
+
+                                <li>
+                                <?php echo $this->Html->link(
+                                        'Admin Bacs',
+                                        array(
+                                            'controller' => 'bacs',
+                                            'action' => 'admin_index',
+                                            'full_base' => true
+                                        )
+                                    );?>
+                                </li>  
+                                                             
+                                <li>
+                                <?php echo $this->Html->link(
+                                        'Admin Commandes',
+                                        array(
+                                            'controller' => 'orders',
+                                            'action' => 'admin_index',
+                                            'full_base' => true
+                                        )
+                                    );?>
+                                </li>
+
+                            <?php
+                            endif;
+                            ?>
 
                     <li class="dropdown">
 
@@ -51,9 +91,10 @@
                             <?php echo $this->Html->link(
                                     'Dashboard',
                                     array(
-                                        'controller' => 'users',
-                                        'action' => 'index',
-                                        'full_base' => true
+                                        'controller'    => 'users',
+                                        'action'        => 'index',
+                                        'full_base'     => true,
+                                        'admin'         => false
                                     )
                                 );?>
                             </li>   
@@ -64,9 +105,10 @@
                             <?php echo $this->Html->link(
                                     'Commander des bacs',
                                     array(
-                                        'controller' => 'orders',
-                                        'action' => 'add',
-                                        'full_base' => true
+                                        'controller'    => 'orders',
+                                        'action'        => 'add',
+                                        'full_base'     => true,
+                                        'admin'         => false
                                     )
                                 );?>
                             </li>
@@ -78,8 +120,8 @@
                                     array(
                                         'controller' => 'bacs',
                                         'action' => 'index',
-                                        'full_base' => true
-                                    )
+                                        'full_base'     => true,
+                                        'admin'         => false                                    )
                                 );?>
                             </li>
 
@@ -89,8 +131,8 @@
                                     array(
                                         'controller' => 'orders',
                                         'action' => 'index',
-                                        'full_base' => true
-                                    )
+                                        'full_base'     => true,
+                                        'admin'         => false                                    )
                                 );?>
                             </li>  
 
@@ -100,8 +142,8 @@
                                     array(
                                         'controller' => 'addresses',
                                         'action' => 'index',
-                                        'full_base' => true
-                                    )
+                                        'full_base'     => true,
+                                        'admin'         => false                                    )
                                 );?>
                             </li>
 
@@ -111,8 +153,8 @@
                                     array(
                                         'controller' => 'users',
                                         'action' => 'edit',
-                                        'full_base' => true
-                                    )
+                                        'full_base'     => true,
+                                        'admin'         => false                                    )
                                 );?>
                             </li>  
 
@@ -122,8 +164,8 @@
                                     array(
                                         'controller' => 'users',
                                         'action' => 'logout',
-                                        'full_base' => true
-                                    )
+                                        'full_base'     => true,
+                                        'admin'         => false                                    )
                                 );?>
                             </li>  
 
@@ -138,8 +180,8 @@
                                         array(
                                             'controller' => 'users',
                                             'action' => 'register',
-                                            'full_base' => true
-                                        )
+                                        'full_base'     => true,
+                                        'admin'         => false                                        )
                                     );?>
                                 </li>
                                <li>
@@ -148,10 +190,11 @@
                                         array(
                                             'controller' => 'users',
                                             'action' => 'login',
-                                            'full_base' => true
-                                        )
+                                        'full_base'     => true,
+                                        'admin'         => false                                        )
                                     );?>
                                 </li>
+
 
 
                             <?php

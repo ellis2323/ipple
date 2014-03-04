@@ -148,4 +148,76 @@ class OrdersController extends AppController {
 		}
 
 
+		// ####### PANEL ADMIN ########
+
+		public function admin_index() {
+			$this->layout = 'admin'; // Layout admin
+
+
+			// On demande toutes les commandes utilisateurs
+			$orders = $this->Order->find('all');
+
+			if(!empty($orders)){
+				$this->set(compact('orders'));
+			}
+			else {
+				$this->Session->setFlash('Aucune commande');
+			}
+
+			//$livraison = $this->Order->find('all');
+			//debug($livraison);
+
+			//echo $livraison[0]['Deliveries'][0]['user_id'];
+		}
+
+		// Editer une commande 
+		public function admin_edit($order_id) {
+			$this->layout = 'admin'; // Layout admin
+
+			
+			$order_edit = $this->Order->find('first', 
+				array(
+					'conditions' => 
+					array(
+						'id' => $order_id, 
+					) 
+				) 
+			);
+
+			if(!empty($order_edit)){
+
+				// On traite le formulaire
+				if(!empty($this->request->data)){
+					$this->Order->id = $order_id;
+
+					if($this->Order->validates() ){
+
+
+						$this->Session->setFlash('Données correctement sauvegardées');
+
+						$this->Order->save(array(
+							'nb_bacs'				=> $this->request->data['Orders']['nb_bacs'],
+						));
+					}
+				}
+
+				// On affiche les données
+				$order = $this->Order->find('first',
+					array(
+							'conditions' =>
+							array(
+									'id' => $order_id,
+								)
+
+						)
+					);
+					$this->set(compact('order'));
+			}
+			// sinon erreur 404
+			else {
+				throw new NotFoundException;
+			}
+		}
+
+
 }
