@@ -58,7 +58,7 @@
                             <?= $this->Form->input('password', array(
                                     'label' => "", 
                                     'class' => 'form-control',
-                                    'placeholder' => 'Votre email'
+                                    'placeholder' => 'Votre mot de passe'
 
                                     )); ?>                                
                                 </div>
@@ -72,9 +72,10 @@
                                 <label for="password2" class="col-lg-4 col-md-4 col-sm-4 control-label">Vérifiez le mot de passe<span class="blue">*</span></label>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <?= $this->Form->input('password2', array(
+                                    'type'  => 'password',
                                     'label' => '', 
                                     'class' => 'form-control',
-                                    'placeholder' => 'Votre mot de passe'
+                                    'placeholder' => 'Vérifiez votre mot de passe'
 
                                     )); ?>
                                     <p><span class="blue">*</span> Champs obligatoires</p>
@@ -92,7 +93,7 @@
                                     <input required="" type="checkbox">Se souvenir de moi
 
                                     <p><br></p><?= $this->Form->end("Je créer mon compte"); ?>                                    
-                                    <button type"submit"="" class="btn" style="background-color:#65b7f2;color:white">Je crée mon compte</button>
+
                                 </label>
                             </div>
                         </div>

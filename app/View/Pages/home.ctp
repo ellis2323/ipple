@@ -5,7 +5,14 @@
                 <h2>Besoin d'espace</h2>
                 <h3>Faites de la place chez vous</h3>
                 <h4>Nous récupérons, stockons et livrons vos affaires à la demande</h4>
-                <p><a class="btn btn-lg btn-primary" href="creation compte.html" role="button" style="background-color:#65b7f2;color:white">Je démarre</a></p>
+                <p><a class="btn btn-lg btn-primary" href=" <?php echo $this->Html->url(
+                                    array(
+                                        'controller'    => 'users',
+                                        'action'        => 'register',
+                                        'full_base'     => true,
+                                        'admin'         => false
+                                    )
+                                );?>" role="button" style="background-color:#65b7f2;color:white">Je démarre</a></p>
             </div>
         </div>
     </div>           

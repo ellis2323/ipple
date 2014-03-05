@@ -37,8 +37,7 @@ class UsersController extends AppController {
 					)
 				);
 				*/
-
-				debug($this->User->find('all'));
+				//debug($this->User->find('all'));
 
 		}
 
@@ -125,9 +124,9 @@ class UsersController extends AppController {
 
 										)
 									);
-
-					return $this->redirect(array('action' => 'login'));
+					
 					$this->Session->setFlash('Mot de passe correctement modifié');
+					return $this->redirect(array('action' => 'login'));
 
 
 				}
@@ -175,9 +174,10 @@ class UsersController extends AppController {
 							$CakeEmail->emailFormat('text');
 							$CakeEmail->template('register');
 							$CakeEmail->send();
-
-							$this->redirect(array('controller' => 'users', 'action' => 'login'));
+							
 							$this->Session->setFlash("Votre compte à bien été créer. Un lien vous à été envoyé par email afin d'activer votre compte.");
+							$this->redirect(array('controller' => 'users', 'action' => 'login'));
+							
 							}
 					}
 
