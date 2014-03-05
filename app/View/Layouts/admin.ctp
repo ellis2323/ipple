@@ -4,7 +4,7 @@
                             ?>
                                <li>
                                 <?php echo $this->Html->link(
-                                        'Admin User',
+                                        'Admin Users',
                                         array(
                                             'controller' => 'users',
                                             'action' => 'admin_index',
@@ -35,6 +35,16 @@
                                     );?>
                                 </li>
 
+                               <li>
+                                <?php echo $this->Html->link(
+                                        'Admin Deliveries',
+                                        array(
+                                            'controller' => 'deliveries',
+                                            'action' => 'admin_index',
+                                            'full_base' => true
+                                        )
+                                    );?>
+                                </li>   
                             <?php
                             endif;
                             ?>

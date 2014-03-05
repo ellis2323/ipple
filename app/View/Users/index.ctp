@@ -8,7 +8,7 @@
 
                 <p><br></p>
 
-                <a href="<?= $this->Html->url(array('controller' => 'orders', 'action' => 'index'));?>">
+                <a href="<?= $this->Html->url(array('controller' => 'orders', 'action' => 'add'));?>">
                 <button type"submit"="" class="btn-lg" style="background-color:#65b7f2;color:white">Commander des bacs</button>
                 </a>
 

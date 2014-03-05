@@ -1,26 +1,63 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * User Model
+ * Order Model
  *
+ * @property User $User
+ * @property Delivery $Delivery
  */
 class Order extends AppModel {
 
+/**
+ * Display field
+ *
+ * @var string
+ */
+	public $displayField = 'id';
 
-	public $hasMany = 'Deliveries';
+/**
+ * Validation rules
+ *
+ * @var array
+ */
+	public $validate = array();
 
-// Aftersave
-//Si une livraison est associé à la commande, la mettre à jour (date) / A FAIRE
-//J-1 > bloquer l'edition de commande
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
-
-	public $validate = array(
-
-		'nb_bacs' => array( 
-			'rule' => 'naturalNumber',
-		),
-	// Fin du array	
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+						'User' => array(
+							'className' => 'User',
+							'foreignKey' => 'user_id',
+							'conditions' => '',
+							'fields' => '',
+							'order' => ''
+						)
 	);
 
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Delivery' => array(
+			'className' => 'Delivery',
+			'foreignKey' => 'order_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
 
 }

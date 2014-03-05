@@ -37,11 +37,10 @@ class UsersController extends AppController {
 					)
 				);
 				*/
-<<<<<<< HEAD
 
-=======
+
+
 				//debug($this->User->find('all'));
->>>>>>> d8361b54069cdc57ba0f62fb2cc81fed3454a661
 
 		}
 
@@ -50,12 +49,9 @@ class UsersController extends AppController {
 			if(!empty($this->request->data)){
 				if($this->Auth->login()) {
 
-<<<<<<< HEAD
 					$this->redirect(array('controller' => 'users', 'action' => 'index'));
 					$this->Session->setFlash('Vous avez correctement été connecté');
-=======
 					$this->redirect(array('controller' => 'orders', 'action' => 'add'));
->>>>>>> d8361b54069cdc57ba0f62fb2cc81fed3454a661
 				}
 				else {	
 					$this->Session->setFlash('Identifiants incorrects');
@@ -183,19 +179,11 @@ class UsersController extends AppController {
 							$CakeEmail->emailFormat('text');
 							$CakeEmail->template('register');
 							$CakeEmail->send();
-<<<<<<< HEAD
 
-
-							$this->Session->setFlash("Inscription ok, un email vous sera envoyé afin de valider votre compte.");
-							$this->redirect(array('controller' => 'users', 'action' => 'login'));
-						}
-=======
-							
 							$this->Session->setFlash("Votre compte à bien été créer. Un lien vous à été envoyé par email afin d'activer votre compte.");
 							$this->redirect(array('controller' => 'users', 'action' => 'login'));
 							
 							}
->>>>>>> d8361b54069cdc57ba0f62fb2cc81fed3454a661
 					}
 
 					else {
@@ -285,104 +273,102 @@ class UsersController extends AppController {
 
 
 		/* ############### ADMIN ############### */
+			/*
+			// Si l'utilisateur est admin
+			if(!($this->Session->read('Auth.User.role') >= 90) {
+				throw new NotFoundException();
+			}
+			$this->layout = 'admin'; // Layout admin*/
 
-//$this->layout = 'admin';
+
 
 
 		// Lister tous les utilisateurs
 		public function admin_index(){
-			$this->layout = 'admin'; // Layout admin
-
 			// Si l'utilisateur est admin
-			if($this->Session->read('Auth.User.role') >= 90) {
-				// On liste toutes les utilisateurs
-				$users = $this->User->find('all');
-
-				if(!empty($users)){
-					// Si on a des bacs, on liste les bacs
-					$this->set(compact('users'));
-					
-				}
-
-
-			}
-			// Sinon, on redirige vers 404
-			else {
+			if(!($this->Session->read('Auth.User.role') >= 90)) {
 				throw new NotFoundException();
 			}
+			$this->layout = 'admin'; // Layout admin
+
+
+			// On liste toutes les utilisateurs
+			$users = $this->User->find('all');
+
+			if(!empty($users)){
+				// Si on a des bacs, on liste les bacs
+				$this->set(compact('users'));
+				
+			}
+
 		}
+
 
 		// Editer un utilisateur
 		public function admin_edit($user_id){
+			// Si l'utilisateur est admin
+			if(!($this->Session->read('Auth.User.role') >= 90)) {
+				throw new NotFoundException();
+			}
 			$this->layout = 'admin'; // Layout admin
 
-			// Si l'utilisateur est admin
-			if($this->Session->read('Auth.User.role') >= 90) {
-				$user_edit = $this->User->find('first', 
-									array(
-										'conditions' => 
-										array(
-											'id' => $user_id
-										) 
-									) 
-								);
-
-				// Si le bac existe et qu'il appartient bien à l'utilisateur
-				if(!empty($user_edit)){
-					if(!empty($this->request->data)){
-						$this->User->id = $user_id; // On associe l'id du bac à l'objet 
-
-						// On valide les champs envoyés
-						if($this->User->validates() ){
 
 
-							$this->Session->setFlash('Données correctement sauvegardées');
-
-							// On enregistre les données
-							$this->User->save(array(
-								'firstname'			=> $this->request->data['Users']['firstname'],
-								'lastname' 			=> $this->request->data['Users']['lastname'],
-								'email' 			=> $this->request->data['Users']['email'],
-								'role' 				=> $this->request->data['Users']['role'],
-								'active' 			=> $this->request->data['Users']['active'],
-
-							));
-						}
-					}
-					// On affiche les données déjà entré par l'user
-					$user= $this->User->find('first',
-						array(
-								'conditions' =>
+			$user_edit = $this->User->find('first', 
 								array(
-										'id' => $user_id,
-									)
+									'conditions' => 
+									array(
+										'id' => $user_id
+									) 
+								) 
+							);
 
-							)
-						);
-						$this->set(compact('user'));
+			// Si le bac existe et qu'il appartient bien à l'utilisateur
+			if(!empty($user_edit)){
+				if(!empty($this->request->data)){
+					$this->User->id = $user_id; // On associe l'id du bac à l'objet 
+
+					// On valide les champs envoyés
+					if($this->User->validates() ){
+
+
+						$this->Session->setFlash('Données correctement sauvegardées');
+
+						// On enregistre les données
+						$this->User->save(array(
+							'firstname'			=> $this->request->data['Users']['firstname'],
+							'lastname' 			=> $this->request->data['Users']['lastname'],
+							'email' 			=> $this->request->data['Users']['email'],
+							'role' 				=> $this->request->data['Users']['role'],
+							'active' 			=> $this->request->data['Users']['active'],
+
+						));
+					}
 				}
-			}
+				// On affiche les données déjà entré par l'user
+				$user= $this->User->find('first',
+					array(
+							'conditions' =>
+							array(
+									'id' => $user_id,
+								)
 
-			// Sinon, on redirige vers 404			
-			else {
-				throw new NotFoundException();
+						)
+					);
+					$this->set(compact('user'));
 			}
 		}
 
 		// Supprimer (desactiver) un user
 		public function admin_delete($user_id){
+			// Si l'utilisateur est admin
+			if(!($this->Session->read('Auth.User.role') >= 90)) {
+				throw new NotFoundException();
+			}
 			$this->layout = 'admin'; // Layout admin
 
 
-			// Si l'utilisateur est admin
-			if($this->Session->read('Auth.User.role') >= 90) {
-				
 
-			}
 
-			// Sinon, on redirige vers 404			
-			else {
-				throw new NotFoundException();
-			}
 		}
 }

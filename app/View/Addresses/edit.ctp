@@ -1,76 +1,31 @@
-<?= $this->Form->create('Addresses'); ?>
+<div class="addresses form">
+<?php echo $this->Form->create('Address'); ?>
+	<fieldset>
+		<legend><?php echo __('Edit Address'); ?></legend>
+	<?php
+		echo $this->Form->input('id');
+		echo $this->Form->input('user_id');
+		echo $this->Form->input('firstname');
+		echo $this->Form->input('lastname');
+		echo $this->Form->input('city');
+		echo $this->Form->input('postal');
+		echo $this->Form->input('street');
+		echo $this->Form->input('number');
+		echo $this->Form->input('digicode');
+		echo $this->Form->input('etage');
+		echo $this->Form->input('tel');
+		echo $this->Form->input('comment');
+	?>
+	</fieldset>
+<?php echo $this->Form->end(__('Submit')); ?>
+</div>
+<div class="actions">
+	<h3><?php echo __('Actions'); ?></h3>
+	<ul>
 
-<?= $this->Form->input('firstname', array(
-									'type' => 'text',
-                                    'label' => "Nom", 
-                                    'class' => 'form-control',
-                              		'value' => $address['Address']['firstname'],
-)); ?>
-
-<?= $this->Form->input('lastname', array(
-									'type' => 'text',
-                                    'label' => "Prénom", 
-                                    'class' => 'form-control',
-                              		'value' => $address['Address']['lastname'],
-)); ?>
-
-<?= $this->Form->input('city', array(
-									'type' => 'text',
-                                    'label' => "Ville", 
-                                    'class' => 'form-control',
-                              		'value' => $address['Address']['city'],
-)); ?>
-
-<?= $this->Form->input('postal', array(
-									'type' => 'text',
-                                    'label' => "Code postal", 
-                                    'class' => 'form-control',
-                              		'value' => $address['Address']['postal'],
-)); ?>
-
-<?= $this->Form->input('number', array(
-									'type' => 'number',
-                                    'label' => "Numéro de rue", 
-                                    'class' => 'form-control',
-                              		'value' => $address['Address']['number'],
-)); ?>
-
-<?= $this->Form->input('street', array(
-									'type' => 'text',
-                                    'label' => "Rue", 
-                                    'class' => 'form-control',
-                              		'value' => $address['Address']['street'],
-)); ?>
-
-<?= $this->Form->input('digicode', array(
-									'type' => 'number',
-                                    'label' => "Digicode", 
-                                    'class' => 'form-control',
-                              		'value' => $address['Address']['digicode'],
-)); ?>
-
-<?= $this->Form->input('etage', array(
-									'type' => 'number',
-                                    'label' => "Etage", 
-                                    'class' => 'form-control',
-                              		'value' => $address['Address']['etage'],
-)); ?>
-
-<?= $this->Form->input('tel', array(
-									'type' => 'number',
-                                    'label' => "Telephone", 
-                                    'class' => 'form-control',
-                              		'value' => $address['Address']['tel'],
-)); ?>
-
-<?= $this->Form->input('comment', array(
-									'type' => 'textarea',
-                                    'label' => "Commentaire", 
-                                    'class' => 'form-control',
-                              		'value' => $address['Address']['comment'],
-)); ?>
-
-
-
-
-<?= $this->Form->end('Modifier'); ?>
+		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Address.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Address.id'))); ?></li>
+		<li><?php echo $this->Html->link(__('List Addresses'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
+	</ul>
+</div>

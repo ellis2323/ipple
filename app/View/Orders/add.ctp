@@ -59,7 +59,7 @@
                                         
                                           <label for="inputnbrbac" class="col-lg-6 col-md-6 col-sm-6 control-label" style="font-size:18px">Nombre de bacs</label>
                                         <div class="col-lg-4 col-md-4 col-sm-4">
-                                        	<?= $this->Form->input('nb_bacs', array(
+                                        	<?= $this->Form->input('Order.nb_bacs', array(
 										      						'type' => 'number',
 										      						'placeholder' => '4',
 										                            'label' => "Nombre de bac", 
@@ -95,7 +95,12 @@
                         <div class="form-group">
                             <label for="nom" class="col-lg-4 col-md-4 col-sm-4 control-label">Nom<span class="blue">*</span></label>
                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                <input required="" class="form-control" id="nom" placeholder="Votre nom" type="text">
+                                            <?= $this->Form->input('Address.0.lastname', array(
+                                                                    'type' => 'text',
+                                                                    'placeholder' => 'Votre nom',
+                                                                    'label' => "", 
+                                                                    'class' => 'form-control',
+                                              )); ?>                            
                             </div>
                         </div>
                     </div>
@@ -103,7 +108,12 @@
                         <div class="form-group">
                             <label for="prenom" class="col-lg-4 col-md-4 col-sm-4 control-label">Prénom<span class="blue">*</span></label>
                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                <input required="" class="form-control" id="prenom" placeholder="Votre prénom" type="text">
+                                                <?= $this->Form->input('Address.0.firstname', array(
+                                                                    'type' => 'text',
+                                                                    'placeholder' => 'Votre prénom',
+                                                                    'label' => "", 
+                                                                    'class' => 'form-control',
+                                              )); ?>                              
                             </div>
                         </div>
                     </div>
@@ -111,7 +121,12 @@
                         <div class="form-group">
                             <label for="entreprise" class="col-lg-4 col-md-4 col-sm-4 control-label">Entreprise</label>
                             <div class="col-lg-6 col-md-6 col-sm-6">
-                            <input class="form-control" id="entreprise" placeholder="Votre entreprise" type="text">
+                                                <?= $this->Form->input('Address.0.company', array(
+                                                                    'type' => 'text',
+                                                                    'placeholder' => 'Votre entreprise',
+                                                                    'label' => "", 
+                                                                    'class' => 'form-control',
+                                              )); ?>
                             </div>
                         </div>
                     </div>
@@ -119,7 +134,12 @@
                         <div class="form-group">
                             <label for="telephone" class="col-lg-4 col-md-4 col-sm-4 control-label">Téléphone<span class="blue">*</span></label>
                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                <input required="" class="form-control" id="telephone" placeholder="Votre téléphone" type="tel">
+                                                <?= $this->Form->input('Address.0.phone', array(
+                                                                    'type' => 'text',
+                                                                    'placeholder' => 'Votre téléphone',
+                                                                    'label' => "", 
+                                                                    'class' => 'form-control',
+                                              )); ?>                            
                             </div>
                         </div>
                     </div>
@@ -127,7 +147,12 @@
                         <div class="form-group">
                             <label for="adresse" class="col-lg-2 col-md-2 col-sm-2 control-label">Adresse<span class="blue">*</span></label>
                             <div class="col-lg-6 col-md-6 col-sm-6" style="margin:0 10px">
-                                <input required="" class="form-control" id="adresse" placeholder="Votre adresse" type="text">
+                                                <?= $this->Form->input('Address.0.street', array(
+                                                                    'type' => 'text',
+                                                                    'placeholder' => 'Votre rue',
+                                                                    'label' => "", 
+                                                                    'class' => 'form-control',
+                                              )); ?>                            
                             </div>
                         </div>
                     
@@ -135,23 +160,26 @@
                         <div class="form-group">
                             <label for="code_postal" class="col-lg-4 col-md-4 col-sm-4 control-label">Code Postal<span class="blue">*</span></label>
                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                <input required="" class="form-control" id="code_postal" placeholder="Votre code postal" type="text">
+                                            <?= $this->Form->input('Address.0.postal', array(
+                                                                    'type' => 'text',
+                                                                    'placeholder' => 'Votre code postal',
+                                                                    'label' => "", 
+                                                                    'class' => 'form-control',
+                                              )); ?>                              
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="form-group">
-                            <label for="ville" class="col-lg-4 col-md-4 col-sm-4 control-label">Ville<span class="blue">*</span></label>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <input required="" class="form-control" id="ville" placeholder="Paris" type="text">
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="form-group">
                             <label for="etage" class="col-lg-4 col-md-4 col-sm-4 control-label">Etage</label>
                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                <input class="form-control" id="etage" placeholder="Votre étage" type="text">
+                                            <?= $this->Form->input('Address.0.floor', array(
+                                                                    'type' => 'text',
+                                                                    'placeholder' => 'Votre étage',
+                                                                    'label' => "", 
+                                                                    'class' => 'form-control',
+                                              )); ?>                               
                             </div>
                         </div>
                     </div>
@@ -159,14 +187,24 @@
                         <div class="form-group">
                             <label for="digicode" class="col-lg-4 col-md-4 col-sm-4 control-label">Digicode</label>
                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                <input class="form-control" id="digicode" placeholder="votre digicode" type="text">
+                                            <?= $this->Form->input('Address.0.digicode', array(
+                                                                    'type' => 'text',
+                                                                    'placeholder' => 'Votre digicode',
+                                                                    'label' => "", 
+                                                                    'class' => 'form-control',
+                                              )); ?>                               
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="commentaires" class="col-lg-2 col-md-2 col-sm-2 control-label">Commentaires pour<br> la livraison</label>
                         <div class="col-lg-6 col-md-6 col-sm-6" style="margin:0 10px">
-                            <textarea class="form-control" rows="3" id="commentaires"></textarea>
+                                            <?= $this->Form->input('Address.0.postal', array(
+                                                                    'type' => 'textarea',
+                                                                    'placeholder' => 'Commentaires',
+                                                                    'label' => "", 
+                                                                    'class' => 'form-control',
+                                              )); ?>                               
                             <p><span class="blue">*</span> Champs obligatoires</p>
                         </div>
                     </div>

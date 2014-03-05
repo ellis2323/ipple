@@ -1,120 +1,216 @@
 <?php
 App::uses('AppController', 'Controller');
-
-
+/**
+ * Deliveries Controller
+ *
+ * @property Delivery $Delivery
+ * @property PaginatorComponent $Paginator
+ */
 class DeliveriesController extends AppController {
 
+/**
+ * Components
+ *
+ * @var array
+ */
+	public $components = array('Paginator');
 
+/**
+ * index method
+ *
+ * @return void
+ */
+	public function index() {
+		$this->Delivery->recursive = 0;
+		$this->set('deliveries', $this->Paginator->paginate());
+	}
 
-
-		public function beforeFilter() {
-
-			parent::beforeFilter();
-			$this->Auth->deny();
-
+/**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function view($id = null) {
+		if (!$this->Delivery->exists($id)) {
+			throw new NotFoundException(__('Invalid delivery'));
 		}
+		$options = array('conditions' => array('Delivery.' . $this->Delivery->primaryKey => $id));
+		$this->set('delivery', $this->Delivery->find('first', $options));
 
+		$users = $this->Delivery->User->find('list');
+		$this->set(compact('users'));
+	}
 
-
-// Methodes
-
-
-
-		public function index() {
-
-		}
-
-
-
-		/* ############### ADMIN ############### */
-
-		/*// Lister tous les utilisateurs
-		public function admin_index(){
-			// Si l'utilisateur est admin
-			if($this->Session->read('Auth.User.role') >= 90) {
-				// On liste toutes les utilisateurs
-				$users = $this->User->find('all');
-
-				if(!empty($users)){
-					// Si on a des bacs, on liste les bacs
-					$this->set(compact('users'));
-					
-				}
-
-
-			}
-			// Sinon, on redirige vers 404
-			else {
-				throw new NotFoundException();
-			}
-		}
-
-		// Editer un utilisateur
-		public function admin_edit($user_id){
-			// Si l'utilisateur est admin
-			if($this->Session->read('Auth.User.role') >= 90) {
-				$user_edit = $this->User->find('first', 
-									array(
-										'conditions' => 
-										array(
-											'id' => $user_id
-										) 
-									) 
-								);
-
-				// Si le bac existe et qu'il appartient bien à l'utilisateur
-				if(!empty($user_edit)){
-					if(!empty($this->request->data)){
-						$this->User->id = $user_id; // On associe l'id du bac à l'objet 
-
-						// On valide les champs envoyés
-						if($this->User->validates() ){
-
-
-							$this->Session->setFlash('Données correctement sauvegardées');
-
-							// On enregistre les données
-							$this->User->save(array(
-								'firstname'			=> $this->request->data['Users']['firstname'],
-								'lastname' 			=> $this->request->data['Users']['lastname'],
-								'email' 			=> $this->request->data['Users']['email'],
-								'role' 				=> $this->request->data['Users']['role'],
-								'active' 			=> $this->request->data['Users']['active'],
-
-							));
-						}
-					}
-					// On affiche les données déjà entré par l'user
-					$user= $this->User->find('first',
-						array(
-								'conditions' =>
-								array(
-										'id' => $user_id,
-									)
-
-							)
-						);
-						$this->set(compact('user'));
-				}
-			}
-
-			// Sinon, on redirige vers 404			
-			else {
-				throw new NotFoundException();
+/**
+ * add method
+ *
+ * @return void
+ */
+	public function add() {
+		if ($this->request->is('post')) {
+			$this->Delivery->create();
+			if ($this->Delivery->save($this->request->data)) {
+				$this->Session->setFlash(__('The delivery has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The delivery could not be saved. Please, try again.'));
 			}
 		}
+		$orders = $this->Delivery->Order->find('list');
+		$this->set(compact('orders'));
+	}
 
-		// Supprimer (desactiver) un user
-		public function admin_delete($user_id){
-			// Si l'utilisateur est admin
-			if($this->Session->read('Auth.User.role') >= 90) {
-				
-
+/**
+ * edit method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function edit($id = null) {
+		if (!$this->Delivery->exists($id)) {
+			throw new NotFoundException(__('Invalid delivery'));
+		}
+		if ($this->request->is(array('post', 'put'))) {
+			if ($this->Delivery->save($this->request->data)) {
+				$this->Session->setFlash(__('The delivery has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The delivery could not be saved. Please, try again.'));
 			}
+		} else {
+			$options = array('conditions' => array('Delivery.' . $this->Delivery->primaryKey => $id));
+			$this->request->data = $this->Delivery->find('first', $options);
+		}
+		$orders = $this->Delivery->Order->find('list');
+		$this->set(compact('orders'));
 
-			// Sinon, on redirige vers 404			
-			else {
-				throw new NotFoundException();
+		$users = $this->Delivery->User->find('list');
+		$this->set(compact('users'));
+	}
+
+/**
+ * delete method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function delete($id = null) {
+		$this->Delivery->id = $id;
+		if (!$this->Delivery->exists()) {
+			throw new NotFoundException(__('Invalid delivery'));
+		}
+		$this->request->onlyAllow('post', 'delete');
+		if ($this->Delivery->delete()) {
+			$this->Session->setFlash(__('The delivery has been deleted.'));
+		} else {
+			$this->Session->setFlash(__('The delivery could not be deleted. Please, try again.'));
+		}
+		return $this->redirect(array('action' => 'index'));
+	}
+
+/**
+ * admin_index method
+ *
+ * @return void
+ */
+	public function admin_index() {
+		$this->Delivery->recursive = 0;
+		$this->set('deliveries', $this->Paginator->paginate());
+	}
+
+/**
+ * admin_view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function admin_view($id = null) {
+		if (!$this->Delivery->exists($id)) {
+			throw new NotFoundException(__('Invalid delivery'));
+		}
+		$options = array('conditions' => array('Delivery.' . $this->Delivery->primaryKey => $id));
+		$this->set('delivery', $this->Delivery->find('first', $options));
+
+		$users = $this->Delivery->User->find('list');
+		$this->set(compact('users'));
+	}
+
+/**
+ * admin_add method
+ *
+ * @return void
+ */
+	public function admin_add() {
+		if ($this->request->is('post')) {
+			$this->Delivery->create();
+			if ($this->Delivery->save($this->request->data)) {
+				$this->Session->setFlash(__('The delivery has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The delivery could not be saved. Please, try again.'));
 			}
-		}*/
-}
+		}
+		$orders = $this->Delivery->Order->find('list');
+		$this->set(compact('orders'));
+
+		$users = $this->Delivery->User->find('list');
+		$this->set(compact('users'));	
+
+
+	}
+
+/**
+ * admin_edit method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function admin_edit($id = null) {
+		if (!$this->Delivery->exists($id)) {
+			throw new NotFoundException(__('Invalid delivery'));
+		}
+		if ($this->request->is(array('post', 'put'))) {
+			if ($this->Delivery->save($this->request->data)) {
+				$this->Session->setFlash(__('The delivery has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The delivery could not be saved. Please, try again.'));
+			}
+		} else {
+			$options = array('conditions' => array('Delivery.' . $this->Delivery->primaryKey => $id));
+			$this->request->data = $this->Delivery->find('first', $options);
+		}
+		$orders = $this->Delivery->Order->find('list');
+		$this->set(compact('orders'));
+
+
+		$users = $this->Delivery->User->find('list');
+		$this->set(compact('users'));
+	}
+
+/**
+ * admin_delete method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function admin_delete($id = null) {
+		$this->Delivery->id = $id;
+		if (!$this->Delivery->exists()) {
+			throw new NotFoundException(__('Invalid delivery'));
+		}
+		$this->request->onlyAllow('post', 'delete');
+		if ($this->Delivery->delete()) {
+			$this->Session->setFlash(__('The delivery has been deleted.'));
+		} else {
+			$this->Session->setFlash(__('The delivery could not be deleted. Please, try again.'));
+		}
+		return $this->redirect(array('action' => 'index'));
+	}}

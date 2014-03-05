@@ -1,8 +1,9 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * User Model
+ * Delivery Model
  *
+ * @property Order $Order
  */
 class Delivery extends AppModel {
 
@@ -11,16 +12,32 @@ class Delivery extends AppModel {
  *
  * @var string
  */
+	public $displayField = 'id';
+
+
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * Validation rules
+ * belongsTo associations
  *
  * @var array
  */
-	public $validate = array(
+	public $belongsTo = array(
+		'Order' => array(
+			'className' => 'Order',
+			'foreignKey' => 'order_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
 
-
-	// Fin du array	
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
 	);
 
 

@@ -1,9 +1,29 @@
-<?= $this->Form->create('Orders'); ?>
+<div class="addresses form">
+<?php echo $this->Form->create('Address'); ?>
+	<fieldset>
+		<legend><?php echo __('Add Address'); ?></legend>
+	<?php
+		echo $this->Form->input('user_id');
+		echo $this->Form->input('firstname');
+		echo $this->Form->input('lastname');
+		echo $this->Form->input('city');
+		echo $this->Form->input('postal');
+		echo $this->Form->input('street');
+		echo $this->Form->input('number');
+		echo $this->Form->input('digicode');
+		echo $this->Form->input('etage');
+		echo $this->Form->input('tel');
+		echo $this->Form->input('comment');
+	?>
+	</fieldset>
+<?php echo $this->Form->end(__('Submit')); ?>
+</div>
+<div class="actions">
+	<h3><?php echo __('Actions'); ?></h3>
+	<ul>
 
-      <?= $this->Form->input('nb_bacs', array(
-      						'type' => 'text',
-                                          'label' => "Nombre de bac", 
-                                          'class' => 'form-control',
-      )); ?>
-
-<?= $this->Form->end('Commander'); ?>
+		<li><?php echo $this->Html->link(__('List Addresses'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
+	</ul>
+</div>
