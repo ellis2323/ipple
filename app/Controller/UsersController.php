@@ -176,8 +176,9 @@ class UsersController extends AppController {
 							$CakeEmail->template('register');
 							$CakeEmail->send();
 
-							$this->redirect(array('controller' => 'users', 'action' => 'login'));
+
 							$this->Session->setFlash("Inscription ok, un email vous sera envoyé afin de valider votre compte.");
+							$this->redirect(array('controller' => 'users', 'action' => 'login'));
 							}
 					}
 

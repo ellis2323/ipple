@@ -121,7 +121,28 @@ class BacsController extends AppController {
 			$this->layout = 'admin'; // Layout admin
 
 
+			if(!empty($this->request->data)){
+					// si on ajoute une liste
+					if(isset($this->request->data['Bacs']['basename'])){
+							$basename = $this->request->data['Bacs']['basename'];
+							$start = $this->request->data['Bacs']['start'];
+							$end = $this->request->data['Bacs']['end'];
 
+							for($i=$start;$i>$end;$i++){
+								$this->Bac->create();
+								$this->request->data['Bacs']['code'] = $basename.$i;
+								$this->save();
+								echo "Ajout de ".$basename.$i."<br />";
+							}
+
+							echo " liste";
+					}
+
+					// Ajout simple
+					else {
+						echo " simple";
+					}
+			}
 			
 		}
 
