@@ -151,6 +151,14 @@ class OrdersController extends AppController {
 		// ####### PANEL ADMIN ########
 
 		public function admin_index() {
+			// Si l'utilisateur est admin
+			if(!($this->Session->read('Auth.User.role') >= 90)) {
+				throw new NotFoundException;
+			}
+			
+
+
+			
 			$this->layout = 'admin'; // Layout admin
 
 
@@ -172,6 +180,13 @@ class OrdersController extends AppController {
 
 		// Editer une commande 
 		public function admin_edit($order_id) {
+			// Si l'utilisateur est admin
+			if(!($this->Session->read('Auth.User.role') >= 90)) {
+				throw new NotFoundException;
+			}
+			
+
+
 			$this->layout = 'admin'; // Layout admin
 
 			

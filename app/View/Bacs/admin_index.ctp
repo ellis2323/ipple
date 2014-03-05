@@ -1,3 +1,5 @@
+<?= $this->Html->link('Ajouter', array('controller' => 'bacs', 'action' => 'add', 'admin' => true));?> 
+
 <table>
   <tr>
     <th>ID Bac</th>
@@ -41,3 +43,6 @@
   ?>
 
 </table>
+
+
+<?= $this->Html->link('Ajouter', array('controller' => 'bacs', 'action' => 'add', 'admin' => true));?> 

@@ -38,7 +38,6 @@ class UsersController extends AppController {
 				);
 				*/
 
-				debug($this->User->find('all'));
 
 		}
 
@@ -47,8 +46,8 @@ class UsersController extends AppController {
 			if(!empty($this->request->data)){
 				if($this->Auth->login()) {
 
-					$this->redirect(array('controller' => 'bacs', 'action' => 'index'));
-					$this->Session->setFlash('connexion ok');
+					$this->redirect(array('controller' => 'users', 'action' => 'index'));
+					$this->Session->setFlash('Vous avez correctement été connecté');
 				}
 				else {	
 					$this->Session->setFlash('Identifiants incorrects');
