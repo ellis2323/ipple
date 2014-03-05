@@ -9,7 +9,7 @@
 
 
 
-<? echo $this->Html->css('bootstrap'); // On charge les fichiers CSS
+<?  echo $this->Html->css('bootstrap'); // On charge les fichiers CSS
     echo $this->Html->css('dezordre');
 ?>
 
@@ -29,7 +29,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-                <a class="navbar-brand" href="index.html"><span style="color:#65b7f2">dé</span><span style="color:#002147">z</span><span style="color:#65b7f2">ordre</span> </a>
+                <a class="navbar-brand" href="<?php echo $this->Html->url(array('home'));?>"><span style="color:#65b7f2">dé</span><span style="color:#002147">z</span><span style="color:#65b7f2">ordre</span> </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
