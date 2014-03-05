@@ -37,7 +37,11 @@ class UsersController extends AppController {
 					)
 				);
 				*/
+<<<<<<< HEAD
 
+=======
+				//debug($this->User->find('all'));
+>>>>>>> d8361b54069cdc57ba0f62fb2cc81fed3454a661
 
 		}
 
@@ -46,8 +50,12 @@ class UsersController extends AppController {
 			if(!empty($this->request->data)){
 				if($this->Auth->login()) {
 
+<<<<<<< HEAD
 					$this->redirect(array('controller' => 'users', 'action' => 'index'));
 					$this->Session->setFlash('Vous avez correctement été connecté');
+=======
+					$this->redirect(array('controller' => 'orders', 'action' => 'add'));
+>>>>>>> d8361b54069cdc57ba0f62fb2cc81fed3454a661
 				}
 				else {	
 					$this->Session->setFlash('Identifiants incorrects');
@@ -125,9 +133,9 @@ class UsersController extends AppController {
 
 										)
 									);
-
-					return $this->redirect(array('action' => 'login'));
+					
 					$this->Session->setFlash('Mot de passe correctement modifié');
+					return $this->redirect(array('action' => 'login'));
 
 
 				}
@@ -166,7 +174,7 @@ class UsersController extends AppController {
 
 							$CakeEmail = new CakeEmail('default');
 							$CakeEmail->to($this->request->data['User']['email']);
-							$CakeEmail->subject('Dezordre: Confirmation de votre inscription');
+							$CakeEmail->subject('Dezordre: Confirmation d\'inscription');
 							$CakeEmail->viewVars($this->request->data['User'] + array(
 								'token' => $token,
 								'id'	=> $this->User->id,
@@ -175,11 +183,19 @@ class UsersController extends AppController {
 							$CakeEmail->emailFormat('text');
 							$CakeEmail->template('register');
 							$CakeEmail->send();
+<<<<<<< HEAD
 
 
 							$this->Session->setFlash("Inscription ok, un email vous sera envoyé afin de valider votre compte.");
 							$this->redirect(array('controller' => 'users', 'action' => 'login'));
 						}
+=======
+							
+							$this->Session->setFlash("Votre compte à bien été créer. Un lien vous à été envoyé par email afin d'activer votre compte.");
+							$this->redirect(array('controller' => 'users', 'action' => 'login'));
+							
+							}
+>>>>>>> d8361b54069cdc57ba0f62fb2cc81fed3454a661
 					}
 
 					else {
