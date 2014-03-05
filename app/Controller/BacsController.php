@@ -123,19 +123,25 @@ class BacsController extends AppController {
 
 			if(!empty($this->request->data)){
 					// si on ajoute une liste
+				debug($this->request->data);
 					if(isset($this->request->data['Bacs']['basename'])){
 							$basename = $this->request->data['Bacs']['basename'];
 							$start = $this->request->data['Bacs']['start'];
 							$end = $this->request->data['Bacs']['end'];
 
-							for($i=$start;$i>$end;$i++){
-								$this->Bac->create();
-								$this->request->data['Bacs']['code'] = $basename.$i;
-								$this->save();
-								echo "Ajout de ".$basename.$i."<br />";
-							}
+							for($i=$start;$i<($end+1);$i++){
+								$code = $basename.$i;
 
-							echo " liste";
+								$bac = $this->Bac->findByCode($code);
+								if(empty($bac)){
+									$this->Bac->create();
+
+									$this->Bac->save(array(
+												'code' => $code,
+										));
+								}
+							}
+							echo ($i-1)."bacs ajoutés";
 					}
 
 					// Ajout simple

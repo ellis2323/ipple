@@ -179,7 +179,7 @@ class UsersController extends AppController {
 
 							$this->Session->setFlash("Inscription ok, un email vous sera envoyé afin de valider votre compte.");
 							$this->redirect(array('controller' => 'users', 'action' => 'login'));
-							}
+						}
 					}
 
 					else {
