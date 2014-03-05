@@ -19,7 +19,7 @@ http://ondras.zarovi.cz/sql/demo/ Save/Load => Load => dezordre
 
 
 
-Lien développement : http://s324399021.onlinehome.fr/dezordre/index.php/
+Lien développement : http://s324399021.onlinehome.fr/dezordre/index.php/ OU 192.168.1.22/dezordre/index.php (adresse locale)
 
 Lien production :  http://cluster013.ovh.net/~dezordre/prod/index.php/
 
