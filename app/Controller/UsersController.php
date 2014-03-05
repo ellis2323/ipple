@@ -47,8 +47,7 @@ class UsersController extends AppController {
 			if(!empty($this->request->data)){
 				if($this->Auth->login()) {
 
-					$this->redirect(array('controller' => 'bacs', 'action' => 'index'));
-					$this->Session->setFlash('connexion ok');
+					$this->redirect(array('controller' => 'orders', 'action' => 'add'));
 				}
 				else {	
 					$this->Session->setFlash('Identifiants incorrects');
@@ -167,7 +166,7 @@ class UsersController extends AppController {
 
 							$CakeEmail = new CakeEmail('default');
 							$CakeEmail->to($this->request->data['User']['email']);
-							$CakeEmail->subject('Dezordre: Confirmation de votre inscription');
+							$CakeEmail->subject('Dezordre: Confirmation d\'inscription');
 							$CakeEmail->viewVars($this->request->data['User'] + array(
 								'token' => $token,
 								'id'	=> $this->User->id,
@@ -178,7 +177,7 @@ class UsersController extends AppController {
 							$CakeEmail->send();
 
 							$this->redirect(array('controller' => 'users', 'action' => 'login'));
-							$this->Session->setFlash("Inscription ok, un email vous sera envoyé afin de valider votre compte.");
+							$this->Session->setFlash("Votre compte à bien été créer. Un lien vous à été envoyé par email afin d'activer votre compte.");
 							}
 					}
 

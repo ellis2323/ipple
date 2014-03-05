@@ -16,7 +16,7 @@
 </head>
 
 <body>
-        <!-- MENU FIXE -->
+    <!-- MENU FIXE -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
 
@@ -90,19 +90,6 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte<b class="caret"></b></a>
                         <ul class="dropdown-menu">
 
-                            <li>
-                            <?php echo $this->Html->link(
-                                    'Dashboard',
-                                    array(
-                                        'controller'    => 'users',
-                                        'action'        => 'index',
-                                        'full_base'     => true,
-                                        'admin'         => false
-                                    )
-                                );?>
-                            </li>   
-
-
 
                             <li>
                             <?php echo $this->Html->link(
@@ -119,7 +106,7 @@
 
                             <li>
                             <?php echo $this->Html->link(
-                                    'Mes bacs',
+                                    'Mes affaires',
                                     array(
                                         'controller' => 'bacs',
                                         'action' => 'index',
@@ -138,17 +125,6 @@
                                         'admin'         => false                                    )
                                 );?>
                             </li>  
-
-                            <li>
-                            <?php echo $this->Html->link(
-                                    'Mes adresses',
-                                    array(
-                                        'controller' => 'addresses',
-                                        'action' => 'index',
-                                        'full_base'     => true,
-                                        'admin'         => false                                    )
-                                );?>
-                            </li>
 
                             <li>
                             <?php echo $this->Html->link(
@@ -212,7 +188,7 @@
         </div>
         <!-- /.container -->
     </nav>
-    <!-- FIN MENU FIXE -->
+    <!-- /.navbar -->
 
 
 
@@ -236,7 +212,7 @@
                     
                     <h2 id="contact" class="text-center">Contact</h2>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <h4><span class="glyphicon glyphicon-envelope"></span><a href="#"> contact@dezordre.com</a></h4>
+                            <h4><span class="glyphicon glyphicon-envelope"></span><a href="mailto:contact@dezordre.com">contact@dezordre.com</a></h4>
                             <h4><span class="glyphicon glyphicon-earphone"></span> (+33) 09.09.09.09.09</h4>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
@@ -267,7 +243,7 @@
 
 
         <footer>
-            <p class="text-center">dézordre, 10 rue de l'Amiral Courbet 94 160 Saint-Mandé - Ouvert 6j/7 de 8h30à 19h</p>
+            <p class="text-center">Dézordre, 10 rue de l'Amiral Courbet 94 160 Saint-Mandé - Ouvert 6j/7 de 8h30 à 19h</p>
         </footer>
     <!-- FIN FOOTER -->
     <!-- /.container -->
