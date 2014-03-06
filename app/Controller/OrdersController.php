@@ -38,10 +38,8 @@ class OrdersController extends AppController {
 			}
 
 
-			//echo $livraison[0]['Deliveries'][0]['user_id'];
 		}
 
-		// Editer une commande 
 		public function view($order_id) {
 			$order_edit = $this->Order->find('first', 
 				array(
@@ -54,7 +52,6 @@ class OrdersController extends AppController {
 			);
 
 			if(!empty($order_edit)){
-				// On affiche les données
 				$order = $this->Order->find('first',
 					array(
 							'conditions' =>
@@ -65,29 +62,29 @@ class OrdersController extends AppController {
 
 						)
 					);
-					$this->set(compact('order'));
+				
+				$this->set(compact('order'));
 
 
-					// On récupère les horaires
-				    $this->Order->bindModel(
-				        array('hasOne' => array(
-				                'Delivery' => array(
-				                    'className' => 'Delivery'
-				                )
-				            )
-				        )
-				    );
-					$delivery = $this->Order->find('all',
-														array(
-																'conditions' =>
-																array(
-																		'Delivery.order_id' => $order_id,
-																		'Order.user_id' => $this->Session->read('Auth.User.id')
-																	)
+			    $this->Order->bindModel(
+			        array('hasOne' => array(
+			                'Delivery' => array(
+			                    'className' => 'Delivery'
+			                )
+			            )
+			        )
+			    );
+				$delivery = $this->Order->find('all',
+													array(
+															'conditions' =>
+															array(
+																	'Delivery.order_id' => $order_id,
+																	'Order.user_id' => $this->Session->read('Auth.User.id')
+																)
 
-															)
-														);
-					$this->set(compact('delivery'));
+														)
+													);
+				$this->set(compact('delivery'));
 
 
 			}
@@ -161,6 +158,7 @@ class OrdersController extends AppController {
 
 		// Passer une commande
 		public function add() {	
+		$this->layout = false; // Layout admin
 
 			// Si le client à déjà une commande en cours
 			$order = $this->Order->find('count',
@@ -221,33 +219,66 @@ class OrdersController extends AppController {
 
 
 					$this->Order->create();
-					// Données si l'utilisateur à renseigné une adresse déjà existante
-					$data_order = array(
-										"Order" =>
-													array(
-													'user_id'		=> $this->Session->read('Auth.User.id'),
-													'nb_bacs'		=> $this->request->data['Order']['nb_bacs'],
-													'hour_deposit'		=> 	$this->request->data['Order']['hours'],
-													'hour_withdrawal'	=> 	$this->request->data['Order']['hours'],
 
-													'date_deposit'		=> 	$this->request->data['Order']['date_deposit'],
-													'date_withdrawal'		=> 	$this->request->data['Order']['date_withdrawal'],
+					if($this->request->data['Order']['withdraw'] == 2){
+						$data_order = array(
+											"Order" =>
+														array(
+														'user_id'		=> $this->Session->read('Auth.User.id'),
+														'nb_bacs'		=> $this->request->data['Order']['nb_bacs'],
+														
+														'hour_deposit'		=> 	$this->request->data['Order']['hours'],
+														'hour_withdrawal'	=> 	$this->request->data['Order']['hours'],
 
-													'state'			=> 1
-													),
-										"Address" =>
-													array(
-														'user_id'			=> $this->Session->read('Auth.User.id'),
-														'city_id'			=> $this->request->data['Order']['cities'],
-														'postal_id'			=> $this->request->data['Order']['postals'],
-														'firstname'			=> $this->request->data['Address'][0]['firstname'],
-														'lastname'			=> $this->request->data['Address'][0]['lastname'],
-														'street'			=> $this->request->data['Address'][0]['street'],
-														'digicode'			=> $this->request->data['Address'][0]['digicode'],
-														'floor'			=> $this->request->data['Address'][0]['floor'],
-														'comment'			=> $this->request->data['Address'][0]['comment'],
-														)
-					);
+														'date_deposit'		=> 	$this->request->data['Order']['date_deposit'],
+														'date_withdrawal'		=> 	$this->request->data['Order']['date_withdrawal'],
+
+														'state'			=> 1
+														),
+											"Address" =>
+														array(
+															'user_id'			=> $this->Session->read('Auth.User.id'),
+															'city_id'			=> $this->request->data['Order']['cities'],
+															'postal_id'			=> $this->request->data['Order']['postals'],
+															'firstname'			=> $this->request->data['Address'][0]['firstname'],
+															'lastname'			=> $this->request->data['Address'][0]['lastname'],
+															'street'			=> $this->request->data['Address'][0]['street'],
+															'digicode'			=> $this->request->data['Address'][0]['digicode'],
+															'floor'			=> $this->request->data['Address'][0]['floor'],
+															'comment'			=> $this->request->data['Address'][0]['comment'],
+															)
+						);
+
+
+					}else {
+						$data_order = array(
+											"Order" =>
+														array(
+														'user_id'		=> $this->Session->read('Auth.User.id'),
+														'nb_bacs'		=> $this->request->data['Order']['nb_bacs'],
+
+														'hour_deposit'		=> 	$this->request->data['Order']['hours'],
+														'hour_withdrawal'	=> 	$this->request->data['Order']['hours'],
+
+														'date_deposit'		=> 	$this->request->data['Order']['date_deposit'],
+														'date_withdrawal'		=> '0000-00-00',
+
+														'state'			=> 1
+														),
+											"Address" =>
+														array(
+															'user_id'			=> $this->Session->read('Auth.User.id'),
+															'city_id'			=> $this->request->data['Order']['cities'],
+															'postal_id'			=> $this->request->data['Order']['postals'],
+															'firstname'			=> $this->request->data['Address'][0]['firstname'],
+															'lastname'			=> $this->request->data['Address'][0]['lastname'],
+															'street'			=> $this->request->data['Address'][0]['street'],
+															'digicode'			=> $this->request->data['Address'][0]['digicode'],
+															'floor'			=> $this->request->data['Address'][0]['floor'],
+															'comment'			=> $this->request->data['Address'][0]['comment'],
+															)
+						);
+					}
 
 					// Si la commande à bien été enregistré, on ajoute les livraisons associées
 					if($this->Order->saveAssociated($data_order)) {
@@ -500,7 +531,25 @@ class OrdersController extends AppController {
 							);
 
 			$this->Order->Delivery->save($delivery);
-		
+
+			if($order_edit['Order']['date_withdrawal'] != '0000-00-00 00:00:00') {
+				$delivery_deposit = $this->Order->Delivery->id;
+				$this->Order->Delivery->create();
+				$delivery = array(
+									'Delivery' => array(
+													'delivery_id' => $delivery_deposit,
+													'order_id' => $order_id,
+													'date' => $order_edit['Order']['date_withdrawal'],
+													'user_id' => $order_edit['Order']['user_id'],
+													'address_id' => $order_edit['Order']['address_id'],
+													'hour_id' => $order_edit['Order']['hour_withdrawal'],
+												)
+								);
+
+				$this->Order->Delivery->save($delivery);
+
+
+			}
 
 
 		   // debug($this->Order->find('all'));

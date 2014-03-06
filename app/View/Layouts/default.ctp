@@ -42,7 +42,7 @@
                             ?>
                                <li>
                                 <?php echo $this->Html->link(
-                                        'Admin User',
+                                        'Admin Panel',
                                         array(
                                             'controller' => 'users',
                                             'action' => 'admin_index',
@@ -51,42 +51,6 @@
                                         )
                                     );?>
                                 </li>   
-
-                                <li>
-                                <?php echo $this->Html->link(
-                                        'Admin Bacs',
-                                        array(
-                                            'controller' => 'bacs',
-                                            'action' => 'admin_index',
-                                            'full_base' => true,
-                                            'admin' => true
-                                        )
-                                    );?>
-                                </li>  
-                                                             
-                                <li>
-                                <?php echo $this->Html->link(
-                                        'Admin Commandes',
-                                        array(
-                                            'controller' => 'orders',
-                                            'action' => 'admin_index',
-                                            'full_base' => true,
-                                            'admin' => true
-                                        )
-                                    );?>
-                                </li>
-
-                                <li>
-                                <?php echo $this->Html->link(
-                                        'Admin Livraisons',
-                                        array(
-                                            'controller' => 'deliveries',
-                                            'action' => 'admin_index',
-                                            'full_base' => true,
-                                            'admin' => true
-                                        )
-                                    );?>
-                                </li>
 
                             <?php
                             endif;
@@ -264,7 +228,6 @@
     <?= $this->Html->script('jquery-1.10.2'); ?>
     <?= $this->Html->script('bootstrap'); ?>
     <?= $this->Html->script('modern-business'); ?>
-    <?= $this->Html->script('cakebootstrap'); ?>
 
 </body>
 

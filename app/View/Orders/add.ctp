@@ -264,16 +264,16 @@
                 
             <div class="choix">
                 <div class="radio col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
-                      <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                        En même temps (le chauffeur attendra jusqu'à 20 minutes)
-                      </label>
-                </div>
-                <div class="radio col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
-                      <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                        Je prévois ma date et mon horaire de récupération
-                      </label>
+                     <?php 
+
+                    $options = array('1' => 'Immédiat', '2' => 'Différé');
+                    $attributes = array('legend' => false);
+                    echo $this->Form->radio('withdraw', $options, $attributes);
+
+                     ?>
+       
+
+
                 </div>  
             </div>  
 

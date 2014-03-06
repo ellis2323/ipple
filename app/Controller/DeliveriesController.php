@@ -26,64 +26,6 @@ class DeliveriesController extends AppController {
 	}
 
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-
-		if ($this->request->is('post')) {
-			
-
-			$this->Delivery->create();
-
-
-
-
-			$data = array('Delivery' => array(
-						'date' => $this->request->data['Delivery']['date'],
-						'user_id' => $this->Session->read('Auth.User.id'),
-						'hour_id' => $this->request->data['Delivery']['hour'],
-					)
-			);
-
-			if ($this->Delivery->save($this->request->data)) {
-
-				$id_delivery = $this->Delivery->id;
-				$order = $this->Delivery->Order->find('first',				
-																array(
-																	'conditions' => 
-																	array(
-																		'Order.user_id' => $this->Session->read('Auth.User.id')
-																	),
-																	'fields'	=> array('id')
-															));
-				$this->Delivery->Order->create();
-
-				$data = array('Order' => array(
-												'delivery_id' 	=> $id_delivery,
-												'id'			=> $order['Order']['id']
-											)
-				);
-				$this->Delivery->saveField('order_id', $this->Delivery->Order->id);
-				$this->Delivery->Order->save($data);
-				$this->Session->setFlash(__('Votre commande à bien été enregistrée'));
-				return $this->redirect(array('controller' => 'users', 'action' => 'index'));
-
-			} 
-
-			else {
-				$this->Session->setFlash(__('The delivery could not be saved. Please, try again.'));
-			}
-		}
-
-
-		$hours = $this->Delivery->Hour->find('list');
-		//debug($hours);
-		$this->set(compact('hours'));
-
-	}
 
 
 ############# ADMIN ###############
@@ -135,6 +77,105 @@ class DeliveriesController extends AppController {
 		$this->set(compact('users'));
 	}
 
+
+	public function admin_add_bac($delivery_id = null) {
+		// Si l'utilisateur est admin
+		if(!($this->Session->read('Auth.User.role') >= 90)) {
+			throw new NotFoundException;
+		}
+		$this->layout = 'admin'; // Layout admin
+
+		// On lie les livraisons aux bacs
+	    $this->Delivery->bindModel(
+	        array('hasMany' => array(
+	                'BacDelivery' => array(
+	                    'className' => 'BacDelivery'
+	                )
+	            )
+	        )
+	    );
+
+		// On récupère les bacs liés
+	    $bacs = $this->Delivery->BacDelivery->find('list',
+	    							array(
+	    								'fields' => 'BacDelivery.bac_id', 
+	    								'conditions' => array(
+	    														'BacDelivery.delivery_id' => $delivery_id
+
+	    									)
+	    								)
+	    );
+
+	    // On les envoeis à la vue
+		$this->set(compact('bacs'));
+
+		// Si on ajoute un bac
+		if ($this->request->is('post')) {
+
+			debug($this->request->data);
+
+		    $this->Delivery->bindModel(
+		        array('hasMany' => array(
+		                'Bac' => array(
+		                    'className' => 'Bac',
+		                )
+		            )
+		        )
+		    );
+			$bac = $this->Delivery->Bac->find('first', 
+												array('fields' => 'code','conditions' => array(
+																				'code' => $this->request->data['Bac']['code']
+																			))
+										);
+			
+			// Si le bac existe
+			if(!empty($bac)){
+				$bac_id = $bac['Bac']['id'];
+			    $this->Delivery->bindModel(
+									        array(
+									        	'hasMany' => array(
+								                					'BacDelivery' => array(
+									                   									 'className' => 'BacDelivery',
+									                )
+									            )
+									        )
+			    );
+				// On insert la liaison
+				$this->Delivery->BacDelivery->create();
+
+				$data = array(
+									'BacDelivery' => array(
+													'bac_id' => $bac_id,
+													'delivery_id' => $delivery_id,
+
+												)
+								);
+
+
+
+				$this->Delivery->BacDelivery->save($data);
+
+			}
+	
+
+		}
+
+
+
+	}
+
+	public function admin_delete_bac($bac_id = null, $delivery_id = null) {
+		// Si l'utilisateur est admin
+		if(!($this->Session->read('Auth.User.role') >= 90)) {
+			throw new NotFoundException;
+		}
+		$this->layout = 'admin'; // Layout admin
+
+
+		// On vérifie que la liaison $bac_id $delivery_id existe, 
+							//si elle est présente, on la supprime
+
+	}
 /**
  * admin_add method
  *
@@ -231,4 +272,7 @@ class DeliveriesController extends AppController {
 			$this->Session->setFlash(__('The delivery could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+
+
+}
