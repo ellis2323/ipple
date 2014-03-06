@@ -12,7 +12,65 @@ class Address extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'id';
+	public $displayField = 'street';
+
+
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+
+	// Une adresse appartient à un utilisateurs
+	public $belongsTo = array(
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+
+	// Une adresse à plusieurs livraisons et plusieurs commandes
+	public $hasMany = array(
+		'Delivery' => array(
+			'className' => 'Delivery',
+			'foreignKey' => 'address_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Order' => array(
+			'className' => 'Order',
+			'foreignKey' => 'address_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+	);
+
+	// Une adresse à une ville et un code postal
+	public $hasOne = array(
+		'Postal' => array(
+			'className' => 'postal',
+			'foreignKey' => 'id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'City' => array(
+			'className' => 'City',
+			'foreignKey' => 'id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+
+
+
+		);
+
 
 /**
  * Validation rules
@@ -134,21 +192,5 @@ class Address extends AppModel {
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
-/**
- * belongsTo associations
- *
- * @var array
- */
-	public $belongsTo = array(
-		'User' => array(
-			'className' => 'User',
-			'foreignKey' => 'user_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
-	);
-
-	public $hasMany = 'Delivery';
 
 }

@@ -11,11 +11,7 @@
 			<?php echo h($order['Order']['user_id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Transaction Id'); ?></dt>
-		<dd>
-			<?php echo h($order['Order']['transaction_id']); ?>
-			&nbsp;
-		</dd>
+
 		<dt><?php echo __('Nb Bacs'); ?></dt>
 		<dd>
 			<?php echo h($order['Order']['nb_bacs']); ?>
@@ -72,7 +68,10 @@
 			<td><?php echo $deliveries['withdrawal']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'deliveries', 'action' => 'view', $deliveries['id'])); ?>
+				
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'deliveries', 'action' => 'edit', $deliveries['id'])); ?>
+
+				<?php echo $this->Html->link(__('Confirm'), array('controller' => 'deliveries', 'action' => 'confirm', $deliveries['id'])); ?>
 				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'deliveries', 'action' => 'delete', $deliveries['id']), null, __('Are you sure you want to delete # %s?', $deliveries['id'])); ?>
 			</td>
 		</tr>

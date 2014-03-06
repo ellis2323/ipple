@@ -3,7 +3,6 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('order_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('date'); ?></th>
 			<th><?php echo $this->Paginator->sort('state'); ?></th>
@@ -13,7 +12,6 @@
 	<?php foreach ($deliveries as $delivery): ?>
 	<tr>
 		<td><?php echo h($delivery['Delivery']['id']); ?>&nbsp;</td>
-		<td><?php echo h($delivery['Delivery']['user_id']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($delivery['Order']['id'], array('controller' => 'orders', 'action' => 'view', $delivery['Order']['id'])); ?>
 		</td>
@@ -21,9 +19,8 @@
 		<td><?php echo h($delivery['Delivery']['state']); ?>&nbsp;</td>
 		<td><?php echo h($delivery['Delivery']['delivery_id']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $delivery['Delivery']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $delivery['Delivery']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $delivery['Delivery']['id']), null, __('Are you sure you want to delete # %s?', $delivery['Delivery']['id'])); ?>
+			<?php echo $this->Html->link(__('Voir'), array('action' => 'view', $delivery['Delivery']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Anuler'), array('action' => 'delete', $delivery['Delivery']['id']), null, __('Are you sure you want to delete # %s?', $delivery['Delivery']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

@@ -10,7 +10,6 @@ if(!empty($orders)){
     <th>ID</th>
     <th>Nombre de bacs</th>
     <th>ID_User</th>
-    <th>ID_Transaction</th>
     <th>Etat</th>
     <th>Editer</th>
     <th>Supprimer</th>
@@ -26,7 +25,6 @@ if(!empty($orders)){
       <td><?php echo $key['Order']['id']; ?></td>
       <td><?php echo $key['Order']['nb_bacs']; ?></td>
       <td><?php echo $key['Order']['user_id']; ?></td>
-      <td><?php echo $key['Order']['transaction_id']; ?></td>
       <td><?php echo $key['Order']['state']; ?></td>
 
       <td>

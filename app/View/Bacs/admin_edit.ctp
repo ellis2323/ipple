@@ -8,6 +8,13 @@
                                     )); 
 ?>
 
+<?= $this->Form->input('code', array(
+                                    'type' => 'text',
+                                    'label' => "Code du bac", 
+                                    'class' => 'form-control',
+                                    'value' => $bac['Bac']['code'],
+                                    )); 
+?>
 
 <?= $this->Form->input('user_id', array(
 						'type' => 'text',
@@ -16,6 +23,8 @@
                                     'value' => $bac['Bac']['user_id'],
                                     )); 
 ?>
+
+
 
 <?= $this->Form->input('title', array(
                                     'type' => 'text',

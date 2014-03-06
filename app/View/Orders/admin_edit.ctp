@@ -5,7 +5,6 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('Order.user_id');
-		echo $this->Form->input('transaction_id');
 		echo $this->Form->input('nb_bacs');
 		echo $this->Form->input('state');
 	?>

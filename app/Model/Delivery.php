@@ -3,9 +3,15 @@ App::uses('AppModel', 'Model');
 /**
  * Delivery Model
  *
+ * @property Delivery $Delivery
  * @property Order $Order
+ * @property Delivery $Delivery
+ * @property BacDelivery $BacDelivery
  */
 class Delivery extends AppModel {
+
+
+	
 
 /**
  * Display field
@@ -14,31 +20,18 @@ class Delivery extends AppModel {
  */
 	public $displayField = 'id';
 
-
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
 /**
- * belongsTo associations
+ * Validation rules
  *
  * @var array
  */
-	public $belongsTo = array(
-		'Order' => array(
-			'className' => 'Order',
-			'foreignKey' => 'order_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
+	public $validate = array();
 
-		'User' => array(
-			'className' => 'User',
-			'foreignKey' => 'id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
-	);
+
+
+	
+
+
 
 
 }

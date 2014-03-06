@@ -14,7 +14,12 @@ class CitiesController extends AppController {
 		$this->Auth->deny();
 	}
 
+	public function list(){
+			if (empty($this->request->params['requested'])){
+				return $this->City->find('list');
+			}
 
+	}
 /**
  * Components
  *
@@ -47,6 +52,13 @@ class CitiesController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
+		// Si l'utilisateur est admin
+		if(!($this->Session->read('Auth.User.role') >= 90)) {
+			throw new NotFoundException;
+		}
+		$this->layout = 'admin'; // Layout admin
+
+
 		if (!$this->City->exists($id)) {
 			throw new NotFoundException(__('Invalid city'));
 		}

@@ -91,8 +91,6 @@ class BacsController extends AppController {
 			if(!($this->Session->read('Auth.User.role') >= 90)) {
 				throw new NotFoundException;
 			}
-			
-
 			$this->layout = 'admin'; // Layout admin
 
 			// On liste toutes les utilisateurs
@@ -104,10 +102,6 @@ class BacsController extends AppController {
 				
 			}
 
-			// Sinon, on redirige vers 404
-			else {
-				throw new NotFoundException();
-			}
 		}
 
 
@@ -168,7 +162,7 @@ class BacsController extends AppController {
 								array(
 									'conditions' => 
 									array(
-										'id' => $bac_id
+										'Bac.id' => $bac_id
 									) 
 								) 
 							);
@@ -186,10 +180,11 @@ class BacsController extends AppController {
 
 						// On enregistre les données
 						$this->Bac->save(array(
-							'id'				=> $this->request->data['Bacs']['id'],
-							'title'				=> $this->request->data['Bacs']['title'],
-							'description' 		=> $this->request->data['Bacs']['description'],
-							'user_id' 			=> $this->request->data['Bacs']['user_id'],
+							'Bac.id'				=> $this->request->data['Bacs']['id'],
+							'Bac.code'				=> $this->request->data['Bacs']['title'],
+							'Bac.title'				=> $this->request->data['Bacs']['title'],
+							'Bac.description' 		=> $this->request->data['Bacs']['description'],
+							'Bac.user_id' 			=> $this->request->data['Bacs']['user_id'],
 						));
 					}
 				}
@@ -198,7 +193,7 @@ class BacsController extends AppController {
 					array(
 							'conditions' =>
 							array(
-									'id' => $bac_id,
+									'Bac.id' => $bac_id,
 								)
 
 						)

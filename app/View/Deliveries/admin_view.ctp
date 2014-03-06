@@ -13,7 +13,7 @@
 		</dd>
 		<dt><?php echo __('Order'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($delivery['Order']['id'], array('controller' => 'orders', 'action' => 'view', $delivery['Order']['id'])); ?>
+			<?php echo $this->Html->link($delivery['Delivery']['order_id'], array('controller' => 'orders', 'action' => 'view', $delivery['Delivery']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Date'); ?></dt>
@@ -26,11 +26,7 @@
 			<?php echo h($delivery['Delivery']['state']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Withdrawal'); ?></dt>
-		<dd>
-			<?php echo h($delivery['Delivery']['withdrawal']); ?>
-			&nbsp;
-		</dd>
+
 	</dl>
 </div>
 <div class="actions">

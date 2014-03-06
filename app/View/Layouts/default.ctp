@@ -76,6 +76,18 @@
                                     );?>
                                 </li>
 
+                                <li>
+                                <?php echo $this->Html->link(
+                                        'Admin Livraisons',
+                                        array(
+                                            'controller' => 'deliveries',
+                                            'action' => 'admin_index',
+                                            'full_base' => true,
+                                            'admin' => true
+                                        )
+                                    );?>
+                                </li>
+
                             <?php
                             endif;
                             ?>

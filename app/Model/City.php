@@ -3,7 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * City Model
  *
- * @property City $City
+ * @property Address $Address
  */
 class City extends AppModel {
 
@@ -12,7 +12,7 @@ class City extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'id';
+	public $displayField = 'label';
 
 /**
  * Validation rules
@@ -20,7 +20,7 @@ class City extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'name' => array(
+		'label' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -45,17 +45,24 @@ class City extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * belongsTo associations
+ * hasMany associations
  *
  * @var array
  */
 	public $belongsTo = array(
-		'Delivery' => array(
-			'className' => 'Deliveries',
-			'foreignKey' => 'id',
+		'Address' => array(
+			'className' => 'Address',
+			'foreignKey' => 'city_id',
+			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
 		)
 	);
+
 }

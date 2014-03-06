@@ -8,6 +8,8 @@ class DATABASE_CONFIG {
 		'login' => 'root',
 		'password' => '',
 		'database' => 'dezordre',
+		'port' => '/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock'
+
 	);
 }
 

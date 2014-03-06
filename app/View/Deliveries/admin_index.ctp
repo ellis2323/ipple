@@ -3,23 +3,21 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('order_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('date'); ?></th>
 			<th><?php echo $this->Paginator->sort('state'); ?></th>
-			<th><?php echo $this->Paginator->sort('withdrawal'); ?></th>
+			<th><?php echo $this->Paginator->sort('delivery_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($deliveries as $delivery): ?>
 	<tr>
 		<td><?php echo h($delivery['Delivery']['id']); ?>&nbsp;</td>
-		<td><?php echo h($delivery['Delivery']['user_id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($delivery['Order']['id'], array('controller' => 'orders', 'action' => 'view', $delivery['Order']['id'])); ?>
+			<?php echo $this->Html->link($delivery['Delivery']['id'], array('controller' => 'orders', 'action' => 'view', $delivery['Delivery']['id'])); ?>
 		</td>
 		<td><?php echo h($delivery['Delivery']['date']); ?>&nbsp;</td>
 		<td><?php echo h($delivery['Delivery']['state']); ?>&nbsp;</td>
-		<td><?php echo h($delivery['Delivery']['withdrawal']); ?>&nbsp;</td>
+		<td><?php echo h($delivery['Delivery']['delivery_id']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $delivery['Delivery']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $delivery['Delivery']['id'])); ?>

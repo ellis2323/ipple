@@ -3,15 +3,13 @@
 	<fieldset>
 		<legend><?php echo __('Add Address'); ?></legend>
 	<?php
-		echo $this->Form->input('user_id');
 		echo $this->Form->input('firstname');
 		echo $this->Form->input('lastname');
 		echo $this->Form->input('city');
 		echo $this->Form->input('postal');
 		echo $this->Form->input('street');
-		echo $this->Form->input('number');
 		echo $this->Form->input('digicode');
-		echo $this->Form->input('etage');
+		echo $this->Form->input('floor');
 		echo $this->Form->input('tel');
 		echo $this->Form->input('comment');
 	?>

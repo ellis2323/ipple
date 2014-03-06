@@ -4,7 +4,6 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('transaction_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('nb_bacs'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
@@ -15,7 +14,6 @@
 	<tr>
 		<td><?php echo h($order['Order']['id']); ?>&nbsp;</td>
 		<td><?php echo h($order['User']['email']); ?>&nbsp;</td>
-		<td><?php echo h($order['Order']['transaction_id']); ?>&nbsp;</td>
 		<td><?php echo h($order['Order']['nb_bacs']); ?>&nbsp;</td>
 		<td><?php echo h($order['Order']['created']); ?>&nbsp;</td>
 		<td><?php echo h($order['Order']['modified']); ?>&nbsp;</td>
@@ -23,6 +21,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $order['Order']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $order['Order']['id'])); ?>
+			<?php echo $this->Html->link(__('Confirm'), array('action' => 'confirm', $order['Order']['id'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $order['Order']['id']), null, __('Are you sure you want to delete # %s?', $order['Order']['id'])); ?>
 		</td>
 	</tr>

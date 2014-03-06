@@ -48,15 +48,40 @@ class AddressesController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Address->create();
-			if ($this->Address->save($this->request->data)) {
-				$this->Session->setFlash(__('The address has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+
+
+
+			$data = array('Address' => array(
+					'firstname' => $this->request->data['Address']['firstname'],
+					'lastname' => $this->request->data['Address']['lastname'],
+					'city_id' => $this->request->data['Address']['city'],
+					'postal_id' => $this->request->data['Address']['postal'],
+					'street' => $this->request->data['Address']['street'],
+					'digicode' => $this->request->data['Address']['digicode'],
+					'floor' => $this->request->data['Address']['floor'],
+					'tel' => $this->request->data['Address']['tel'],
+					'comment' => $this->request->data['Address']['comment'],
+					'user_id' => $this->Session->read('Auth.User.id'),
+
+				)
+			);
+
+			if ($this->Address->save($data)) {
+				$this->Session->setFlash(__('Adresse enregistrée'));
+
+				return $this->redirect(array('controller' => 'users', 'action' => 'index'));
+
 			} else {
 				$this->Session->setFlash(__('The address could not be saved. Please, try again.'));
 			}
 		}
-		$users = $this->Address->User->find('list');
-		$this->set(compact('users'));
+
+		$postals = $this->Address->Postal->find('list');
+		$this->set(compact('postals'));
+
+
+		$cities = $this->Address->City->find('list');
+		$this->set(compact('cities'));
 	}
 
 /**

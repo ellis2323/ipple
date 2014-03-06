@@ -35,7 +35,6 @@ class OrdersController extends AppController {
 				$this->set(compact('orders'));
 			}
 			else {
-				$this->Session->setFlash('Aucune commande');
 			}
 
 
@@ -43,18 +42,81 @@ class OrdersController extends AppController {
 		}
 
 		// Editer une commande 
-		public function edit($order_id) {
+		public function view($order_id) {
 			$order_edit = $this->Order->find('first', 
 				array(
 					'conditions' => 
 					array(
 						'Order.id' => $order_id, 
-						'user_id' => $this->Session->read('Auth.User.id')
+						'Order.user_id' => $this->Session->read('Auth.User.id')
 					) 
 				) 
 			);
 
 			if(!empty($order_edit)){
+				// On affiche les données
+				$order = $this->Order->find('first',
+					array(
+							'conditions' =>
+							array(
+									'Order.id' => $order_id,
+									'Order.user_id' => $this->Session->read('Auth.User.id')
+								)
+
+						)
+					);
+					$this->set(compact('order'));
+
+
+					// On récupère les horaires
+				    $this->Order->bindModel(
+				        array('hasOne' => array(
+				                'Delivery' => array(
+				                    'className' => 'Delivery'
+				                )
+				            )
+				        )
+				    );
+					$delivery = $this->Order->find('all',
+														array(
+																'conditions' =>
+																array(
+																		'Delivery.order_id' => $order_id,
+																		'Order.user_id' => $this->Session->read('Auth.User.id')
+																	)
+
+															)
+														);
+					$this->set(compact('delivery'));
+
+
+			}
+
+
+			// sinon erreur 404
+			else {
+				throw new NotFoundException;
+			}
+		}
+
+
+
+		// Editer une commande 
+		public function edit($order_id) {
+			$order = $this->Order->find('first', 
+				array(
+					'conditions' => 
+					array(
+						'Order.id' => $order_id, 
+						'Order.user_id' => $this->Session->read('Auth.User.id')
+					) 
+				) 
+			);
+
+
+			debug($order);
+
+			if(!empty($order)){
 
 				// On traite le formulaire
 				if(!empty($this->request->data)){
@@ -65,24 +127,31 @@ class OrdersController extends AppController {
 
 						$this->Session->setFlash('Données correctement sauvegardées');
 
-						$this->Order->save(array(
-							'nb_bacs'				=> $this->request->data['Orders']['nb_bacs'],
-						));
+						/*$data_order = array(
+											"Order" =>
+														array(
+														'user_id'		=> $this->Session->read('Auth.User.id'),
+														'nb_bacs'		=> $this->request->data['Order']['nb_bacs'],
+														'hour_id'		=> 	$this->request->data['Order']['hours'],
+														'state'			=> 1
+														),
+											"Address" =>
+														array(
+															'city_id'			=> $this->request->data['Order']['cities'],
+															'postal_id'			=> $this->request->data['Order']['postals'],
+															'firstname'			=> $this->request->data['Address'][0]['firstname'],
+															'lastname'			=> $this->request->data['Address'][0]['lastname'],
+															'street'			=> $this->request->data['Address'][0]['street'],
+															'digicode'			=> $this->request->data['Address'][0]['digicode'],
+															'floor'			=> $this->request->data['Address'][0]['floor'],
+															'comment'			=> $this->request->data['Address'][0]['comment'],
+															)
+						);*/
 					}
 				}
 
-				// On affiche les données
-				$order = $this->Order->find('first',
-					array(
-							'conditions' =>
-							array(
-									'Order.id' => $order_id,
-									'user_id' => $this->Session->read('Auth.User.id')
-								)
 
-						)
-					);
-					$this->set(compact('order'));
+				$this->set(compact('order'));
 			}
 			// sinon erreur 404
 			else {
@@ -91,38 +160,99 @@ class OrdersController extends AppController {
 		}
 
 		// Passer une commande
-		public function add() {
+		public function add() {	
+
+			// Si le client à déjà une commande en cours
+			$order = $this->Order->find('count',
+												array('conditions' => array(
+																			'Order.delivery_id =' 	=> NULL,
+																			'Order.user_id' 	=> $this->Session->read('Auth.User.id')
+
+													)
+												));
 
 
-			
+			// On récupère les villes
+		    $this->Order->bindModel(
+		        array('hasMany' => array(
+		                'City' => array(
+		                    'className' => 'City'
+		                )
+		            )
+		        )
+		    );			
+		    $cities = $this->Order->City->find('list');
+			$this->set(compact('cities'));
+
+			// On récupère les codes postaux
+		    $this->Order->bindModel(
+		        array('hasMany' => array(
+		                'Postal' => array(
+		                    'className' => 'Postal'
+		                )
+		            )
+		        )
+		    );			
+			$postals = $this->Order->Postal->find('list');
+			$this->set(compact('postals'));
+
+			// On récupère les horaires
+		    $this->Order->bindModel(
+		        array('hasMany' => array(
+		                'Hour' => array(
+		                    'className' => 'Hour'
+		                )
+		            )
+		        )
+		    );
+			$hours = $this->Order->Hour->find('list');
+			$this->set(compact('hours'));
+
+
 			// Si le formulaire à été soumis
 			if(!empty($this->request->data)){
+
+
+				debug($this->request->data);
+
 				// On valide les données
 				if($this->Order->validates()){
 
-					$this->Order->create();
 
+
+					$this->Order->create();
+					// Données si l'utilisateur à renseigné une adresse déjà existante
 					$data_order = array(
-						"Order" =>
-									array(
-									'user_id'		=> $this->Session->read('Auth.User.id'),
-									'nb_bacs'		=> $this->request->data['Order']['nb_bacs'],
-									'state'			=> 1
-									),
+										"Order" =>
+													array(
+													'user_id'		=> $this->Session->read('Auth.User.id'),
+													'nb_bacs'		=> $this->request->data['Order']['nb_bacs'],
+													'hour_deposit'		=> 	$this->request->data['Order']['hours'],
+													'hour_withdrawal'	=> 	$this->request->data['Order']['hours'],
+
+													'date_deposit'		=> 	$this->request->data['Order']['date_deposit'],
+													'date_withdrawal'		=> 	$this->request->data['Order']['date_withdrawal'],
+
+													'state'			=> 1
+													),
+										"Address" =>
+													array(
+														'user_id'			=> $this->Session->read('Auth.User.id'),
+														'city_id'			=> $this->request->data['Order']['cities'],
+														'postal_id'			=> $this->request->data['Order']['postals'],
+														'firstname'			=> $this->request->data['Address'][0]['firstname'],
+														'lastname'			=> $this->request->data['Address'][0]['lastname'],
+														'street'			=> $this->request->data['Address'][0]['street'],
+														'digicode'			=> $this->request->data['Address'][0]['digicode'],
+														'floor'			=> $this->request->data['Address'][0]['floor'],
+														'comment'			=> $this->request->data['Address'][0]['comment'],
+														)
 					);
 
 					// Si la commande à bien été enregistré, on ajoute les livraisons associées
-					if($this->Order->save($data_order)) {
-						$data_delivery = array("Delivery" =>
-															array(
-															'order_id'		=> $this->Order->id,
-															'nb_bacs'		=> $this->request->data['Order']['nb_bacs'],
-															'state'			=> 1
-															)
-											);
-						$this->Order->Delivery->save($data_delivery);
-
-
+					if($this->Order->saveAssociated($data_order)) {
+						
+							$this->Order->saveField('address_id', $this->Order->Address->id);
 
 							// Envoie de l'email de notification
 							App::uses('CakeEmail', 'Network/Email');
@@ -134,16 +264,44 @@ class OrdersController extends AppController {
 							$CakeEmail->template('order');
 							$CakeEmail->send();
 
+							echo "Reussi";
 
-						$this->Session->setFlash('Commande enregistrée');
 					}
+					else {
+
+						echo " fail";
+					}
+
 				}
 			}
-			
 
-			// Si c'est la première commande, on propose d'enregistrer une nouvelle adresse
+
+			// On compte le nombre de commande de l'utilisateur
+			$nb_orders = $this->Order->find('count',
+				array(
+						'conditions' => array(
+												'Order.user_id' => $this->Session->read('Auth.User.id'),
+
+						)
+				)
+			);
+
+
+			if(empty($nb_orders)){
+				// On récupère les villes
+				$cities = $this->Order->City->find('list');
+				$this->set(compact('cities'));
+
+				// On récupère les codes postaux
+				$postals = $this->Order->Postal->find('list');
+				$this->set(compact('postals'));
+			}
+
+
 
 		}
+
+
 
 		// Anuler une commande 
 		public function cancel($order_id) {
@@ -152,8 +310,8 @@ class OrdersController extends AppController {
 				array(
 					'conditions' => 
 					array(
-						'id' 		=> $order_id, 
-						'user_id' 	=> $this->Session->read('Auth.User.id'),
+						'Order.id' 		=> $order_id, 
+						'Order.user_id' 	=> $this->Session->read('Auth.User.id'),
 						'state'		=> 1
 					) 
 				) 
@@ -161,21 +319,15 @@ class OrdersController extends AppController {
 
 			// Si le bac existe et qu'il appartient bien à l'utilisateur
 			if(!empty($order_edit)){
-					$this->Order->id = $order_id; // On associe l'id du bac à l'objet 
+				$this->Order->id = $order_id; // On associe l'id de la commande
 
-					// On valide les champs envoyés
-					if($this->Order->validates() ){
+				$this->Session->setFlash('Commande annulé');
 
-
-						$this->Session->setFlash('Commande annulé');
-
-						// On enregistre les données
-						$this->Order->save(array(
-							'state' 	=> 0,
-						));
-						return $this->redirect(array('controller' => 'orders', 'action' => 'index'));
-
-					}
+				// On enregistre les données
+				$this->Order->save(array(
+					'state' 	=> 0,
+				));
+				return $this->redirect(array('controller' => 'orders', 'action' => 'index'));
 			}
 			else {
 				throw new NotFoundException;
@@ -185,6 +337,8 @@ class OrdersController extends AppController {
 
 
 		// ####### PANEL ADMIN ########
+
+
 	public function admin_index() {
 		// Si l'utilisateur est admin
 		if(!($this->Session->read('Auth.User.role') >= 90)) {
@@ -193,6 +347,13 @@ class OrdersController extends AppController {
 		$this->layout = 'admin'; // Layout admin
 
 		$this->Order->recursive = 0;
+
+		$this->Paginator->settings = array('conditions' => 
+														array('state' => 1
+
+										));
+
+
 		$this->set('orders', $this->Paginator->paginate());
 		
 		$users = $this->Order->User->find('list');
@@ -279,6 +440,80 @@ class OrdersController extends AppController {
 		$users = $this->Order->User->find('list');
 		$this->set(compact('users'));
 
+	}
+
+
+
+	public function admin_confirm($order_id) {
+		// Si l'utilisateur est admin
+		if(!($this->Session->read('Auth.User.role') >= 90)) {
+			throw new NotFoundException;
+		}
+		$this->layout = 'admin'; // Layout admin
+
+
+		$order_edit = $this->Order->find('first', 
+			array(
+				'conditions' => 
+				array(
+					'Order.id' => $order_id, 
+				) 
+			) 
+		);
+
+		if(!empty($order_id)){
+
+
+			$this->Order->create();
+			$data = array(
+							'Order' => array(
+										'id' => $order_id, 
+										'state' => 2
+										)
+					);
+
+			$this->Order->save($data);
+
+			// On associe au livraisons pour l'enregistrement
+		    $this->Order->bindModel(
+		        array('hasMany' => array(
+		                'Delivery' => array(
+		                    'className' => 'Delivery',
+		                    'foreignKey' => 'order_id'
+		                )
+		            )
+		        ), false
+		    );
+
+			$this->Order->Delivery->create();
+
+
+			$delivery = array(
+								'Delivery' => array(
+												'order_id' => $order_id,
+												'date' => $order_edit['Order']['date_deposit'],
+												'user_id' => $order_edit['Order']['user_id'],
+												'address_id' => $order_edit['Order']['address_id'],
+												'hour_id' => $order_edit['Order']['hour_deposit'],
+
+											)
+							);
+
+			$this->Order->Delivery->save($delivery);
+		
+
+
+		   // debug($this->Order->find('all'));
+
+
+			return $this->redirect(array('controller' => 'orders', 'action' => 'index', 'admin' => true));
+		}
+
+
+		// sinon erreur 404
+		else {
+			throw new NotFoundException;
+		}
 	}
 
 /**
