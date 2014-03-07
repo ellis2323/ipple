@@ -17,14 +17,24 @@
 			<?php echo h($order['Order']['nb_bacs']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Created'); ?></dt>
+		<dt><?php echo __('Date_deposit'); ?></dt>
 		<dd>
-			<?php echo h($order['Order']['created']); ?>
+			<?php echo h($order['Order']['date_deposit']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
+		<dt><?php echo __('Hour_deposit'); ?></dt>
 		<dd>
-			<?php echo h($order['Order']['modified']); ?>
+			<?php echo h($order['Order']['hour_deposit']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Date_withdrawal'); ?></dt>
+		<dd>
+			<?php echo h($order['Order']['date_withdrawal']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Hour_withdrawal'); ?></dt>
+		<dd>
+			<?php echo h($order['Order']['hour_withdrawal']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('State'); ?></dt>
