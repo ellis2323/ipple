@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Jeu 06 Mars 2014 à 22:19
+-- Généré le : Ven 07 Mars 2014 à 01:03
 -- Version du serveur: 5.1.44
 -- Version de PHP: 5.3.1
 
@@ -38,41 +38,21 @@ CREATE TABLE IF NOT EXISTS `addresses` (
   `city_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `addresses`
 --
 
 INSERT INTO `addresses` (`id`, `firstname`, `lastname`, `phone`, `street`, `floor`, `comment`, `digicode`, `postal_id`, `city_id`, `user_id`) VALUES
-(1, 'Corentin', 'Chateil', '', '00 ', 7, 'dsqfdsf', 'ssdfsdf', 1, 1, 2),
-(2, 'Corentin', 'Chateil', '', '00 ', 7, 'dsqfdsf', 'ssdfsdf', 1, 1, 2),
-(3, 'Corentin', 'Chateil', '', '00 ', 7, 'dsqfdsf', 'ssdfsdf', 1, 2, 2),
-(4, 'Corentin', 'Chateil', '', 'qsdqsddsfqsd', 10, 'qsdqsdqsdqsd', 'qsdqsd', 1, 1, 2),
-(5, 'Corentin', 'Chateil', '', 'qsdqsddsfqsd', 10, 'qsdqsdqsdqsd', 'qsdqsd', 1, 1, 2),
-(6, 'Corentin', 'Chateil', '', 'qsdqsddsfqsd', 10, 'qsdqsdqsdqsd', 'qsdqsd', 1, 1, 2),
-(7, 'Corentin', 'Chateil', '', '00 ', 7, 'sdfsdfsdf', 'ssdfsdf', 1, 1, 2),
-(8, 'Corentin', 'Chateil', '', '00 ', 14, 'qsqsdqsd', 'ssdfsdf', 1, 1, 2),
-(9, 'Corentin', 'Chateil', '', '00 ', 14, 'qsqsdqsd', 'ssdfsdf', 1, 1, 2),
-(10, 'Corentin', 'Chateil', '', '00 ', 14, 'qsqsdqsd', 'ssdfsdf', 1, 1, 2),
-(11, 'Corentin', 'Chateil', '', '00 ', 14, 'qsqsdqsd', 'ssdfsdf', 1, 1, 2),
-(12, 'Corentin', 'Chateil', '', '00 ', 14, 'qsqsdqsd', 'ssdfsdf', 1, 1, 2),
-(13, 'Corentin', 'Chateil', '', '00 ', 14, 'qsqsdqsd', 'ssdfsdf', 1, 1, 2),
-(14, 'Corentin', 'Chateil', '', '00 ', 14, 'qsqsdqsd', 'ssdfsdf', 1, 1, 2),
-(15, 'Corentin', 'Chateil', '', '00 ', 123123, 'qsdfqsdqsd', 'ssdfsdf', 1, 1, 2),
-(16, 'Corentin', 'Chateil', '', '00 ', 123123, 'qsdqsd', 'ssdfsdf', 1, 1, 2),
-(17, 'Corentin', 'Chateil', '', '00 ', 123123, 'qsdqsd', 'ssdfsdf', 1, 1, 2),
-(18, 'Corentin', 'Chateil', '', '00 ', 123123, 'qsdqsd', 'ssdfsdf', 1, 1, 2),
-(19, 'Corentin', 'Chateil', '', '00 ', 123123, 'qsdqsd', 'ssdfsdf', 1, 1, 2),
-(20, 'Corentin', 'Chateil', '', '00 ', 123123, 'qsdqsd', 'ssdfsdf', 1, 1, 2),
-(21, 'Corentin', 'Chateil', '', '00 ', 123123, 'qsdqsd', 'ssdfsdf', 1, 1, 2),
-(22, 'Corentin', 'Chateil', '', '00 ', 123123, 'qsdqsd', 'ssdfsdf', 1, 1, 2),
-(23, 'Corentin', 'Chateil', '', '00 ', 123123, 'qsdqsd', 'ssdfsdf', 1, 1, 2),
-(24, 'Corentin', 'Chateil', '', '00 ', 123123, 'qsdqsd', 'ssdfsdf', 1, 1, 2),
-(25, 'Corentin', 'Chateil', '', '00 ', 123123, 'qsdqsd', 'ssdfsdf', 1, 1, 2),
-(26, 'Corentin', 'Chateil', '', '00 ', 123123, 'qsdqsd', 'ssdfsdf', 1, 1, 2),
-(27, 'Corentin', 'Chateil', '', '00 ', 123123, 'qsdqsd', 'ssdfsdf', 1, 1, 2),
-(28, 'Corentin', 'Chateil', '', '00 ', 11, 'qsdqsdqsd', 'qsdqsd', 1, 1, 2);
+(1, 'dqsdqsd', 'qsdqsdqsd', '', 'qsdqsd', 15, 'qsdqsd', 'qsdqsd', 1, 1, 2),
+(2, 'dqsdqsd', 'qsdqsdqsd', '', 'qsdqsd', 15, 'qsdqsd', 'qsdqsd', 1, 1, 2),
+(3, 'Corentin', 'Chateil', '', '00 ', 4, 'azeazeaze', 'zeaze', 1, 1, 2),
+(4, 'Corentin', 'Chateil', '', '00 ', 4, 'azeazeaze', 'zeaze', 1, 1, 2),
+(5, 'Corentin', 'Chateil', '', '00 ', 4, 'azeazeaze', 'zeaze', 1, 1, 2),
+(6, 'Corentin', 'Chateil', '', '00 ', 4, 'azeazeaze', 'zeaze', 1, 1, 2),
+(7, 'Corentin', 'Chateil', '', '00 ', 4, 'azeazeaze', 'zeaze', 1, 1, 2),
+(8, 'Corentin', 'Chateil', '', '00 ', 4, 'azeazeaze', 'zeaze', 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -152,10 +132,10 @@ INSERT INTO `bacs` (`id`, `user_id`, `title`, `description`, `modified`, `create
 -- --------------------------------------------------------
 
 --
--- Structure de la table `bac_delivery`
+-- Structure de la table `bac_deliveries`
 --
 
-CREATE TABLE IF NOT EXISTS `bac_delivery` (
+CREATE TABLE IF NOT EXISTS `bac_deliveries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `delivery_id` int(11) NOT NULL,
   `bac_id` int(11) NOT NULL,
@@ -163,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `bac_delivery` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Contenu de la table `bac_delivery`
+-- Contenu de la table `bac_deliveries`
 --
 
 
@@ -186,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `cities` (
 
 INSERT INTO `cities` (`id`, `label`, `state`) VALUES
 (1, 'Paris', 0),
-(2, 'Lyon', 0);
+(2, 'Marseille', 0);
 
 -- --------------------------------------------------------
 
@@ -198,21 +178,24 @@ CREATE TABLE IF NOT EXISTS `deliveries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` datetime DEFAULT NULL COMMENT 'Date de la livraison',
   `state` tinyint(1) DEFAULT NULL COMMENT 'Type de livraison',
-  `delivery_id` int(11) DEFAULT NULL COMMENT 'Id de la livraison de retrait, NULL si retrait immédiat',
+  `delivery_id` int(11) DEFAULT NULL COMMENT 'Id de la livraison parente',
   `address_id` int(11) DEFAULT NULL,
   `hour_id` int(11) DEFAULT NULL,
   `order_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `bac_delivery_count` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Table contenant les livraisons' AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Table contenant les livraisons' AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `deliveries`
 --
 
 INSERT INTO `deliveries` (`id`, `date`, `state`, `delivery_id`, `address_id`, `hour_id`, `order_id`, `user_id`, `bac_delivery_count`) VALUES
-(1, '2014-03-06 00:00:00', NULL, NULL, 28, 1, 2, 2, NULL);
+(1, '2010-07-08 00:00:00', NULL, NULL, 2, 2, 1, 2, NULL),
+(2, '2010-06-07 00:00:00', NULL, 1, 2, 2, 1, 2, NULL),
+(3, '2014-03-07 00:00:00', NULL, NULL, 4, 1, 3, 2, NULL),
+(4, '2034-01-01 00:00:00', NULL, 3, 4, 1, 3, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -233,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `hours` (
 --
 
 INSERT INTO `hours` (`id`, `start_hour`, `end_hour`, `state`) VALUES
-(1, '09:30:00', '12:00:00', 1),
+(1, '10:30:00', '12:00:00', 1),
 (2, '14:30:00', '18:00:00', 0);
 
 -- --------------------------------------------------------
@@ -276,15 +259,16 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Permet de gérer les commandes et à lier les différentes livr' AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Permet de gérer les commandes et à lier les différentes livr' AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `orders`
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `delivery_id`, `address_id`, `date_deposit`, `hour_deposit`, `date_withdrawal`, `hour_withdrawal`, `nb_bacs`, `state`, `created`, `modified`) VALUES
-(1, 2, NULL, 27, '2014-03-06 00:00:00', 0, '2014-03-06 00:00:00', 0, 5, 2, '2014-03-06 22:57:31', '2014-03-06 23:03:41'),
-(2, 2, NULL, 28, '2014-03-06 00:00:00', 1, '2014-03-06 00:00:00', 1, 6, 2, '2014-03-06 23:09:59', '2014-03-06 23:13:42');
+(1, 2, NULL, 2, '2010-07-08 00:00:00', 2, '2010-06-07 00:00:00', 2, 11, 2, '2014-03-06 23:55:56', '2014-03-06 23:56:11'),
+(2, 2, NULL, 3, '2014-05-07 00:00:00', 1, '2034-01-01 00:00:00', 1, 6, 1, '2014-03-07 00:59:27', '2014-03-07 01:56:02'),
+(3, 2, NULL, 4, '2014-03-07 00:00:00', 1, '2034-01-01 00:00:00', 1, 5, 2, '2014-03-07 01:01:11', '2014-03-07 01:56:27');
 
 -- --------------------------------------------------------
 
