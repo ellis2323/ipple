@@ -5,8 +5,8 @@
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('nb_bacs'); ?></th>
-			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th><?php echo $this->Paginator->sort('modified'); ?></th>
+			<th><?php echo $this->Paginator->sort('date_deposit'); ?></th>
+			<th><?php echo $this->Paginator->sort('date_withdrawal'); ?></th>
 			<th><?php echo $this->Paginator->sort('state'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
@@ -15,8 +15,8 @@
 		<td><?php echo h($order['Order']['id']); ?>&nbsp;</td>
 		<td><?php echo h($order['User']['email']); ?>&nbsp;</td>
 		<td><?php echo h($order['Order']['nb_bacs']); ?>&nbsp;</td>
-		<td><?php echo h($order['Order']['created']); ?>&nbsp;</td>
-		<td><?php echo h($order['Order']['modified']); ?>&nbsp;</td>
+		<td><?php echo h($order['Order']['date_deposit']); ?>&nbsp;</td>
+		<td><?php echo h($order['Order']['date_withdrawal']); ?>&nbsp;</td>
 		<td><?php echo h($order['Order']['state']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $order['Order']['id'])); ?>

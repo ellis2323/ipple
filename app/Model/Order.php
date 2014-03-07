@@ -20,7 +20,12 @@ class Order extends AppModel {
  *
  * @var array
  */
-	public $validate = array();
+	public $validate = array(
+								'nb_bacs' => array(
+										'rule' => array('checkNbBac', 4),
+										'message' => 'Vous devez prendre au moins 4 bacs'
+								)
+						);
 
 	public $belongsTo = array(
 							'User' => array(
@@ -31,6 +36,10 @@ class Order extends AppModel {
 											),
 							);
 
-	
 
+	// Permet de vérifier le nombre de bacs minimum
+	public function checkNbBac($data, $limit){
+
+		return $data['nb_bacs'] >= $limit;
+	}
 }

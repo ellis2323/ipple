@@ -7,6 +7,10 @@
 		echo $this->Form->input('Order.user_id');
 		echo $this->Form->input('nb_bacs');
 		echo $this->Form->input('state');
+		echo $this->Form->input('date_deposit', array('type'=>'date'));
+		echo $this->Form->input('date_withdrawal', array('type'=>'date'));
+
+
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

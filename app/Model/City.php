@@ -49,7 +49,7 @@ class City extends AppModel {
  *
  * @var array
  */
-	public $belongsTo = array(
+	public $hasMany = array(
 		'Address' => array(
 			'className' => 'Address',
 			'foreignKey' => 'city_id',

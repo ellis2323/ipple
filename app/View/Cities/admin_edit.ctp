@@ -4,7 +4,7 @@
 		<legend><?php echo __('Edit City'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('name');
+		echo $this->Form->input('label');
 		echo $this->Form->input('state');
 	?>
 	</fieldset>

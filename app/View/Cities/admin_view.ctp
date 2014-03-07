@@ -3,12 +3,12 @@
 	<dl>
 		<dt><?php echo __('City'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($city['City']['name'], array('controller' => 'cities', 'action' => 'view', $city['City']['id'])); ?>
+			<?php echo $this->Html->link($city['City']['label'], array('controller' => 'cities', 'action' => 'view', $city['City']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
+		<dt><?php echo __('Label'); ?></dt>
 		<dd>
-			<?php echo h($city['City']['name']); ?>
+			<?php echo h($city['City']['label']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('State'); ?></dt>

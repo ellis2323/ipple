@@ -13,6 +13,12 @@ class DeliveriesController extends AppController {
  *
  * @var array
  */
+
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->deny();
+	}
+
 	public $components = array('Paginator');
 
 /**

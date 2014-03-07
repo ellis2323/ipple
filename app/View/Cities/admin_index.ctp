@@ -3,7 +3,7 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('name'); ?></th>
+			<th><?php echo $this->Paginator->sort('label'); ?></th>
 			<th><?php echo $this->Paginator->sort('state'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
@@ -12,7 +12,7 @@
 		<td>
 			<?php echo $this->Html->link($city['City']['id'], array('controller' => 'cities', 'action' => 'view', $city['City']['id'])); ?>
 		</td>
-		<td><?php echo h($city['City']['name']); ?>&nbsp;</td>
+		<td><?php echo h($city['City']['label']); ?>&nbsp;</td>
 		<td><?php echo h($city['City']['state']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $city['City']['id'])); ?>

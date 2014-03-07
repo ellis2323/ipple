@@ -1,19 +1,12 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * Cities Controller
+ * Hours Controller
  *
- * @property City $City
+ * @property Hour $Hour
  * @property PaginatorComponent $Paginator
  */
-class CitiesController extends AppController {
-
-
-	public function beforeFilter() {
-		parent::beforeFilter();
-		$this->Auth->deny();
-	}
-
+class HoursController extends AppController {
 
 /**
  * Components
@@ -23,7 +16,7 @@ class CitiesController extends AppController {
 	public $components = array('Paginator');
 
 /**
- * index method
+ * admin_index method
  *
  * @return void
  */
@@ -34,13 +27,12 @@ class CitiesController extends AppController {
 		}
 		$this->layout = 'admin'; // Layout admin
 
-		
-		$this->City->recursive = 0;
-		$this->set('cities', $this->Paginator->paginate());
+		$this->Hour->recursive = 0;
+		$this->set('hours', $this->Paginator->paginate());
 	}
 
 /**
- * view method
+ * admin_view method
  *
  * @throws NotFoundException
  * @param string $id
@@ -53,16 +45,15 @@ class CitiesController extends AppController {
 		}
 		$this->layout = 'admin'; // Layout admin
 
-
-		if (!$this->City->exists($id)) {
-			throw new NotFoundException(__('Invalid city'));
+		if (!$this->Hour->exists($id)) {
+			throw new NotFoundException(__('Invalid hour'));
 		}
-		$options = array('conditions' => array('City.' . $this->City->primaryKey => $id));
-		$this->set('city', $this->City->find('first', $options));
+		$options = array('conditions' => array('Hour.' . $this->Hour->primaryKey => $id));
+		$this->set('hour', $this->Hour->find('first', $options));
 	}
 
 /**
- * add method
+ * admin_add method
  *
  * @return void
  */
@@ -73,22 +64,19 @@ class CitiesController extends AppController {
 		}
 		$this->layout = 'admin'; // Layout admin
 
-
 		if ($this->request->is('post')) {
-			$this->City->create();
-			if ($this->City->save($this->request->data)) {
-				$this->Session->setFlash(__('The city has been saved.'));
+			$this->Hour->create();
+			if ($this->Hour->save($this->request->data)) {
+				$this->Session->setFlash(__('The hour has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The city could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The hour could not be saved. Please, try again.'));
 			}
 		}
-		$cities = $this->City->Delivery->find('list');
-		$this->set(compact('cities'));
 	}
 
 /**
- * edit method
+ * admin_edit method
  *
  * @throws NotFoundException
  * @param string $id
@@ -101,32 +89,24 @@ class CitiesController extends AppController {
 		}
 		$this->layout = 'admin'; // Layout admin
 
-
-		if (!$this->City->exists($id)) {
-			throw new NotFoundException(__('Invalid city'));
+		if (!$this->Hour->exists($id)) {
+			throw new NotFoundException(__('Invalid hour'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->City->save($this->request->data)) {
-				$this->Session->setFlash(__('The city has been saved.'));
+			if ($this->Hour->save($this->request->data)) {
+				$this->Session->setFlash(__('The hour has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The city could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The hour could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('City.' . $this->City->primaryKey => $id));
-			$this->request->data = $this->City->find('first', $options);
+			$options = array('conditions' => array('Hour.' . $this->Hour->primaryKey => $id));
+			$this->request->data = $this->Hour->find('first', $options);
 		}
-
-		$cities = $this->City->find('list', array(
-													'fields' => 'label',
-													'recursive' => -1
-												));
-		$this->set(compact('cities'));
-
 	}
 
 /**
- * delete method
+ * admin_delete method
  *
  * @throws NotFoundException
  * @param string $id
@@ -138,19 +118,16 @@ class CitiesController extends AppController {
 			throw new NotFoundException;
 		}
 		$this->layout = 'admin'; // Layout admin
-
-
-		$this->City->id = $id;
-		if (!$this->City->exists()) {
-			throw new NotFoundException(__('Invalid city'));
+		
+		$this->Hour->id = $id;
+		if (!$this->Hour->exists()) {
+			throw new NotFoundException(__('Invalid hour'));
 		}
 		$this->request->onlyAllow('post', 'delete');
-		if ($this->City->delete()) {
-			$this->Session->setFlash(__('The city has been deleted.'));
+		if ($this->Hour->delete()) {
+			$this->Session->setFlash(__('The hour has been deleted.'));
 		} else {
-			$this->Session->setFlash(__('The city could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The hour could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}
-
-}
+	}}

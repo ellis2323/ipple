@@ -34,7 +34,7 @@ class Hour extends AppModel {
 		),
 		'Order' => array(
 			'className' => 'Order',
-			'foreignKey' => 'hour_id',
+			'foreignKey' => 'hour_deposit',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
