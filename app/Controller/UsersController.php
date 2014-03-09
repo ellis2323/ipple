@@ -10,7 +10,7 @@ class UsersController extends AppController {
 		public function beforeFilter() {
 
 			parent::beforeFilter();
-			$this->Auth->allow('register', 'login', 'logout', 'forgot', 'password', 'activate');
+			$this->Auth->allow('register', 'login', 'logout', 'forgot', 'password', 'activate', 'admin_delete', 'admin_edit');
 
 		}
 
@@ -22,6 +22,13 @@ class UsersController extends AppController {
 
 		/* Dashboard Utilisateur*/
 		public function index() {
+
+
+		}
+
+		// Mes bacs
+		public function my(){
+
 				/*
 					// Enlever une liaison
 					$this->User->unbindModel(
@@ -38,11 +45,29 @@ class UsersController extends AppController {
 				);
 				*/
 
+				$this->User->Order->unbindModel(array(
+					'hasMany' => array('Delivery') , 
+					'belongsTo' => array('Address'), 
+
+					));
+				
+				// On liste toutes les bacs utilisateurs
+				$bacs = $this->User->Order->find('all', array(
+					'conditions' => array(
+						'User.id' => $this->Session->read('Auth.User.id')
+						),
+
+					));
+				//debug($bacs);
+
+				$bacs = $bacs['0']['Bac'];
+				$this->set(compact('bacs'));
 
 
 				//debug($this->User->find('all'));
 
 		}
+
 
 		/* Connexion */
 		public function login() {
@@ -359,16 +384,23 @@ class UsersController extends AppController {
 			}
 		}
 
-		// Supprimer (desactiver) un user
-		public function admin_delete($user_id){
-			// Si l'utilisateur est admin
-			if(!($this->Session->read('Auth.User.role') >= 90)) {
-				throw new NotFoundException();
-			}
-			$this->layout = 'admin'; // Layout admin
-
-
-
-
+	public function admin_delete($id = null) {
+		// Si l'utilisateur est admin
+		if(!($this->Session->read('Auth.User.role') >= 90)) {
+			throw new NotFoundException;
 		}
+		$this->layout = 'admin'; // Layout admin
+
+		
+		$this->User->id = $id;
+		if (!$this->User->exists()) {
+			throw new NotFoundException(__('Utilisateur introuvable'));
+		}
+		if ($this->User->delete()) {
+			$this->Session->setFlash(__('L\'utilisateur à correctement été supprimé.'));
+		} else {
+			$this->Session->setFlash(__('L\'utilisateur n\'a pas pu être supprimé'));
+		}
+		return $this->redirect(array('action' => 'index'));
+	}
 }

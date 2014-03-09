@@ -3,10 +3,11 @@
 	<fieldset>
 		<legend><?php echo __('Admin Add Order'); ?></legend>
 	<?php
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('transaction_id');
+		echo $this->Form->input('users');
 		echo $this->Form->input('nb_bacs');
 		echo $this->Form->input('state');
+
+		debug($users);
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

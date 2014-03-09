@@ -21,55 +21,11 @@ class Address extends AppModel {
  * @var array
  */
 
-	// Une adresse appartient à un utilisateurs
-	public $belongsTo = array(
-		'User' => array(
-			'className' => 'User',
-			'foreignKey' => 'user_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
-	);
 
 	// Une adresse à plusieurs livraisons et plusieurs commandes
-	public $hasMany = array(
-		'Delivery' => array(
-			'className' => 'Delivery',
-			'foreignKey' => 'address_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Order' => array(
-			'className' => 'Order',
-			'foreignKey' => 'address_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-	);
 
 	// Une adresse à une ville et un code postal
-	public $hasOne = array(
-		'Postal' => array(
-			'className' => 'postal',
-			'foreignKey' => 'id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'City' => array(
-			'className' => 'City',
-			'foreignKey' => 'id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-
-
-
-		);
+	public $hasOne = array('Postal','City');
 
 
 /**

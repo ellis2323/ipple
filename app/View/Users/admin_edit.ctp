@@ -25,14 +25,14 @@
                                     )); 
 ?>
 <?= $this->Form->input('role', array(
-                                    'type' => 'text',
+                                    'type' => 'number',
                                     'label' => "Role", 
                                     'class' => 'form-control',
                                     'value' => $user['User']['role'],
                                     )); 
 ?>
 <?= $this->Form->input('active', array(
-                                    'type' => 'text',
+                                    'type' => 'number',
                                     'label' => "Activation (0/1)", 
                                     'class' => 'form-control',
                                     'value' => $user['User']['active'],

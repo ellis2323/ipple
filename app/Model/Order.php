@@ -15,6 +15,27 @@ class Order extends AppModel {
  */
 	public $displayField = 'id';
 
+
+
+
+
+	// Une commande peut avoir plusieurs livraisons
+	public $hasMany = array(
+	'Delivery' => array(
+
+		'dependent' => true), 
+	'Bac'
+	);
+
+	// Une commande apppartient à un user, et à une adresse
+	public $belongsTo = array(
+							'User' => array(
+												'className' => 'User', 
+											),
+							'Address'
+	);
+
+
 /**
  * Validation rules
  *
@@ -27,14 +48,7 @@ class Order extends AppModel {
 								)
 						);
 
-	public $belongsTo = array(
-							'User' => array(
-												'className' => 'User', 
-											),
-							'Address' => array(
-												'className' => 'Address', 
-											),
-							);
+
 
 
 	// Permet de vérifier le nombre de bacs minimum

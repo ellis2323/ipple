@@ -1,9 +1,9 @@
 <h1>Ajout simple</h1>
 <?= $this->Form->create('Bacs'); ?>
 
-<?= $this->Form->input('id', array(
+<?= $this->Form->input('code', array(
 						'type' => 'text',
-                                    'label' => "Id du bac", 
+                                    'label' => "Identifiant du bac", 
                                     'class' => 'form-control',
                                     )); 
 ?>

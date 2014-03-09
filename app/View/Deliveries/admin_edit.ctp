@@ -7,8 +7,9 @@
 		echo $this->Form->input('user_id');
 		echo $this->Form->input('order_id');
 		echo $this->Form->input('date');
-		echo $this->Form->input('state');
-		echo $this->Form->input('withdrawal');
+		echo $this->Form->input('Delivery.state', array('type' => 'number'));
+		echo $this->Form->input('DeliveryReturn.date');
+
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

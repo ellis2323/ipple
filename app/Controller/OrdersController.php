@@ -26,7 +26,13 @@ class OrdersController extends AppController {
 		public function index() {
 
 			// On demande toutes les commandes utilisateurs
-			$orders = $this->Order->findAllByUserIdAndState($this->Session->read('Auth.User.id'), '1');
+			$orders = $this->Order->find('all', array(
+													'conditions' => array(
+																		'Order.user_id' => $this->Session->read('Auth.User.id'),
+																		'state >=' => 1
+														)
+												)
+				);
 
 
 			if(!empty($orders)){
@@ -111,22 +117,21 @@ class OrdersController extends AppController {
 			);
 
 
-			debug($order);
-
+			// Si la commande existe et qu'elle appartient bien à l'user
 			if(!empty($order)){
 
 				// On traite le formulaire
 				if(!empty($this->request->data)){
-					$this->Order->id = $order_id;
 
+					// Si les données sont validées
 					if($this->Order->validates() ){
 
 
-						$this->Session->setFlash('Données correctement sauvegardées');
 
-						/*$data_order = array(
+						$data_order = array(
 											"Order" =>
 														array(
+														'id' 			=> $order_id,
 														'user_id'		=> $this->Session->read('Auth.User.id'),
 														'nb_bacs'		=> $this->request->data['Order']['nb_bacs'],
 														'hour_id'		=> 	$this->request->data['Order']['hours'],
@@ -134,19 +139,47 @@ class OrdersController extends AppController {
 														),
 											"Address" =>
 														array(
+															'id'				=> $order['Order']['address_id'],
 															'city_id'			=> $this->request->data['Order']['cities'],
 															'postal_id'			=> $this->request->data['Order']['postals'],
 															'firstname'			=> $this->request->data['Address'][0]['firstname'],
 															'lastname'			=> $this->request->data['Address'][0]['lastname'],
 															'street'			=> $this->request->data['Address'][0]['street'],
 															'digicode'			=> $this->request->data['Address'][0]['digicode'],
-															'floor'			=> $this->request->data['Address'][0]['floor'],
+															'floor'				=> $this->request->data['Address'][0]['floor'],
 															'comment'			=> $this->request->data['Address'][0]['comment'],
 															)
-						);*/
+						);
+
+						if($this->Order->saveAssociated($data_order)){
+							$this->Session->setFlash('Données correctement sauvegardées');
+
+						}
 					}
 				}
 
+
+
+				// On récupère les villes
+			    $cities = $this->Order->Address->City->find('list');
+				$this->set(compact('cities'));
+
+				// On récupère les codes postaux
+			
+				$postals = $this->Order->Address->Postal->find('list');
+				$this->set(compact('postals'));
+
+				// On récupère les heures
+			    $this->Order->bindModel(
+			        array('hasMany' => array(
+			                'Hour' => array(
+			                    'className' => 'Hour'
+			                )
+			            )
+			        )
+			    );			
+				$hours = $this->Order->Hour->find('list');
+				$this->set(compact('hours'));
 
 				$this->set(compact('order'));
 			}
@@ -158,12 +191,10 @@ class OrdersController extends AppController {
 
 		// Passer une commande
 		public function add() {	
-		$this->layout = false; // Layout admin
 
 			// Si le client à déjà une commande en cours
 			$order = $this->Order->find('count',
 												array('conditions' => array(
-																			'Order.delivery_id =' 	=> NULL,
 																			'Order.user_id' 	=> $this->Session->read('Auth.User.id')
 
 													)
@@ -211,7 +242,7 @@ class OrdersController extends AppController {
 			if(!empty($this->request->data)){
 
 
-				debug($this->request->data);
+				//debug($this->request->data);
 
 				// On valide les données
 				if($this->Order->validates()){
@@ -226,12 +257,12 @@ class OrdersController extends AppController {
 														array(
 														'user_id'		=> $this->Session->read('Auth.User.id'),
 														'nb_bacs'		=> $this->request->data['Order']['nb_bacs'],
-														
-														'hour_deposit'		=> 	$this->request->data['Order']['hours'],
-														'hour_withdrawal'	=> 	$this->request->data['Order']['hours'],
 
 														'date_deposit'		=> 	$this->request->data['Order']['date_deposit'],
+														'hour_deposit'		=> 	$this->request->data['Order']['hours'],
+
 														'date_withdrawal'		=> 	$this->request->data['Order']['date_withdrawal'],
+														'hour_withdrawal'	=> 	$this->request->data['Order']['hours'],
 
 														'state'			=> 1
 														),
@@ -258,10 +289,8 @@ class OrdersController extends AppController {
 														'nb_bacs'		=> $this->request->data['Order']['nb_bacs'],
 
 														'hour_deposit'		=> 	$this->request->data['Order']['hours'],
-														'hour_withdrawal'	=> 	$this->request->data['Order']['hours'],
 
 														'date_deposit'		=> 	$this->request->data['Order']['date_deposit'],
-														'date_withdrawal'		=> '0000-00-00',
 
 														'state'			=> 1
 														),
@@ -295,7 +324,7 @@ class OrdersController extends AppController {
 							$CakeEmail->template('order');
 							$CakeEmail->send();
 
-							echo "Reussi";
+							$this->redirect(array('controller' => 'orders', 'action' => 'index'));
 
 					}
 					else {
@@ -380,7 +409,7 @@ class OrdersController extends AppController {
 		$this->Order->recursive = 0;
 
 		$this->Paginator->settings = array('conditions' => 
-														array('state' => 1
+														array('state >=' => 1
 
 										));
 
@@ -436,6 +465,8 @@ class OrdersController extends AppController {
 				$this->Session->setFlash(__('The order could not be saved. Please, try again.'));
 			}
 		}
+		$users = $this->Order->User->find('list', array('fields' => 'email'));
+		$this->set(compact('users'));
 	}
 
 /**
@@ -532,7 +563,7 @@ class OrdersController extends AppController {
 
 			$this->Order->Delivery->save($delivery);
 
-			if($order_edit['Order']['date_withdrawal'] != '0000-00-00 00:00:00') {
+			if($order_edit['Order']['date_withdrawal'] != NULL) {
 				$delivery_deposit = $this->Order->Delivery->id;
 				$this->Order->Delivery->create();
 				$delivery = array(
@@ -563,6 +594,113 @@ class OrdersController extends AppController {
 		else {
 			throw new NotFoundException;
 		}
+	}
+
+	public function admin_add_bac($order_id = null) {
+		// Si l'utilisateur est admin
+		if(!($this->Session->read('Auth.User.role') >= 90)) {
+			throw new NotFoundException;
+		}
+		$this->layout = 'admin'; // Layout admin
+
+
+		// On récupère les bacs liés
+	    $bacs = $this->Order->Bac->find('all',
+	    							array(
+	    								'conditions' => array(
+	    														'Bac.order_id' => $order_id
+
+	    									)
+	    								)
+	    );
+
+
+	    // On les envoeis à la vue
+		$this->set(compact('bacs'));
+
+		// Si on ajoute un bac
+		if ($this->request->is('post')) {
+
+			$bac = $this->Order->Bac->find('first', 
+												array(
+													'fields' => array('code', 'id'),
+													'conditions' => array(
+																				'Bac.code' => $this->request->data['Bac']['code'],
+																				'Bac.order_id' => NULL
+																			))
+										);
+			
+			// Si le bac existe
+			if(!empty($bac)){
+				// On l'associe à une livraison
+				$this->Order->Bac->create();
+
+				$data = array('Bac' => array(
+												'id' => $bac['Bac']['id'],
+												'order_id' => $order_id,
+				));
+
+
+
+				if($this->Order->Bac->saveAssociated($data)){
+					$this->Session->setFlash('Bac correctement associé');
+					$this->redirect(array('controller' => 'orders', 'action' => 'add_bac', 'admin' => true, $order_id));
+				}
+
+			}
+			else {
+				$this->Session->setFlash('Le bac n\'existe pas ou est déjà associé');
+			}
+	
+
+		}
+
+
+
+	}
+
+	public function admin_delete_bac($order_id = null, $bac_id = null) {
+		// Si l'utilisateur est admin
+		if(!($this->Session->read('Auth.User.role') >= 90)) {
+			throw new NotFoundException;
+		}
+		$this->layout = 'admin'; // Layout admin
+
+		$bac = $this->Order->Bac->find('first', array(
+															'fields' => array('id'),
+															'conditions' => array(
+																	'Bac.id' => $bac_id,
+																	'Bac.order_id' => $order_id,
+										)));
+
+
+		if(!empty($bac)){
+
+			$this->Order->Bac->create();
+
+			$data = array('Bac' => array(
+												'id' => $bac_id,
+												'order_id' => NULL,
+				));
+
+			if($this->Order->Bac->saveAssociated($data)){
+					$this->Session->setFlash('Bac correctement dissocié');
+					$this->redirect(array('controller' => 'orders', 'action' => 'add_bac', $order_id, 'admin' => true));
+
+			}
+			else {
+				$this->Session->setFlash('Erreur');
+				$this->redirect(array('controller' => 'orders', 'action' => 'add_bac',$order_id, 'admin' => true, $order_id));
+
+			}
+		}
+		else {
+			$this->Session->setFlash('Bac non associé');
+			$this->redirect(array('controller' => 'orders', 'action' => 'add_bac',$order_id, 'admin' => true, $order_id));
+
+		}
+		
+
 	}
 
 /**

@@ -1,42 +1,98 @@
 <div class="deliveries view">
-<h2><?php echo __('Delivery'); ?></h2>
+<h2><?php echo __('Livraison'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
+		<dt><?php echo __('#ID'); ?></dt>
 		<dd>
 			<?php echo h($delivery['Delivery']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('User Id'); ?></dt>
+		<dt><?php echo __('Utilisateur'); ?></dt>
 		<dd>
-			<?php echo h($delivery['Delivery']['user_id']); ?>
+			<?php $user =  $user['User']['email'];
+			echo h($user); 
+			?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Order'); ?></dt>
+		<dt><?php echo __('ID Commande'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($delivery['Delivery']['order_id'], array('controller' => 'orders', 'action' => 'view', $delivery['Delivery']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Date'); ?></dt>
 		<dd>
-			<?php echo h($delivery['Delivery']['date']); ?>
+			<?php	
+			$date_brut = $delivery['Delivery']['date']; 
+			$date = date_parse_from_format('Y m d',$date_brut);
+
+			//debug($date);
+			echo $date['day']."/".$date['month']."/".$date['year'];
+
+
+
+			?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('State'); ?></dt>
+		<dt><?php echo __('Etat de la commande'); ?></dt>
 		<dd>
 			<?php echo h($delivery['Delivery']['state']); ?>
 			&nbsp;
 		</dd>
 
 	</dl>
+
+
+
 </div>
+<?php if(!empty($delivery_return)):?>
+<div class="deliveries view">
+<h2><?php echo __('Livraison retour'); ?></h2>
+	<dl>
+		<dt><?php echo __('#ID'); ?></dt>
+		<dd>
+			<?php echo h($delivery_return['Delivery']['id']); ?>
+			&nbsp;
+		</dd>
+
+		<dt><?php echo __('ID Commande'); ?></dt>
+		<dd>
+			<?php echo $this->Html->link($delivery_return['Delivery']['order_id'], array('controller' => 'orders', 'action' => 'view', $delivery['Delivery']['id'])); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Date'); ?></dt>
+		<dd>
+			<?php	
+			$date_brut = $delivery['Delivery']['date']; 
+			$date = date_parse_from_format('Y m d',$date_brut);
+
+			//debug($date);
+			echo $date['day']."/".$date['month']."/".$date['year'];
+
+
+
+			?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Etat de la commande'); ?></dt>
+		<dd>
+			<?php echo h($delivery_return['Delivery']['state']); ?>
+			&nbsp;
+		</dd>
+
+	</dl>
+
+
+
+</div>
+<?php endif;?>
+
+
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Delivery'), array('action' => 'edit', $delivery['Delivery']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Delivery'), array('action' => 'delete', $delivery['Delivery']['id']), null, __('Are you sure you want to delete # %s?', $delivery['Delivery']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Deliveries'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Delivery'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Orders'), array('controller' => 'orders', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Order'), array('controller' => 'orders', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Associer bacs'), array('controller' => 'orders', 'action' => 'add_bac', $delivery['Order']['id'])); ?> </li>
+
+		<li><?php echo $this->Html->link(__('Editer la livraison'), array('action' => 'edit', $delivery['Delivery']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Liste des livraisons'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Liste des commandes'), array('controller' => 'orders', 'action' => 'index')); ?> </li>
 	</ul>
 </div>

@@ -2,25 +2,21 @@
 
 <table>
   <tr>
-    <th>ID Bac</th>
+    <th>Identifiant du bac</th>
     <th>ID user</th>
-    <th>Titre</th>
-    <th>Description</th>
     <th>Editer</th>
     <th>Supprimer</th>
 
   </tr>
 
  <?php 
+ if(!empty($bacs)):
   foreach($bacs as $key):
   // Debut foreach
 
     ?>
     <tr>
-      <td><?php echo $key['Bac']['id']; ?></td>
-      <td><?php echo $key['Bac']['user_id']; ?></td>
-      <td><?php echo $key['Bac']['title']; ?></td>
-      <td><?php echo $key['Bac']['description']; ?></td>
+      <td><?php echo $key['Bac']['code']; ?></td>
 
     	<td>
 <?= $this->Html->link("Editer",
@@ -30,14 +26,14 @@
       </td>
 
       <td>
-<?= $this->Html->link("Supprimer",
-                  array(
-                        'controller' => 'bacs', 
-                        'action' => 'admin_delete', $key['Bac']['id']), true); ?>
+
+<?php echo $this->Form->postLink(__('Supprimer'), array('action' => 'delete', $key['Bac']['id']), null, __('Etes vous sur de vouloir supprimer %s ? (irreversible) ', $key['Bac']['code'])); ?>
+      </td>
       </td>
     </tr>
   <?php 
   endforeach;
+  endif;
   // Fin foreach
 
   ?>

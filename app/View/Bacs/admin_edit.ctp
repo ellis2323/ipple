@@ -16,13 +16,6 @@
                                     )); 
 ?>
 
-<?= $this->Form->input('user_id', array(
-						'type' => 'text',
-                                    'label' => "Id du propriétaire", 
-                                    'class' => 'form-control',
-                                    'value' => $bac['Bac']['user_id'],
-                                    )); 
-?>
 
 
 

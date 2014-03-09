@@ -11,34 +11,7 @@ class User extends AppModel {
 
 
 
-	public $hasMany = array(
-		'Bacs' => array(
-			'className' => 'Bacs',
-			'foreignKey' => 'id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-		'Order' => array(
-			'className' => 'Order',
-			'foreignKey' => 'user_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
-	);
+	public $hasMany = array('Order' => array('dependent' => true));
 
 
 /**

@@ -29,7 +29,15 @@ class Delivery extends AppModel {
 
 
 
-	
+
+	public $belongsTo = array('Order','Address');
+	public $hasOne = array('DeliveryReturn' => 
+										array(
+											'className' => 'Delivery',
+											
+											),
+						);
+
 
 
 

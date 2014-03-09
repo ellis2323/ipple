@@ -5,7 +5,6 @@ App::uses('AppController', 'Controller');
 class BacsController extends AppController {
 
 
-
 		// Autorisation
 		public function beforeFilter() {
 
@@ -17,14 +16,12 @@ class BacsController extends AppController {
 		public function index() {
 
 			// On liste toutes les bacs utilisateurs
-			$bacs = $this->Bac->find('all', 
-				array(
-					'conditions' => 
-					array(
-						'user_id' => $this->Session->read('Auth.User.id')) 
-					) 
-			);
+			$bacs = $this->Bac->find('all', array('conditions' => array(
 
+																		'Order.user_id' => $this->Session->read('Auth.User.id')
+																),
+														));
+			//debug($bacs);
 			if(!empty($bacs)){
 				// Si on a des bacs, on liste les bacs
 
@@ -37,10 +34,10 @@ class BacsController extends AppController {
 			$bac_edit = $this->Bac->find('first', 
 				array(
 					'conditions' => 
-					array(
-						'id' => $bac_id, 
-						'user_id' => $this->Session->read('Auth.User.id')
-					) 
+								array(
+									'Bac.id' => $bac_id, 
+									'Order.user_id' => $this->Session->read('Auth.User.id')
+								) 
 				) 
 			);
 
@@ -64,12 +61,13 @@ class BacsController extends AppController {
 					}
 				}
 				// On affiche les données déjà entré par l'user
-				$bac= $this->Bac->find('first',
+				$bac 
+				= $this->Bac->find('first',
 					array(
 							'conditions' =>
 							array(
-									'id' => $bac_id,
-									'user_id' => $this->Session->read('Auth.User.id')
+									'Bac.id' => $bac_id,
+									'Order.user_id' => $this->Session->read('Auth.User.id')
 
 								)
 

@@ -8,7 +8,6 @@
 		echo $this->Form->input('order_id');
 		echo $this->Form->input('date');
 		echo $this->Form->input('state');
-		echo $this->Form->input('delivery_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

@@ -30,10 +30,8 @@
       </td>
 
       <td>
-<?= $this->Html->link("Supprimer",
-                  array(
-                        'controller' => 'users', 
-                        'action' => 'admin_delete', $key['User']['id']), true); ?>
+
+<?php echo $this->Form->postLink(__('Effacer'), array('action' => 'delete', $key['User']['id']), null, __('Etes vous sur de vouloir supprimer %s ? (/!\ IRREVERSIBLE /!\ Toutes les données liées seront effacées aussi /!\ ', $key['User']['email'])); ?>
       </td>
     </tr>
   <?php 

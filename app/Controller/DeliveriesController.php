@@ -27,8 +27,7 @@ class DeliveriesController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Delivery->recursive = 0;
-		$this->set('deliveries', $this->Paginator->paginate());
+		debug($this->Delivery->find('all'));
 	}
 
 
@@ -48,8 +47,11 @@ class DeliveriesController extends AppController {
 		}
 		$this->layout = 'admin'; // Layout admin
 
-
 		$this->Delivery->recursive = 0;
+
+		$this->Paginator->settings = array(
+		        'conditions' => array('Delivery.delivery_id' => NULL),
+		    );
 		$this->set('deliveries', $this->Paginator->paginate());
 	}
 
@@ -72,116 +74,49 @@ class DeliveriesController extends AppController {
 			throw new NotFoundException(__('Invalid delivery'));
 		}
 		$options = array('conditions' => array('Delivery.' . $this->Delivery->primaryKey => $id));
-		$this->set('delivery', $this->Delivery->find('first', $options));
-
-		$users = $this->Delivery->find('list',
-												array(
-														'conditions' => array(
-																				'id' => $id,
-																				)
-													));
-		$this->set(compact('users'));
-	}
+		$delivery = $this->Delivery->find('first', $options);
+		$this->set('delivery', $delivery);
 
 
-	public function admin_add_bac($delivery_id = null) {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
-
-		// On lie les livraisons aux bacs
-	    $this->Delivery->bindModel(
-	        array('hasMany' => array(
-	                'BacDelivery' => array(
-	                    'className' => 'BacDelivery'
+		//--> On lie l'utilisateur correspondant à la livraison
+	   	$users = $this->Delivery->bindModel(
+	        array('belongsTo' => array(
+	                'User' => array(
+	                    'className' => 'User',
+	                    'fields' => array('email'),
 	                )
 	            )
 	        )
 	    );
 
-		// On récupère les bacs liés
-	    $bacs = $this->Delivery->BacDelivery->find('list',
-	    							array(
-	    								'fields' => 'BacDelivery.bac_id', 
-	    								'conditions' => array(
-	    														'BacDelivery.delivery_id' => $delivery_id
-
-	    									)
-	    								)
-	    );
-
-	    // On les envoeis à la vue
-		$this->set(compact('bacs'));
-
-		// Si on ajoute un bac
-		if ($this->request->is('post')) {
-
-			debug($this->request->data);
-
-		    $this->Delivery->bindModel(
-		        array('hasMany' => array(
-		                'Bac' => array(
-		                    'className' => 'Bac',
-		                )
-		            )
-		        )
-		    );
-			$bac = $this->Delivery->Bac->find('first', 
-												array('fields' => 'code','conditions' => array(
-																				'code' => $this->request->data['Bac']['code']
-																			))
-										);
-			
-			// Si le bac existe
-			if(!empty($bac)){
-				$bac_id = $bac['Bac']['id'];
-			    $this->Delivery->bindModel(
-									        array(
-									        	'hasMany' => array(
-								                					'BacDelivery' => array(
-									                   									 'className' => 'BacDelivery',
-									                )
-									            )
-									        )
-			    );
-				// On insert la liaison
-				$this->Delivery->BacDelivery->create();
-
-				$data = array(
-									'BacDelivery' => array(
-													'bac_id' => $bac_id,
-													'delivery_id' => $delivery_id,
-
-												)
-								);
+	    // on cherche son email
+		$user = $this->Delivery->User->find('first',
+												array(
+														'conditions' => array(
+																				'User.id' => $delivery['Order']['user_id'],
+																				),
+														'fields' => array('email'),
+													));
+		// On l'envoie à la vue
+		$this->set(compact('user'));
 
 
+		//--> Si il y à une livraison différé
+		$is_return = $this->Delivery->find('first', array(
+													'conditions' => array(
+																			'Delivery.delivery_id' => $id)
+													)
+		);
+		if(!empty($is_return)){
+			$options = array('conditions' => array('Delivery.id' => $is_return['Delivery']['id']));
 
-				$this->Delivery->BacDelivery->save($data);
-
-			}
-	
+			$this->set('delivery_return', $this->Delivery->find('first', $options));
 
 		}
-
-
-
 	}
 
-	public function admin_delete_bac($bac_id = null, $delivery_id = null) {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
 
 
-		// On vérifie que la liaison $bac_id $delivery_id existe, 
-							//si elle est présente, on la supprime
-
-	}
 /**
  * admin_add method
  *
@@ -233,9 +168,25 @@ class DeliveriesController extends AppController {
 			throw new NotFoundException(__('Invalid delivery'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Delivery->save($this->request->data)) {
+
+
+			$data = array(
+				'Delivery' => array(		
+									'id' => $id,
+									'user_id' => $this->request->data['Delivery']['user_id'],
+									'order_id' => $this->request->data['Delivery']['order_id'],
+									'date' => $this->request->data['Delivery']['date'],
+							),
+				'DeliveryReturn' => array(
+							'date' => $this->request->data['DeliveryReturn']['date'],
+							),
+				);
+
+
+
+			if ($this->Delivery->save($data)) {
 				$this->Session->setFlash(__('The delivery has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				//return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The delivery could not be saved. Please, try again.'));
 			}
@@ -247,8 +198,22 @@ class DeliveriesController extends AppController {
 		$this->set(compact('orders'));
 
 
+		//--> On lie l'utilisateur correspondant à la livraison
+	   	$users = $this->Delivery->bindModel(
+	        array('belongsTo' => array(
+	                'User' => array(
+	                    'className' => 'User',
+	                    'fields' => array('email'),
+	                )
+	            )
+	        )
+	    );
 		$users = $this->Delivery->User->find('list');
 		$this->set(compact('users'));
+
+
+
+
 	}
 
 /**

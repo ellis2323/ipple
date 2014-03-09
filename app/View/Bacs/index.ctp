@@ -31,10 +31,27 @@ if(!empty($bacs)){
           <div class="un_bac"> 
               <div class="row">
                     
-                          <div class="col-lg-3 col-md-3 col-sm-3 photo1">
-                          <a href="#"><span class="glyphicon glyphicon-download-alt icone pull-right"></span></a>
+                      <?php 
+                      if(!empty($key['Media'])): 
+                      ?>
 
-                      </div>
+                            <?= $this->Html->image($key['Bac']['thumb'], array('width' => '250', 'height' => '250', 'class' => 'col-lg-3 col-md-3 col-sm-3 ' ) ); ?>
+
+
+
+
+                      <?php 
+                      else: 
+                      ?>
+                        <div class="col-lg-3 col-md-3 col-sm-3 photo1">
+                            <a href="#"><span class="glyphicon glyphicon-download-alt icone pull-right"></span></a>
+
+                        </div>
+
+                      <?php 
+                      endif; 
+
+                      ?>
                       <div class="col-lg-5 col-md-5 col-sm-5">
                           <div class="col-lg-4 col-md-4 col-sm-4">
                               <h4><?php echo $key['Bac']['title']; ?></h4>
@@ -49,7 +66,7 @@ if(!empty($bacs)){
                               <textarea class="form-control" rows="5" id="commentaires"><?php echo $key['Bac']['description']; ?></textarea>
                               <p class="icone">
                               
-                                  <a href="#"><span class="glyphicon glyphicon-pencil icone"></span>Modifier la description</a>
+                                  <a href="<?= $this->Html->url(array('action' => 'edit',$key['Bac']['id']) );?>"><span class="glyphicon glyphicon-pencil icone"></span>Modifier la description</a>
                                   <a href="#"><span class="glyphicon glyphicon-remove icone"></span>Supprimer la description</a>
                               </p>
                       </div>

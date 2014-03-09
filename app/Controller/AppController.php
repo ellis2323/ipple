@@ -48,6 +48,9 @@ class AppController extends Controller {
 		    )
 		);
 
+
+		public $helpers = array('Html', 'Form', 'Media.Media');
+
 		public function beforeFilter(){
 			parent::beforeFilter();
 
@@ -56,5 +59,12 @@ class AppController extends Controller {
 		public function isAuthorized($user = null){
 				return true;
 		}
+
+		public function canUploadMedias($model, $id) {
+			return true;
+
+
+		}
+
 
 	}

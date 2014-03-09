@@ -28,9 +28,9 @@ if(!empty($addresses)){
 else {
 	*/
 
-		echo $this->Form->input('cities', array('value'     => $order['City']['label']));
+		echo $this->Form->input('cities');
 
-		echo $this->Form->input('postals', array('value'     => $order['Postal']['label']));
+		echo $this->Form->input('postals');
 
 		echo $this->Form->input('Address.0.firstname', array('value'     => $order['Address']['firstname']));
 
@@ -48,7 +48,13 @@ else {
 
 //}
 		echo $this->Form->input('date', array('type' => 'date'));
-		echo $this->Form->input('hours', array('value'     => $order['Hour']['start_hour']));
+		echo $this->Form->input('hours');
+
+if(!empty($returns)){
+		echo $this->Form->input('date', array('type' => 'date'));
+		echo $this->Form->input('hours');
+
+}
 
 
 	?>

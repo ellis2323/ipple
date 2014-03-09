@@ -8,6 +8,13 @@ App::uses('AppController', 'Controller');
  */
 class PostalsController extends AppController {
 
+	// Autorisation
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->deny();
+	}
+
+
 /**
  * Components
  *
@@ -21,6 +28,12 @@ class PostalsController extends AppController {
  * @return void
  */
 	public function admin_index() {
+		// Si l'utilisateur est admin
+		if(!($this->Session->read('Auth.User.role') >= 90)) {
+			throw new NotFoundException;
+		}
+		$this->layout = 'admin'; // Layout admin
+		
 		$this->Postal->recursive = 0;
 		$this->set('postals', $this->Paginator->paginate());
 	}
@@ -33,6 +46,12 @@ class PostalsController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
+		// Si l'utilisateur est admin
+		if(!($this->Session->read('Auth.User.role') >= 90)) {
+			throw new NotFoundException;
+		}
+		$this->layout = 'admin'; // Layout admin
+
 		if (!$this->Postal->exists($id)) {
 			throw new NotFoundException(__('Invalid postal'));
 		}
@@ -46,6 +65,12 @@ class PostalsController extends AppController {
  * @return void
  */
 	public function admin_add() {
+		// Si l'utilisateur est admin
+		if(!($this->Session->read('Auth.User.role') >= 90)) {
+			throw new NotFoundException;
+		}
+		$this->layout = 'admin'; // Layout admin
+
 		if ($this->request->is('post')) {
 			$this->Postal->create();
 			if ($this->Postal->save($this->request->data)) {
@@ -65,6 +90,12 @@ class PostalsController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
+		// Si l'utilisateur est admin
+		if(!($this->Session->read('Auth.User.role') >= 90)) {
+			throw new NotFoundException;
+		}
+		$this->layout = 'admin'; // Layout admin
+
 		if (!$this->Postal->exists($id)) {
 			throw new NotFoundException(__('Invalid postal'));
 		}
@@ -89,6 +120,12 @@ class PostalsController extends AppController {
  * @return void
  */
 	public function admin_delete($id = null) {
+		// Si l'utilisateur est admin
+		if(!($this->Session->read('Auth.User.role') >= 90)) {
+			throw new NotFoundException;
+		}
+		$this->layout = 'admin'; // Layout admin
+
 		$this->Postal->id = $id;
 		if (!$this->Postal->exists()) {
 			throw new NotFoundException(__('Invalid postal'));
