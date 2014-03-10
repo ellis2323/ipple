@@ -40,18 +40,48 @@ class Order extends AppModel {
 										'message' => 'Vous devez prendre au moins 4 bacs'
 								),
 								'date_deposit' => array(
-										'rule' => 'checkDate',
-										'message' => 'La date selectionnée est indisponible'
+														'CheckDate' =>array(
+																			'rule' => 'checkDate',
+																			'message' => 'La date selectionnée est indisponible',
+																			'required' => true,
+																		),
 								),
-								'date_withdrawal' => array(
-										'rule' => 'checkDate',
-										'message' => 'La date selectionnée est indisponible'
+								'date_withdrawal' => array(								
+															'VerifDate' =>array(
+																				'rule' => array('checkWithdraw', 'date_deposit'),
+																				'message' => 'Vérifiez que la date de récupération est supérieur à la date de dépôt'
+																			),
+															'CheckDate' =>array(
+																				'rule' => 'checkDate',
+																				'message' => 'La date selectionnée est indisponible'
+																			),	
 								)
 						);
 
 	// Permet de vérifier le nombre de bacs minimum
 	public function checkNbBac($data, $limit_min, $limit_max){
+		// Ajouter la récupération du nombre de bac min et max dans la BDD
 		if($data['nb_bacs'] >= $limit_min && $data['nb_bacs'] <= $limit_max){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	// Permet de vérifier que la date de retrait est supérieur à la date de dépot
+	public function checkWithdraw($data, $data_deposit){
+		$deposit = $this->data[$this->name][$data_deposit];
+		$deposit = strtotime($deposit);
+
+		// On convertis le datetime en timestamp
+		foreach($data as $withdraw){
+			$withdraw = strtotime($withdraw);
+		}
+
+		if($deposit < $withdraw){
+			debug($deposit);
+			debug($withdraw);
 			return true;
 		}
 		else {
@@ -81,7 +111,6 @@ class Order extends AppModel {
 		// On cherche si les attributs sont présent dans la table de blocage
 		$day_block = $DatesBlock->findByValueAndType($day, 1);
 		$week_block = $DatesBlock->findByValueAndType($week, 2);
-		debug($week_block);
 		$month_block = $DatesBlock->findByValueAndType($month, 3);
 		$day_week_block = $DatesBlock->findByValueAndType($day_week, 4);
 
