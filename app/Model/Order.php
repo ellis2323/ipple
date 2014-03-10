@@ -16,25 +16,18 @@ class Order extends AppModel {
 	public $displayField = 'id';
 
 
-
-
-
-	// Une commande peut avoir plusieurs livraisons
-	public $hasMany = array(
-	'Delivery' => array(
-
-		'dependent' => true), 
-	'Bac'
-	);
-
-	// Une commande apppartient à un user, et à une adresse
 	public $belongsTo = array(
-							'User' => array(
-												'className' => 'User', 
-											),
+							'User',
 							'Address'
 	);
 
+	public $hasAndBelongsToMany = array('Bac');
+
+	public $hasMany = array(
+							'BacR' => array(
+											'dependent' => true
+											)
+							);
 
 /**
  * Validation rules

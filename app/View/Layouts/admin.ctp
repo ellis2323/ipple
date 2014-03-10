@@ -178,9 +178,6 @@
 
                         <li><a href="<?= $this->Html->url(array('controller' => 'orders', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Commandes</span></a></li>
 
-
-                        <li><a href="<?= $this->Html->url(array('controller' => 'deliveries', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Livraisons</span></a></li>
-
                         <li><a href="<?= $this->Html->url(array('controller' => 'bacs', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Bacs</span></a></li>
 
                         <li><a href="<?= $this->Html->url(array('controller' => 'cities', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Villes</span></a></li>

@@ -12,32 +12,55 @@
 			&nbsp;
 		</dd>
 
-		<dt><?php echo __('Nb Bacs'); ?></dt>
+		<dt><?php echo __('Nb Bacs (commande)'); ?></dt>
 		<dd>
 			<?php echo h($order['Order']['nb_bacs']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Date_deposit'); ?></dt>
+
+		<hr />
+
+		<dt><?php echo __('Date livraison depot'); ?></dt>
 		<dd>
 			<?php echo h($order['Order']['date_deposit']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Hour_deposit'); ?></dt>
+		<dt><?php echo __('Heure livraison retour'); ?></dt>
 		<dd>
 			<?php echo h($order['Order']['hour_deposit']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Date_withdrawal'); ?></dt>
+		<dt><?php echo __('Etat livraison depot'); ?></dt>
+		<dd>
+			<?php echo h($order['Order']['state_deposit']); ?>
+			&nbsp;
+		</dd>
+
+		<hr />
+		
+		<?php if(!empty($order['Order']['date_withdrawal'])): ?>
+		<dt><?php echo __('Date livraison retour'); ?></dt>
 		<dd>
 			<?php echo h($order['Order']['date_withdrawal']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Hour_withdrawal'); ?></dt>
+		<dt><?php echo __('Heure livraison retour'); ?></dt>
 		<dd>
 			<?php echo h($order['Order']['hour_withdrawal']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('State'); ?></dt>
+		<dt><?php echo __('Etat livraison retour'); ?></dt>
+		<dd>
+			<?php echo h($order['Order']['state_withdrawal']); ?>
+			&nbsp;
+		</dd>
+		<?php 
+		endif;
+		?>
+
+		<hr />
+
+		<dt><?php echo __('Etat de la commande'); ?></dt>
 		<dd>
 			<?php echo h($order['Order']['state']); ?>
 			&nbsp;

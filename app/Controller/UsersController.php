@@ -10,7 +10,7 @@ class UsersController extends AppController {
 		public function beforeFilter() {
 
 			parent::beforeFilter();
-			$this->Auth->allow('register', 'login', 'logout', 'forgot', 'password', 'activate', 'admin_delete', 'admin_edit');
+			$this->Auth->allow('register', 'login', 'logout', 'forgot', 'password', 'activate');
 
 		}
 
@@ -21,54 +21,110 @@ class UsersController extends AppController {
 
 
 		/* Dashboard Utilisateur*/
-		public function index() {
+		public function mail() {
+ 
+ 			if(!empty($this->request->data)){
+				$this->MailchimpSubscriber = ClassRegistry::init('Mailchimp.MailchimpSubscriber');
+
+				$data = array('EMAIL' => 'corentin@prout.fr');
+				$this->MailchimpSubscriber->save($this->request->data);
+				debug($this->MailchimpSubscriber->Mailchimp->errorCode);
+				debug($this->MailchimpSubscriber->Mailchimp->errorMessage);
+			}
+		}
+
+		// Mes bacs
+		public function my_bacs(){
+			
+				// On liste toutes les bacs utilisateurs
+				$bacs = $this->User->Bac->find('all', array(
+															'conditions' => array(
+																					'user_id' => $this->Session->read('Auth.User.id'),
+																					'state <' => 3
+															),
+														)
+				) ;
+
+				// On les envois à la vue
+				$this->set(compact('bacs'));
+
+				// Si on à fait une demande de retrait de bac
+				if(!empty($this->request->data)){
+
+
+						$this->User->Order->create();
+						$data = array(	
+								'user_id'	=> $this->Session->read('Auth.User.id'),
+								'state' 	=> 3, // Etat à 3 : Demande de retrait
+						);
+
+						$this->User->Order->save($data);
+						$bacs = $this->request->data;
+						$order_id = $this->User->Order->id;
+
+						$nb_bac_withdraw = 0;
+
+						// On parse chaque demande
+						foreach($bacs['Order'] as $bac_id => $check){
+								// Si l'utilisateur veux retirer le bac
+								if($check == 1){
+
+									$exist = $this->User->Order->Bac->findById($bac_id);
+
+									// Si le bac n'est pas déjà sortie
+									if($exist['Bac']['state'] == 0){
+
+										// On ajoute la liaison à la commande
+										$this->User->Order->BacR->create();
+
+										$data = array(
+													'bac_id' => $bac_id,
+													'order_id' => $this->User->Order->id,
+										);
+
+										$this->User->Order->BacR->save($data);
+
+
+										// On passe le bac en "retrait utilisateur"
+										$this->User->Bac->create();
+										$this->User->Bac->id = $bac_id;
+										$data = array(
+													'nb_bacs' => $nb_bac_withdraw,
+													'state' => 3,
+										);
+
+										$this->User->Bac->save($data);
+
+										echo "Je veux retirer le bac ".$bac_id."<br />";
+										$nb_bac_withdraw++;
+									}
+								}
+						}								
+
+						echo "<br /><br />Je veux retirer ".$nb_bac_withdraw."bacs";
+						debug($this->request->data);
+
+				}
 
 
 		}
 
 		// Mes bacs
-		public function my(){
-
-				/*
-					// Enlever une liaison
-					$this->User->unbindModel(
-						array('hasMany' => array('Bac'))
-					);
-					
-
-					// Ajouter une liaison
-					$this->User->bindModel(
-					array('hasMany' => array(
-						'Orders' => array(
-							'className' => 'Order'))
-					)
-				);
-				*/
-
-				$this->User->Order->unbindModel(array(
-					'hasMany' => array('Delivery') , 
-					'belongsTo' => array('Address'), 
-
-					));
-				
+		public function my_orders(){
+			
 				// On liste toutes les bacs utilisateurs
-				$bacs = $this->User->Order->find('all', array(
-					'conditions' => array(
-						'User.id' => $this->Session->read('Auth.User.id')
-						),
+				$data = $this->User->Orders->find('all', array(
+															'conditions' => array(
+																					'user_id' => $this->Session->read('Auth.User.id')
+															),
+														)
+				) ;
 
-					));
-				//debug($bacs);
+				$orders = $data;
+				$this->set(compact('orders'));
 
-				$bacs = $bacs['0']['Bac'];
-				$this->set(compact('bacs'));
-
-
-				//debug($this->User->find('all'));
 
 		}
-
-
 		/* Connexion */
 		public function login() {
 			if(!empty($this->request->data)){

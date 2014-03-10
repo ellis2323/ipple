@@ -324,7 +324,7 @@ class OrdersController extends AppController {
 							$CakeEmail->template('order');
 							$CakeEmail->send();
 
-							$this->redirect(array('controller' => 'orders', 'action' => 'index'));
+							$this->redirect(array('controller' => 'users', 'action' => 'my_bacs'));
 
 					}
 					else {
@@ -536,16 +536,7 @@ class OrdersController extends AppController {
 
 			$this->Order->save($data);
 
-			// On associe au livraisons pour l'enregistrement
-		    $this->Order->bindModel(
-		        array('hasMany' => array(
-		                'Delivery' => array(
-		                    'className' => 'Delivery',
-		                    'foreignKey' => 'order_id'
-		                )
-		            )
-		        ), false
-		    );
+
 
 			$this->Order->Delivery->create();
 
@@ -557,6 +548,7 @@ class OrdersController extends AppController {
 												'user_id' => $order_edit['Order']['user_id'],
 												'address_id' => $order_edit['Order']['address_id'],
 												'hour_id' => $order_edit['Order']['hour_deposit'],
+												'state'		=> 1,
 
 											)
 							);
@@ -596,6 +588,7 @@ class OrdersController extends AppController {
 		}
 	}
 
+
 	public function admin_add_bac($order_id = null) {
 		// Si l'utilisateur est admin
 		if(!($this->Session->read('Auth.User.role') >= 90)) {
@@ -605,53 +598,46 @@ class OrdersController extends AppController {
 
 
 		// On récupère les bacs liés
-	    $bacs = $this->Order->Bac->find('all',
-	    							array(
-	    								'conditions' => array(
-	    														'Bac.order_id' => $order_id
-
-	    									)
-	    								)
-	    );
-
-
-	    // On les envoeis à la vue
+	    $bacs = $this->Order->findAllById($order_id);
+	    $bacs = $bacs[0]['Bac'];
+		// On les envoeis à la vue
 		$this->set(compact('bacs'));
+
+	    $this->set(compact('order_id'));
+
+	    
 
 		// Si on ajoute un bac
 		if ($this->request->is('post')) {
 
-			$bac = $this->Order->Bac->find('first', 
-												array(
-													'fields' => array('code', 'id'),
-													'conditions' => array(
-																				'Bac.code' => $this->request->data['Bac']['code'],
-																				'Bac.order_id' => NULL
-																			))
-										);
-			
-			// Si le bac existe
-			if(!empty($bac)){
-				// On l'associe à une livraison
-				$this->Order->Bac->create();
+		    $bac = $this->Order->Bac->findByCode($this->request->data['Bac']['code']);
+		    if(!empty($bac)){
 
-				$data = array('Bac' => array(
-												'id' => $bac['Bac']['id'],
-												'order_id' => $order_id,
-				));
+		    	$exist = $this->Order->BacR->findByBacIdAndOrderId($bac['Bac']['id'], $order_id);
+		    	if(empty($exist)){
+			    	$this->Order->BacR->create();
 
 
+			    	$this->Order->BacR->save(array(
+										    			'order_id' => $order_id,
+										    			'bac_id' => $bac['Bac']['id']
+										      		)
+					      						);
 
-				if($this->Order->Bac->saveAssociated($data)){
-					$this->Session->setFlash('Bac correctement associé');
-					$this->redirect(array('controller' => 'orders', 'action' => 'add_bac', 'admin' => true, $order_id));
-				}
+			    	$this->Session->setFlash('Bac correctement associé');
+					$this->redirect(array('controller' => 'orders', 'action' => 'add_bac', $order_id, 'admin' => true));
 
-			}
-			else {
-				$this->Session->setFlash('Le bac n\'existe pas ou est déjà associé');
-			}
-	
+			    }
+			    else{
+			    	$this->Session->setFlash('Bac déjà associé');
+			    }
+
+		    }
+		    else {
+		    	echo "erreur";
+
+		    }
+
 
 		}
 
@@ -666,44 +652,40 @@ class OrdersController extends AppController {
 		}
 		$this->layout = 'admin'; // Layout admin
 
-		$bac = $this->Order->Bac->find('first', array(
-															'fields' => array('id'),
-															'conditions' => array(
-																	'Bac.id' => $bac_id,
-																	'Bac.order_id' => $order_id,
-										)));
+
+
+		$bac = $this->Order->BacR->findByBacIdAndOrderId($bac_id, $order_id);
+
 
 
 		if(!empty($bac)){
 
-			$this->Order->Bac->create();
+			$data = array(
+						'bac_id' => $bac_id, 
+						'order_id' => $order_id
+						);
 
-			$data = array('Bac' => array(
-												'id' => $bac_id,
-												'order_id' => NULL,
-				));
+			if($this->Order->BacR->delete($bac['BacR']['id'])){
 
-			if($this->Order->Bac->saveAssociated($data)){
-					$this->Session->setFlash('Bac correctement dissocié');
-					$this->redirect(array('controller' => 'orders', 'action' => 'add_bac', $order_id, 'admin' => true));
-
+				$this->Session->setFlash('Bac dissocié');
+				$this->redirect(array('controller' => 'orders', 'action' => 'add_bac', $order_id, 'admin' => true));
 			}
 			else {
 				$this->Session->setFlash('Erreur');
-				$this->redirect(array('controller' => 'orders', 'action' => 'add_bac',$order_id, 'admin' => true, $order_id));
+				$this->redirect(array('controller' => 'orders', 'action' => 'add_bac', $order_id, 'admin' => true));
 
 			}
+
 		}
 		else {
 			$this->Session->setFlash('Bac non associé');
-			$this->redirect(array('controller' => 'orders', 'action' => 'add_bac',$order_id, 'admin' => true, $order_id));
 
 		}
-		
 
 	}
 
-/**
+
+	/**
  * admin_delete method
  *
  * @throws NotFoundException

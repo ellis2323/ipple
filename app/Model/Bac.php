@@ -14,33 +14,14 @@ class Bac extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'title';
+	public $displayField = 'code';
 
 	public $actsAs = array('Media.Media');
 
-	public $belongsTo = array(
-		'Order' => array(
-			'className' => 'Order',
 
-		)
-	);
-
-	public $hasMany = array(
-
-		'Lock' => array(
-			'className' => 'Lock',
-			'foreignKey' => 'bac_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
-	);
+	
+	
+	public $hasMany = array('Lock');
 
 
 /**

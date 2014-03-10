@@ -12,34 +12,9 @@ class BacsController extends AppController {
 			$this->Auth->deny();
 		}
 
-		/* Liste des bacs utilisateur */
-		public function index() {
-
-			// On liste toutes les bacs utilisateurs
-			$bacs = $this->Bac->find('all', array('conditions' => array(
-
-																		'Order.user_id' => $this->Session->read('Auth.User.id')
-																),
-														));
-			//debug($bacs);
-			if(!empty($bacs)){
-				// Si on a des bacs, on liste les bacs
-
-				$this->set(compact('bacs'));
-			}
-		}
-
 		/* Editer un bac */
 		public function edit($bac_id) {
-			$bac_edit = $this->Bac->find('first', 
-				array(
-					'conditions' => 
-								array(
-									'Bac.id' => $bac_id, 
-									'Order.user_id' => $this->Session->read('Auth.User.id')
-								) 
-				) 
-			);
+			$bac_edit = $this->Bac->findByIdAndUserId($bac_id, $this->Session->read('Auth.User.id'));
 
 			// Si le bac existe et qu'il appartient bien à l'utilisateur
 			if(!empty($bac_edit)){
@@ -67,7 +42,7 @@ class BacsController extends AppController {
 							'conditions' =>
 							array(
 									'Bac.id' => $bac_id,
-									'Order.user_id' => $this->Session->read('Auth.User.id')
+									'Bac.user_id' => $this->Session->read('Auth.User.id')
 
 								)
 
@@ -165,6 +140,8 @@ class BacsController extends AppController {
 								) 
 							);
 
+			$orders = $this->Bac->Order->find('list');
+			$this->set(compact('orders'));
 			// Si le bac existe et qu'il appartient bien à l'utilisateur
 			if(!empty($bac_edit)){
 				if(!empty($this->request->data)){
@@ -174,16 +151,22 @@ class BacsController extends AppController {
 					if($this->Bac->validates() ){
 
 
-						$this->Session->setFlash('Données correctement sauvegardées');
+
+						$this->Bac->create();
+
+						$data= array(
+									'Bac' => array(
+													'id'				=> $bac_id,
+													'code'				=> $this->request->data['Bacs']['code'],
+													'order_id' 			=> $this->request->data['Bacs']['orders'],
+						));
 
 						// On enregistre les données
-						$this->Bac->save(array(
-							'Bac.id'				=> $this->request->data['Bacs']['id'],
-							'Bac.code'				=> $this->request->data['Bacs']['title'],
-							'Bac.title'				=> $this->request->data['Bacs']['title'],
-							'Bac.description' 		=> $this->request->data['Bacs']['description'],
-							'Bac.user_id' 			=> $this->request->data['Bacs']['user_id'],
-						));
+						if($this->Bac->saveAssociated($data)){
+							$this->Session->setFlash('Données correctement sauvegardées');
+							//debug($this->Bac->saveAssociated($data));
+
+						}
 					}
 				}
 				// On affiche les données déjà entré par l'user
@@ -200,6 +183,34 @@ class BacsController extends AppController {
 			}
 
 
+		}
+
+		public function admin_view($id = null) {
+			if (!$this->Bac->exists($id)) {
+				throw new NotFoundException(__('Invalid bac'));
+			}
+			$options = array('conditions' => array('Bac.' . $this->Bac->primaryKey => $id));
+			$this->set('bac', $this->Bac->find('first', $options));
+		}
+
+		public function admin_delete($id = null) {
+			// Si l'utilisateur est admin
+			if(!($this->Session->read('Auth.User.role') >= 90)) {
+				throw new NotFoundException;
+			}
+			$this->layout = 'admin'; // Layout admin
+
+			
+			$this->Bac->id = $id;
+			if (!$this->Bac->exists()) {
+				throw new NotFoundException(__('Bac introuvable'));
+			}
+			if ($this->Bac->delete()) {
+				$this->Session->setFlash(__('Le bac à correctement été supprimé.'));
+			} else {
+				$this->Session->setFlash(__('Le bac n\'a pas pu être supprimé'));
+			}
+			return $this->redirect(array('action' => 'index'));
 		}
 
 }

@@ -1,4 +1,4 @@
-<?= $this->Form->create('Delivery'); ?>
+<?= $this->Form->create('Order'); ?>
 
 <?php
 echo $this->Form->input('Bac.code', array(
@@ -10,7 +10,8 @@ echo $this->Form->input('Bac.code', array(
 <?php
 if(!empty($bacs)){
 		foreach($bacs as $bac){
-			echo $bac['Bac']['code']."<a href='".$this->Html->url(array('controller'=>'orders', 'action' => 'delete_bac', $bac['Bac']['order_id'], $bac['Bac']['id'], 'admin' => true, ))."'>[X]</a> <br />";
+			debug($bac);
+			echo $bac['code']."<a href='".$this->Html->url(array('controller'=>'orders', 'action' => 'delete_bac', $bac['BacsOrder']['order_id'], $bac['id'], 'admin' => true, ))."'>[X]</a> <br />";
 		}
 
 }
