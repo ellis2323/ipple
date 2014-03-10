@@ -36,7 +36,7 @@ class Order extends AppModel {
  */
 	public $validate = array(
 								'nb_bacs' => array(
-										'rule' => array('checkNbBac', 4),
+										'rule' => array('checkNbBac', 4, 10),
 										'message' => 'Vous devez prendre au moins 4 bacs'
 								),
 								'date_deposit' => array(
@@ -50,8 +50,13 @@ class Order extends AppModel {
 						);
 
 	// Permet de vérifier le nombre de bacs minimum
-	public function checkNbBac($data, $limit){
-		return $data['nb_bacs'] >= $limit;
+	public function checkNbBac($data, $limit_min, $limit_max){
+		if($data['nb_bacs'] >= $limit_min && $data['nb_bacs'] <= $limit_max){
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	// Permet de vérifier la disponibilité de la date
@@ -89,7 +94,7 @@ class Order extends AppModel {
 		}		
 
 	}
-	
+
 	/*public function checkHour($data){
 		// On charge le model contenant les blocages de créneaux
 		App::import('Model','HoursBlock');
