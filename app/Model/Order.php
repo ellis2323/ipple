@@ -60,6 +60,7 @@ class Order extends AppModel {
 
 	// Permet de vérifier le nombre de bacs minimum
 	public function checkNbBac($data, $limit_min, $limit_max){
+
 		// Ajouter la récupération du nombre de bac min et max dans la BDD
 		if($data['nb_bacs'] >= $limit_min && $data['nb_bacs'] <= $limit_max){
 			return true;
