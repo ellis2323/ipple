@@ -6,6 +6,7 @@
 
 
       <?php
+      
       if(isset($bac['Bac']['thumb'])) { 
 
             echo $this->Html->image($bac['Bac']['thumb'], array('width' => '250', 'height' => '250') ); 

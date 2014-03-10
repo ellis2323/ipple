@@ -14,10 +14,23 @@ class BacsController extends AppController {
 
 		/* Editer un bac */
 		public function edit($bac_id) {
-			$bac_edit = $this->Bac->findByIdAndUserId($bac_id, $this->Session->read('Auth.User.id'));
+
+			// On cherche les infos sur le bac
+			$bac = $this->Bac->find('first', array(
+														'Bac' => array(
+																		'conditions' => array(
+																								'user_id' => $this->Session->read('Auth.User.id'),
+																								'id'	=> $bac_id,
+																								'state <' => 3
+
+																							),
+																		)
+													)
+			) ;
+
 
 			// Si le bac existe et qu'il appartient bien à l'utilisateur
-			if(!empty($bac_edit)){
+			if(!empty($bac)){
 				if(!empty($this->request->data)){
 					$this->Bac->id = $bac_id; // On associe l'id du bac à l'objet 
 
@@ -36,23 +49,11 @@ class BacsController extends AppController {
 					}
 				}
 				// On affiche les données déjà entré par l'user
-				$bac 
-				= $this->Bac->find('first',
-					array(
-							'conditions' =>
-							array(
-									'Bac.id' => $bac_id,
-									'Bac.user_id' => $this->Session->read('Auth.User.id')
-
-								)
-
-						)
-					);
-					$this->set(compact('bac'));
+				$this->set(compact('bac'));
 			}
 			// sinon erreur 404
 			else {
-				throw new NotFoundException;
+				throw new NotFoundException('Bac introuvable');
 			}
 		}
 
@@ -90,7 +91,7 @@ class BacsController extends AppController {
 
 			if(!empty($this->request->data)){
 					// si on ajoute une liste
-				debug($this->request->data);
+					debug($this->request->data);
 					if(isset($this->request->data['Bacs']['basename'])){
 							$basename = $this->request->data['Bacs']['basename'];
 							$start = $this->request->data['Bacs']['start'];
@@ -113,7 +114,8 @@ class BacsController extends AppController {
 
 					// Ajout simple
 					else {
-						echo " simple";
+
+						echo ($i-1)."bacs ajoutés";
 					}
 			}
 			
@@ -140,8 +142,8 @@ class BacsController extends AppController {
 								) 
 							);
 
-			$orders = $this->Bac->Order->find('list');
-			$this->set(compact('orders'));
+			$users = $this->Bac->find('list');
+			$this->set(compact('users'));
 			// Si le bac existe et qu'il appartient bien à l'utilisateur
 			if(!empty($bac_edit)){
 				if(!empty($this->request->data)){
@@ -158,7 +160,7 @@ class BacsController extends AppController {
 									'Bac' => array(
 													'id'				=> $bac_id,
 													'code'				=> $this->request->data['Bacs']['code'],
-													'order_id' 			=> $this->request->data['Bacs']['orders'],
+													'user_id' 			=> $this->request->data['Bacs']['users'],
 						));
 
 						// On enregistre les données

@@ -180,16 +180,22 @@
 
                         <li><a href="<?= $this->Html->url(array('controller' => 'bacs', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Bacs</span></a></li>
 
+                        <li><a href="<?= $this->Html->url(array('controller' => 'locks', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Scellés</span></a></li>
+
                         <li><a href="<?= $this->Html->url(array('controller' => 'cities', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Villes</span></a></li>
 
                         <li><a href="<?= $this->Html->url(array('controller' => 'hours', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Créneaux</span></a></li>
+
+                        <li><a href="<?= $this->Html->url(array('controller' => 'hours_blocks', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Créneaux bloquées</span></a></li>                    
+
+                        <li><a href="<?= $this->Html->url(array('controller' => 'dates_blocks', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Dates bloquées</span></a></li>
                     </ul>
                 </div>
             </div>
             <!-- end: Main Menu -->
                         
             <!-- start: Content -->
-            <div id="content" class="span10">
+            <div id="content" class="span10" style='min-height:600px !important;'>
             
 
         <?= $this->Session->flash();?>

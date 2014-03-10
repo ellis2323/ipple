@@ -21,6 +21,12 @@ class LocksController extends AppController {
  * @return void
  */
 	public function admin_index() {
+		// Si l'utilisateur est admin
+		if(!($this->Session->read('Auth.User.role') >= 90)) {
+			throw new NotFoundException;
+		}
+		$this->layout = 'admin'; // Layout admin
+
 		$this->Lock->recursive = 0;
 		$this->set('locks', $this->Paginator->paginate());
 	}
@@ -33,6 +39,12 @@ class LocksController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
+		// Si l'utilisateur est admin
+		if(!($this->Session->read('Auth.User.role') >= 90)) {
+			throw new NotFoundException;
+		}
+		$this->layout = 'admin'; // Layout admin
+
 		if (!$this->Lock->exists($id)) {
 			throw new NotFoundException(__('Invalid lock'));
 		}
@@ -46,6 +58,12 @@ class LocksController extends AppController {
  * @return void
  */
 	public function admin_add() {
+		// Si l'utilisateur est admin
+		if(!($this->Session->read('Auth.User.role') >= 90)) {
+			throw new NotFoundException;
+		}
+		$this->layout = 'admin'; // Layout admin
+
 		if ($this->request->is('post')) {
 			$this->Lock->create();
 			if ($this->Lock->save($this->request->data)) {
@@ -67,6 +85,12 @@ class LocksController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
+		// Si l'utilisateur est admin
+		if(!($this->Session->read('Auth.User.role') >= 90)) {
+			throw new NotFoundException;
+		}
+		$this->layout = 'admin'; // Layout admin
+		
 		if (!$this->Lock->exists($id)) {
 			throw new NotFoundException(__('Invalid lock'));
 		}

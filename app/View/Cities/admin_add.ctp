@@ -3,8 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add City'); ?></legend>
 	<?php
-		echo $this->Form->input('name');
-		echo $this->Form->input('state');
+		echo $this->Form->input('label');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

@@ -18,9 +18,12 @@ class UsersController extends AppController {
 
 // Methodes
 
+		// Dashboard
+		public function index(){
 
+		}
 
-		/* Dashboard Utilisateur*/
+		// Newsletter
 		public function mail() {
  
  			if(!empty($this->request->data)){
@@ -38,13 +41,15 @@ class UsersController extends AppController {
 			
 				// On liste toutes les bacs utilisateurs
 				$bacs = $this->User->Bac->find('all', array(
-															'conditions' => array(
-																					'user_id' => $this->Session->read('Auth.User.id'),
-																					'state <' => 3
-															),
+															'Bac' => array(
+																			'conditions' => array(
+																									'user_id' => $this->Session->read('Auth.User.id'),
+																									'state <' => 3
+
+																								),
+																			)
 														)
 				) ;
-
 				// On les envois à la vue
 				$this->set(compact('bacs'));
 

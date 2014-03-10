@@ -24,7 +24,9 @@ class OrdersController extends AppController {
 
 // Liste des commandes utilisateur 
 		public function index() {
-
+			if(!empty($this->request->data)) {
+				$this->Order->save($this->request->data);		
+			}
 			// On demande toutes les commandes utilisateurs
 			$orders = $this->Order->find('all', array(
 													'conditions' => array(
@@ -193,6 +195,8 @@ class OrdersController extends AppController {
 		public function add() {	
 
 			// Si le client à déjà une commande en cours
+			$order = $this->Order->findByUserId($this->Session->read('Auth.User.id'));
+
 			$order = $this->Order->find('count',
 												array('conditions' => array(
 																			'Order.user_id' 	=> $this->Session->read('Auth.User.id')
@@ -200,6 +204,8 @@ class OrdersController extends AppController {
 													)
 												));
 
+			### LIAISONS ###
+			// On récupères les données relatives à la commande et on les passe à la vue
 
 			// On récupère les villes
 		    $this->Order->bindModel(
@@ -225,7 +231,7 @@ class OrdersController extends AppController {
 			$postals = $this->Order->Postal->find('list');
 			$this->set(compact('postals'));
 
-			// On récupère les horaires
+			// On récupère les créneaux horaires
 		    $this->Order->bindModel(
 		        array('hasMany' => array(
 		                'Hour' => array(
@@ -237,17 +243,15 @@ class OrdersController extends AppController {
 			$hours = $this->Order->Hour->find('list');
 			$this->set(compact('hours'));
 
+			### FIN LIAISON ###
+
+
 
 			// Si le formulaire à été soumis
 			if(!empty($this->request->data)){
 
-
-				//debug($this->request->data);
-
 				// On valide les données
 				if($this->Order->validates()){
-
-
 
 					$this->Order->create();
 
@@ -281,7 +285,10 @@ class OrdersController extends AppController {
 						);
 
 
-					}else {
+					}
+
+					else {
+
 						$data_order = array(
 											"Order" =>
 														array(
@@ -318,8 +325,8 @@ class OrdersController extends AppController {
 							App::uses('CakeEmail', 'Network/Email');
 
 							$CakeEmail = new CakeEmail('default');
-							$CakeEmail->to('corentingc@gmail.com');
-							$CakeEmail->subject('Dezordre: Nouvelle commande');
+							$CakeEmail->to('rpietra@gmail.com');
+							$CakeEmail->subject('Dezordre: Commande #'.$this->Order->id);
 							$CakeEmail->emailFormat('text');
 							$CakeEmail->template('order');
 							$CakeEmail->send();
@@ -329,7 +336,7 @@ class OrdersController extends AppController {
 					}
 					else {
 
-						echo " fail";
+						$this->Session->setFlash('Erreur lors de la commmande, merci de corriger vos erreurs');
 					}
 
 				}
@@ -345,17 +352,6 @@ class OrdersController extends AppController {
 						)
 				)
 			);
-
-
-			if(empty($nb_orders)){
-				// On récupère les villes
-				$cities = $this->Order->City->find('list');
-				$this->set(compact('cities'));
-
-				// On récupère les codes postaux
-				$postals = $this->Order->Postal->find('list');
-				$this->set(compact('postals'));
-			}
 
 
 

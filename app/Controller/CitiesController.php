@@ -83,8 +83,7 @@ class CitiesController extends AppController {
 				$this->Session->setFlash(__('The city could not be saved. Please, try again.'));
 			}
 		}
-		$cities = $this->City->Delivery->find('list');
-		$this->set(compact('cities'));
+
 	}
 
 /**

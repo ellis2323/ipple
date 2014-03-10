@@ -17,7 +17,7 @@
 ?>
 
 <?php 
-if(empty($bac['Bac']['order_id'])):
+if(empty($bac['Bac']['user_id'])):
 ?>
 <h1>Bac non associé</h1>
 <?php
@@ -29,7 +29,7 @@ endif;
 ?>
 
 <?= $this->Form->input('orders', array(
-                                          'default' => $bac['Bac']['order_id'])
+                                          'default' => $bac['Bac']['user_id'])
       ); 
 
 ?>
