@@ -102,7 +102,9 @@
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
                                                                      )
                             );?>
+
                         </div>
+                         <p><br></p>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6">
@@ -123,6 +125,7 @@
                                                                      )
                             );?>
                         </div>
+                         <p><br></p>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6">
@@ -143,6 +146,7 @@
                                                                      )
                             );?>
                         </div>
+                         <p><br></p>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6">
@@ -163,7 +167,7 @@
                                                                      )
                             );?>
                         </div>
-
+                         <p><br></p>
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -185,7 +189,7 @@
                                                                      )
                             );?>
                         </div>
-
+                         <p><br></p>
                     </div>
 
 
@@ -198,14 +202,14 @@
                             );
                             ?>
                             <?php
-                            echo $this->Form->input('Address.0.postals', array(
-                                                                            'type' => 'text',
+                            echo $this->Form->input('postals', array(
                                                                             'label' => false, 
                                                                             'class' => 'form-control',
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
                                                                      )
                             );?>
                         </div>
+                         <p><br></p>
                     </div>
 
 
@@ -226,6 +230,7 @@
                                                                      )
                             );?>
                         </div>
+                         <p><br></p>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6">
@@ -266,10 +271,12 @@
 
                                     <?= $this->Form->input("date_deposit", 
                                         array(
-                                        'label' => "Date : ", 
+                                        'label' => false, 
                                         'type' => 'text',
                                         'error' => false , 
                                         'id' => 'select_date',
+                                        'class' => 'form-control',
+                                        'div' => 'col-lg-6 col-md-6 col-sm-6',
                                         )
                                     ); ?>
                                     <div id="datepicker"></div>
@@ -285,7 +292,7 @@
                                                                 dateFormat: 'dd/mm/yy',
                                                                 monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
                                                                beforeShowDay: function(date){
-                                                                    var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+                                                                    var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
                                                                     return [ datesBlocked.indexOf(string) == -1 ];
                                                                 },
                                                                onSelect: function(dateText, inst){
@@ -375,14 +382,15 @@
                                 <label for="date" class="col-lg-4 col-md-4 col-sm-4 control-label">Date de livraison (récupération)<span class="blue">*</span></label>
                                 <div class="col-lg-6 col-md-6 col-sm-6 ll-skin-latoja">
                                     <!-- DATEPICKER -->
-
-
                                     <?= $this->Form->input("date_withdrawal", 
                                         array(
-                                        'label' => "Date : ", 
-                                        'type' => 'text',
-                                        'error' => false , 
-                                        'id' => 'select_date2'
+                                            'label' => false, 
+                                            'type' => 'text',
+                                            'error' => false , 
+                                            'id' => 'select_date2',
+                                            'class' => 'form-control',
+                                            'div' => 'col-lg-6 col-md-6 col-sm-6',
+
                                         )
                                     ); ?>
                                     <div id="datepicker2"></div>
@@ -399,12 +407,12 @@
                                                                dateFormat: 'dd/mm/yy',
                                                                monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
                                                                beforeShowDay: function(date){
-                                                                    var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+                                                                    var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
                                                                     return [ datesBlocked.indexOf(string) == -1 ];
                                                                 },
                                                                onSelect: function(dateText, inst){
-                                                                     $('#select_date').val(dateText);
-                                                                     $("#datepicker").datepicker("destroy");
+                                                                     $('#select_date2').val(dateText);
+                                                                     $("#datepicker2").datepicker("destroy");
                                                               }
                                                          }
                                                          );
@@ -459,9 +467,7 @@
                     <label class="col-lg-3 col-md-3 col-sm-3 col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
                         <input type="checkbox" required=""> J'ai lu et j'accepte les <a href="">Conditions Générales de ventes</a>
                         <p><br>
-						<?php echo $this->Form->end('Commander', array(
-																		'class' => 'btn  btn-lg btn-primary',
-																		)); ?>
+						<?php echo $this->Form->end('Commander'); ?>
 
 						</p>
                     </label>

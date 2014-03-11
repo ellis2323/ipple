@@ -10,38 +10,53 @@
                         <?= $this->Form->create('User'); ?>
   
                         <div class="row">
-                            <div class="form-group">
-                                <label for="nom" class="col-lg-4 col-md-4 col-sm-4 control-label">Email<span class="blue">*</span></label>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-									<?= $this->Form->input('email', array(
-                                    'label' => "", 
-                                    'class' => 'form-control'
-                                    )); ?>
-                                </div>
+                            <div class="form-group">  
+                                <?php
+                                echo $this->Form->label('email', 'Email <span class="blue">*</span>', array(
+                                                                                'class' => 'col-lg-1 col-lg-offset-4 col-md-1 col-sm-1 control-label'
+                                                                            )
+                                );
+                                ?>
+                                <?php
+                                echo $this->Form->input('email', array(
+                                                                                'type' => 'text',
+                                                                                'label' => false, 
+                                                                                'class' => 'form-control',
+                                                                                'div' => 'col-lg-2 col-md-2 col-sm-2',
+                                                                         )
+                                );?>
                             </div>
                             <p><br></p>
                         </div>
 
                         <div class="row">
-                            <div class="form-group">
-                                <label for="nom" class="col-lg-4 col-md-4 col-sm-4 control-label">Password<span class="blue">*</span></label>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-									<?= $this->Form->input('password', array(
-                                    'label' => "", 
-                                    'class' => 'form-control'
-                                    )); ?>
-                                </div>
+                            <div class="form-group">  
+                                <?php
+                                echo $this->Form->label('password', 'Password <span class="blue">*</span>', array(
+                                                                                'class' => 'col-lg-1 col-lg-offset-4 col-md-1 col-sm-1 control-label'
+                                                                            )
+                                );
+                                ?>
+                                <?php
+                                echo $this->Form->input('password', array(
+                                                                                'type' => 'text',
+                                                                                'label' => false, 
+                                                                                'class' => 'form-control',
+                                                                                'div' => 'col-lg-2 col-md-2 col-sm-2',
+                                                                         )
+                                );?>
                             </div>
                             <p><br></p>
                         </div>
 
-                        <div class="row">   
-                            <div class="checkbox">
-                       		<label class="col-lg-3 col-md-3 col-sm-3 col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
-							<?= $this->Form->end("Se connecter"); ?>                                    
-                       		</label>
+                        <div class="row" style='text-align:center;'>   
+                            <div class='col-lg-3 col-md-3 col-sm-3 col-lg-offset-4 col-md-offset-4 col-sm-offset-4'>
+                                <button type"submit"="" class="btn" style="background-color:#65b7f2;color:white">Se connecter</button>
+    							<?= $this->Form->end(); ?>                                    
                        		</div>
-                            <?= $this->Html->link('Mot de passe oublié', array('action' => 'forgot' )); ?>
+                            <div class='col-lg-3 col-md-3 col-sm-3 col-lg-offset-4 col-md-offset-4 col-sm-offset-4'>
+                            <?= $this->Html->link('Mot de passe oublié ?', array('action' => 'forgot' )); ?>
+                            </div>
                        	</div>
 
                     </div>

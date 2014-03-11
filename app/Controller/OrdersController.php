@@ -340,6 +340,9 @@ class OrdersController extends AppController {
 					}
 
 				}
+				else {
+					$this->Session->setFlash('Veuillez corriger les champs comprenant des erreurs');
+				}
 			}
 
 
