@@ -20,10 +20,6 @@ class AddressesController extends AppController {
  *
  * @return void
  */
-	public function index() {
-		$this->Address->recursive = 0;
-		$this->set('addresses', $this->Paginator->paginate());
-	}
 
 /**
  * view method
@@ -48,8 +44,6 @@ class AddressesController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Address->create();
-
-
 
 			$data = array('Address' => array(
 					'firstname' => $this->request->data['Address']['firstname'],

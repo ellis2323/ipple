@@ -23,19 +23,6 @@ class UsersController extends AppController {
 
 		}
 
-		// Newsletter
-		public function mail() {
- 
- 			if(!empty($this->request->data)){
-				$this->MailchimpSubscriber = ClassRegistry::init('Mailchimp.MailchimpSubscriber');
-
-				$data = array('EMAIL' => 'corentin@prout.fr');
-				$this->MailchimpSubscriber->save($this->request->data);
-				debug($this->MailchimpSubscriber->Mailchimp->errorCode);
-				debug($this->MailchimpSubscriber->Mailchimp->errorMessage);
-			}
-		}
-
 		// Mes bacs
 		public function my_bacs(){
 			
@@ -135,9 +122,8 @@ class UsersController extends AppController {
 			if(!empty($this->request->data)){
 				if($this->Auth->login()) {
 
-					$this->redirect(array('controller' => 'users', 'action' => 'index'));
+					$this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
 					$this->Session->setFlash('Vous avez correctement été connecté');
-					$this->redirect(array('controller' => 'orders', 'action' => 'add'));
 				}
 				else {	
 					$this->Session->setFlash('Identifiants incorrects');

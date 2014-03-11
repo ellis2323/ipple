@@ -35,15 +35,20 @@ class AppController extends Controller {
 		public $components = array(
 		    'Session',
 		    'Auth' => array(
+		    	'loginAction' => array(
+						            'controller' => 'users',
+						            'action' => 'login',
+						            'admin' => false
+				),
+				'authError' => 'Accès interdit',
 		        'authenticate' => array(
-		            'Form' => array(
-		                'fields' 	=> array(
-		                	'username' => 'email'
-		                	),
-		                'scope'		=> array('User.active' => 1
-
-		                	),
-		            )
+			            'Form' => array(
+					                'fields' 	=> array(
+					                	'username' => 'email'
+					                	),
+					                'scope'		=> array('User.active' => 1
+		                				),
+		            				)
 		        )
 		    )
 		);

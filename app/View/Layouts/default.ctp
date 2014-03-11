@@ -8,10 +8,10 @@
     <title><?php echo $title_for_layout; ?></title>
 
 
+    <?= $this->Html->css('bootstrap');?>
+    <?= $this->Html->css('dezordre');?>
+    <?= $this->fetch('css');?>
 
-<?  echo $this->Html->css('bootstrap'); // On charge les fichiers CSS
-    echo $this->Html->css('dezordre');
-?>
 
 </head>
 
@@ -226,8 +226,13 @@
 
     <!-- JavaScript -->
     <?= $this->Html->script('jquery-1.10.2'); ?>
+
     <?= $this->Html->script('bootstrap'); ?>
     <?= $this->Html->script('modern-business'); ?>
+    <?= $this->Html->script('cakebootstrap'); ?>
+    <?= $this->fetch('script');?>
+    <?= $this->fetch('datepicker');?>
+    <?= $this->fetch('datepicker2');?>
 
 </body>
 

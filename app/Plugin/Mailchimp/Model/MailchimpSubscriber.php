@@ -8,7 +8,7 @@ class MailchimpSubscriber extends MailchimpAppModel {
 		'email' => array(
 			'email' => array(
 				'rule' => array('email'),
-				'message' => 'Please enter a valid e-mail address')));
+				'message' => 'Veuillez entrer un email valide')));
 
 	/**
 	 * Use $_schema to set any mailchimp fields that you want to use
