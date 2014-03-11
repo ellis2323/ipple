@@ -223,7 +223,7 @@
                             ?>
                             <?php
                             echo $this->Form->input('Address.0.floor', array(
-                                                                            'type' => 'text',
+                                                                            'type' => 'number',
                                                                             'label' => false, 
                                                                             'class' => 'form-control',
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
@@ -252,7 +252,24 @@
                         </div>
                     </div>
 
-
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="form-group">  
+                            <?php
+                            echo $this->Form->label('comment', 'Commentaire', array(
+                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label'
+                                                                        )
+                            );
+                            ?>
+                            <?php
+                            echo $this->Form->input('Address.0.comment', array(
+                                                                            'type' => 'textarea',
+                                                                            'label' => false, 
+                                                                            'class' => 'form-control',
+                                                                            'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                     )
+                            );?>
+                        </div>
+                    </div>
                 
             </div>
 
@@ -269,13 +286,12 @@
                                     <!-- DATEPICKER -->
 
 
-                                    <?= $this->Form->input("date_deposit", 
+                                    <?= $this->Form->input("Order.date_deposit", 
                                         array(
                                         'label' => false, 
-                                        'type' => 'text',
-                                        'error' => false , 
                                         'id' => 'select_date',
                                         'class' => 'form-control',
+                                        'type' => 'timestamp',
                                         'div' => 'col-lg-6 col-md-6 col-sm-6',
                                         )
                                     ); ?>
@@ -382,11 +398,10 @@
                                 <label for="date" class="col-lg-4 col-md-4 col-sm-4 control-label">Date de livraison (récupération)<span class="blue">*</span></label>
                                 <div class="col-lg-6 col-md-6 col-sm-6 ll-skin-latoja">
                                     <!-- DATEPICKER -->
-                                    <?= $this->Form->input("date_withdrawal", 
+                                    <?= $this->Form->input("Order.date_withdrawal", 
                                         array(
                                             'label' => false, 
-                                            'type' => 'text',
-                                            'error' => false , 
+                                            'type' => 'timestamp',
                                             'id' => 'select_date2',
                                             'class' => 'form-control',
                                             'div' => 'col-lg-6 col-md-6 col-sm-6',

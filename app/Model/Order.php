@@ -39,25 +39,22 @@ class Order extends AppModel {
 										'rule' => array('checkNbBac', 4, 10),
 										'message' => 'Vous devez prendre au moins 4 bacs'
 								),
-								'date_deposit' => array(
-														'CheckDate' =>array(
-																			'rule' => 'checkDate',
-																			'message' => 'La date selectionnée est indisponible',
-																			'required' => true,
-																		),
-								),
+								
 								'date_withdrawal' => array(								
 															'VerifDate' =>array(
 																				'rule' => array('checkWithdraw', 'date_deposit'),
 																				'message' => 'Vérifiez que la date de récupération est supérieur à la date de dépôt'
 																			),
-															'CheckDate' =>array(
-																				'rule' => 'checkDate',
-																				'message' => 'La date selectionnée est indisponible'
-																			),	
 								)
 						);
 
+	/*'date_deposit' => array(
+														'CheckDate' =>array(
+																			'rule' => 'checkDate',
+																			'message' => 'La date de dépôt selectionnée est indisponible',
+																			'required' => true,
+																		),
+								),*/
 	// Permet de vérifier le nombre de bacs minimum
 	public function checkNbBac($data, $limit_min, $limit_max){
 
@@ -72,6 +69,8 @@ class Order extends AppModel {
 
 	// Permet de vérifier que la date de retrait est supérieur à la date de dépot
 	public function checkWithdraw($data, $data_deposit){
+
+
 		$deposit = $this->data[$this->name][$data_deposit];
 		$deposit = strtotime($deposit);
 
@@ -81,18 +80,16 @@ class Order extends AppModel {
 		}
 
 		if($deposit < $withdraw){
-			debug($deposit);
-			debug($withdraw);
 			return true;
 		}
 		else {
 			return false;
+			
 		}
 	}
 
 	// Permet de vérifier la disponibilité de la date
 	public function checkDate($data){
-		//debug($data);
 
 		// On charge le model contenant les dates bloquées
 		App::import('Model','DatesBlock');
@@ -108,16 +105,17 @@ class Order extends AppModel {
 		$day_week = date('w', $date); // Jour de la semaine
 		$week = date('W', $date); // Semaine
 		$month = date('n', $date); // Mois
-
 		// On cherche si les attributs sont présent dans la table de blocage
 		$day_block = $DatesBlock->findByValueAndType($day, 1);
 		$week_block = $DatesBlock->findByValueAndType($week, 2);
 		$month_block = $DatesBlock->findByValueAndType($month, 3);
 		$day_week_block = $DatesBlock->findByValueAndType($day_week, 4);
 
+
 		// Si on trouve la date
 		if(!empty($day_block) ||  !empty($month_block) || !empty($week_block) || !empty($day_week_block)){
 			return false;
+
 		}
 		else {
 			return true;

@@ -250,12 +250,30 @@ class OrdersController extends AppController {
 			// Si le formulaire à été soumis
 			if(!empty($this->request->data)){
 
+					/*$deposit = date_create($this->request->data['Order']['date_deposit']);
+					$date_deposit = date_format($deposit, 'Y-m-d H:i:s');
+					$this->request->data['Order']['date_deposit'] = $date_deposit;
+					
+					if(!empty($this->request->data['Order']['date_withdrawal'])){ 
+						$withdrawal = date_create($this->request->data['Order']['date_withdrawal']);
+						$date_withdrawal = date_format($withdrawal, 'Y-m-d H:i:s');
+						$this->request->data['Order']['date_withdrawal'] = $date_withdrawal;
+
+					}
+
+					debug($deposit);
+					debug($date_deposit);*/
+					
 				// On valide les données
 				if($this->Order->validates()){
 
 					$this->Order->create();
 
+
+
 					if($this->request->data['Order']['withdraw'] == 2){
+						
+
 						$data_order = array(
 											"Order" =>
 														array(
@@ -263,10 +281,10 @@ class OrdersController extends AppController {
 														'nb_bacs'		=> $this->request->data['Order']['nb_bacs'],
 
 														'date_deposit'		=> 	$this->request->data['Order']['date_deposit'],
-														'hour_deposit'		=> 	$this->request->data['Order']['hours'],
+														'hour_deposit'		=> 	1,
 
-														'date_withdrawal'		=> 	$this->request->data['Order']['date_withdrawal'],
-														'hour_withdrawal'	=> 	$this->request->data['Order']['hours'],
+														'date_withdrawal'		=> 	$date_withdrawal,
+														'hour_withdrawal'	=> 	1,
 
 														'state'			=> 1
 														),
@@ -292,14 +310,11 @@ class OrdersController extends AppController {
 						$data_order = array(
 											"Order" =>
 														array(
-														'user_id'		=> $this->Session->read('Auth.User.id'),
-														'nb_bacs'		=> $this->request->data['Order']['nb_bacs'],
-
-														'hour_deposit'		=> 	$this->request->data['Order']['hours'],
-
+														'user_id'			=> $this->Session->read('Auth.User.id'),
+														'nb_bacs'			=> $this->request->data['Order']['nb_bacs'],
+														'hour_deposit'		=> 	1,
 														'date_deposit'		=> 	$this->request->data['Order']['date_deposit'],
-
-														'state'			=> 1
+														'state'				=> 1
 														),
 											"Address" =>
 														array(
@@ -310,7 +325,7 @@ class OrdersController extends AppController {
 															'lastname'			=> $this->request->data['Address'][0]['lastname'],
 															'street'			=> $this->request->data['Address'][0]['street'],
 															'digicode'			=> $this->request->data['Address'][0]['digicode'],
-															'floor'			=> $this->request->data['Address'][0]['floor'],
+															'floor'				=> $this->request->data['Address'][0]['floor'],
 															'comment'			=> $this->request->data['Address'][0]['comment'],
 															)
 						);
@@ -318,7 +333,7 @@ class OrdersController extends AppController {
 
 					// Si la commande à bien été enregistré, on ajoute les livraisons associées
 					if($this->Order->saveAssociated($data_order)) {
-						
+							
 							$this->Order->saveField('address_id', $this->Order->Address->id);
 
 							// Envoie de l'email de notification
@@ -335,12 +350,12 @@ class OrdersController extends AppController {
 
 					}
 					else {
-
-						$this->Session->setFlash('Erreur lors de la commmande, merci de corriger vos erreurs');
+						$this->Session->setFlash('Erreur lors de la sauvegarde.');
 					}
 
 				}
 				else {
+					//debug($this->Order->invalidFields()); die();
 					$this->Session->setFlash('Veuillez corriger les champs comprenant des erreurs');
 				}
 			}

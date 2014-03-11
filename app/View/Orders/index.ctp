@@ -1,18 +1,3 @@
-
-<?php echo $this->Form->create('Order'); ?>
-  <fieldset>
-    <legend><?php echo __('Admin Edit Order'); ?></legend>
-  <?php
-
-    echo $this->Form->input('nb_bacs');
-    echo $this->Form->input('date_deposit', array('type'=>'date'));
-
-
-  ?>
-  </fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-
-
 <?php
 // Si l'utilisateur à des bacs
 if(!empty($orders)){
