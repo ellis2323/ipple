@@ -24,6 +24,7 @@ class OrdersController extends AppController {
 
 // Liste des commandes utilisateur 
 		public function index() {
+		
 			if(!empty($this->request->data)) {
 				$this->Order->save($this->request->data);		
 			}
@@ -249,7 +250,6 @@ class OrdersController extends AppController {
 
 			// Si le formulaire à été soumis
 			if(!empty($this->request->data)){
-
 					/*$deposit = date_create($this->request->data['Order']['date_deposit']);
 					$date_deposit = date_format($deposit, 'Y-m-d H:i:s');
 					$this->request->data['Order']['date_deposit'] = $date_deposit;

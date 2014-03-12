@@ -39,7 +39,12 @@ class Order extends AppModel {
 										'rule' => array('checkNbBac', 4, 10),
 										'message' => 'Vous devez prendre au moins 4 bacs'
 								),
-								
+								'date_deposit' => array(
+														'CheckDate' =>array(
+																			'rule' => 'checkDate',
+																			'message' => 'La date de dépôt selectionnée est indisponible',
+																		),
+								),
 								'date_withdrawal' => array(								
 															'VerifDate' =>array(
 																				'rule' => array('checkWithdraw', 'date_deposit'),
@@ -95,11 +100,12 @@ class Order extends AppModel {
 		App::import('Model','DatesBlock');
 		$DatesBlock = new DatesBlock();
 
-		// On convertis le datetime en timestamp
 		foreach($data as $date){
+			// On convertis le datetime en timestamp
 			$date = strtotime($date);
-		}
 
+		}
+		
 		// On définis nos attributs
 		$day = date('j', $date); // Jour calendaire
 		$day_week = date('w', $date); // Jour de la semaine
@@ -110,7 +116,6 @@ class Order extends AppModel {
 		$week_block = $DatesBlock->findByValueAndType($week, 2);
 		$month_block = $DatesBlock->findByValueAndType($month, 3);
 		$day_week_block = $DatesBlock->findByValueAndType($day_week, 4);
-
 
 		// Si on trouve la date
 		if(!empty($day_block) ||  !empty($month_block) || !empty($week_block) || !empty($day_week_block)){

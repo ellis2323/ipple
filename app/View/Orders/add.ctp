@@ -286,12 +286,12 @@
                                     <!-- DATEPICKER -->
 
 
-                                    <?= $this->Form->input("Order.date_deposit", 
+                                    <?= $this->Form->input("date_deposit", 
                                         array(
                                         'label' => false, 
                                         'id' => 'select_date',
                                         'class' => 'form-control',
-                                        'type' => 'timestamp',
+                                        'type' => 'text',
                                         'div' => 'col-lg-6 col-md-6 col-sm-6',
                                         )
                                     ); ?>
@@ -305,7 +305,7 @@
                                                   $("#select_date").click(function(){
                                                          $("#datepicker").datepicker(
                                                         {
-                                                                dateFormat: 'dd/mm/yy',
+                                                                dateFormat: 'mm/dd/yy',
                                                                 monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
                                                                beforeShowDay: function(date){
                                                                     var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
@@ -398,10 +398,10 @@
                                 <label for="date" class="col-lg-4 col-md-4 col-sm-4 control-label">Date de livraison (récupération)<span class="blue">*</span></label>
                                 <div class="col-lg-6 col-md-6 col-sm-6 ll-skin-latoja">
                                     <!-- DATEPICKER -->
-                                    <?= $this->Form->input("Order.date_withdrawal", 
+                                    <?= $this->Form->input("date_withdrawal", 
                                         array(
                                             'label' => false, 
-                                            'type' => 'timestamp',
+                                            'type' => 'text',
                                             'id' => 'select_date2',
                                             'class' => 'form-control',
                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
@@ -419,7 +419,7 @@
                                                   $("#select_date2").click(function(){
                                                          $("#datepicker2").datepicker(
                                                         {
-                                                               dateFormat: 'dd/mm/yy',
+                                                               dateFormat: 'mm/dd/yy',
                                                                monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
                                                                beforeShowDay: function(date){
                                                                     var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
