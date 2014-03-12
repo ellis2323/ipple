@@ -29,13 +29,28 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-                <a class="navbar-brand" href="<?php echo $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home'));?>"><span style="color:#65b7f2">dé</span><span style="color:#002147">z</span><span style="color:#65b7f2">ordre</span> </a>
+                 <a class="navbar-brand" href="<?php echo $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'landing'));?>">
+                    <?php echo $this->Html->image('logo2.png', array('alt' => 'responsive image', 'class' => 'img-responsive', 'style' => 'position:relative; top:-18px;')); ?>
+                </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
-
+                            <li><a href="#comment">Comment ça marche?</a>
+                            </li>
+                            <li><a href="#prix">Prix</a>
+                            </li>
+                            <li><a href="#securite">Sécurité</a>
+                            </li>
+                            <li>
+                                <a href="faq.html">FAQ</a>
+                                
+                            </li>
+                            <li>
+                                <a href="#contact">Contact</a>
+                                
+                            </li>
                             <?php
                             // Si admin
                             if($this->Session->read('Auth.User.role') >= 90):

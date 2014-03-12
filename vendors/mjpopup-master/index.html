@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+    <meta charset="utf-8">
+	<title>mjpopup un plugin jquery simple et léger qui simplifiera vos popup</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="author" content="Morgan Jourdin" />
+ 	<meta name="description" content="mjpopup est une fenêtre surgissante configurable facilement. Elle a été créé dans le but de facilité le codage des développeurs H/F qu'ils soit débutant ou expert." />
+    
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	
+	<!-- JAVASCRIPT -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+
+	<!-- mjpopup -->
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/mjpopup.min.1.0.0.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+		//mjpopup
+		jQuery(this).mjpopup({
+		//active or no debug mode
+		'debug' : true,
+		//click or no
+		'onClick': 
+		{
+			'active' : false, //met sur true pour activer sur le bouton dans le body
+			'class' : 'showPopup'
+		},
+		//cookie
+		'cookie' : {
+			'active' : true,
+			'name' : 'mjpopup',
+			'time' : 1
+		},
+		'overlay': 
+		{
+			'closeOnClick': true
+		},
+		//create div popup
+		'popup': 
+		{
+			'width': 940,
+			'height': 500,
+			'htmlpopup' : '<div style="position:relative;"><h1 style="color:white;position:absolute;right:6px;font-size:16px;bottom:10px;">Nous vous souhaitons une bonne visite</h1><img src="img/mjpopup.jpg" /></div>',
+			'css':
+			{
+				'height' : '500px',
+				'borderColor': 'white',
+				'zIndex' : 999999
+			}
+		},
+		//close button
+		'close': 
+		{
+			'text' : 'Fermer',
+			'EscClose': true,
+			'css' : 
+			{
+				'color': '#4C4C4C',
+				'zIndex' : 999999,
+				'fontFamily' : 'arial',
+				'backgroundColor': 'white'
+			}
+		},
+		//effect appearance/disappearance for background
+		'effect': 
+		{
+			'bgIn': 'show',
+			'bgTime' : 400,
+			'bgOut' : 'fade',
+			'popupIn' : 'slide',
+			'popupTime' : 1000,
+			'popupOut' : 'fade'
+		}
+	});
+	
+	//exemple1
+	jQuery(this).mjpopup({	
+		'onClick': 
+		{
+			'active' : true, //met sur true pour activer sur le bouton dans le body
+			'class' : 'exemple1'
+		}
+	});
+	
+	//exemple2
+	jQuery(this).mjpopup({	
+		'onClick': 
+		{
+			'active' : true, //met sur true pour activer sur le bouton dans le body
+			'class' : 'exemple2'
+		},
+		//create div popup
+		'popup': 
+		{
+			'width': 940,
+			'height': 365,
+			'htmlpopup' : '<img src="img/mjpopup1.jpg" />',
+			'css':
+			{
+				'height' : '365px',
+				'width': '940px'
+			}
+		},
+		'overlay': {
+			'class': 'popup_overlay',
+			'closeOnClick': true,
+			'css': {
+				'background' : 'url(img/overlay1.png)'
+			}
+		},
+		'close': {
+			'text' : 'fermer',//string and One word
+			'class' : 'close',
+			'EscClose': true,
+			'css':
+			{
+				'color':'#252525'
+			}
+		}
+	});
+	
+	//exemple3
+	jQuery(this).mjpopup({	
+		'debug' : true,
+		'onClick': 
+		{
+			'active' : true, //met sur true pour activer sur le bouton dans le body
+			'class' : 'exemple3'
+		},
+		//create div popup
+		'popup': 
+		{
+			'width': 'fezfz',
+			'height': 365,
+			'htmlpopup' : '<img src="img/mjpopup1.jpg" />',
+			'css':
+			{
+				'height' : '365px',
+				'width': '940px'
+			}
+		}
+	});
+});
+</script>
+	
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	<!-- CONTAINER -->
+	
+	<div class="container clearfix">
+		
+		<!-- END LOGO + NAV  -->
+		<div id="bg">
+			<div id="icone">
+				<h1 id="accroche">MJPopup, Un plugin simple, configurable et léger</h1>
+			</div>
+			<!-- Place this tag where you want the +1 button to render. -->
+			<div class="g-plusone" data-size="tall"></div>
+			
+			<!-- Place this tag after the last +1 button tag. -->
+			<script type="text/javascript">
+			  window.___gcfg = {lang: 'fr'};
+			
+			  (function() {
+			    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			    po.src = 'https://apis.google.com/js/plusone.js';
+			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+			  })();
+			</script>
+			<div class="fb-like" data-href="https://www.facebook.com/MjPopup" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true" data-font="arial"></div>
+		</div>
+		<div class="left">
+			<h2>A propos</h2>
+			<p><strong>mjpopup</strong> est un <strong>plugin</strong> permettant d'afficher n'importe quel type de contenus dans une <strong>popup</strong> configurable à souhait.</p>
+				<ul>
+					<li><strong>Description :</strong></li>
+					<ul>
+						<li>- Il n'y a pas besoin d'une insertion <strong>HTML</strong> dans le <strong>BODY</strong>. Tout se fait à partir de l'appel du plugin.</li>
+					</ul>
+				</ul>
+				<ul>
+					<li><strong>Sa puissance :</strong></li>
+					<ul>
+						<li>- <strong>Optimisé</strong> et <strong>léger</strong>, il peut accepter n'importe quel code css dans sa configuration et contient bon nombre d'autres paramètres.</li>
+						<li>- <strong>mjpopup</strong> possède un système de <strong>récursivité</strong> des paramètres c’est-à-dire que nous pouvons modifier n’importe quel des <strong>paramètres</strong> sans influer sur les autres.</li>
+					</ul>
+				</ul>
+			<h3 style="color:#BE1550;">Une documentation <strong>API</strong> est disponible dans le zip</h3>
+			<br />
+			<h2>Son utilisation</h2>
+			<p>Dans un premier temps, il est nécessaire comme dans tout plugin de faire l'appel du plugin.<br /> 
+			<span class="important">Eh bien oui ! Personne n'y échappe.</span> <br />
+			mjpopup possède une <strong>dépendance</strong> à un autre plugin qui est <strong>cookie.js</strong>. Me direz vous..."Pourquoi ne pas l'inclure dans ton plugin ?"... "héhé oui je le pourrai"..."mais non je ne le ferai pas ! Car il y a un avantage et un inconvénient de taille..."<br />
+L'avantage est que j'ai un seul fichier javascript si je mets tout dedans. Le désavantage est que le plugin cookie ne pourra pas être mis à jour facilement si je l'inclus dans mon code. Je créé donc une forte dépendance en l'incluant.<br />
+Ou alors, je créé mon propre plugin de cookie. Mais ce serait inutile étant donné qu'un plugin cookie stable existe déjà.
+Et puis...pourquoi réinventer la roue quand elle existe ? <br />
+Donc cookie.js est un plugin parfaitement <strong>stable</strong> et <strong>facile</strong> d'utilisation.<br />
+Bon je vais encore faire ma mauvaise langue...<br />
+"ok !! d'accord !! Pour réinventer la roue...mais ton plugin de popup il en existe des tas ?"<br />
+Oui effectivement !!<br />
+Durant mon travail, j'ai eu à faire à des tas de plugin avec des popup. En majorité des pseudo plugin comme je les appel ou communément dit des codes à la volé.<br />
+<span class="important">CE N'EST PAS DU TOUT PROPRE...A BANNIR !!</span> et je reste formel.<br />
+N'avez-vous donc jamais trouvé un plugin de popup suffisamment stable et facilement customisable ? <br />
+Pour ma part non !<br />
+Eh ben nous y voilà...mjpopup a été créé ! ^^<br />
+Je pense que s'armer d'<strong>outils compétents</strong> n'est pas plus mal en soit et plus rapide à mettre en place dans un site.<br />
+Bon revenons à nos moutons : <br />
+Soit le code suivant à insérer entre les balises &lt;head&gt;&lt;/head&gt; :</p>
+<!-- =========================================================  -->
+<code>
+			
+<span class="commentaires">&lt;!-- APPEL DE LA BIBLIOTHEQUE --&gt;</span>
+&lt;script type="text/javascript" src="<span class="plugin">http://code.jquery.com/jquery-1.8.3.min.js</span>"&gt;&lt;/script&gt;
+
+<span class="commentaires">&lt;!-- APPEL DE MJPOPUP --&gt;</span>
+&lt;script type="text/javascript" src="<span class="plugin">js/jquery.cookie.js</span>"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="<span class="plugin">js/mjpopup.min.1.0.0.js</span>"&gt;&lt;/script&gt;
+
+<span class="commentaires">&lt;!-- UTILISATION DU PLUGIN --&gt;</span>
+&lt;script type="text/javascript"&gt;
+<span class="commentaires">//...utilisation de mjpopup</span>
+&lt;/script&gt;
+			
+</code>
+<!-- =========================================================  -->
+			<h3>Un appel simple avec son exemple</h3>
+<!-- =========================================================  -->
+<code>
+			
+jQuery(document).ready(function() {
+	jQuery(this).<span class="plugin">mjpopup()</span>;
+});
+			
+</code>
+<!-- =========================================================  -->
+			<p>Cliquer <span class="exemple1 ex">ici</span> pour voir l'exemple</p>
+			<h3>Un appel plus complet en changeant la <strong>popup</strong>, l'overlay et le bouton close.</h3>
+<!-- =========================================================  -->
+<code>
+
+jQuery(document).ready(function() {
+	jQuery(this).<span class="plugin">mjpopup({</span>
+		<span class="comment">//active debug</span>
+		'debug' : false,
+		<span class="comment">//click or no</span>
+		'onClick': {
+			'active' : false,
+			'class' : 'showPopup'
+		},
+		<span class="comment">//cookie</span>
+		'cookie' : {
+			'active' : false,
+			'name' : 'mjpopup',
+			'time' : 1
+	  	},
+		<span class="comment">//create overlay</span>
+		'overlay': {
+			'class': 'popup_overlay',
+			'closeOnClick': true,
+			'css': {
+				'background' : 'url(img/overlay1.png)',
+				'backgroundRepeat' : 'repeat',
+				'zIndex' : 999,
+				'width' : '100%',
+				'position' : 'absolute',
+				'top' :0,
+				'height' : jQuery(document).height()
+			}
+		},
+		<span class="comment">//create div popup</span>
+		'popup': {
+			'class': 'popup_div_view',
+			'width': 940,
+			'height': 538,
+			'css': {
+				'borderWidth': 8,
+				'borderColor': '#D0D0D0',
+				'borderStyle': 'solid',
+				'borderRadius': '6px 0px 6px 6px',
+				'float' : 'left',
+				'height' : '500px',
+				'position' : 'relative',
+				'zIndex' : 999999
+			},
+			'htmlpopup' : '&lt;img src="img/mjpopup.jpg" /&gt;'
+		},
+		<span class="comment">//close button</span>
+		'close': {
+			'text' : 'fermer',//string and One word
+			'class' : 'close',
+			'EscClose': true,
+			'css': {
+				'color' : 'black',
+				'display' : 'block',
+				'float' : 'right',
+				'padding' : '4px 9px', //px or em
+				'backgroundColor' : '#D0D0D0',
+				'fontSize' : '12px', //px
+				'borderRadius' : '2px 2px 0 0',
+				'textTransform' : 'uppercase',
+				'fontWeight' : 'bold',
+				'cursor' : 'pointer',
+				'zIndex' : 999999
+			}
+		},
+		<span class="comment">//effect appearance/disappearance for background</span>
+		'effect': {
+			'bgIn': 'fade',
+			'bgTime' : 800,
+			'bgOut' : 'fade',
+			'popupIn' : 'slide',
+			'popupTime' : 1000,
+			'popupOut' : 'slide'
+		}
+	<span class="plugin">});</span>
+});
+			
+</code>
+<!-- =========================================================  -->
+			<p>Cliquer <span class="exemple2 ex">ici</span> pour voir l'exemple</p>
+			<h3>Le mode Debug</h3>
+			<p>Ce mode permet de savoir ou se trouve l'erreur dans votre code <a href="http://jquery.com/" title="Lien vers le site internet de jQuery"><strong>jQuery</strong></a>. Voici comment activer le mode <strong>debug</strong>.</p>
+<!-- =========================================================  -->
+<code>
+			
+jQuery(document).ready(function() {
+	jQuery(this).<span class="plugin">mjpopup({</span>
+		<span class="comment">//active debug</span>
+		'debug' : true,
+		<span class="comment">//click or no</span>
+		'onClick': {
+			'active' : true,
+			'class' : 'showPopup'
+		},
+		<span class="comment">//create div popup</span>
+		'popup': 
+		{
+			'width': 'fezfz', <= voici l'erreur
+			'height': 365,
+			'htmlpopup' : '&lt;img src="img/mjpopup1.jpg" /&gt;',
+			'css':
+			{
+				'height' : '365px',
+				'width': '940px'
+			}
+		}
+	<span class="plugin">})</span>;
+});
+			
+</code>
+<!-- =========================================================  -->
+			<p>Cliquer <span class="exemple3 ex">ici</span> pour voir un bug ^^</p>
+		</div>
+		<div class="right clearfix">
+			<a href="https://plus.google.com/s/mjpopup" title="Lien vers la page google+ de mjpopup" class="gg-icone"><img src="img/gg-icone.png" title="Lien vers la page google+ de mjpopup" alt="Lien vers la page google+ de mjpopup" /></a>
+			<a href="https://www.facebook.com/MjPopup" title="Lien vers la page facebook de mjpopup" class="fb-icone"><img src="img/fb-icone.png" title="Lien vers la page facbook de mjpopup" alt="Lien vers la page facebook de mjpopup" /></a>
+			<div class="download">
+				<a href="plugin_mjpopup.zip">
+					<img src="img/down.png" onmouseover="this.src='img/down-hover.png'" onmouseout="this.src='img/down.png'" title="Téléchargement du plugin mjpopup avec son API" alt="Téléchargement du plugin mjpopup avec son API" />
+				</a>
+				<br />
+				<span style="left: 61px; position:relative;">version 1.0.0</span><br />
+			</div>			
+		</div>
+		<div id="footer">
+			<div id="fb-footer">
+				<div class="fb-like" data-href="https://www.facebook.com/MjPopup" data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div>
+			</div>
+			<ul>
+				<li>mjpopup</li>
+				<li>réalisation : Morgan JOURDIN</li>
+			</ul>
+		</div>
+	</div>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-160691-18']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Piwik --> 
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.postif.info/" : "http://stats.postif.info/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 3);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://stats.postif.info/piwik.php?idsite=3" style="border:0" alt="" /></p></noscript>
+<!-- End Piwik Tracking Code -->
+</body>
+</html>

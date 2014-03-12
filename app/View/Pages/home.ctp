@@ -16,7 +16,7 @@ if(!empty($user)){
 
                 <p><br></p>
 
-                <a href="<?= $this->Html->url(array('controller' => 'orders', 'action' => 'add'));?>">
+                <a href="<?= $this->Html->url(array('controller' => 'orders', 'action' => 'step1'));?>">
                 <button type"submit"="" class="btn-lg" style="background-color:#65b7f2;color:white">Commander des bacs</button>
                 </a>
 
@@ -114,8 +114,9 @@ if(empty($user)){
 </style>
 <div id="mc_embed_signup">
 <form action="http://cgc-prod.us3.list-manage.com/subscribe/post?u=5649b53c5a08f45620fd5e012&amp;id=6ceebc8478" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+<div class="indicates-required"><span class="asterisk">*</span> champs obligatoires</div>
 <div class="mc-field-group">
-    <label for="mce-EMAIL">Votre email </span>
+    <label for="mce-EMAIL">Email  <span class="asterisk">*</span>
 </label>
     <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
 </div>
@@ -124,7 +125,7 @@ if(empty($user)){
         <div class="response" id="mce-success-response" style="display:none"></div>
     </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
     <div style="position: absolute; left: -5000px;"><input type="text" name="b_5649b53c5a08f45620fd5e012_6ceebc8478" value=""></div>
-    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    <div class="clear"><input type="submit" value="S'enregistrer" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
 </form>
 </div>
 <script type="text/javascript">

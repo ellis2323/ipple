@@ -305,7 +305,7 @@
                                                   $("#select_date").click(function(){
                                                          $("#datepicker").datepicker(
                                                         {
-                                                                dateFormat: 'mm/dd/yy',
+                                                                dateFormat: 'dd/mm/yy',
                                                                 monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
                                                                beforeShowDay: function(date){
                                                                     var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
@@ -419,7 +419,7 @@
                                                   $("#select_date2").click(function(){
                                                          $("#datepicker2").datepicker(
                                                         {
-                                                               dateFormat: 'mm/dd/yy',
+                                                               dateFormat: 'dd/mm/yy',
                                                                monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
                                                                beforeShowDay: function(date){
                                                                     var string = jQuery.datepicker.formatDate('dd-mm-yy', date);

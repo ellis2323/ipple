@@ -56,16 +56,17 @@ a:hover {
 /* Page Sections */
 .section,
 .section-colored {
-  padding: 2% 5%;
-  margin-bottom: 2%;
+  padding: 0% 0%;
+  margin-bottom: 0%;
 
 }
 
 .section-colored {
   background: url("../img/Dezordre_img_HP.jpg") no-repeat center center;
+  padding-top: 2%;
    
  /* change this to change the background color of a colored section */
-  box-shadow: 0px 3px 5px #939899;
+ 
 }
 
 .sidebar {
@@ -173,6 +174,7 @@ footer {
   box-shadow: 0px 4px 0px #70b9e6;
   opacity: 0.8;
   width: 60%;
+  max-width: 600px;
   background-color: #f7f4ef;
 }
 
@@ -189,14 +191,17 @@ footer {
 .cadre {
   border-radius: 5px 5px 5px 5px;
   box-shadow: 0px 2px 0px #939899;
-  
+  max-width: 600px;
   background-color: #f7f4ef;
   padding: 4%;
+  opacity: 0.9;
 }
 
 .cadre2 {
   border-radius: 5px 5px 5px 5px;
   background-color: #ffffff;
+  padding: 1% 2% ;
+  padding-top: 1%;
 }
 
 .couleurfond {
@@ -252,7 +257,7 @@ footer {
 
 .photo1 {
   vertical-align: text-bottom;
-  background: url("../img/bac_style.png") no-repeat center center;
+  background: url("../bac_style.png") no-repeat center center;
   border-radius: 5px 5px 5px 5px;
   box-shadow: 0px 0px 0px #70b9e6;
   border-right-color: #70b9e6;
@@ -285,3 +290,70 @@ footer {
 
 /* compte client */
 
+.largeur {
+  margin: 5% 0;
+}
+
+hr {
+ 
+border-top-style: none;
+
+}
+
+.bandeau {
+  background: url("../img/bandeau_texture.png") no-repeat center center;
+  background-size: cover;
+  height: 7%; 
+  margin-top: 0px;
+  padding-top: 1%;
+  padding-bottom: 0%;
+ 
+}
+
+.contact {
+  margin-top: 2%;
+}
+
+.fond2 {
+  background-color: #f7f4ef;
+  margin-top: 3%;
+}
+
+.section-colored1 {
+  padding-top: 2%;
+}
+
+.section-colored1 .largeur {
+  display: inline-block;
+}
+
+.logo-wrapper1 {
+  display: inline-block;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0px 4px 0px #70b9e6;
+  opacity: 0.8;
+  width: 60%;
+  max-width: 700px;
+  background-color: #f7f4ef;
+}
+
+.gras {
+  font-weight: bold;
+}
+
+.white {
+  background-color: white;
+}
+
+.taille {
+  max-height: 3%;
+}
+
+
+
+.table-striped > tbody > tr:nth-child(odd) > th {
+  background-color:#65b7f2;
+  text-align:center;
+  color:white;
+/* background-color: #f9f9f9; */
+}

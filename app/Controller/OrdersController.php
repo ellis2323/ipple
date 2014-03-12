@@ -22,7 +22,7 @@ class OrdersController extends AppController {
 	public $components = array('Paginator');
 
 
-// Liste des commandes utilisateur 
+		// Liste des commandes utilisateur 
 		public function index() {
 		
 			if(!empty($this->request->data)) {
@@ -48,6 +48,254 @@ class OrdersController extends AppController {
 
 
 		}
+
+		/* ETAPE DE COMMANDE DES BACS */
+
+		// Commande : Etape 1
+		public function step1() {
+
+			### LIAISONS ###
+			// On récupères les données relatives à la commande et on les passe à la vue
+
+			// On récupère les villes
+		    $this->Order->bindModel(
+		        array('hasMany' => array(
+		                'City' => array(
+		                    'className' => 'City'
+		                )
+		            )
+		        )
+		    );			
+		    $cities = $this->Order->City->find('list');
+			$this->set(compact('cities'));
+
+
+			### FIN LIAISON ###
+
+			// Si des données ont été postées
+			if(!empty($this->request->data)){
+				$data = $this->request->data;
+				$this->Order->set($data);
+
+				// Si les données sont validées
+				if($this->Order->validates()){
+					// On transforme les données pour les passer au controller
+					$data = base64_encode(serialize($this->request->data));
+					//debug($data);
+					$this->redirect(array('controller'=> 'orders','action' => 'step2', $data));
+				}
+
+
+			}
+			else {
+
+			}
+		}
+
+		// Commande : Etape 2
+		public function step2($data_get = null) {
+			// Si des données on été passé
+			if(!empty($data_get)){
+				// On récupère les codes postaux
+						    $this->Order->bindModel(
+						        array('hasMany' => array(
+						                'Postal' => array(
+						                    'className' => 'Postal'
+						                )
+						            )
+						        )
+						    );			
+							$postals = $this->Order->Postal->find('list');
+							$this->set(compact('postals'));
+
+
+				// On récupères le tableau en forme
+				$data_get = unserialize(base64_decode($data_get) );
+				//debug($data_get);
+
+				// Si on poste des données
+				if(!empty($this->request->data)){	
+					$data_post = $this->request->data;
+					$this->Order->set($data_post);
+
+					// Si les données sont validées
+					if($this->Order->validates()){
+						// On transforme les données pour les passer au controller
+
+						// On assemble les tableau de données
+						$data_full = $data_get + $data_post;
+						//debug($data_full);
+
+						// On convertis les données avant de les envoyer
+						$data = base64_encode(serialize($data_full));
+
+						$this->redirect(array('controller'=> 'orders','action' => 'step3', $data) );
+					}
+				}
+			}
+			else {
+				$this->redirect(array('controller'=> 'orders','action' => 'step1'));
+			}
+
+
+		}
+
+		// Commande : Etape 3
+		public function step3($data_get = null) {
+			// On récupère les créneaux horaires
+		    $this->Order->bindModel(
+		        array('hasMany' => array(
+		                'Hour' => array(
+		                    'className' => 'Hour'
+		                )
+		            )
+		        )
+		    );
+			$hours = $this->Order->Hour->find('list');
+			$this->set(compact('hours'));
+			// Si des données on été passé
+
+			if(!empty($data_get)){
+
+				// On récupères le tableau en forme
+				$data_get = unserialize(base64_decode($data_get) );
+				//debug($data_get);
+
+				// Si on poste des données
+				if(!empty($this->request->data)){	
+					$data_post = $this->request->data;
+					$this->Order->set($data_post);
+
+					// Si les données sont validées
+					if($this->Order->validates()){
+						// On transforme les données pour les passer au controller
+						$data = base64_encode(serialize($this->request->data));
+
+						// On récupères les données transmises en post et en get
+						$data_post_order = $data_post['Order'];
+						$data_get_order = $data_get['Order'];
+
+						// On assemble les tableaux
+						$data_order = array_merge($data_post_order, $data_get_order);
+						// On redéfinis l'index des informations de la commande
+						$data_order = array('Order' => $data_order);
+
+						// On redéfinis l'index des informations de l'adresse
+						$data_address = array('Address' => $data_get['Address']);
+
+						$data_full = $data_order + $data_address;
+
+
+						//Si tout est ok, on enregistre les données
+						/*#######################*/
+						$this->Order->create();
+
+						$format = 'Y-m-d H:i:s';
+
+						$deposit = new DateTime($data_full['Order']['date_deposit']);
+						
+
+						// Si on fait un retrait différé
+						if($data_full['Order']['withdraw'] == 2) {
+							$withdrawal = new DateTime($data_full['Order']['date_withdrawal']);
+							$withdrawal->format($format);
+
+							$data_order = array(
+												"Order" =>
+															array(
+															'user_id'				=> $this->Session->read('Auth.User.id'),
+															'nb_bacs'				=> $data_full['Order']['nb_bacs'],
+															'date_deposit'			=> $deposit->format($format),
+															'hour_deposit'			=> 1,
+															'state_deposit'			=> 1,
+															'date_withdrawal'		=> $withdrawal->format($format),
+															'hour_withdrawal'		=> 1,
+															'state_withdrawal'		=> 1,
+															'state'					=> 1
+															),
+												"Address" =>
+															array(
+																'user_id'			=> $this->Session->read('Auth.User.id'),
+																'city_id'			=> $data_full['Order']['cities'],
+																'postal_id'			=> $data_full['Address'][0]['postals'],
+																'firstname'			=> $data_full['Address'][0]['firstname'],
+																'lastname'			=> $data_full['Address'][0]['lastname'],
+																'street'			=> $data_full['Address'][0]['street'],
+																'digicode'			=> $data_full['Address'][0]['digicode'],
+																'floor'				=> $data_full['Address'][0]['floor'],
+																'comment'			=> $data_full['Address'][0]['comment'],
+																)
+							);
+
+
+						}
+
+						// sinon retrait immédiat
+						else {
+							$data_order = array(
+												"Order" =>
+															array(
+															'user_id'			=> $this->Session->read('Auth.User.id'),
+															'nb_bacs'			=> $data_full['Order']['nb_bacs'],
+															'hour_deposit'		=> 1,
+															'date_deposit'		=> $deposit->format($format),
+															'state'				=> 1
+															),
+												"Address" =>
+															array(
+																'user_id'			=> $this->Session->read('Auth.User.id'),
+																'city_id'			=> $data_full['Order']['cities'],
+																'postal_id'			=> $data_full['Address'][0]['postals'],
+																'firstname'			=> $data_full['Address'][0]['firstname'],
+																'lastname'			=> $data_full['Address'][0]['lastname'],
+																'street'			=> $data_full['Address'][0]['street'],
+																'digicode'			=> $data_full['Address'][0]['digicode'],
+																'floor'				=> $data_full['Address'][0]['floor'],
+																'comment'			=> $data_full['Address'][0]['comment'],
+																)
+							);
+						}
+							
+						// Si la commande à bien été enregistré, on ajoute les livraisons associées
+						if($this->Order->saveAssociated($data_order)) {
+								
+								$this->Order->saveField('address_id', $this->Order->Address->id);
+
+								// Envoie de l'email de notification
+								App::uses('CakeEmail', 'Network/Email');
+
+								$CakeEmail = new CakeEmail('default');
+								$CakeEmail->to('rpietra@gmail.com');
+								$CakeEmail->subject('Dezordre: Commande #'.$this->Order->id);
+								$CakeEmail->emailFormat('text');
+								$CakeEmail->template('order');
+								//$CakeEmail->send();
+								if(true){
+									$this->Session->setFlash('La commande à bien été enregistrée');
+									$this->redirect(array('controller' => 'users', 'action' => 'my_bacs'));
+								}
+								else {
+									$this->Session->setFlash('Erreur lors de l\'envoi de l\'email');
+								}
+
+						}
+						else {
+							$this->Session->setFlash('Erreur lors de la sauvegarde.');
+						}
+
+					} // Validates
+					else {
+						$this->Session->setFlash('Erreur de validation');
+					}
+
+				} // Empty request data
+			}
+			else {
+				$this->redirect(array('controller'=> 'orders','action' => 'step1'));
+			}
+
+		} // Action
+		/* FIN COMMANDE DES BACS */
 
 		public function view($order_id) {
 			$order_edit = $this->Order->find('first', 
@@ -104,8 +352,6 @@ class OrdersController extends AppController {
 				throw new NotFoundException;
 			}
 		}
-
-
 
 		// Editer une commande 
 		public function edit($order_id) {
@@ -249,21 +495,7 @@ class OrdersController extends AppController {
 
 
 			// Si le formulaire à été soumis
-			if(!empty($this->request->data)){
-					/*$deposit = date_create($this->request->data['Order']['date_deposit']);
-					$date_deposit = date_format($deposit, 'Y-m-d H:i:s');
-					$this->request->data['Order']['date_deposit'] = $date_deposit;
-					
-					if(!empty($this->request->data['Order']['date_withdrawal'])){ 
-						$withdrawal = date_create($this->request->data['Order']['date_withdrawal']);
-						$date_withdrawal = date_format($withdrawal, 'Y-m-d H:i:s');
-						$this->request->data['Order']['date_withdrawal'] = $date_withdrawal;
-
-					}
-
-					debug($deposit);
-					debug($date_deposit);*/
-					
+			if(!empty($this->request->data)){				
 				// On valide les données
 				if($this->Order->validates()){
 
@@ -370,9 +602,6 @@ class OrdersController extends AppController {
 						)
 				)
 			);
-
-
-
 		}
 
 
@@ -432,7 +661,6 @@ class OrdersController extends AppController {
 		
 		$users = $this->Order->User->find('list');
 		$this->set(compact('users'));
-
 	}
 
 /**

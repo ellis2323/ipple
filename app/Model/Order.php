@@ -74,17 +74,22 @@ class Order extends AppModel {
 
 	// Permet de vérifier que la date de retrait est supérieur à la date de dépot
 	public function checkWithdraw($data, $data_deposit){
-
-
 		$deposit = $this->data[$this->name][$data_deposit];
-		$deposit = strtotime($deposit);
+		$deposit = new DateTime($deposit);
 
 		// On convertis le datetime en timestamp
 		foreach($data as $withdraw){
-			$withdraw = strtotime($withdraw);
+			$withdraw = new DateTime($withdraw);
 		}
 
-		if($deposit < $withdraw){
+		$interval = $deposit->diff($withdraw);
+		$valid = $interval->invert;
+		
+		if(empty($withdraw)){
+			return true;
+		}
+
+		if($valid != 1){
 			return true;
 		}
 		else {
@@ -99,18 +104,23 @@ class Order extends AppModel {
 		// On charge le model contenant les dates bloquées
 		App::import('Model','DatesBlock');
 		$DatesBlock = new DatesBlock();
-
-		foreach($data as $date){
-			// On convertis le datetime en timestamp
-			$date = strtotime($date);
-
-		}
 		
+		//$date = $data['date_deposit'];
+
+		// On convertis le datetime en timestamp
+		$date = array_shift($data);
+
+		$date = new DateTime($date);
+		$date = $date->getTimestamp();
+
 		// On définis nos attributs
-		$day = date('j', $date); // Jour calendaire
+		/* On inverse le jour et le mois car date américaine */
+		$day = date('n', $date); // Mois
+		$month = date('d', $date); // Jour calendaire
 		$day_week = date('w', $date); // Jour de la semaine
 		$week = date('W', $date); // Semaine
-		$month = date('n', $date); // Mois
+		
+		
 		// On cherche si les attributs sont présent dans la table de blocage
 		$day_block = $DatesBlock->findByValueAndType($day, 1);
 		$week_block = $DatesBlock->findByValueAndType($week, 2);

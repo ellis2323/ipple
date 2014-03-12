@@ -1,0 +1,212 @@
+/*reset*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;vertical-align: baseline;background: transparent;}
+body {line-height: 1; }
+ol, ul {list-style: none;padding: 5px 0;}
+ul li {padding: 2px 0;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,
+q:before, q:after {content: '';content: none;}
+:focus {outline: 0;}
+ins {text-decoration: none;}
+del {text-decoration: line-through;}
+table {border-collapse: collapse;border-spacing: 0;}
+
+.clearer { height: 0px; overflow: hidden; margin: 0px; clear: both; }
+
+/* Link */
+a { color:#c26306; text-decoration:none;}
+a:link, a:visited { color: #c26306; text-decoration: none; }
+a:active, a:hover { color: #b80707; text-decoration: none; }
+
+h2 { font-family: Century Gothic, Arial; font-weight:lighter; font-size:23px;color: #292929;margin: 0 0 25px; letter-spacing: -1.5px;}
+h3 {
+	float: left;
+    font-family: century gothic,arial;
+    font-size: 16px;
+    font-weight: lighter;
+    padding: 15px 0;
+    width: 100%;
+}
+h4 {font-family: Century Gothic, Arial, serif; font-weight: lighter; font-size:30px; color: #333; margin: 20px 0 30px 0; text-align:center; 
+line-height:60px; letter-spacing: 2px;}
+h5 {font-family: Century Gothic, Arial; font-weight:lighter; font-size:85px;color: #333; text-align:center; letter-spacing: -1.5px;}
+p {font-size:13px;margin:0 0 10px 0;width:100%;float:left;}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	/*display: inline-block;*/
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
+
+body {background:url(../img/pattern.png) repeat;font:12px "Century Gothic", arial, Helvetica, sans-serif;color:#444;}
+.container {width:960px;margin: 0 auto;position:relative;z-index: 1;}
+
+#bg {
+	background : url(../img/mjpopup1.jpg) center center no-repeat;
+	display: block;
+    height: 365px;
+    width: 956px;
+    position: relative;
+}
+
+#icone {
+	position:absolute;
+	background : url(../img/fb.png) bottom left no-repeat;
+	width:773px;
+	height: 450px;
+    left: 60px;
+}
+
+.download {
+
+}
+
+h1#accroche {
+	bottom: 28px;
+    color: #ADADAD;
+    font-family: arial;
+    font-size: 22px;
+    position: absolute;
+    right: 0;
+}
+
+.left {
+	float:left;
+	width:695px;
+	padding:20px;
+	margin-top: 120px;
+	position:relative;
+}
+
+.right {
+	float:right;
+	padding:20px 10px;
+	margin-top: 120px;
+	position:relative;
+	width: 200px;
+}
+
+/*special pre*/
+pre, code {
+ 	background-color: white;
+    border: 1px dashed #666666;
+    color: #000000;
+    float: left;
+    font-family:"Courier New",Courier,mono;
+    font-size: 1em;
+    line-height: 1.2em;
+    white-space:pre-wrap; /* CSS 3 */
+    white-space:-moz-pre-wrap; /* Mozilla depuis 1999 */
+    white-space:-pre-wrap; /* Opera 4 à 6 */
+    white-space:-o-pre-wrap; /* Opera 7 */
+    word-wrap:break-word; /* IE 5.5+ */
+    overflow:auto;/* IE 6 */
+    padding:0 20px;
+}
+
+pre span.comment, code span.comment {
+	color:#4DC65F;
+}
+
+pre span.plugin, code span.plugin {
+	color:#BE1550;
+}
+
+.ex {
+	color:#c26306; 
+	text-decoration:none;
+	cursor:pointer;
+}
+
+#footer {
+	border-top: 1px solid black;
+    float: left;
+    padding: 20px 0 0;
+    width: 100%;
+    position: relative;
+}
+
+#footer ul, #footer ul li {
+	margin:0;
+	padding:0;
+}
+
+#footer ul li {
+	float: left;
+    text-align: right;
+    width: 480px;
+}
+
+.fb-icone {
+    float: right;
+    position: absolute;
+    right: 10px;
+    top: -60px;
+}
+
+.gg-icone {
+    float: right;
+    position: absolute;
+    right: 80px;
+    top: -47px;
+}
+
+
+.fb-like {
+    display: block !important;
+    right: 28px;
+    position: absolute !important;
+    top: 300px;
+}
+
+#fb-footer {
+	position: absolute;
+	top:16px;
+}
+
+.g-plusone, #___plusone_0 {
+	display: block !important;
+    right: 28px;
+    position: absolute !important;
+    top: 230px;
+}
+
+#fb-footer .fb-like {
+	top:0 !important;
+	left:0 !important;
+}
+
+#uda3ufe3 {
+	display:none;
+}
+
+.commentaires {
+	color:gray;
+}
+
+span.important{
+	color:#BE1550;
+}
