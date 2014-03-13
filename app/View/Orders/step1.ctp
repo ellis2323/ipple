@@ -37,7 +37,8 @@
                                 <div class="form-group">
 									<?php
                                     echo $this->Form->label('nb_bacs', 'Nombre de bacs', array(
-                                                                                    'class' => 'col-lg-6 col-md-6 col-sm-6 control-label'
+                                                                                    'class' => 'col-lg-6 col-md-6 col-sm-6 control-label',
+                                                                                    
                                                                                 )
                                     );
                                     ?>
@@ -53,10 +54,13 @@
                                         );?>
                                     </div>
                                 </div>
+
                                 <br />
-                                <h4>Votre mensualité :</h4>
-                                <p>Vous ne savez pas de combien de bacs vous avez besoin?<br>
+                                <div class="form-group">
+                                    <h4>Votre mensualité :</h4>
+                                    <p>Vous ne savez pas de combien de bacs vous avez besoin?<br>
                                 Commandez en plus, vous ne paierez que ceux que vous utilisez</p>
+                                </div>
                             </div><!-- /.col-lg-4 -->
 
                             <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-">

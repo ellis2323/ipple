@@ -9,7 +9,10 @@ if(!empty($bacs)){
 <div class="section">
     <h3 class="text-center">Mes affaires</h3>
 
-    <p class="text-right"><br><a class="btn btn-sm btn-primary" href="#" role="button" text-right="" style="background-color:#65b7f2;color:white">Récupérer tous mes bacs</a>
+    <p class="text-right">
+    <br>
+        <button type"submit" name='select_all' value='1' class="btn btn-sm btn-primary" style="background-color:#65b7f2;color:white">Récupérer tous mes bacs</button>
+
 
     <button type"submit" class="btn btn-sm btn-primary" style="background-color:#65b7f2;color:white">Récupérer les bacs selectionnés</button>
     </p>

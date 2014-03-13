@@ -87,7 +87,7 @@
                                     'Commander des bacs',
                                     array(
                                         'controller'    => 'orders',
-                                        'action'        => 'add',
+                                        'action'        => 'step1',
                                         'full_base'     => true,
                                         'admin'         => false
                                     )
@@ -110,8 +110,8 @@
                             <?php echo $this->Html->link(
                                     'Mes commandes',
                                     array(
-                                        'controller' => 'orders',
-                                        'action' => 'index',
+                                        'controller' => 'users',
+                                        'action' => 'my_account#livraisons',
                                         'full_base'     => true,
                                         'admin'         => false                                    )
                                 );?>
@@ -122,7 +122,7 @@
                                     'Modifier infos compte',
                                     array(
                                         'controller' => 'users',
-                                        'action' => 'edit',
+                                        'action' => 'my_account#profil',
                                         'full_base'     => true,
                                         'admin'         => false                                    )
                                 );?>
@@ -247,6 +247,7 @@
     <?= $this->fetch('script');?>
     <?= $this->fetch('datepicker');?>
     <?= $this->fetch('datepicker2');?>
+    <?= $this->fetch('tabs');?>
 
 </body>
 

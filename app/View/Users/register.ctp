@@ -7,41 +7,13 @@
                 
             
                     <div class="choix">    
-                    
-                        <div class="row">
-                            <div class="form-group">
-                                <label for="nom" class="col-lg-4 col-md-4 col-sm-4 control-label">Nom<span class="blue">*</span></label>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <?= $this->Form->input('lastname', array(
-                                    'label' => "", 
-                                    'class' => 'form-control',
-                                    'placeholder' => 'Votre nom'
-                                    )); ?>
-                                </div>                                
-                            </div>
-                        </div>
-                        <p><br></p>
-                        <div class="row">    
-                            <div class="form-group">
-                                <label for="prenom" class="col-lg-4 col-md-4 col-sm-4 control-label">Prénom<span class="blue">*</span></label>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                <?= $this->Form->input('firstname', array(
-                                    'label' => "", 
-                                    'class' => 'form-control',
-                                    'placeholder' => 'Votre prénom'
-
-                                    )); ?>                                
-                                </div>
-                            </div>
-                            <p><br></p>
-                        </div>
 
                         <div class="row">
                             <div class="form-group">
-                                <label for="email" class="col-lg-4 col-md-4 col-sm-4 control-label">Votre email<span class="blue">*</span></label>
+                                <label for="email" class="col-lg-4 col-md-4 col-sm-4 control-label" style='text-align:right;'>Votre email<span class="blue">*</span></label>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                 <?= $this->Form->input('email', array(
-                                    'label' => "", 
+                                    'label' => false, 
                                     'class' => 'form-control',
                                     'placeholder' => 'Votre email'
 
@@ -53,10 +25,10 @@
 
                         <div class="row">
                             <div class="form-group">
-                                <label for="password" class="col-lg-4 col-md-4 col-sm-4 control-label">Mot de passe<span class="blue">*</span></label>
+                                <label for="password" class="col-lg-4 col-md-4 col-sm-4 control-label" style='text-align:right;'>Mot de passe<span class="blue">*</span></label>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                             <?= $this->Form->input('password', array(
-                                    'label' => "", 
+                                    'label' => false, 
                                     'class' => 'form-control',
                                     'placeholder' => 'Votre mot de passe'
 
@@ -69,11 +41,11 @@
 
                         <div class="row">
                             <div class="form-group">
-                                <label for="password2" class="col-lg-4 col-md-4 col-sm-4 control-label">Vérifiez le mot de passe<span class="blue">*</span></label>
+                                <label for="password2" class="col-lg-4 col-md-4 col-sm-4 control-label" style='text-align:right;'>Confirmer le mot de passe<span class="blue">*</span></label>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <?= $this->Form->input('password2', array(
                                     'type'  => 'password',
-                                    'label' => '', 
+                                    'label' => false, 
                                     'class' => 'form-control',
                                     'placeholder' => 'Vérifiez votre mot de passe'
 
@@ -82,19 +54,23 @@
                                 </div>
                             </div>
                             <p><br></p>
+
                         </div>
 
 
 
 
                         <div class="row">   
-                            <div class="checkbox">
                                 <label class="col-lg-3 col-md-3 col-sm-3 col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
                                     
-                                    <p><br></p><?= $this->Form->end("Je créer mon compte"); ?>                                    
+                                    <p><br></p>
+
+                                    <button type"submit" class="btn btn-sm btn-primary" style="background-color:#65b7f2;color:white">Créer mon compte</button>
+                                    
+                                    <?= $this->Form->end(); ?>                                    
 
                                 </label>
-                            </div>
+                                
                         </div>
 
                     </div>

@@ -1,6 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
-
+App::uses('CakeEmail', 'Network/Email');
 
 class UsersController extends AppController {
 
@@ -11,6 +11,7 @@ class UsersController extends AppController {
 
 			parent::beforeFilter();
 			$this->Auth->allow('register', 'login', 'logout', 'forgot', 'password', 'activate');
+			$this->Auth->deny('my_account', 'my_bacs', 'edit_password');
 
 		}
 
@@ -23,6 +24,91 @@ class UsersController extends AppController {
 
 		}
 
+
+		public function my_account(){
+			// #### Profil
+			$user = $this->User->find('first', array(
+															'conditions' => array(
+																					'id' => $this->Session->read('Auth.User.id'),
+															),
+															'recursive' => -1
+														)
+				) ;
+
+			if(!empty($user)){
+				$this->set(compact('user'));
+			}
+			// #### /Profil
+
+			// #### Password
+
+			// si on envoie une demande
+			if(!empty($this->request->data['User']['old_password'])){
+
+				$user_id = $this->Session->read('Auth.User.id');
+				$password = $this->request->data['User']['old_password'];
+				$new_password = $this->request->data['User']['password'];
+
+				$verif_password = $this->User->findByIdAndPassword($user_id, $this->Auth->password($password));
+
+				// Validation des données
+				if($this->User->validates()) {
+
+					if(!empty($verif_password) ){
+
+						$this->User->create(array(
+							"id"			=> $user_id,
+							"password" 		=> $this->Auth->password($new_password),
+							));
+
+						// Si tout est ok, on sauvegarde
+						$this->User->save();
+
+						$this->Session->setFlash('Votre mot de passe à correctement été modifié');
+						$this->redirect(array('controller' => 'users', 'action' => 'my_account#password'));
+
+
+					}
+					else {
+						$this->Session->setFlash('Votre mot de passe actuel est incorrect');
+					}
+				}
+			}
+			// #### /Password
+
+			// #### Livraisons
+
+			// On relie les créneaux associés
+			$this->User->Order->bindModel(
+		        array('belongsTo' => array(
+		                'Hour' => array(
+		                    'className' => 'Hour',
+		                    'foreignKey' => 'hour_deposit'
+		                ),
+
+		            )
+		        )
+		    );	
+			$orders = $this->User->Order->find('all', array(
+															'conditions' => array(
+																					'Order.user_id' => $this->Session->read('Auth.User.id'),
+																					'Order.state =' 		=> 1,
+															),
+															'recursive' => 0
+														)
+				);
+
+			
+
+
+			if(!empty($orders)){
+
+				// Si on a des commandes on liste les commandes
+				$this->set(compact('orders'));
+			}
+			// #### /Livraisons
+		}
+
 		// Mes bacs
 		public function my_bacs(){
 			
@@ -33,7 +119,8 @@ class UsersController extends AppController {
 
 				// Si on à fait une demande de retrait de bac
 				if(!empty($this->request->data)){
-
+					if(empty($this->request->data['select_all']) ){
+						//else {
 
 						$this->User->Order->create();
 						$data = array(	
@@ -84,8 +171,13 @@ class UsersController extends AppController {
 								}
 						}								
 
-						echo "<br /><br />Je veux retirer ".$nb_bac_withdraw."bacs";
-						debug($this->request->data);
+						$this->Session->setFlash('Vos bacs ont été récupérés');
+
+					}
+					else {
+
+						
+					}
 
 				}
 
@@ -202,6 +294,13 @@ class UsersController extends AppController {
 			}
 		}
 
+
+		public function edit_password(){
+
+
+
+		}
+
 		/* Enregistrer un nouveau client */
 		public function register() {
 			if($this->Session->read('Auth.User.id')){
@@ -211,7 +310,7 @@ class UsersController extends AppController {
 
 				if(!empty($this->request->data)){
 
-
+					$this->User->create($this->request->data);
 					// Validation des données
 					if($this->User->validates()) {
 
@@ -220,37 +319,33 @@ class UsersController extends AppController {
 						$this->User->create(array(
 							"email" 		=> $this->request->data['User']['email'],
 							"password" 		=> $this->Auth->password($this->request->data['User']['password']),
-							"lastname" 			=> $this->request->data['User']['lastname'],
-							"firstname" 		=> $this->request->data['User']['firstname'],
 							"token" 		=> $token
 							));
 
 						// Si tout est ok, on sauvegarde
-						if($this->User->save()){
+						$this->User->save();
 
-							// Envoie de l'email d'activation
-							App::uses('CakeEmail', 'Network/Email');
+						// Envoie de l'email d'activation
+						
 
-							$CakeEmail = new CakeEmail('default');
-							$CakeEmail->to($this->request->data['User']['email']);
-							$CakeEmail->subject('Dezordre: Confirmation d\'inscription');
-							$CakeEmail->viewVars($this->request->data['User'] + array(
-								'token' => $token,
-								'id'	=> $this->User->id,
+						$CakeEmail = new CakeEmail('default');
+						$CakeEmail->to($this->request->data['User']['email']);
+						$CakeEmail->subject('Dezordre: Confirmation d\'inscription');
+						$CakeEmail->viewVars($this->request->data['User'] + array(
+							'token' => $token,
+							'id'	=> $this->User->id,
 
-								));
-							$CakeEmail->emailFormat('text');
-							$CakeEmail->template('register');
-							$CakeEmail->send();
+							));
+						$CakeEmail->emailFormat('text');
+						$CakeEmail->template('register');
+						$CakeEmail->send();
 
-							$this->Session->setFlash("Votre compte à bien été créer. Un lien vous à été envoyé par email afin d'activer votre compte.");
-							$this->redirect(array('controller' => 'users', 'action' => 'login'));
-							
-							}
+						$this->Session->setFlash("Votre compte à bien été créer. Un lien vous à été envoyé par email afin d'activer votre compte.");
+						$this->redirect(array('controller' => 'users', 'action' => 'login'));
+						
 					}
 
 					else {
-
 							$this->Session->setFlash("Erreur, merci de corriger");
 					}
 
@@ -336,15 +431,6 @@ class UsersController extends AppController {
 
 
 		/* ############### ADMIN ############### */
-			/*
-			// Si l'utilisateur est admin
-			if(!($this->Session->read('Auth.User.role') >= 90) {
-				throw new NotFoundException();
-			}
-			$this->layout = 'admin'; // Layout admin*/
-
-
-
 
 		// Lister tous les utilisateurs
 		public function admin_index(){
@@ -364,9 +450,6 @@ class UsersController extends AppController {
 
 		// Editer un utilisateur
 		public function admin_edit($user_id){
-
-
-
 
 			$user_edit = $this->User->find('first', 
 								array(

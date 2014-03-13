@@ -26,7 +26,6 @@ class User extends AppModel {
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
 			),
-
 			'email' => array(
 				'rule' => 'email',
 				'message' => "veuillez entrer un email valide"
@@ -39,17 +38,16 @@ class User extends AppModel {
 				)
 		),
 
-		// Validation du password
-		'password' => array(
-			'rule' => 'notEmpty',
-			'message' => 'Merci de mettre un mot de passe'
-		),
 
-		// Confirmation du password
-		'password2' => array(
-			'rule' => 'identicalFields',
-			'message' => 'Les mots de passe diffèrent'
-		),
+        'password' => array(
+            'rule' => 'notEmpty',
+            'message' => 'Veuillez entrer un mot de passe'
+        ),
+        'password2' => array(
+            'rule' => 'identicalFields',
+            'required' => false,
+            'message' => 'Les mot de passe diffèrent'
+        ),
 
 		// Validation du nom
 		'lastname' => array(
@@ -66,7 +64,7 @@ class User extends AppModel {
 
 		// Validation du prenom
 		'firstname' => array(
-							'notEmpty' => array(
+				'notEmpty' => array(
 				'rule' => 'notEmpty',
 			),
 
@@ -82,9 +80,10 @@ class User extends AppModel {
 	// Fin du array	
 	);
 
-
-	public function identicalFields($check, $limit){
-		return $check['password2'] == $this->data['User']['password'];
-	}
-
+	
+	
+    public function identicalFields($check, $limit){
+        $field = key($check);
+        return $check[$field] == $this->data['User']['password'];
+    }
 }

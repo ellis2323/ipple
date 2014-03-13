@@ -18,7 +18,8 @@
                         <div class="form-group">
                             <?php
                             echo $this->Form->label('lastname', 'Nom <span class="blue">*</span>', array(
-                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label'
+                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                            'style' => 'text-align:right;',
                                                                         )
                             );
                             ?>
@@ -28,6 +29,7 @@
                                                                             'label' => false, 
                                                                             'class' => 'form-control',
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                            
                                                                      )
                             );?>
 
@@ -40,7 +42,8 @@
                         <div class="form-group">                            
                         <?php
                             echo $this->Form->label('firstname', 'Prénom <span class="blue">*</span>', array(
-                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label'
+                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                            'style' => 'text-align:right;',
                                                                         )
                             );
                             ?>
@@ -50,6 +53,7 @@
                                                                             'label' => false, 
                                                                             'class' => 'form-control',
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                            
                                                                      )
                             );?>
                         </div>
@@ -61,7 +65,8 @@
 
                             <?php
                             echo $this->Form->label('company', 'Entreprise', array(
-                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label'
+                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                            'style' => 'text-align:right;',
                                                                         )
                             );
                             ?>
@@ -71,6 +76,7 @@
                                                                             'label' => false, 
                                                                             'class' => 'form-control',
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                            
                                                                      )
                             );?>
                         </div>
@@ -82,7 +88,8 @@
 
                             <?php
                             echo $this->Form->label('phone', 'Téléphone <span class="blue">*</span>', array(
-                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label'
+                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                            'style' => 'text-align:right;',
                                                                         )
                             );
                             ?>
@@ -92,6 +99,7 @@
                                                                             'label' => false, 
                                                                             'class' => 'form-control',
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                            
                                                                      )
                             );?>
                         </div>
@@ -99,11 +107,13 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12">
+                    
                         <div class="form-group">
 
                             <?php
                             echo $this->Form->label('street', 'Adresse <span class="blue">*</span>', array(
-                                                                            'class' => 'col-lg-2 col-md-2 col-sm-2 control-label'
+                                                                            'class' => 'col-lg-2 col-md-2 col-sm-2 control-label',
+                                                                            'style' => 'text-align:right;',
                                                                         )
                             );
                             ?>
@@ -114,10 +124,12 @@
                                                                             'class' => 'form-control',
                                                                             'style' => "margin-left:-5px;",
                                                                             'div' => 'col-lg-9 col-md-9 col-sm-9',
+                                                                            
                                                                      )
                             );?>
                         </div>
                          <p><br></p>
+
                     </div>
 
 
@@ -125,7 +137,8 @@
                         <div class="form-group">  
                             <?php
                             echo $this->Form->label('postals', 'Code postal <span class="blue">*</span>', array(
-                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label'
+                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                            'style' => 'text-align:right;',
                                                                         )
                             );
                             ?>
@@ -134,6 +147,7 @@
                                                                             'label' => false, 
                                                                             'class' => 'form-control',
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                            
                                                                      )
                             );?>
                         </div>
@@ -145,7 +159,8 @@
                         <div class="form-group">  
                             <?php
                             echo $this->Form->label('floor', 'Etage <span class="blue">*</span>', array(
-                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label'
+                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                            'style' => 'text-align:right;',
                                                                         )
                             );
                             ?>
@@ -165,7 +180,8 @@
                         <div class="form-group">  
                             <?php
                             echo $this->Form->label('digicode', 'Digicode', array(
-                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label'
+                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                            'style' => 'text-align:right;',
                                                                         )
                             );
                             ?>
@@ -185,7 +201,8 @@
                         <div class="form-group">  
                             <?php
                             echo $this->Form->label('comment', 'Commentaire', array(
-                                                                            'class' => 'col-lg-2 col-md-2 col-sm-2 control-label'
+                                                                            'class' => 'col-lg-2 col-md-2 col-sm-2 control-label',
+                                                                            'style' => 'text-align:right;',
                                                                         )
                             );
                             ?>

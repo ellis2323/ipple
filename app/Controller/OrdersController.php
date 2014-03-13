@@ -25,27 +25,6 @@ class OrdersController extends AppController {
 		// Liste des commandes utilisateur 
 		public function index() {
 		
-			if(!empty($this->request->data)) {
-				$this->Order->save($this->request->data);		
-			}
-			// On demande toutes les commandes utilisateurs
-			$orders = $this->Order->find('all', array(
-													'conditions' => array(
-																		'Order.user_id' => $this->Session->read('Auth.User.id'),
-																		'state >=' => 1
-														)
-												)
-				);
-
-
-			if(!empty($orders)){
-
-				// Si on a des commandes on liste les commandes
-				$this->set(compact('orders'));
-			}
-			else {
-			}
-
 
 		}
 
@@ -136,8 +115,6 @@ class OrdersController extends AppController {
 			else {
 				$this->redirect(array('controller'=> 'orders','action' => 'step1'));
 			}
-
-
 		}
 
 		// Commande : Etape 3
@@ -224,6 +201,20 @@ class OrdersController extends AppController {
 																'digicode'			=> $data_full['Address'][0]['digicode'],
 																'floor'				=> $data_full['Address'][0]['floor'],
 																'comment'			=> $data_full['Address'][0]['comment'],
+																'state'				=> 1
+																),
+												"Address" =>
+															array(
+																'user_id'			=> $this->Session->read('Auth.User.id'),
+																'city_id'			=> $data_full['Order']['cities'],
+																'postal_id'			=> $data_full['Address'][0]['postals'],
+																'firstname'			=> $data_full['Address'][0]['firstname'],
+																'lastname'			=> $data_full['Address'][0]['lastname'],
+																'street'			=> $data_full['Address'][0]['street'],
+																'digicode'			=> $data_full['Address'][0]['digicode'],
+																'floor'				=> $data_full['Address'][0]['floor'],
+																'comment'			=> $data_full['Address'][0]['comment'],
+																'state'				=> 2
 																)
 							);
 
@@ -255,7 +246,7 @@ class OrdersController extends AppController {
 																)
 							);
 						}
-							
+						
 						// Si la commande à bien été enregistré, on ajoute les livraisons associées
 						if($this->Order->saveAssociated($data_order)) {
 								
@@ -280,6 +271,8 @@ class OrdersController extends AppController {
 
 						}
 						else {
+
+    						debug($this->validationErrors);
 							$this->Session->setFlash('Erreur lors de la sauvegarde.');
 						}
 
@@ -293,8 +286,8 @@ class OrdersController extends AppController {
 			else {
 				$this->redirect(array('controller'=> 'orders','action' => 'step1'));
 			}
+		} 
 
-		} // Action
 		/* FIN COMMANDE DES BACS */
 
 		public function view($order_id) {
@@ -322,27 +315,27 @@ class OrdersController extends AppController {
 				
 				$this->set(compact('order'));
 
-
-			    $this->Order->bindModel(
-			        array('hasOne' => array(
-			                'Delivery' => array(
-			                    'className' => 'Delivery'
+/*
+			    $this->User->bindModel(
+			        array('hasOne' => 
+			        	array(
+			                'City' => array(
+			                    'className' => 'City'
 			                )
 			            )
 			        )
 			    );
-				$delivery = $this->Order->find('all',
+				$city = $this->City->find('first',
 													array(
 															'conditions' =>
 															array(
-																	'Delivery.order_id' => $order_id,
-																	'Order.user_id' => $this->Session->read('Auth.User.id')
+																	'id' =>
 																)
 
 														)
 													);
-				$this->set(compact('delivery'));
-
+				$this->set(compact('city'));
+*/
 
 			}
 
@@ -643,11 +636,6 @@ class OrdersController extends AppController {
 
 
 	public function admin_index() {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
 
 		$this->Order->recursive = 0;
 
@@ -671,11 +659,6 @@ class OrdersController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
 
 		if (!$this->Order->exists($id)) {
 			throw new NotFoundException(__('Invalid order'));
@@ -692,12 +675,6 @@ class OrdersController extends AppController {
  * @return void
  */
 	public function admin_add() {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
-
 		if ($this->request->is('post')) {
 			$this->Order->create();
 			if ($this->Order->save($this->request->data)) {
@@ -719,14 +696,6 @@ class OrdersController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
-
-
-
 		if (!$this->Order->exists($id)) {
 			throw new NotFoundException(__('Invalid order'));
 		}
@@ -749,13 +718,6 @@ class OrdersController extends AppController {
 
 
 	public function admin_confirm($order_id) {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
-
-
 		$order_edit = $this->Order->find('first', 
 			array(
 				'conditions' => 
@@ -832,13 +794,6 @@ class OrdersController extends AppController {
 
 
 	public function admin_add_bac($order_id = null) {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
-
-
 		// On récupère les bacs liés
 	    $bacs = $this->Order->findAllById($order_id);
 	    $bacs = $bacs[0]['Bac'];
@@ -888,13 +843,6 @@ class OrdersController extends AppController {
 	}
 
 	public function admin_delete_bac($order_id = null, $bac_id = null) {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
-
-
 
 		$bac = $this->Order->BacR->findByBacIdAndOrderId($bac_id, $order_id);
 
@@ -935,12 +883,6 @@ class OrdersController extends AppController {
  * @return void
  */
 	public function admin_delete($id = null) {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
-
 		$this->Order->id = $id;
 		if (!$this->Order->exists()) {
 			throw new NotFoundException(__('Invalid order'));
