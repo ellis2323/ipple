@@ -1,5 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
+App::import('Model','Hour');
 /**
  * Orders Controller
  *
@@ -253,7 +255,7 @@ class OrdersController extends AppController {
 								$this->Order->saveField('address_id', $this->Order->Address->id);
 
 								// Envoie de l'email de notification
-								App::uses('CakeEmail', 'Network/Email');
+								
 
 								$CakeEmail = new CakeEmail('default');
 								$CakeEmail->to('rpietra@gmail.com');
@@ -376,7 +378,7 @@ class OrdersController extends AppController {
 														'id' 			=> $order_id,
 														'user_id'		=> $this->Session->read('Auth.User.id'),
 														'nb_bacs'		=> $this->request->data['Order']['nb_bacs'],
-														'hour_id'		=> 	$this->request->data['Order']['hours'],
+														'hour_deposit'		=> 	$this->request->data['Order']['hours'],
 														'state'			=> 1
 														),
 											"Address" =>
@@ -390,16 +392,16 @@ class OrdersController extends AppController {
 															'digicode'			=> $this->request->data['Address'][0]['digicode'],
 															'floor'				=> $this->request->data['Address'][0]['floor'],
 															'comment'			=> $this->request->data['Address'][0]['comment'],
+															'phone'			=> $this->request->data['Address'][0]['phone'],
 															)
 						);
 
 						if($this->Order->saveAssociated($data_order)){
 							$this->Session->setFlash('Données correctement sauvegardées');
-
+							$this->redirect(array('action' => 'edit', $order_id));
 						}
 					}
 				}
-
 
 
 				// On récupère les villes
@@ -410,17 +412,11 @@ class OrdersController extends AppController {
 			
 				$postals = $this->Order->Address->Postal->find('list');
 				$this->set(compact('postals'));
+		
 
-				// On récupère les heures
-			    $this->Order->bindModel(
-			        array('hasMany' => array(
-			                'Hour' => array(
-			                    'className' => 'Hour'
-			                )
-			            )
-			        )
-			    );			
-				$hours = $this->Order->Hour->find('list');
+			    
+				$hours = new Hour();
+				$hours = $hours->find('list');
 				$this->set(compact('hours'));
 
 				$this->set(compact('order'));
@@ -562,7 +558,6 @@ class OrdersController extends AppController {
 							$this->Order->saveField('address_id', $this->Order->Address->id);
 
 							// Envoie de l'email de notification
-							App::uses('CakeEmail', 'Network/Email');
 
 							$CakeEmail = new CakeEmail('default');
 							$CakeEmail->to('rpietra@gmail.com');

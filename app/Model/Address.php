@@ -56,31 +56,29 @@ class Address extends AppModel {
 		),
 
 		'city' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				'message' => 'Veuillez choisir une ville valide',
-			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				'message' => 'Veuillez choisir une ville',
 			),
+			'numeric' => array(
+				'rule' => array('numeric'),
+				'message' => 'Veuillez choisir une ville valide',
+			),
 		),
 
 		'company' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				'message' => 'Veuillez choisir un code postal',
-			),
+
 		),
 
 		'postal' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				'message' => 'Veuillez choisir un code postal valide',
-			),
+
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				'message' => 'Veuillez choisir un code postal',
+			),
+			'numeric' => array(
+				'rule' => array('numeric'),
+				'message' => 'Veuillez choisir un code postal valide',
 			),
 		),
 
@@ -93,17 +91,18 @@ class Address extends AppModel {
 		),
 
 		'etage' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				
-			),
+
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				'message' => 'Veuillez préciser votre étage',			
 				),
+			'numeric' => array(
+				'rule' => array('numeric'),
+				
+			),
 		),
 
-		'tel' => array(
+		'phone' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				'message' => 'Veuillez entrer votre numéro de téléphone.',
