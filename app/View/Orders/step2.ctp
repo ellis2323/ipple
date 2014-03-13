@@ -7,8 +7,7 @@
 
             <div class="row">
                 
-                    <h3><?php echo $this->Html->image('fleche_liv.png', array('alt' => 'responsive image'));?></h3>   
-                    <h3>Où voulez-vous vous faire livrer les bacs?</h3>
+                    <h3><?php echo $this->Html->image('fleche_liv.png', array('alt' => 'responsive image'));?> Où voulez-vous vous faire livrer les bacs?</h3>
             </div>
 
             <div class="choix">    

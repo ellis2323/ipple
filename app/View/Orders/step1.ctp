@@ -6,8 +6,7 @@
             
                 <h2 class="text-center">Commander des bacs</h2>
                 <hr>
-                <h3><?php echo $this->Html->image('marqueur.png', array('alt' => 'responsive image'));?></h3>   
-                <h3>Choisissez votre ville</h3>
+                <h3><?php echo $this->Html->image('marqueur.png', array('alt' => 'responsive image'));?> Choisissez votre ville</h3>
                  
                     <div class="choix">   
                         <div class="row">
@@ -27,8 +26,7 @@
         <div class="section">
             
             
-                <h3><?php echo $this->Html->image('minibac.png', array('alt' => 'responsive image'));?></h3>   
-                <h3>Combien de bacs désirez-vous?</h3>
+                <h3><?php echo $this->Html->image('minibac.png', array('alt' => 'responsive image'));?> Combien de bacs désirez-vous?</h3>
                  
                     <div class="choix">   
                         <div class="row">

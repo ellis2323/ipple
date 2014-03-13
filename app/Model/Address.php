@@ -90,7 +90,7 @@ class Address extends AppModel {
 
 		),
 
-		'etage' => array(
+		'floor' => array(
 
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),

@@ -12,7 +12,7 @@
         <div class="section">
             <div class="choix">
                 <div class="row">
-                    
+                    <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?> Quand voulez-vous récupérez les bacs?</h3>  
 	                            <div class="form-group">
 	                                <label for="date" class="col-lg-2 col-md-2 col-sm-2 control-label">Date de livraison<span class="blue">*</span></label>
 	                                <div class="col-lg-4 col-md-4 col-sm-4 ll-skin-latoja">
@@ -63,6 +63,7 @@
 	                                                </label>
 	                                    </div>
 	                                </div>
+	                         </div>
 	                            
 	                        <div class="col-lg-6 col-md-6 col-sm-6">
 	                            <div class="form-group">
@@ -79,26 +80,10 @@
 
 	                        </div>
 
-	                    
-
-	                </div>
-						
 					</div><!-- /row-->
-	            </div> <!-- choix -->
-	            
 
-	        </div> <!-- section -->
-	    
-
-
-
-	        <div class="section">        
-	            <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?></h3>   
-	            <h3>Quand voulez-vous récupérez les bacs?</h3>   
-	                
-	            <div class="choix">
-	            	<div class="row">
-
+                    <div class="row">
+                    	<h3 style='text-align:center;'>Stockage</h3>
 		                <div class="radio col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
 		                    <?php 
 			                    echo $this->Form->input('withdraw', array(
@@ -112,79 +97,99 @@
 			                    echo $this->Form->input('withdraw', array(
 								 'type' => 'radio',
 								 'legend' => false,
-								 'options' => array(2 => 'Je prévois ma date et mon horaire de récupération'),
+								 'options' => array(2 => 'Je prévois ma date et mon horaire de stockage'),
 								 'hiddenField'=>false
 								));  
 		                    ?>		       
 
-		                </div>     
+		                </div>  
 
-			                    
-		                    <div class="form-group">
-		                        <label for="date" class="col-lg-2 col-md-2 col-sm-2 control-label">Date de livraison (récupération)<span class="blue">*</span></label>
+                    </div>
 
-		                        <div class="col-lg-4 col-md-4 col-sm-4 ll-skin-latoja">
-		                            <!-- DATEPICKER -->
-		                            <?= $this->Form->input("date_withdrawal", 
-		                                array(
-		                                    'label' => false, 
-		                                    'type' => 'text',
-		                                    'id' => 'select_date2',
-		                                    'class' => 'form-control',
-		                                    'div' => 'col-lg-6 col-md-6 col-sm-6',
-		                                    'required' => false,
+	                    
 
-		                                )
-		                            ); ?>
-		                            <div id="datepicker2"></div>
+	        </div><!-- choix -->
+						
+	</div> 
 
-		                            <?= $this->start('datepicker2'); ?>
+	    
 
-		                            <script type='text/javascript'>
-		                             $(document).ready(function(){
-		                                        var datesBlocked = ["2014-03-14","2014-03-15","2014-03-16"];
 
-		                                          $("#select_date2").click(function(){
-		                                                 $("#datepicker2").datepicker(
-		                                                {
-		                                                       dateFormat: 'mm/dd/yy',
-		                                                       monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
-		                                                       beforeShowDay: function(date){
-		                                                            var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
-		                                                            return [ datesBlocked.indexOf(string) == -1 ];
-		                                                        },
-		                                                       onSelect: function(dateText, inst){
-		                                                             $('#select_date2').val(dateText);
-		                                                             $("#datepicker2").datepicker("destroy");
-		                                                      }
-		                                                 });
-		                                           });
-		                                    });
-		                             </script>
-		                             <?= $this->end(); ?> 
 
-										<div class="checkbox">
-		                                            <label class="col-lg-8 col-md-8 col-sm-8">
-		                                                <input type="checkbox" /> Concierge? Oui, laissez les bacs à mon concierge
-		                                            </label>
-		                                </div>
-		                             
-		                    	</div>
-		                 </div> 	
+        <div class="section">        
+             
+                
+            <div class="choix">
+            	<div class="row">
 
-		                <div class="col-lg-6 col-md-6 col-sm-6">
-		                    <div class="form-group">
-		                        <label for="heure_liv" class="col-lg-4 col-md-4 col-sm-4 control-label">Heure de livraison<span class="blue">*</span></label>
-		                        <div class="col-lg-6 col-md-6 col-sm-6">
-									<?php
 
-									echo $this->Form->input('hours', array(
-		                                                'class' => 'form-control',
-		                                                'label' => false
-		                          	));?>                                  
-		                  		</div>
-		                    </div>
-		  				</div>              
+
+		                    
+	                    <div class="form-group">
+	                        <label for="date" class="col-lg-2 col-md-2 col-sm-2 control-label">Date de livraison (récupération)<span class="blue">*</span></label>
+
+	                        <div class="col-lg-4 col-md-4 col-sm-4 ll-skin-latoja">
+	                            <!-- DATEPICKER -->
+	                            <?= $this->Form->input("date_withdrawal", 
+	                                array(
+	                                    'label' => false, 
+	                                    'type' => 'text',
+	                                    'id' => 'select_date2',
+	                                    'class' => 'form-control',
+	                                    'div' => 'col-lg-6 col-md-6 col-sm-6',
+	                                    'required' => false,
+
+	                                )
+	                            ); ?>
+	                            <div id="datepicker2"></div>
+
+	                            <?= $this->start('datepicker2'); ?>
+
+	                            <script type='text/javascript'>
+	                             $(document).ready(function(){
+	                                        var datesBlocked = ["2014-03-14","2014-03-15","2014-03-16"];
+
+	                                          $("#select_date2").click(function(){
+	                                                 $("#datepicker2").datepicker(
+	                                                {
+	                                                       dateFormat: 'mm/dd/yy',
+	                                                       monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
+	                                                       beforeShowDay: function(date){
+	                                                            var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+	                                                            return [ datesBlocked.indexOf(string) == -1 ];
+	                                                        },
+	                                                       onSelect: function(dateText, inst){
+	                                                             $('#select_date2').val(dateText);
+	                                                             $("#datepicker2").datepicker("destroy");
+	                                                      }
+	                                                 });
+	                                           });
+	                                    });
+	                             </script>
+	                             <?= $this->end(); ?> 
+
+									<div class="checkbox">
+	                                            <label class="col-lg-8 col-md-8 col-sm-8">
+	                                                <input type="checkbox" /> Concierge? Oui, laissez les bacs à mon concierge
+	                                            </label>
+	                                </div>
+	                             
+	                    	</div>
+	                 </div> 	
+
+	                <div class="col-lg-6 col-md-6 col-sm-6">
+	                    <div class="form-group">
+	                        <label for="heure_liv" class="col-lg-4 col-md-4 col-sm-4 control-label">Heure de livraison<span class="blue">*</span></label>
+	                        <div class="col-lg-6 col-md-6 col-sm-6">
+								<?php
+
+								echo $this->Form->input('hours', array(
+	                                                'class' => 'form-control',
+	                                                'label' => false
+	                          	));?>                                  
+	                  		</div>
+	                    </div>
+	  				</div>              
 		  	</div>
  		</div>
     </div> <!-- section -->
