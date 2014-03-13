@@ -9,7 +9,7 @@
 
 		<div class="actions">
 			<?php if($thumbID !== false && $media['id'] !== $thumbID && $media['type'] == 'pic'): ?>
-				<?php echo $this->Html->link(__d("media", "Mettre en image à la une"),array('action'=>'thumb',$media['id'])); ?> -
+				<?php echo $this->Html->link(__d("media", "Mettre en couverture"),array('action'=>'thumb',$media['id'])); ?> -
 			<?php endif; ?>
 			<?php echo $this->Html->link(__d('media',"Supprimer"),array('action'=>'delete',$media['id']),array('class'=>'del')); ?>
 			<?php if ($editor): ?>

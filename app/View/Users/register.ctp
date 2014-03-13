@@ -90,8 +90,7 @@
                         <div class="row">   
                             <div class="checkbox">
                                 <label class="col-lg-3 col-md-3 col-sm-3 col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
-                                    <input required="" type="checkbox">Se souvenir de moi
-
+                                    
                                     <p><br></p><?= $this->Form->end("Je créer mon compte"); ?>                                    
 
                                 </label>

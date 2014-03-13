@@ -16,17 +16,8 @@ class BacsController extends AppController {
 		public function edit($bac_id) {
 
 			// On cherche les infos sur le bac
-			$bac = $this->Bac->find('first', array(
-														'Bac' => array(
-																		'conditions' => array(
-																								'user_id' => $this->Session->read('Auth.User.id'),
-																								'id'	=> $bac_id,
-																								'state <' => 3
+			$bac = $this->Bac->findByUserIdAndIdAndState($this->Session->read('Auth.User.id'), $bac_id, 3);
 
-																							),
-																		)
-													)
-			) ;
 
 
 			// Si le bac existe et qu'il appartient bien à l'utilisateur
@@ -50,6 +41,8 @@ class BacsController extends AppController {
 				}
 				// On affiche les données déjà entré par l'user
 				$this->set(compact('bac'));
+
+				debug($bac);
 			}
 			// sinon erreur 404
 			else {

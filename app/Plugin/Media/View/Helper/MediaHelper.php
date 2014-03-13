@@ -36,7 +36,7 @@ class MediaHelper extends AppHelper{
 	}
 
 	public function iframe($ref,$ref_id){
-		return '<iframe src="' . $this->Html->url("/media/medias/index/$ref/$ref_id") . '" style="width:100%;" id="medias-' . $ref . '-' . $ref_id . '"></iframe>';
+		return '<iframe src="' . $this->Html->url("/media/medias/index/$ref/$ref_id") . '" style="width:100%;min-height:300px;" id="medias-' . $ref . '-' . $ref_id . '"></iframe>';
 	}
 
 	public function resize($image, $width, $height, $options = array()){

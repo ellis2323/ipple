@@ -27,16 +27,7 @@ class UsersController extends AppController {
 		public function my_bacs(){
 			
 				// On liste toutes les bacs utilisateurs
-				$bacs = $this->User->Bac->find('all', array(
-															'Bac' => array(
-																			'conditions' => array(
-																									'user_id' => $this->Session->read('Auth.User.id'),
-																									'state <' => 3
-
-																								),
-																			)
-														)
-				) ;
+				$bacs = $this->User->Bac->findAllByUserId($this->Session->read('Auth.User.id'));
 				// On les envois à la vue
 				$this->set(compact('bacs'));
 
@@ -357,11 +348,6 @@ class UsersController extends AppController {
 
 		// Lister tous les utilisateurs
 		public function admin_index(){
-			// Si l'utilisateur est admin
-			if(!($this->Session->read('Auth.User.role') >= 90)) {
-				throw new NotFoundException();
-			}
-			$this->layout = 'admin'; // Layout admin
 
 
 			// On liste toutes les utilisateurs
@@ -378,11 +364,7 @@ class UsersController extends AppController {
 
 		// Editer un utilisateur
 		public function admin_edit($user_id){
-			// Si l'utilisateur est admin
-			if(!($this->Session->read('Auth.User.role') >= 90)) {
-				throw new NotFoundException();
-			}
-			$this->layout = 'admin'; // Layout admin
+
 
 
 
@@ -432,11 +414,7 @@ class UsersController extends AppController {
 		}
 
 	public function admin_delete($id = null) {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
+
 
 		
 		$this->User->id = $id;

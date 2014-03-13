@@ -5,23 +5,20 @@ if(!empty($bacs)){
 
 ?>
 
-
+<?= $this->Form->create('Order'); ?>
 <div class="section">
     <h3 class="text-center">Mes affaires</h3>
-        
-    <ul id="matab" class="nav nav-tabs">
-      
-      <li class="active"><a href="#bacstock" data-toggle="tab">Bacs stockés</a></li>
-      <li class=""><a href="#bachome" data-toggle="tab">Bacs chez moi</a></li> 
-    </ul>
-    <p class="text-right"><br><a class="btn btn-sm btn-primary" href="#" role="button" text-right="" style="background-color:#65b7f2;color:white">Récupérer tous mes bacs</a></p>
-    <div id="matab" class="tab-content">
+
+    <p class="text-right"><br><a class="btn btn-sm btn-primary" href="#" role="button" text-right="" style="background-color:#65b7f2;color:white">Récupérer tous mes bacs</a>
+
+    <button type"submit" class="btn btn-sm btn-primary" style="background-color:#65b7f2;color:white">Récupérer les bacs selectionnés</button>
+    </p>
     <!-- DEBUT CONTENT -->
 
 
         <!-- DEBUT LISTE BACS-->
         <div class="tab-pane fade active in" id="bacstock">
-<?= $this->Form->create('Order'); ?>
+
  <?php 
   foreach($bacs as $key):
   // Debut foreach
@@ -32,13 +29,9 @@ if(!empty($bacs)){
               <div class="row">
                     
                       <?php 
-                      if(!empty($key['Media'])): 
+                      if(!empty($key['Thumb']['file'])): 
                       ?>
-
-                            <?= $this->Html->image($key['Bac']['thumb'], array('width' => '250', 'height' => '250', 'class' => 'col-lg-3 col-md-3 col-sm-3 ' ) ); ?>
-
-
-
+                            <?= $this->Html->image($key['Thumb']['file'], array('width' => '250', 'height' => '250', 'class' => 'col-lg-3 col-md-3 col-sm-3 ' ) ); ?>
 
                       <?php 
                       else: 
@@ -71,8 +64,12 @@ if(!empty($bacs)){
                               </p>
                       </div>
                       <div class="col-lg-2 col-lg-offset-2 col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 barre_select">
-                          <p class="text-right barre_select"><a class="btn btn-sm  btn-primary" href="#" role="button" text-right="" style="background-color:#65b7f2;color:white">Récupérer ce bac</a></p>
-                          <?= $this->Form->input($key['Bac']['id'], array('type' => 'checkbox'));?>                   
+                          <p class="text-right barre_select">
+                            <div class="checkbac">
+                            <?= $this->Form->input($key['Bac']['id'], array('type' => 'checkbox', 'label' => 'Choisir'));?>    
+                            <span class='text'>✔</span>
+                            </div>     
+                          </p>          
                       </div>
               </div>    
           </div>
@@ -91,101 +88,16 @@ if(!empty($bacs)){
   // Fin foreach
 
   ?>
-<?= $this->Form->end('Récupérer'); ?>
+  <p class="text-right">
+<button type"submit" class="btn btn-sm btn-primary" style="background-color:#65b7f2;color:white">Récupérer les bacs selectionnés</button>
+</p>
 
-
+<?= $this->Form->end(); ?>
       <!-- FIN LISTE BAC -->
       </div>
   
-      <!-- RECUPERER BACS -->
-      <div class="tab-pane fade" id="bachome">
-
-
-      <form class="form-horizontal" role="form">
-          <div class="section">
-  
-                  <div class="row">
-                      
-                          <h3><img src="fleche_liv.png" class="img-responsive pull-left" alt="responsive image" style="margin:0 1%"></h3>   
-                          <h3>Où voulez-vous vous faire livrer les bacs?</h3>
-                  </div>
-                  <div class="choix">    
-                  
-                      <div class="col-lg-6 col-md-6 col-sm-6">
-                          <div class="form-group">
-                              <label for="nom" class="col-lg-4 col-md-4 col-sm-4 control-label">Nom<span class="blue">*</span></label>
-                              <div class="col-lg-6 col-md-6 col-sm-6">
-                                  <input required="" class="form-control" id="nom" placeholder="Votre nom" type="text">
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6 col-sm-6">
-                          <div class="form-group">
-                              <label for="prenom" class="col-lg-4 col-md-4 col-sm-4 control-label">Prénom<span class="blue">*</span></label>
-                              <div class="col-lg-6 col-md-6 col-sm-6">
-                                  <input required="" class="form-control" id="prenom" placeholder="Votre prénom" type="text">
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6 col-sm-6">
-                          <div class="form-group">
-                              <label for="entreprise" class="col-lg-4 col-md-4 col-sm-4 control-label">Entreprise</label>
-                              <div class="col-lg-6 col-md-6 col-sm-6">
-                              <input class="form-control" id="entreprise" placeholder="Votre entreprise" type="text">
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6 col-sm-6">
-                          <div class="form-group">
-                              <label for="telephone" class="col-lg-4 col-md-4 col-sm-4 control-label">Téléphone<span class="blue">*</span></label>
-                              <div class="col-lg-6 col-md-6 col-sm-6">
-                                  <input required="" class="form-control" id="telephone" placeholder="Votre téléphone" type="tel">
-                              </div>
-                          </div>
-                      </div>
-                      
-                          <div class="form-group">
-                              <label for="adresse" class="col-lg-2 col-md-2 col-sm-2 control-label">Adresse<span class="blue">*</span></label>
-                              <div class="col-lg-6 col-md-6 col-sm-6" style="margin:0 10px">
-                                  <input required="" class="form-control" id="adresse" placeholder="Votre adresse" type="text">
-                              </div>
-                          </div>
-                      
-                      <div class="col-lg-6 col-md-6 col-sm-6">
-                          <div class="form-group">
-                              <label for="code_postal" class="col-lg-4 col-md-4 col-sm-4 control-label">Code Postal<span class="blue">*</span></label>
-                              <div class="col-lg-6 col-md-6 col-sm-6">
-                                  <input required="" class="form-control" id="code_postal" placeholder="Votre code postal" type="text">
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6 col-sm-6">
-                          <div class="form-group">
-                              <label for="ville" class="col-lg-4 col-md-4 col-sm-4 control-label">Ville<span class="blue">*</span></label>
-                              <div class="col-lg-6 col-md-6 col-sm-6">
-                                  <input required="" class="form-control" id="ville" placeholder="Paris" type="text">
-                              </div>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          <label for="commentaires" class="col-lg-2 col-md-2 col-sm-2 control-label">Commentaires pour<br> la livraison</label>
-                          <div class="col-lg-6 col-md-6 col-sm-6" style="margin:0 10px">
-                              <textarea class="form-control" rows="3" id="commentaires"></textarea>
-                              <p><span class="blue">*</span> Champs obligatoires</p>
-                          </div>
-                      </div>
-                  
-                  
-                  </div><!-- choix -->
-
-              </div> <!--section -->
-      </form> 
-
-      <!-- FIN RECUPERER BAC -->
-      </div>
 
       <!-- FIN CONTENT -->
-  </div>
 </div>   
     
 <?php

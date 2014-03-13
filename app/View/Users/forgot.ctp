@@ -5,5 +5,5 @@
 
 		<?php echo $this->Form->input('email');?>
 
-		<?php echo $this->Form->end('Envoyer une confirmation par mail');?>
+		<?php echo $this->Form->end('Envoyez-moi un nouveau mot de passe');?>
 		</p>

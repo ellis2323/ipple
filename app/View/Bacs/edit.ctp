@@ -30,7 +30,10 @@
                                           'value' => $bac['Bac']['description'],
                                           )); ?>
 
-<?= $this->Form->end('Modifier'); ?>
+<p style='text-align:center;'>
+      <br />
+      <button type"submit"="" class="btn btn-sm btn-primary" style="background-color:#65b7f2;color:white">Modifier</button><?= $this->Form->end(); ?>
+</p>
 
       <h1>Contenu du bac</h1>
             <?php 
@@ -48,5 +51,7 @@
 
 
 
-
-<?= $this->Html->link('Retour à mes bacs',array('controller' => 'users', 'action' => 'my_bacs'));?>
+<p style='text-align:center;'>
+      <br />
+<?= $this->Html->link('Retour à mes bacs',array('controller' => 'users', 'action' => 'my_bacs'), array('class'=>"btn btn-sm btn-primary" , 'style'=>"background-color:#65b7f2;color:white"));?>
+</p>

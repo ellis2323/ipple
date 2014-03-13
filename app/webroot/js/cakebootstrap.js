@@ -18,7 +18,7 @@ var Bootstrappifier = {
 
 			//All submit forms converted to primary button
 			$('input[type="submit"]').addClass('btn btn-primary');
-			All index actions converted into pretty buttons
+			//All index actions converted into pretty buttons
 			$('td[class="actions"] > a[class!="btn"]').addClass('btn');
 
 			//All (div.inputs) with default FormHelper style (div.input > label ~ input)

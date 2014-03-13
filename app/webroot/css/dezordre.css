@@ -357,3 +357,85 @@ border-top-style: none;
   color:white;
 /* background-color: #f9f9f9; */
 }
+
+
+
+
+/* MODIF CORENTIN */
+
+/* Aspect des checkboxes */  
+/* :before sert à créer la case à cocher */  
+input[type=checkbox] {
+  visibility: hidden;
+}
+/* SLIDE ONE */
+.checkbac{
+  width: 100px;
+  height: 50px;
+  margin: 50px 0 0 0;
+
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+
+  position: relative;
+
+  background: #2DBD2D;
+
+  -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+  -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+  box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2); 
+
+}
+
+.checkbac label {
+
+
+
+  display: block;
+  width: 100px;
+  height: 50px;
+
+  color: #133A71;
+  font-size: 20px;
+  padding-top: 10px;
+  font-weight: bold;
+
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+
+  background: #65b7f2;
+
+  -webkit-transition: all .250s ease;
+  -moz-transition: all .250s ease;
+  -o-transition: all .250s ease;
+  -ms-transition: all .250s ease;
+  transition: all .250s ease;
+  cursor: pointer;
+  position: absolute;
+  left:0;
+  z-index:900;
+
+
+  -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+  -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+  box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+  
+}
+
+.checkbac input[type=checkbox]:checked + label {
+    opacity:0;
+
+}
+
+.checkbac > span.text {
+
+  text-align: center;
+  
+  bottom: 24px;
+  position: relative;
+  color: #147621;
+  font-size: 25px;
+
+}

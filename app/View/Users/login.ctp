@@ -39,7 +39,7 @@
                                 ?>
                                 <?php
                                 echo $this->Form->input('password', array(
-                                                                                'type' => 'text',
+                                                                                'type' => 'password',
                                                                                 'label' => false, 
                                                                                 'class' => 'form-control',
                                                                                 'div' => 'col-lg-2 col-md-2 col-sm-2',
