@@ -9,14 +9,23 @@ $( document ).ready(function() {
 	if(concierge!=1){
     	$('#return').hide();
 	}
+	else {
+	    $("#OrderSelectDate").prop('required',true);
+	};
+
     $('#OrderWithdraw2').change(function(){
 	 if($(this).is(':checked')) {
 	        $('#return').fadeIn();
+	        $("#OrderSelectDate").prop('required',true);
 	    }
 	});
+
+
+
     $('#OrderWithdraw1').change(function(){
 	 if($(this).is(':checked')) {
 	        $('#return').fadeOut();
+	        $("#OrderSelectDate").prop('required',false);
 	    }
 	});	
 
@@ -98,7 +107,7 @@ $( document ).ready(function() {
 		    <div class="choix">
 		    	<div class="row">
 		            <div class="form-group">
-		                <label for="date_withdrawal" class="col-lg-2 col-md-2 col-sm-2 control-label">Date de récupération<span class="blue">*</span></label>
+		                <label for="OrderSelectDate" class="col-lg-2 col-md-2 col-sm-2 control-label">Date de récupération<span class="blue">*</span></label>
 
 		                <div class="col-lg-4 col-md-4 col-sm-4">
                             <!-- DATEPICKER -->
@@ -106,7 +115,7 @@ $( document ).ready(function() {
                                 array(
                                     'label' => false, 
                                     'type' => 'text',
-                                    'id' => 'select_date',
+                                    'id' => 'OrderSelectDate',
                                     'class' => 'form-control',
                                     'div' => 'col-lg-6 col-md-6 col-sm-6',
                                     'required' => false,
@@ -117,23 +126,22 @@ $( document ).ready(function() {
 
                                 <?= $this->start('datepicker'); ?>
 
-
                                 <script type='text/javascript'>
                                  $(document).ready(function(){
                                             var datesBlocked = ["2014-03-14","2014-03-15","2014-03-16"];
 
-                                              $("#select_date").click(function(){
+                                              $("#OrderSelectDate").click(function(){
                                                      $("#datepicker").datepicker(
                                                     {
                                                            dateFormat: 'dd-mm-yy',
-                                                           minDate : 0,
+                                                           minDate : '<?= $minDate;?>',
                                                            monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
                                                            beforeShowDay: function(date){
                                                                 var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
                                                                 return [ datesBlocked.indexOf(string) == -1 ];
                                                             },
                                                            onSelect: function(dateText, inst){
-                                                                 $('#select_date').val(dateText);
+                                                                 $('#OrderSelectDate').val(dateText);
                                                                  $("#datepicker").datepicker("destroy");
                                                           }
                                                      });
@@ -156,7 +164,6 @@ $( document ).ready(function() {
                                 ?>                                
                                 <?php
                                     echo $this->Form->input('concierge_withdrawal', array(
-                                                        'class' => 'form-control',
                                                         'label' => false,
                                                         'type'  => 'checkbox',
                                     ));
@@ -169,12 +176,11 @@ $( document ).ready(function() {
 
 		            <div class="col-lg-6 col-md-6 col-sm-6">
 		                <div class="form-group">
-		                    <label for="hwithdrawals" class="col-lg-4 col-md-4 col-sm-4 control-label">Heure de récupération<span class="blue">*</span></label>
+		                    <label for="OrderHwithdrawals" class="col-lg-4 col-md-4 col-sm-4 control-label">Heure de récupération<span class="blue">*</span></label>
 		                    <div class="col-lg-6 col-md-6 col-sm-6">
 								<?php
 
 								echo $this->Form->input('hwithdrawals', array(
-
 		                                            'class' => 'form-control',
 		                                            'label' => false
 		                      	));?>                                  
@@ -204,7 +210,6 @@ $( document ).ready(function() {
                     	<?php
                     			if($this->Session->read('Auth.User.rules') == 0){
 									echo $this->Form->input('cgv', array(
-		                                                'class' => 'form-control',
 		                                                'label' => "J'ai lu et j'accepte les <a href=''>Conditions Générales de ventes</a>",
 		                                                'type'	=> 'checkbox',
 		                                                'required' => true,

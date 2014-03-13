@@ -116,7 +116,6 @@ class Order extends AppModel {
 			$withdraw = strtotime($withdraw);
 		}
 
-		
 		if($deposit < $withdraw){
 			return true;
 		}
@@ -153,6 +152,7 @@ class Order extends AppModel {
 		$week_block = $DatesBlock->findByValueAndType($week, 2);
 		$month_block = $DatesBlock->findByValueAndType($month, 3);
 		$day_week_block = $DatesBlock->findByValueAndType($day_week, 4);
+
 
 		// Si on trouve la date
 		if(!empty($day_block) ||  !empty($month_block) || !empty($week_block) || !empty($day_week_block)){

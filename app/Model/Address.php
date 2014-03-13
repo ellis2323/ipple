@@ -87,8 +87,10 @@ class Address extends AppModel {
 		),
 
 		'floor' => array(
-
-
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				'message' => 'Veuillez définir un étage.',
+			),
 		),
 
 		'phone' => array(

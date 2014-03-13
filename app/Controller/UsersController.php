@@ -352,9 +352,7 @@ class UsersController extends AppController {
 						// Si tout est ok, on sauvegarde
 						$this->User->save();
 
-						// Envoie de l'email d'activation
-						
-
+						// Envoie de l'email d'activation à l'utilisateur
 						$CakeEmail = new CakeEmail('default');
 						$CakeEmail->to($this->request->data['User']['email']);
 						$CakeEmail->subject('Dezordre: Confirmation d\'inscription');
@@ -366,6 +364,7 @@ class UsersController extends AppController {
 						$CakeEmail->emailFormat('text');
 						$CakeEmail->template('register');
 						$CakeEmail->send();
+
 
 						$this->Session->setFlash("Votre compte à bien été créer. Un lien vous à été envoyé par email afin d'activer votre compte.", 'alert', array('class' => 'success'));
 						$this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));

@@ -16,7 +16,7 @@
 
                             <div class="row">
                                 <div class="form-group">
-                                    <label for="email" class="col-lg-4 col-md-4 col-sm-4 control-label" style='text-align:right;'>Votre email<span class="blue">*</span></label>
+                                    <label for="UserEmail" class="col-lg-4 col-md-4 col-sm-4 control-label" style='text-align:right;'>Votre email<span class="blue">*</span></label>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                     <?= $this->Form->input('email', array(
                                         'label' => false, 
@@ -31,7 +31,7 @@
 
                             <div class="row">
                                 <div class="form-group">
-                                    <label for="password" class="col-lg-4 col-md-4 col-sm-4 control-label" style='text-align:right;'>Mot de passe<span class="blue">*</span></label>
+                                    <label for="UserPassword" class="col-lg-4 col-md-4 col-sm-4 control-label" style='text-align:right;'>Mot de passe<span class="blue">*</span></label>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                 <?= $this->Form->input('password', array(
                                         'label' => false, 
@@ -47,7 +47,7 @@
 
                             <div class="row">
                                 <div class="form-group">
-                                    <label for="password2" class="col-lg-4 col-md-4 col-sm-4 control-label" style='text-align:right;'>Confirmer le mot de passe<span class="blue">*</span></label>
+                                    <label for="UserPassword2" class="col-lg-4 col-md-4 col-sm-4 control-label" style='text-align:right;'>Confirmer le mot de passe<span class="blue">*</span></label>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                         <?= $this->Form->input('password2', array(
                                         'type'  => 'password',
@@ -67,15 +67,13 @@
 
 
                             <div class="row">   
-                                    <label class="col-lg-3 col-md-3 col-sm-3 col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
-                                        
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
+
                                         <p><br></p>
 
-                                        <button type"submit" class="btn" style="background-color:#65b7f2;color:white;">Je crée mon compte</button>
-                                        
-                                        <?= $this->Form->end(); ?>                                    
+                                        <button type="submit" class="btn" style="background-color:#65b7f2;color:white;">Je crée mon compte</button>
+                                    </div>
 
-                                    </label>
                                     
                             </div>
 
@@ -86,7 +84,7 @@
     </div> <!-- section -->
         
     
-            
+<?= $this->Form->end(); ?>            
 </div>
 
 

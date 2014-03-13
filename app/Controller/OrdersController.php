@@ -181,6 +181,8 @@ class OrdersController extends AppController {
 				$data_get = unserialize(base64_decode($data_get) );
 				$date_deposit = $data_get['Order']['date_deposit'];
 
+				$this->set('minDate', $date_deposit);
+				
 				$address_id = $data_get['Id'];
 
 				$concierge_deposit = $data_get['Order']['concierge_deposit'];
@@ -188,6 +190,7 @@ class OrdersController extends AppController {
 
 				$split_date=explode("/",$date_deposit);
 				$this->set(compact('split_date'));
+
 
 				// Si on poste des données
 				if(!empty($this->request->data)){	

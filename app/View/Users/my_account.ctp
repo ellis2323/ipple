@@ -126,7 +126,7 @@ $(function(){
 
                                 <div class="form-group">
                                 <?php
-                                echo $this->Form->label('password', 'Mot de passe actuel<span class="blue">*</span>', array(
+                                echo $this->Form->label('password', 'Nouveau mot de passe<span class="blue">*</span>', array(
                                                                                 'class' => 'col-lg-6 col-md-6 col-sm-6 control-label',
                                                                                 'style' => 'text-align:right;',
                                                                             )

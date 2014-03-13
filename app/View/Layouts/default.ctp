@@ -43,12 +43,15 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                     <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', '#' => 'prix') );?>">Prix</a></li>
+
+                    <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', '#' => 'prix') );?>">Prix</a></li>
+
                     <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', '#' => 'securite') );?>">Sécurité</a></li>
                     
                     <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'faq') );?>">F.A.Q</a></li>
 
                     <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', '#' => 'contact')  );?>">Contact</a></li>
+
                     <?php if($this->Session->read('Auth.User.role') >= 90) {
                         ?>
                             <li>
@@ -71,12 +74,15 @@
 
                             <!-- MENU -->
                     <li class="dropdown">
+                        
                         <?php // #### Menu loggé ####
+
                         if($this->Session->check('Auth.User.id')):
                         ?>
-
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?= $this->Session->read('Auth.User.email');?><b class="caret"></b></a>
-                        <ul class="dropdown-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?= $this->Session->read('Auth.User.email');?><b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            
+                    
 
 
                             <li>
@@ -140,41 +146,41 @@
                                 );?>
                             </li>  
 
+                        </ul>
+                        <?php
+                        // #### Menu non loggé ####
+                        else:
+                        ?>
 
-                            <?php
-                            // #### Menu non loggé ####
-                            else:
-                            ?>
+                            <li>
+                            <?php echo $this->Html->link(
+                                    "S'enregistrer",
+                                    array(
+                                        'controller' => 'users',
+                                        'action' => 'register',
+                                    'full_base'     => true,
+                                    'admin'         => false                                        
+                                    )
+                                );?>
+                            </li>
+                           <li>
+                            <?php echo $this->Html->link(
+                                    'Login',
+                                    array(
+                                        'controller' => 'users',
+                                        'action' => 'login',
+                                    'full_base'     => true,
+                                    'admin'         => false                                        
+                                    )
+                                );?>
+                            </li>
 
-                                <li>
-                                <?php echo $this->Html->link(
-                                        "S'enregistrer",
-                                        array(
-                                            'controller' => 'users',
-                                            'action' => 'register',
-                                        'full_base'     => true,
-                                        'admin'         => false                                        
-                                        )
-                                    );?>
-                                </li>
-                               <li>
-                                <?php echo $this->Html->link(
-                                        'Login',
-                                        array(
-                                            'controller' => 'users',
-                                            'action' => 'login',
-                                        'full_base'     => true,
-                                        'admin'         => false                                        
-                                        )
-                                    );?>
-                                </li>
-
-                            <?php
-                            endif;
-                            ?>
-                            </ul>
-                            <!-- /MENU -->
-                    
+                        <?php
+                        endif;
+                        ?>
+                        
+                        <!-- /MENU -->
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -201,9 +207,9 @@ if(!empty($this->request->params['pass'][0]) && ($this->request->params['pass'][
                         nous nous occupons de tout pour vous&nbsp;: récupération de vos affaires, stockage et livraison à la demande.</h4>
 
                  <?php else:?>
-                    <a href="<?= $this->Html->url(array('controller' => 'users', 'action' => 'my_bacs')); ?>"><button type"submit" class="btn-lg color-btn margin25" >Mes affaires en stock</button></a>
+                    <a href="<?= $this->Html->url(array('controller' => 'users', 'action' => 'my_bacs')); ?>"><div class="btn btn-lg color-btn margin25" >Mes affaires en stock</div></a>
                     <br />
-                    <a href="<?= $this->Html->url(array('controller' => 'orders', 'action' => 'step1')); ?>"><button type"submit" class="btn-lg color-btn" >Prévoir une livraison de bacs vides</button></a>
+                    <a href="<?= $this->Html->url(array('controller' => 'orders', 'action' => 'step1')); ?>"><div  class="btn btn-lg color-btn" >Prévoir une livraison de bacs vides</div></a>
 
                 <?php endif;?>
             </div>

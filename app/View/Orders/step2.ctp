@@ -247,7 +247,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="form-group">                            
                             <?php
-                            echo $this->Form->label("select_date", 'Date de livraison<span class="blue">*</span>', array(
+                            echo $this->Form->label("Order.select_date", 'Date de livraison<span class="blue">*</span>', array(
                                                                                                                         'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                                                                         'style' => 'text-align:right;',
 
@@ -280,7 +280,7 @@
                                                      $("#datepicker").datepicker(
                                                     {
                                                            dateFormat: 'dd-mm-yy',
-                                                           minDate : 0,
+                                                           minDate : '+1d',
                                                            monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
                                                            beforeShowDay: function(date){
                                                                 var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
@@ -313,7 +313,6 @@
                                 ?>
                                 <?php
                                     echo $this->Form->input('Order.concierge_deposit', array(
-                                                        'class' => 'form-control',
                                                         'label' => false,
                                                         'type'  => 'checkbox',
 
