@@ -64,13 +64,14 @@ class UsersController extends AppController {
 						// Si tout est ok, on sauvegarde
 						$this->User->save();
 
-						$this->Session->setFlash('Votre mot de passe à correctement été modifié');
+						$this->Session->setFlash('Votre mot de passe à correctement été modifié', 'alert', array('class' => 'success'));
 						$this->redirect(array('controller' => 'users', 'action' => 'my_account#password'));
 
 
 					}
 					else {
-						$this->Session->setFlash('Votre mot de passe actuel est incorrect');
+						$this->Session->setFlash('Votre mot de passe actuel est incorrect', 'alert', array('class' => 'danger'));
+						$this->redirect(array('controller' => 'users', 'action' => 'my_account#password'));
 					}
 				}
 			}
@@ -171,7 +172,7 @@ class UsersController extends AppController {
 								}
 						}								
 
-						$this->Session->setFlash('Vos bacs ont été récupérés');
+						$this->Session->setFlash('Vos bacs ont été récupérés', 'alert', array('class' => 'success'));
 
 					}
 					else {
@@ -205,11 +206,11 @@ class UsersController extends AppController {
 			if(!empty($this->request->data)){
 				if($this->Auth->login()) {
 
+					$this->Session->setFlash('Vous avez correctement été connecté', 'alert', array('class' => 'success'));
 					$this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
-					$this->Session->setFlash('Vous avez correctement été connecté');
 				}
 				else {	
-					$this->Session->setFlash('Identifiants incorrects');
+					$this->Session->setFlash('Identifiants incorrects', 'alert', array('class' => 'danger'));
 				}
 
 
@@ -231,7 +232,7 @@ class UsersController extends AppController {
 				$user = $this->User->findByEmail($this->request->data['User']['email'], array('id'));
 
 				if(empty($user)){
-					$this->Session->setFlash("L'adresse email n'a pas été trouvé");
+					$this->Session->setFlash("L'adresse email n'a pas été trouvé", 'alert', array('class' => 'danger'));
 
 				}
 				else {
@@ -255,7 +256,7 @@ class UsersController extends AppController {
 					$CakeEmail->template('forgot');
 					$CakeEmail->send();
 
-					$this->Session->setFlash("Un mail vous à été envoyé afin de regénérer votre mot de passe");
+					$this->Session->setFlash("Un mail vous à été envoyé afin de regénérer votre mot de passe", 'alert', array('class' => 'success'));
 				}
 
 
@@ -270,7 +271,7 @@ class UsersController extends AppController {
 				));
 
 			if(empty($user)){
-				$this->Session->setFlash('Ce lien est incorrect');
+				$this->Session->setFlash('Ce lien est incorrect', 'alert', array('class' => 'danger'));
 				return $this->redirect(array('action' => 'forgot'));
 			}
 			if(!empty($this->request->data)){
@@ -285,7 +286,7 @@ class UsersController extends AppController {
 										)
 									);
 					
-					$this->Session->setFlash('Mot de passe correctement modifié');
+					$this->Session->setFlash('Mot de passe correctement modifié', 'alert', array('class' => 'success'));
 					return $this->redirect(array('action' => 'login'));
 
 
@@ -340,13 +341,13 @@ class UsersController extends AppController {
 						$CakeEmail->template('register');
 						$CakeEmail->send();
 
-						$this->Session->setFlash("Votre compte à bien été créer. Un lien vous à été envoyé par email afin d'activer votre compte.");
-						$this->redirect(array('controller' => 'users', 'action' => 'login'));
+						$this->Session->setFlash("Votre compte à bien été créer. Un lien vous à été envoyé par email afin d'activer votre compte.", 'alert', array('class' => 'success'));
+						$this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
 						
 					}
 
 					else {
-							$this->Session->setFlash("Erreur, merci de corriger");
+							$this->Session->setFlash("Erreur, merci de corriger", 'alert', array('class' => 'danger'));
 					}
 
 				}
@@ -364,7 +365,7 @@ class UsersController extends AppController {
 					if($this->User->validates() ){
 
 
-						$this->Session->setFlash('Données correctement sauvegardées');
+						$this->Session->setFlash('Données correctement sauvegardées', 'alert', array('class' => 'success'));
 
 						// On enregistre les données
 						$this->User->save(array(
@@ -410,12 +411,12 @@ class UsersController extends AppController {
 
 						// Si on ne trouve pas le lien
 						if(empty($user)){
-							$this->Session->setFlash('Ce lien d\'activation est incorrect');
+							$this->Session->setFlash('Ce lien d\'activation est incorrect', 'alert', array('class' => 'danger'));
 							return $this->redirect('/');
 						}
 
 
-						$this->Session->setFlash('Votre compte à bien été activé');
+						$this->Session->setFlash('Votre compte à bien été activé', 'alert', array('class' => 'success'));
 						
 						// Sinon on active le compte 
 						$this->User->save(array(
@@ -469,7 +470,7 @@ class UsersController extends AppController {
 					if($this->User->validates() ){
 
 
-						$this->Session->setFlash('Données correctement sauvegardées');
+						$this->Session->setFlash('Données correctement sauvegardées', 'alert', array('class' => 'success'));
 
 						// On enregistre les données
 						$this->User->save(array(
@@ -505,9 +506,9 @@ class UsersController extends AppController {
 			throw new NotFoundException(__('Utilisateur introuvable'));
 		}
 		if ($this->User->delete()) {
-			$this->Session->setFlash(__('L\'utilisateur à correctement été supprimé.'));
+			$this->Session->setFlash(__('L\'utilisateur à correctement été supprimé.'), 'alert', array('class' => 'success'));
 		} else {
-			$this->Session->setFlash(__('L\'utilisateur n\'a pas pu être supprimé'));
+			$this->Session->setFlash(__('L\'utilisateur n\'a pas pu être supprimé'), 'alert', array('class' => 'danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

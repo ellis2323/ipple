@@ -67,10 +67,10 @@ class LocksController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Lock->create();
 			if ($this->Lock->save($this->request->data)) {
-				$this->Session->setFlash(__('The lock has been saved.'));
+				$this->Session->setFlash(__('The lock has been saved.'), 'alert', array('class' => 'success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The lock could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The lock could not be saved. Please, try again.'), 'alert', array('class' => 'danger'));
 			}
 		}
 		$bacs = $this->Lock->Bac->find('list');
@@ -96,10 +96,10 @@ class LocksController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Lock->save($this->request->data)) {
-				$this->Session->setFlash(__('The lock has been saved.'));
+				$this->Session->setFlash(__('The lock has been saved.'), 'alert', array('class' => 'success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The lock could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The lock could not be saved. Please, try again.'), 'alert', array('class' => 'danger'));
 			}
 		} else {
 			$options = array('conditions' => array('Lock.' . $this->Lock->primaryKey => $id));
@@ -123,9 +123,9 @@ class LocksController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Lock->delete()) {
-			$this->Session->setFlash(__('The lock has been deleted.'));
+			$this->Session->setFlash(__('The lock has been deleted.'), 'alert', array('class' => 'success'));
 		} else {
-			$this->Session->setFlash(__('The lock could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The lock could not be deleted. Please, try again.'), 'alert', array('class' => 'danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

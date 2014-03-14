@@ -18,6 +18,29 @@ class ParamsController extends AppController {
  */
 	public $components = array('Paginator');
 
+
+
+
+	public function price_bacs(){
+
+		if($this->request->is('ajax')){
+
+			$this->layout = false;
+
+			$nb_bac = $this->request->data['Order']['nb_bacs'];
+
+			$price_bac = $this->Param->findByKey('price_bac_monthly');
+			$price = json_encode($nb_bac*$price_bac['Param']['value']);
+
+			$this->set(compact('price'));
+	
+
+
+		}
+
+
+	}
+
 /**
  * admin_index method
  *
@@ -52,10 +75,10 @@ class ParamsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Param->create();
 			if ($this->Param->save($this->request->data)) {
-				$this->Session->setFlash(__('The param has been saved.'));
+				$this->Session->setFlash(__('The param has been saved.'), 'alert', array('class' => 'success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The param could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The param could not be saved. Please, try again.'), 'alert', array('class' => 'danger'));
 			}
 		}
 
@@ -75,10 +98,10 @@ class ParamsController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Param->save($this->request->data)) {
-				$this->Session->setFlash(__('The param has been saved.'));
+				$this->Session->setFlash(__('The param has been saved.'), 'alert', array('class' => 'success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The param could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The param could not be saved. Please, try again.'), 'alert', array('class' => 'danger'));
 			}
 		} else {
 			$options = array('conditions' => array('Param.' . $this->Param->primaryKey => $id));
@@ -100,9 +123,9 @@ class ParamsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Param->delete()) {
-			$this->Session->setFlash(__('The param has been deleted.'));
+			$this->Session->setFlash(__('The param has been deleted.'), 'alert', array('class' => 'success'));
 		} else {
-			$this->Session->setFlash(__('The param could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The param could not be deleted. Please, try again.'), 'alert', array('class' => 'danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

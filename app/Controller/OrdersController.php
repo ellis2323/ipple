@@ -2,6 +2,7 @@
 App::uses('AppController', 'Controller');
 App::uses('CakeEmail', 'Network/Email');
 App::import('Model','Hour');
+App::import('Model','Param');
 /**
  * Orders Controller
  *
@@ -52,6 +53,10 @@ class OrdersController extends AppController {
 
 
 			### FIN LIAISON ###
+
+				$param = new Param();
+				$param = $param->findByKey('price_bac_monthly');
+				$this->set(compact('param'));
 
 			// Si des données ont été postées
 			if(!empty($this->request->data)){
@@ -239,7 +244,7 @@ class OrdersController extends AppController {
 						}
 						
 						// Si la commande à bien été enregistré, on ajoute les livraisons associées
-						if($this->Order->saveAssociated($data_order)) {
+						if($this->Order->saveAll($data_order)) {
 								
 								$this->Order->saveField('address_id', $this->Order->Address->id);
 
@@ -257,19 +262,20 @@ class OrdersController extends AppController {
 									$this->redirect(array('controller' => 'users', 'action' => 'my_bacs'));
 								}
 								else {
-									$this->Session->setFlash('Erreur lors de l\'envoi de l\'email');
+									$this->Session->setFlash('Erreur lors de l\'envoi de l\'email', 'alert', array('class' => 'danger'));
 								}
 
 						}
 						else {
 
     						debug($this->validationErrors);
-							$this->Session->setFlash('Erreur lors de la sauvegarde.');
+    						debug($data_order);
+							$this->Session->setFlash('Erreur lors de la sauvegarde.', 'alert', array('class' => 'danger'));
 						}
 
 					} // Validates
 					else {
-						$this->Session->setFlash('Erreur de validation');
+						$this->Session->setFlash('Erreur de validation', 'alert', array('class' => 'danger'));
 					}
 
 				} // Empty request data
@@ -365,7 +371,7 @@ class OrdersController extends AppController {
 						);
 
 						if($this->Order->saveAssociated($data_order)){
-							$this->Session->setFlash('Données correctement sauvegardées');
+							$this->Session->setFlash('Données correctement sauvegardées', 'alert', array('class' => 'success'));
 							$this->redirect(array('action' => 'edit', $order_id));
 						}
 					}

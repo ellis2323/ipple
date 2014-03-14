@@ -32,11 +32,12 @@
                         <div class="row">
                             <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm- col-sm-offset-1">
                                 <div class="row">
-                                    <h4>Stockage mensuel 6,25€</h4>
+                                    <h4>Stockage mensuel <?php echo $param['Param']['value'];?>€</h4>
                                     <div class="form-group">
     									<?php
                                         echo $this->Form->label('nb_bacs', 'Nombre de bacs', array(
                                                                                         'class' => 'col-lg-6 col-md-6 col-sm-6 control-label',
+
                                                                                         
                                                                                     )
                                         );
@@ -58,7 +59,29 @@
 
                                 <div class="row">
                                     <div class="form-group">
-                                        <h4>Votre mensualité :</h4>
+
+                                    <?php
+
+                                    $data = $this->Js->get('#OrderNbBacs')->serializeForm(array('isForm' => false, 'inline' => true));
+
+
+                                    $this->Js->get('#OrderNbBacs')->event(
+                                              'change',
+                                              $this->Js->request(
+                                                array('controller' => 'params' , 'action' => 'price_bacs'),
+                                                array(
+                                                        'update' => '#price',
+                                                        'data'  => $data,
+                                                        'async' => true,    
+                                                        'method' => 'POST',
+                                                        'dataExpression' => true,
+                                                    )
+                                                )
+                                    );
+                                    ?>
+
+                                        <h4>Votre mensualité : <span id='price' style='font-weight:bold;'><?php echo ($param['Param']['value']*4);?></span> €</h4>
+                                        <?= $this->Js->writeBuffer(); ?>
                                         <p>Vous ne savez pas de combien de bacs vous avez besoin?<br>
                                     Commandez en plus, vous ne paierez que ceux que vous utilisez</p>
                                     </div>
@@ -88,3 +111,4 @@
 
         </div> <!-- section -->                    
 </div>        
+

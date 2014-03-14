@@ -11,7 +11,7 @@
     <?= $this->Html->css('bootstrap');?>
     <?= $this->Html->css('dezordre');?>
     <?= $this->fetch('css');?>
-
+    <?= $this->Html->script('jquery-1.10.2'); ?>
 
 </head>
 
@@ -233,15 +233,15 @@
 
 
 
-        <footer>
-            <p class="text-center">Dézordre, 10 rue de l'Amiral Courbet 94 160 Saint-Mandé - Ouvert 6j/7 de 8h30 à 19h</p>
-        </footer>
+    <footer>
+        <p class="text-center">Dézordre, 10 rue de l'Amiral Courbet 94 160 Saint-Mandé - Ouvert 6j/7 de 8h30 à 19h</p>
+    </footer>
     <!-- FIN FOOTER -->
     <!-- /.container -->
 
     <!-- JavaScript -->
-    <?= $this->Html->script('jquery-1.10.2'); ?>
-
+   
+    
     <?= $this->Html->script('bootstrap'); ?>
     <?= $this->Html->script('modern-business'); ?>
     <?= $this->Html->script('cakebootstrap'); ?>
@@ -250,6 +250,8 @@
     <?= $this->fetch('datepicker');?>
     <?= $this->fetch('datepicker2');?>
     <?= $this->fetch('tabs');?>
+
+    <?= $this->Js->writeBuffer(); ?>
 
 </body>
 

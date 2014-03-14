@@ -70,10 +70,10 @@ class HoursBlocksController extends AppController {
 		if ($this->request->is('post')) {
 			$this->HoursBlock->create();
 			if ($this->HoursBlock->save($this->request->data)) {
-				$this->Session->setFlash(__('The hours block has been saved.'));
+				$this->Session->setFlash(__('The hours block has been saved.'), 'alert', array('class' => 'success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The hours block could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The hours block could not be saved. Please, try again.'), 'alert', array('class' => 'danger'));
 			}
 		}
 	}
@@ -98,10 +98,10 @@ class HoursBlocksController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->HoursBlock->save($this->request->data)) {
-				$this->Session->setFlash(__('The hours block has been saved.'));
+				$this->Session->setFlash(__('The hours block has been saved.'), 'alert', array('class' => 'success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The hours block could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The hours block could not be saved. Please, try again.'), 'alert', array('class' => 'danger'));
 			}
 		} else {
 			$options = array('conditions' => array('HoursBlock.' . $this->HoursBlock->primaryKey => $id));
@@ -130,9 +130,9 @@ class HoursBlocksController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->HoursBlock->delete()) {
-			$this->Session->setFlash(__('The hours block has been deleted.'));
+			$this->Session->setFlash(__('The hours block has been deleted.'), 'alert', array('class' => 'success'));
 		} else {
-			$this->Session->setFlash(__('The hours block could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The hours block could not be deleted. Please, try again.'), 'alert', array('class' => 'danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

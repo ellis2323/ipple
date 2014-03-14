@@ -54,10 +54,10 @@ class PostalsController extends AppController {
 			$this->Postal->create();
 			$this->request->data['Postal']['city_id'] = $this->request->data['cities'];
 			if ($this->Postal->save($this->request->data)) {
-				$this->Session->setFlash(__('The postal has been saved.'));
+				$this->Session->setFlash(__('The postal has been saved.'), 'alert', array('class' => 'success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The postal could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The postal could not be saved. Please, try again.'), 'alert', array('class' => 'danger'));
 			}
 		}
 
@@ -81,10 +81,10 @@ class PostalsController extends AppController {
 			$this->request->data['Postal']['city_id'] = $this->request->data['Postal']['cities'];
 			if ($this->Postal->save($this->request->data)) {
 				
-				$this->Session->setFlash(__('The postal has been saved.'));
+				$this->Session->setFlash(__('The postal has been saved.'), 'alert', array('class' => 'success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The postal could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The postal could not be saved. Please, try again.'), 'alert', array('class' => 'danger'));
 			}
 		} else {
 			$options = array('conditions' => array('Postal.' . $this->Postal->primaryKey => $id));
@@ -110,9 +110,9 @@ class PostalsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Postal->delete()) {
-			$this->Session->setFlash(__('The postal has been deleted.'));
+			$this->Session->setFlash(__('The postal has been deleted.'), 'alert', array('class' => 'success'));
 		} else {
-			$this->Session->setFlash(__('The postal could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The postal could not be deleted. Please, try again.'), 'alert', array('class' => 'danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

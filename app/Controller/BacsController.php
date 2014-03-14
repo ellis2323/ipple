@@ -29,7 +29,7 @@ class BacsController extends AppController {
 					if($this->Bac->validates() ){
 
 
-						$this->Session->setFlash('Données correctement sauvegardées');
+						$this->Session->setFlash('Données correctement sauvegardées', 'alert', array('class' => 'success'));
 
 						// On enregistre les données
 						$this->Bac->save(array(
@@ -158,7 +158,7 @@ class BacsController extends AppController {
 
 						// On enregistre les données
 						if($this->Bac->saveAssociated($data)){
-							$this->Session->setFlash('Données correctement sauvegardées');
+							$this->Session->setFlash('Données correctement sauvegardées', 'alert', array('class' => 'success'));
 							//debug($this->Bac->saveAssociated($data));
 
 						}
@@ -201,9 +201,9 @@ class BacsController extends AppController {
 				throw new NotFoundException(__('Bac introuvable'));
 			}
 			if ($this->Bac->delete()) {
-				$this->Session->setFlash(__('Le bac à correctement été supprimé.'));
+				$this->Session->setFlash(__('Le bac à correctement été supprimé.'), 'alert', array('class' => 'success'));
 			} else {
-				$this->Session->setFlash(__('Le bac n\'a pas pu être supprimé'));
+				$this->Session->setFlash(__('Le bac n\'a pas pu être supprimé'), 'alert', array('class' => 'danger'));
 			}
 			return $this->redirect(array('action' => 'index'));
 		}

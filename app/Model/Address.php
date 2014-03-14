@@ -91,15 +91,15 @@ class Address extends AppModel {
 		),
 
 		'floor' => array(
-
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				'message' => 'Veuillez préciser votre étage',			
-				),
 			'numeric' => array(
 				'rule' => array('numeric'),
 				
 			),
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				'message' => 'Veuillez préciser votre étage',			
+				),
+
 		),
 
 		'phone' => array(
