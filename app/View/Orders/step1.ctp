@@ -31,33 +31,37 @@
                     <div class="choix">   
                         <div class="row">
                             <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm- col-sm-offset-1">
-                                <h4>Stockage mensuel 6,25€</h4>
-                                <div class="form-group">
-									<?php
-                                    echo $this->Form->label('nb_bacs', 'Nombre de bacs', array(
-                                                                                    'class' => 'col-lg-6 col-md-6 col-sm-6 control-label',
-                                                                                    
-                                                                                )
-                                    );
-                                    ?>
-                                    <div class='col-lg-4 col-md-4 col-sm-4'>
-                                    <?php
-    									echo $this->Form->input('nb_bacs', array(
-                                                            'label' => false,                                                         
-                                                            'type' => 'number',
-                                                            'class' => 'form-control',
-                                                            'placeholder' => 4,
-                                                            'default' => 4,
-                                      	                 )
-                                        );?>
+                                <div class="row">
+                                    <h4>Stockage mensuel 6,25€</h4>
+                                    <div class="form-group">
+    									<?php
+                                        echo $this->Form->label('nb_bacs', 'Nombre de bacs', array(
+                                                                                        'class' => 'col-lg-6 col-md-6 col-sm-6 control-label',
+                                                                                        
+                                                                                    )
+                                        );
+                                        ?>
+                                        <div class='col-lg-4 col-md-4 col-sm-4'>
+                                        <?php
+        									echo $this->Form->input('nb_bacs', array(
+                                                                'label' => false,                                                         
+                                                                'type' => 'number',
+                                                                'class' => 'form-control',
+                                                                'placeholder' => 4,
+                                                                'default' => 4,
+                                          	                 )
+                                            );?>
+                                        </div>
                                     </div>
                                 </div>
-
                                 <br />
-                                <div class="form-group">
-                                    <h4>Votre mensualité :</h4>
-                                    <p>Vous ne savez pas de combien de bacs vous avez besoin?<br>
-                                Commandez en plus, vous ne paierez que ceux que vous utilisez</p>
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <h4>Votre mensualité :</h4>
+                                        <p>Vous ne savez pas de combien de bacs vous avez besoin?<br>
+                                    Commandez en plus, vous ne paierez que ceux que vous utilisez</p>
+                                    </div>
                                 </div>
                             </div><!-- /.col-lg-4 -->
 

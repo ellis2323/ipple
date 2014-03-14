@@ -28,8 +28,7 @@ class User extends AppModel {
 			),
 			'email' => array(
 				'rule' => 'email',
-				'message' => "veuillez entrer un email valide"
-
+				'message' => "Veuillez entrer un email valide"
 			),
 			'isUniq' => array(
 
@@ -38,7 +37,7 @@ class User extends AppModel {
 				)
 		),
 
-
+		// Vérification du password
         'password' => array(
             'rule' => 'notEmpty',
             'message' => 'Veuillez entrer un mot de passe'

@@ -34,9 +34,8 @@ var Bootstrappifier = {
 			$('.flash_success').addClass('alert alert-success');
 			$('.flash_warning').addClass('alert');
 			$('.error-message').addClass('alert alert-error');
-			$('div.error-message').append($('div.error-message').replaceWith('<span class="help-inline">'+$('div.error-message').text()+'</span'));
-			$('.form-error').addClass('error');
-			$('.form-error').closest('.clearfix').addClass('error');
+			$('.form-error').addClass('has-error');
+			$('.form-error').closest('.clearfix').addClass('has-error');
 		}
 	},
 	getStraps	: function() {
