@@ -57,7 +57,7 @@ $(this).mjpopup({
 
             //close button 
             'close': { 
-                'text' : 'fermer',
+                'text' : 'Fermer',
 
                 //string and One word 
                 'class' : 'close', 

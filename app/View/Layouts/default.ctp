@@ -244,6 +244,8 @@
 
     <?= $this->Html->script('bootstrap'); ?>
     <?= $this->Html->script('modern-business'); ?>
+    <?= $this->Html->script('cakebootstrap'); ?>
+
     <?= $this->fetch('script');?>
     <?= $this->fetch('datepicker');?>
     <?= $this->fetch('datepicker2');?>

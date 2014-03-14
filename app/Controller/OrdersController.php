@@ -205,19 +205,6 @@ class OrdersController extends AppController {
 																'comment'			=> $data_full['Address'][0]['comment'],
 																'state'				=> 1
 																),
-												"Address" =>
-															array(
-																'user_id'			=> $this->Session->read('Auth.User.id'),
-																'city_id'			=> $data_full['Order']['cities'],
-																'postal_id'			=> $data_full['Address'][0]['postals'],
-																'firstname'			=> $data_full['Address'][0]['firstname'],
-																'lastname'			=> $data_full['Address'][0]['lastname'],
-																'street'			=> $data_full['Address'][0]['street'],
-																'digicode'			=> $data_full['Address'][0]['digicode'],
-																'floor'				=> $data_full['Address'][0]['floor'],
-																'comment'			=> $data_full['Address'][0]['comment'],
-																'state'				=> 2
-																)
 							);
 
 
@@ -245,6 +232,8 @@ class OrdersController extends AppController {
 																'digicode'			=> $data_full['Address'][0]['digicode'],
 																'floor'				=> $data_full['Address'][0]['floor'],
 																'comment'			=> $data_full['Address'][0]['comment'],
+																'phone'				=> $data_full['Address'][0]['phone'],
+																'company'			=> $data_full['Address'][0]['company'],
 																)
 							);
 						}
@@ -316,29 +305,6 @@ class OrdersController extends AppController {
 					);
 				
 				$this->set(compact('order'));
-
-/*
-			    $this->User->bindModel(
-			        array('hasOne' => 
-			        	array(
-			                'City' => array(
-			                    'className' => 'City'
-			                )
-			            )
-			        )
-			    );
-				$city = $this->City->find('first',
-													array(
-															'conditions' =>
-															array(
-																	'id' =>
-																)
-
-														)
-													);
-				$this->set(compact('city'));
-*/
-
 			}
 
 
@@ -392,7 +358,9 @@ class OrdersController extends AppController {
 															'digicode'			=> $this->request->data['Address'][0]['digicode'],
 															'floor'				=> $this->request->data['Address'][0]['floor'],
 															'comment'			=> $this->request->data['Address'][0]['comment'],
-															'phone'			=> $this->request->data['Address'][0]['phone'],
+															'phone'				=> $this->request->data['Address'][0]['phone'],
+															'company'				=> $this->request->data['Address'][0]['company'],
+
 															)
 						);
 

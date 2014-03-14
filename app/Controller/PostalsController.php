@@ -1,5 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
+
+App::import('Model','City');
 /**
  * Postals Controller
  *
@@ -7,13 +9,6 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class PostalsController extends AppController {
-
-	// Autorisation
-	public function beforeFilter() {
-		parent::beforeFilter();
-		$this->Auth->deny();
-	}
-
 
 /**
  * Components
@@ -28,14 +23,10 @@ class PostalsController extends AppController {
  * @return void
  */
 	public function admin_index() {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
-		
 		$this->Postal->recursive = 0;
 		$this->set('postals', $this->Paginator->paginate());
+
+
 	}
 
 /**
@@ -46,12 +37,6 @@ class PostalsController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
-
 		if (!$this->Postal->exists($id)) {
 			throw new NotFoundException(__('Invalid postal'));
 		}
@@ -65,14 +50,9 @@ class PostalsController extends AppController {
  * @return void
  */
 	public function admin_add() {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
-
 		if ($this->request->is('post')) {
 			$this->Postal->create();
+			$this->request->data['Postal']['city_id'] = $this->request->data['cities'];
 			if ($this->Postal->save($this->request->data)) {
 				$this->Session->setFlash(__('The postal has been saved.'));
 				return $this->redirect(array('action' => 'index'));
@@ -80,6 +60,10 @@ class PostalsController extends AppController {
 				$this->Session->setFlash(__('The postal could not be saved. Please, try again.'));
 			}
 		}
+
+		$cities = new City();
+		$cities = $cities->find('list');
+		$this->set(compact('cities'));
 	}
 
 /**
@@ -90,17 +74,13 @@ class PostalsController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
-
 		if (!$this->Postal->exists($id)) {
 			throw new NotFoundException(__('Invalid postal'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+			$this->request->data['Postal']['city_id'] = $this->request->data['Postal']['cities'];
 			if ($this->Postal->save($this->request->data)) {
+				
 				$this->Session->setFlash(__('The postal has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
@@ -109,6 +89,10 @@ class PostalsController extends AppController {
 		} else {
 			$options = array('conditions' => array('Postal.' . $this->Postal->primaryKey => $id));
 			$this->request->data = $this->Postal->find('first', $options);
+
+			$cities = new City();
+			$cities = $cities->find('list');
+			$this->set(compact('cities'));
 		}
 	}
 
@@ -120,12 +104,6 @@ class PostalsController extends AppController {
  * @return void
  */
 	public function admin_delete($id = null) {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
-
 		$this->Postal->id = $id;
 		if (!$this->Postal->exists()) {
 			throw new NotFoundException(__('Invalid postal'));

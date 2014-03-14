@@ -22,21 +22,6 @@ class Postal extends AppModel {
  *
  * @var array
  */
-/*
-	public $belongsTo = array(
-		'Address' => array(
-			'className' => 'Address',
-			'foreignKey' => 'postal_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
-	);
-*/
+
+
 }

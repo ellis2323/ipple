@@ -1,12 +1,15 @@
 <?php
 App::uses('AppController', 'Controller');
+
+
+
 /**
- * Locks Controller
+ * Params Controller
  *
- * @property Lock $Lock
+ * @property Param $Param
  * @property PaginatorComponent $Paginator
  */
-class LocksController extends AppController {
+class ParamsController extends AppController {
 
 /**
  * Components
@@ -21,14 +24,8 @@ class LocksController extends AppController {
  * @return void
  */
 	public function admin_index() {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
-
-		$this->Lock->recursive = 0;
-		$this->set('locks', $this->Paginator->paginate());
+		$this->Param->recursive = 0;
+		$this->set('params', $this->Paginator->paginate());
 	}
 
 /**
@@ -39,17 +36,11 @@ class LocksController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
+		if (!$this->Param->exists($id)) {
+			throw new NotFoundException(__('Invalid param'));
 		}
-		$this->layout = 'admin'; // Layout admin
-
-		if (!$this->Lock->exists($id)) {
-			throw new NotFoundException(__('Invalid lock'));
-		}
-		$options = array('conditions' => array('Lock.' . $this->Lock->primaryKey => $id));
-		$this->set('lock', $this->Lock->find('first', $options));
+		$options = array('conditions' => array('Param.' . $this->Param->primaryKey => $id));
+		$this->set('param', $this->Param->find('first', $options));
 	}
 
 /**
@@ -58,23 +49,17 @@ class LocksController extends AppController {
  * @return void
  */
 	public function admin_add() {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
-
 		if ($this->request->is('post')) {
-			$this->Lock->create();
-			if ($this->Lock->save($this->request->data)) {
-				$this->Session->setFlash(__('The lock has been saved.'));
+			$this->Param->create();
+			if ($this->Param->save($this->request->data)) {
+				$this->Session->setFlash(__('The param has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The lock could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The param could not be saved. Please, try again.'));
 			}
 		}
-		$bacs = $this->Lock->Bac->find('list');
-		$this->set(compact('bacs'));
+
+
 	}
 
 /**
@@ -85,28 +70,20 @@ class LocksController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
-		// Si l'utilisateur est admin
-		if(!($this->Session->read('Auth.User.role') >= 90)) {
-			throw new NotFoundException;
-		}
-		$this->layout = 'admin'; // Layout admin
-		
-		if (!$this->Lock->exists($id)) {
-			throw new NotFoundException(__('Invalid lock'));
+		if (!$this->Param->exists($id)) {
+			throw new NotFoundException(__('Invalid param'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Lock->save($this->request->data)) {
-				$this->Session->setFlash(__('The lock has been saved.'));
+			if ($this->Param->save($this->request->data)) {
+				$this->Session->setFlash(__('The param has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The lock could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The param could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Lock.' . $this->Lock->primaryKey => $id));
-			$this->request->data = $this->Lock->find('first', $options);
+			$options = array('conditions' => array('Param.' . $this->Param->primaryKey => $id));
+			$this->request->data = $this->Param->find('first', $options);
 		}
-		$bacs = $this->Lock->Bac->find('list');
-		$this->set(compact('bacs'));
 	}
 
 /**
@@ -117,15 +94,15 @@ class LocksController extends AppController {
  * @return void
  */
 	public function admin_delete($id = null) {
-		$this->Lock->id = $id;
-		if (!$this->Lock->exists()) {
-			throw new NotFoundException(__('Invalid lock'));
+		$this->Param->id = $id;
+		if (!$this->Param->exists()) {
+			throw new NotFoundException(__('Invalid param'));
 		}
 		$this->request->onlyAllow('post', 'delete');
-		if ($this->Lock->delete()) {
-			$this->Session->setFlash(__('The lock has been deleted.'));
+		if ($this->Param->delete()) {
+			$this->Session->setFlash(__('The param has been deleted.'));
 		} else {
-			$this->Session->setFlash(__('The lock could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The param could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

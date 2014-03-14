@@ -184,11 +184,15 @@
 
                         <li><a href="<?= $this->Html->url(array('controller' => 'cities', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Villes</span></a></li>
 
+                        <li><a href="<?= $this->Html->url(array('controller' => 'postals', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Codes postaux</span></a></li>
+
                         <li><a href="<?= $this->Html->url(array('controller' => 'hours', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Créneaux</span></a></li>
 
                         <li><a href="<?= $this->Html->url(array('controller' => 'hours_blocks', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Créneaux bloquées</span></a></li>                    
 
                         <li><a href="<?= $this->Html->url(array('controller' => 'dates_blocks', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Dates bloquées</span></a></li>
+
+                        <li><a href="<?= $this->Html->url(array('controller' => 'params', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Paramètres</span></a></li>
                     </ul>
                 </div>
             </div>
