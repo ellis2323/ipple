@@ -32,7 +32,7 @@
                         <div class="row">
                             <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm- col-sm-offset-1">
                                 <div class="row">
-                                    <h4>Stockage mensuel <?php echo $param['Param']['value'];?>€</h4>
+                                    <h4>Stockage mensuel <?php echo $price_bac;?>€</h4>
                                     <div class="form-group">
     									<?php
                                         echo $this->Form->label('nb_bacs', 'Nombre de bacs', array(
@@ -50,6 +50,9 @@
                                                                 'class' => 'form-control',
                                                                 'placeholder' => 4,
                                                                 'default' => 4,
+                                                                'min' => $nb_bac_min,
+                                                                'max' => $nb_bac_max
+
                                           	                 )
                                             );?>
                                         </div>
@@ -78,9 +81,11 @@
                                                     )
                                                 )
                                     );
-                                    ?>
 
-                                        <h4>Votre mensualité : <span id='price' style='font-weight:bold;'><?php echo ($param['Param']['value']*4);?></span> €</h4>
+                                    ?>  
+
+
+                                        <h4>Votre mensualité : <span id='price' style='font-weight:bold;'><?php echo round($price_bac*$nb_bac_min);?></span> €</h4>
                                         <?= $this->Js->writeBuffer(); ?>
                                         <p>Vous ne savez pas de combien de bacs vous avez besoin?<br>
                                     Commandez en plus, vous ne paierez que ceux que vous utilisez</p>

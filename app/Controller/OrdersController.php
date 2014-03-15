@@ -54,10 +54,20 @@ class OrdersController extends AppController {
 
 			### FIN LIAISON ###
 
-				$param = new Param();
-				$param = $param->findByKey('price_bac_monthly');
-				$this->set(compact('param'));
+			$param = new Param();
 
+			$price_bac = $param->findByKey('price_bac_monthly');
+			$price_bac = $price_bac['Param']['value'];
+			$this->set(compact('price_bac'));
+
+			$nb_bac_min = $param->findByKey('nb_bac_min');
+			$nb_bac_min = $nb_bac_min['Param']['value'];
+			$this->set(compact('nb_bac_min'));
+
+			$nb_bac_max = $param->findByKey('nb_bac_max');
+			$nb_bac_max = $nb_bac_max['Param']['value'];
+			$this->set(compact('nb_bac_max'));
+			
 			// Si des données ont été postées
 			if(!empty($this->request->data)){
 				$data = $this->request->data;

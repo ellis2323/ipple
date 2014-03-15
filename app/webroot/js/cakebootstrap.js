@@ -36,6 +36,7 @@ var Bootstrappifier = {
 			$('.error-message').addClass('alert alert-error');
 			$('.form-error').addClass('has-error');
 			$('.form-error').closest('.clearfix').addClass('has-error');
+			$('.required error').addClass('.has-error');
 		}
 	},
 	getStraps	: function() {

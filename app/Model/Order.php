@@ -1,5 +1,7 @@
 <?php
 App::uses('AppModel', 'Model');
+App::import('Model','DatesBlock');
+App::import('Model','Param');
 /**
  * Order Model
  *
@@ -29,6 +31,8 @@ class Order extends AppModel {
 											)
 							);
 
+	 
+
 /**
  * Validation rules
  *
@@ -36,8 +40,14 @@ class Order extends AppModel {
  */
 	public $validate = array(
 								'nb_bacs' => array(
-										'rule' => array('checkNbBac', 4, 10),
-										'message' => 'Vous devez prendre au moins 4 bacs'
+												'MinBac' => array(
+																'rule' => 'checkNbBacMin',
+																'message' => "Vous n'avez pas pris assez de bacs.",
+														),
+												'MaxBac' => array(
+																'rule' => 'checkNbBacMax',
+																'message' => 'Vous avez pris trop de bacs.',
+																),
 								),
 								'date_deposit' => array(
 														'CheckDate' =>array(
@@ -50,21 +60,38 @@ class Order extends AppModel {
 																				'rule' => array('checkWithdraw', 'date_deposit'),
 																				'message' => 'Vérifiez que la date de récupération est supérieur à la date de dépôt'
 																			),
-								)
+								),
+								'withdraw' => array(
+													'rule' => 'notEmpty'
+													)
 						);
 
-	/*'date_deposit' => array(
-														'CheckDate' =>array(
-																			'rule' => 'checkDate',
-																			'message' => 'La date de dépôt selectionnée est indisponible',
-																			'required' => true,
-																		),
-								),*/
 	// Permet de vérifier le nombre de bacs minimum
-	public function checkNbBac($data, $limit_min, $limit_max){
+	public function checkNbBacMin($data){
+
+		$param = new Param();
+
+		$nb_bac_min = $param->findByKey('nb_bac_min');
+		$nb_bac_min = $nb_bac_min['Param']['value'];
 
 		// Ajouter la récupération du nombre de bac min et max dans la BDD
-		if($data['nb_bacs'] >= $limit_min && $data['nb_bacs'] <= $limit_max){
+		if($data['nb_bacs'] >= $nb_bac_min){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public function checkNbBacMax($data){
+
+		$param = new Param();
+
+		$nb_bac_max = $param->findByKey('nb_bac_max');
+		$nb_bac_max = $nb_bac_max['Param']['value'];
+
+		// Ajouter la récupération du nombre de bac min et max dans la BDD
+		if($data['nb_bacs'] <= $nb_bac_max){
 			return true;
 		}
 		else {
@@ -102,7 +129,7 @@ class Order extends AppModel {
 	public function checkDate($data){
 
 		// On charge le model contenant les dates bloquées
-		App::import('Model','DatesBlock');
+
 		$DatesBlock = new DatesBlock();
 		
 		//$date = $data['date_deposit'];
@@ -137,27 +164,5 @@ class Order extends AppModel {
 		}		
 
 	}
-
-	/*public function checkHour($data){
-		// On charge le model contenant les blocages de créneaux
-		App::import('Model','HoursBlock');
-		$HoursBlock = new HoursBlock();
-
-		// On convertis le datetime en timestamp
-		$date = strtotime($data['date_deposit']);
-
-		// On définis nos attributs
-		$day = date('j', $date);
-		$day_week = date('W', $date);
-		$week = date('w', $date);
-		$month = date('n', $date);
-
-		$hour_id = $data['hour_deposit'];
-
-		$day_block = $DatesBlock->findByValueAndType($day, 1);
-		$week_block = $DatesBlock->findByValueAndType($week, 2);
-		$month_block = $DatesBlock->findByValueAndType($month, 3);
-		$day_week_block = $DatesBlock->findByValueAndType($day_week, 4);
-	}*/
 
 }

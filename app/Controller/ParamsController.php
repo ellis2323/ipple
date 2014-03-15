@@ -29,8 +29,34 @@ class ParamsController extends AppController {
 
 			$nb_bac = $this->request->data['Order']['nb_bacs'];
 
+			// On récupère les paramètres dans la bdd
 			$price_bac = $this->Param->findByKey('price_bac_monthly');
-			$price = json_encode($nb_bac*$price_bac['Param']['value']);
+			$price_bac = $price_bac['Param']['value'];
+
+
+			$nb_bac_min = $this->Param->findByKey('nb_bac_min');
+			$nb_bac_min = $nb_bac_min['Param']['value'];
+
+			$nb_bac_max = $this->Param->findByKey('nb_bac_max');
+			$nb_bac_max = $nb_bac_max['Param']['value'];
+
+
+			// On vérifie que le prix correspond bien au minimum de bac
+			
+			// si le nombre de bac esti nférieur
+			if($nb_bac < $nb_bac_min ) {
+				$price = $nb_bac_min*$price_bac;
+			}
+			// si le nombre de bac est supérieur
+			elseif($nb_bac > $nb_bac_max ) {
+				$price = $nb_bac_max*$price_bac;
+			}
+			// sinon on retourne le
+			else {
+				$price = $nb_bac*$price_bac;
+			}
+
+			$price = json_encode($price);
 
 			$this->set(compact('price'));
 	
