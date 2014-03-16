@@ -3,6 +3,26 @@
 
 <?= $this->Html->script('jquery-1.10.2'); ?>
 <?= $this->Html->script('jquery-ui-1.10.4.custom.min'); ?>
+	    
+<script type='text/javascript'>
+$( document ).ready(function() {
+    console.log( "ready!" );
+    $('#return').hide();
+
+    $('#OrderWithdraw2').change(function(){
+	 if($(this).is(':checked')) {
+	        $('#return').fadeIn();
+	    }
+	});
+    $('#OrderWithdraw1').change(function(){
+	 if($(this).is(':checked')) {
+	        $('#return').fadeOut();
+	    }
+	});	
+
+});
+		
+</script>
 
 
 <div class="container-fluid">
@@ -90,7 +110,8 @@
 								 'type' => 'radio',
 								 'legend' => false,
 								 'options' => array(1 => 'En même temps (le chauffeur attendra jusqu\'à 20 minutes) '),
-								 'hiddenField'=>false
+								 'hiddenField'=>false,
+								 'checked' => 'checked',
 								));  
 		                    ?>
 		                    <?php 
@@ -112,11 +133,10 @@
 						
 	</div> 
 
-	    
 
 
 
-        <div class="section">        
+        <div id="return" class="section">        
              
                 
             <div class="choix">

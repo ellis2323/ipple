@@ -49,6 +49,9 @@ class Order extends AppModel {
 																'message' => 'Vous avez pris trop de bacs.',
 																),
 								),
+								'withdraw' => array(
+													'rule' => 'notEmpty'
+													),
 								'date_deposit' => array(
 														'CheckDate' =>array(
 																			'rule' => 'checkDate',
@@ -61,9 +64,7 @@ class Order extends AppModel {
 																				'message' => 'Vérifiez que la date de récupération est supérieur à la date de dépôt'
 																			),
 								),
-								'withdraw' => array(
-													'rule' => 'notEmpty'
-													)
+
 						);
 
 	// Permet de vérifier le nombre de bacs minimum
