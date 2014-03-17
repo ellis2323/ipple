@@ -60,7 +60,7 @@
                 <h2 class="gras">A L'ETROIT CHEZ VOUS ?</h2>
                 <h4 class="gras">Imaginez un placard dans les nuages</h4><br>
                 <h4 style="color:#424242">Parce que le self-stockage traditionnel est trop contraignant,
-                    nous nous occupons de tout pour vous : récupération de vos affaires, stockage et livraison à la demande.</h4>
+                    nous nous occupons de tout pour vous&nbsp;: récupération de vos affaires, stockage et livraison à la demande.</h4>
                 
             </div>
         </div>
@@ -181,15 +181,15 @@
             <div class="row">
                     <div class="col-lg-4 col-lg-offset-1 col-md-4 col-sm-4 largeur">
                         
-                        <?php echo $this->Html->image('un.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>                        
+                        <?php echo $this->Html->image('un.png', array('alt' => 'responsive image', 'class' => 'img-responsive', 'style' => 'margin: 0 auto;')); ?>                        
                     </div>
                     <div class="col-lg-4 col-lg-offset-1 col-md-4 col-sm-4 largeur">
                         
-                        <?php echo $this->Html->image('deux.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>                        
+                        <?php echo $this->Html->image('deux.png', array('alt' => 'responsive image', 'class' => 'img-responsive', 'style' => 'margin: 0 auto;')); ?>                        
                     </div>
                     <div class="col-lg-4 col-lg-offset-1 col-md-4 col-sm-4 largeur">
                         
-                        <?php echo $this->Html->image('trois.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>                        
+                        <?php echo $this->Html->image('trois.png', array('alt' => 'responsive image', 'class' => 'img-responsive', 'style' => 'margin: 0 auto;')); ?>                        
                     </div>
             </div><!-- /.row -->
             </div>
@@ -207,7 +207,7 @@
 
             <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
                 <div class="col-lg-5 col-md-6 col-sm-6 text-center">
-<?php echo $this->Html->image('mac.png', array('alt' => 'responsive image', 'class' => 'img-responsive mac')); ?>                </div>    
+<?php echo $this->Html->image('mac.png', array('alt' => 'responsive image', 'class' => 'img-responsive mac', 'style' => 'margin: 0 auto;')); ?>                </div>    
                 <div class="col-lg-6 col-lg-offset-1 col-md-6 col-sm-6">      
                         
                         <h3 style="color:#65b7f2">Besoin de modifier quelque chose?</h3><br>
@@ -241,12 +241,12 @@
                 
                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
                 <div class="col-lg-4 col-md-4 col-sm-4 largeur">
-                  <?php echo $this->Html->image('contenu_bac.png', array('alt' => 'responsive image', 'class' => 'img-responsive img-home-portfolio"')); ?>    
+                  <?php echo $this->Html->image('contenu_bac.png', array('alt' => 'responsive image', 'class' => 'img-responsive img-home-portfolio"', 'style' => 'margin: 0 auto;')); ?>    
                     
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 largeur">
                     <hr>
-                  <?php echo $this->Html->image('bac_dim.png', array('alt' => 'responsive image', 'class' => 'img-responsive img-home-portfolio"')); ?>    
+                  <?php echo $this->Html->image('bac_dim.png', array('alt' => 'responsive image', 'class' => 'img-responsive img-home-portfolio"', 'style' => 'margin: 0 auto;')); ?>    
                     
                 </div>
                 
