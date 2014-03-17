@@ -48,7 +48,7 @@
 
 
                     <?php
-                    if(!empty($this->request->params['pass'][0]) && $this->request->params['pass'][0] != 'landing'){
+                    if(empty($this->request->params['pass'][0]) || (!empty($this->request->params['pass'][0]) && $this->request->params['pass'][0] == 'home') ){
                     ?>
                     <li>
                             <!-- MENU -->
@@ -158,8 +158,8 @@
                             ?>
                             </ul>
                             <!-- /MENU -->
-                    <?php
-                    }
+                        <?php
+                        }
                    
                     ?>
                     
