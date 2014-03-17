@@ -1,10 +1,12 @@
-      
-    
+
     <div class="container-fluid row" id="comment">
         <div class="section" >
             <div class="row bandeau">
                 <h2  class="text-center">Comment ça marche?</h2>
             </div><br>
+
+
+            
             <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
             <div class="row">
                     <div class="col-lg-4 col-lg-offset-1 col-md-4 col-sm-4 largeur">

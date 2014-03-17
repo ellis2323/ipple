@@ -2,8 +2,8 @@
 <div class="container-fluid">
         <div class="section">
             <div class="row">
-                <h2 class="text-center">Créer votre compte</h2>
-                <hr>
+                <h2 class="text-center">Se connecter</h2>
+
                 
             
                     <div class="choix">  
@@ -13,7 +13,8 @@
                             <div class="form-group">  
                                 <?php
                                 echo $this->Form->label('email', 'Email <span class="blue">*</span>', array(
-                                                                                'class' => 'col-lg-1 col-lg-offset-4 col-md-1 col-sm-1 control-label'
+                                                                                'class' => 'col-lg-2 col-lg-offset-3 col-md-2 col-sm-2  col-sm-offset-2 control-label',
+                                                                                'style' => 'text-align:right;'
                                                                             )
                                 );
                                 ?>
@@ -22,7 +23,7 @@
                                                                                 'type' => 'text',
                                                                                 'label' => false, 
                                                                                 'class' => 'form-control',
-                                                                                'div' => 'col-lg-2 col-md-2 col-sm-2',
+                                                                                'div' => 'col-lg-2 col-md-2 col-sm-4 ',
                                                                          )
                                 );?>
                             </div>
@@ -33,7 +34,8 @@
                             <div class="form-group">  
                                 <?php
                                 echo $this->Form->label('password', 'Password <span class="blue">*</span>', array(
-                                                                                'class' => 'col-lg-1 col-lg-offset-4 col-md-1 col-sm-1 control-label'
+                                                                                'class' => 'col-lg-2 col-lg-offset-3 col-md-2 col-sm-2  col-sm-offset-2 control-label',
+                                                                                'style' => 'text-align:right;'
                                                                             )
                                 );
                                 ?>
@@ -42,7 +44,7 @@
                                                                                 'type' => 'password',
                                                                                 'label' => false, 
                                                                                 'class' => 'form-control',
-                                                                                'div' => 'col-lg-2 col-md-2 col-sm-2',
+                                                                                'div' => 'col-lg-2 col-md-2 col-sm-4',
                                                                          )
                                 );?>
                             </div>
@@ -50,6 +52,7 @@
                         </div>
 
                         <div class="row" style='text-align:center;'>   
+                        <p><br></p>
                             <div class='col-lg-3 col-md-3 col-sm-3 col-lg-offset-4 col-md-offset-4 col-sm-offset-4'>
                                 <button type"submit"="" class="btn" style="background-color:#65b7f2;color:white">Se connecter</button>
     							<?= $this->Form->end(); ?>                                    

@@ -446,7 +446,7 @@ border-top-style: none;
   background: -o-linear-gradient(#fff, #999);
 }
 
-.close {
+.close-popup {
   background: #606061;
   color: #FFFFFF;
   line-height: 25px;
@@ -465,7 +465,7 @@ border-top-style: none;
   box-shadow: 1px 1px 3px #000;
 }
 
-.close:hover { background: #00d9ff; }
+.close-popup:hover { background: #00d9ff; }
 
 .form-group {
   margin: 2%;
@@ -484,4 +484,12 @@ border-top-style: none;
   margin:0 auto;
   text-align: center;
   font-weight: 600;
+  z-index:20;
+
+  position:absolute;
+  top: 50px;
+  z-index: 999;
+  left:25%;
+  right:25%;
+
 }

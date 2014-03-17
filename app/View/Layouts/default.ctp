@@ -168,14 +168,21 @@
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
+
+
     </nav>
 
 
 <?php
 if(!empty($this->request->params['pass'][0]) && ($this->request->params['pass'][0] == 'landing' || $this->request->params['pass'][0] == 'home') ){
-?>    
+?> 
+
+
     <div class="image_de_fond">
+
+
         <div class="container-fluid">
+
             <div class="logo-wrapper2">
                 <h2 class="gras">A L'ETROIT CHEZ VOUS ?</h2>
                 <h4 class="gras">Imaginez un placard dans les nuages</h4><br>
@@ -183,12 +190,28 @@ if(!empty($this->request->params['pass'][0]) && ($this->request->params['pass'][
                     nous nous occupons de tout pour vous&nbsp;: récupération de vos affaires, stockage et livraison à la demande.</h4>
                 
             </div>
+
+
         </div>
     </div>
+
 <?php
 }
 ?>
-    
+
+    <div class="alert alert-success flash-msg">
+
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.l
+
+    </div>
+
 
     <?= $this->fetch('content');?>
 

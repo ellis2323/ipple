@@ -296,12 +296,6 @@ class UsersController extends AppController {
 		}
 
 
-		public function edit_password(){
-
-
-
-		}
-
 		/* Enregistrer un nouveau client */
 		public function register() {
 			if($this->Session->read('Auth.User.id')){

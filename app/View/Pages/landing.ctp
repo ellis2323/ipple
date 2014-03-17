@@ -35,7 +35,7 @@
                                 <div class="container-fluid">
                                     <div id="modalDialog" class="modalDialog">
                                         <div> 
-                                            <a href="#close" title="Close" class="close">X</a>
+                                            <a href="#close" title="Close" class="close-popup">X</a>
                                             <form action="http://happymove.us7.list-manage.com/subscribe/post?u=fad05c9b1a9b05277fcba9dc6&amp;id=55a7ce533b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-horizontale" target="_blank" novalidate>
     
                                                           

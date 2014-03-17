@@ -79,7 +79,7 @@
                                         
                                         <p><br></p>
 
-                                        <button type"submit" class="btn" style="background-color:#65b7f2;color:white; font-weight:600">Je crée mon compte</button>
+                                        <button type"submit" class="btn" style="background-color:#65b7f2;color:white;">Je crée mon compte</button>
                                         
                                         <?= $this->Form->end(); ?>                                    
 
