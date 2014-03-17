@@ -1,9 +1,4 @@
 
-    <div class="image_de_fond">
-        <div class="container-fluid">
-
-        </div>
-    </div>
 
 <div class="container-fluid">
 

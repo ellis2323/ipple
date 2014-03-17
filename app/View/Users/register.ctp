@@ -1,8 +1,3 @@
-    <div class="image_de_fond">
-        <div class="container-fluid">
-
-        </div>
-    </div>
 
 <div class="container-fluid">
 <?= $this->Form->create('User'); ?>
@@ -12,10 +7,7 @@
                 <h2 class="text-center verti">Créer mon compte</h2>
                 
             </div>
-            <div class="row">
-                <?= $this->Session->flash();?>
-                <?= $this->Session->flash('auth');?>
-            </div>
+
             <div class="row">
                 
                 

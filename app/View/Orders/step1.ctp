@@ -2,10 +2,15 @@
 <?= $this->Form->create('Order', array(
  										'class' => 'horizontal-form',
  									));  ?>
+
+                <div class="row bandeau">
+                    <h2 class="text-center">Commander des bacs</h2>
+                </div><br>
+                
+    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">                                        
          <div class="section">
-            
-                <h2 class="text-center">Commander des bacs</h2>
-                <hr>
+
+
                 <h3><?php echo $this->Html->image('marqueur.png', array('alt' => 'responsive image'));?> Choisissez votre ville</h3>
                  
                     <div class="choix">   
@@ -22,7 +27,7 @@
                     </div>
             
         </div> <!-- section -->
-    
+
         <div class="section">
             
             
@@ -43,18 +48,22 @@
                                         );
                                         ?>
                                         <div class='col-lg-4 col-md-4 col-sm-4'>
-                                        <?php
-        									echo $this->Form->input('nb_bacs', array(
-                                                                'label' => false,                                                         
-                                                                'type' => 'number',
-                                                                'class' => 'form-control',
-                                                                'placeholder' => 4,
-                                                                'default' => 4,
-                                                                'min' => $nb_bac_min,
-                                                                'max' => $nb_bac_max
+                                        <?php $value = array();
 
-                                          	                 )
-                                            );?>
+
+
+                                        for($i=$nb_bac_min;$i<=$nb_bac_max;$i++){
+                                            $value[$i] = $i;
+                                        }
+                                        ?>
+
+                                        <?= $this->Form->input('nb_bacs', array(
+                                              'options' => array($value),
+                                              'label'   => false,
+                                          ));?>
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +97,7 @@
                                         <h4>Votre mensualité : <span id='price' style='font-weight:bold;'><?php echo round($price_bac*$nb_bac_min);?></span> €</h4>
                                         <?= $this->Js->writeBuffer(); ?>
                                         <p>Vous ne savez pas de combien de bacs vous avez besoin?<br>
-                                    Commandez en plus, vous ne paierez que ceux que vous utilisez</p>
+                                    Commandez en plus, vous ne paierez que ceux que vous utiliserez</p>
                                     </div>
                                 </div>
                             </div><!-- /.col-lg-4 -->
@@ -114,6 +123,7 @@
 
 
 
-        </div> <!-- section -->                    
+        </div> <!-- section -->           
+    </div>         
 </div>        
 

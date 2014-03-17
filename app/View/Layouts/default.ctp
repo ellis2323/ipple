@@ -14,7 +14,11 @@
     <?= $this->Html->css('dezordre');?>
 
     <?= $this->Html->script('jquery-1.10.2');?>
+    <?= $this->Html->script('jquery-ui-1.10.4.custom.min');?>
+
     <?= $this->Html->script('bootstrap');?>
+
+    <?= $this->fetch('css');?>
 
 </head>
 
@@ -191,9 +195,9 @@ if(!empty($this->request->params['pass'][0]) && ($this->request->params['pass'][
                         nous nous occupons de tout pour vous&nbsp;: récupération de vos affaires, stockage et livraison à la demande.</h4>
 
                  <?php else:?>
-                    <a href="mes affaires.html"><button type"submit"="" class="btn-lg color-btn margin25" >Mes affaires en stock</button></a>
+                    <a href="<?= $this->Html->url(array('controller' => 'users', 'action' => 'my_bacs')); ?>"><button type"submit" class="btn-lg color-btn margin25" >Mes affaires en stock</button></a>
                     <br />
-                    <a href="mes affaires.html"><button type"submit"="" class="btn-lg color-btn" >Prévoir une livraison de bacs vides</button></a>
+                    <a href="<?= $this->Html->url(array('controller' => 'orders', 'action' => 'step1')); ?>"><button type"submit" class="btn-lg color-btn" >Prévoir une livraison de bacs vides</button></a>
 
                 <?php endif;?>
             </div>
@@ -204,69 +208,81 @@ if(!empty($this->request->params['pass'][0]) && ($this->request->params['pass'][
 
 <?php
 }
+else {
 ?>
 
-    <div class="row">
-        <?= $this->Session->flash();?>
-        <?= $this->Session->flash('auth');?>
+
+    <div class="image_de_fond">
+        <div class="container-fluid">
+
+        </div>
     </div>
+<?php
+}
+?>
 
-
-    <?= $this->fetch('content');?>
-
+<div class="row">
         
+            <?= $this->Session->flash();?>
+            <?= $this->Session->flash('auth');?>
+
+
+
+
+        <?= $this->fetch('content');?>
+
+</div>          
     <!-- /CONTENT -->
        
     
     
     <div class="section">     
-    <div class="contact">
-        
-            <div class="container-fluid">
-                <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
-                    
-                    
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <h3 id="contact">Contact</h3>
-                            <h4><span class="glyphicon glyphicon-envelope"></span><a href="#"> support@dezordre.com</a></h4>
-                            <h4><span class="glyphicon glyphicon-phone"></span> (+33) 09.09.09.09.09</h4>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <h3>A propos</h3>
-                            <p><a href="faq.html">FAQ</a></p>
-                            <p><a href="cgv_dezordre.pdf" target="_blank">CGV</a></p>
-                            
-                            <p><a href="#">Mentions légales</a></p>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 ">
-                            <h3>Suivez-nous!</h3>
-                            <div class="col-lg-3 col-md-5 ">
-                                <a href="https://www.facebook.com/pages/Dezordre/265749423573092?fref=ts" target='_blank'><?php echo $this->Html->image('facebook.png', array('alt' => 'responsive image', 'class' => 'img-responsive"')); ?>    
-</a>
+        <div class="contact">
+            
+                <div class="container-fluid">
+                    <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+                        
+                        
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <h3 id="contact">Contact</h3>
+                                <h4><span class="glyphicon glyphicon-envelope"></span><a href="#"> support@dezordre.com</a></h4>
+                                <h4><span class="glyphicon glyphicon-phone"></span> (+33) 09.09.09.09.09</h4>
                             </div>
-                            <div class="col-lg-3 col-md-5 ">
-                                <a href="https://twitter.com/Dezordre" target='_blank'><?php echo $this->Html->image('twitter.png', array('alt' => 'responsive image', 'class' => 'img-responsive"')); ?>    
-</a>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <h3>A propos</h3>
+                                <p><a href="faq.html">FAQ</a></p>
+                                <p><a href="cgv_dezordre.pdf" target="_blank">CGV</a></p>
+                                
+                                <p><a href="#">Mentions légales</a></p>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 ">
+                                <h3>Suivez-nous!</h3>
+                                <div class="col-lg-3 col-md-5 ">
+                                    <a href="https://www.facebook.com/pages/Dezordre/265749423573092?fref=ts" target='_blank'><?php echo $this->Html->image('facebook.png', array('alt' => 'responsive image', 'class' => 'img-responsive"')); ?>    
+    </a>
+                                </div>
+                                <div class="col-lg-3 col-md-5 ">
+                                    <a href="https://twitter.com/Dezordre" target='_blank'><?php echo $this->Html->image('twitter.png', array('alt' => 'responsive image', 'class' => 'img-responsive"')); ?>    
+    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                </div>
             </div>
         </div>
     </div>
-    </div>
     
-        <footer>
-            <p class="text-center">dézordre, 10 rue de l'Amiral Courbet 94 160 Saint-Mandé - Ouvert 6j/7 de 8h30à 19h</p>
-        </footer>
+    <footer>
+        <p class="text-center">dézordre, 10 rue de l'Amiral Courbet 94 160 Saint-Mandé - Ouvert 6j/7 de 8h30à 19h</p>
+    </footer>
     
     
     <!-- /.container -->
-
+    <?= $this->fetch('script');?>
+    <?= $this->fetch('datepicker');?>
     <!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/modern-business.js"></script>
+  
 
 </body>
 

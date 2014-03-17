@@ -7,8 +7,10 @@ if(!empty($bacs)){
 
 <?= $this->Form->create('Order'); ?>
 <div class="section">
-    <h3 class="text-center">Mes affaires</h3>
-
+    <div class="row bandeau">
+        <h2  class="text-center">Mes affaires</h2>
+    </div><br>
+    
     <p class="text-right">
     <br>
         <button type"submit" name='select_all' value='1' class="btn btn-sm btn-primary" style="background-color:#65b7f2;color:white">Récupérer tous mes bacs</button>
