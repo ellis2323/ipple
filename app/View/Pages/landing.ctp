@@ -1,73 +1,7 @@
-<html lang="en"><head>
-    <?php echo $this->Html->charset(); ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title><?php echo $title_for_layout; ?></title>
-
-
-    <?= $this->Html->css('bootstrap');?>
-    <?= $this->Html->css('dezordre');?>
-    <?= $this->fetch('css');?>
-    <?= $this->Html->script('jquery-1.10.2'); ?>
-
-</head>
-
-<body>
-
-    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-                <a class="navbar-brand" href="index.html"><?php echo $this->Html->image('logo2.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>                        
-</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#comment">Comment ça marche?</a>
-                    </li>
-                    <li><a href="#prix">Prix</a>
-                    </li>
-                    <li><a href="#securite">Sécurité</a>
-                    </li>
-                    <li>
-                        <a href="faq.html">FAQ</a>
-                        
-                    </li>
-                    <li>
-                        <a href="#contact">Contact</a>
-                        
-                    </li>
-                    
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-    
-    <div class="image_de_fond">
-        <div class="container-fluid">
-            <div class="logo-wrapper2">
-                <h2 class="gras">A L'ETROIT CHEZ VOUS ?</h2>
-                <h4 class="gras">Imaginez un placard dans les nuages</h4><br>
-                <h4 style="color:#424242">Parce que le self-stockage traditionnel est trop contraignant,
-                    nous nous occupons de tout pour vous : récupération de vos affaires, stockage et livraison à la demande.</h4>
-                
-            </div>
-        </div>
-    </div>
 
         <div class=" container-fluid section">
                 <div class="row bandeau">
-                    <h2 class="text-center verti">Pré-commande</h2>
+                    <h2  class="text-center verti">Pré-commande</h2>
                 </div>
                 <div class="section-colored1 ">
                     <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
@@ -102,7 +36,7 @@
                                     <div id="modalDialog" class="modalDialog">
                                         <div> 
                                             <a href="#close" title="Close" class="close">X</a>
-                                            <form action="http://happymove.us7.list-manage.com/subscribe/post?u=fad05c9b1a9b05277fcba9dc6&amp;id=55a7ce533b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-horizontale" target="_blank" novalidate="">
+                                            <form action="http://happymove.us7.list-manage.com/subscribe/post?u=fad05c9b1a9b05277fcba9dc6&amp;id=55a7ce533b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-horizontale" target="_blank" novalidate>
     
                                                           
                                                 <h2 class="text-center">Réservez vos bacs</h2>
@@ -112,7 +46,7 @@
                                                         <div class="form-group">
                                                             <label for="mce-FNAME" class="col-lg-4 col-md-4 col-sm-4 control-label">Nom<span class="blue">*</span></label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input value="" name="FNAME" class="form-control" id="mce-FNAME" type="text">
+                                                                <input type="text" value="" name="FNAME" class="form-control" id="mce-FNAME">
                                                             </div>
                                                         </div>
                                                         
@@ -121,7 +55,7 @@
                                                         <div class="form-group">
                                                             <label for="mce-LNAME" class="col-lg-4 col-md-4 col-sm-4 control-label">Prénom<span class="blue">*</span></label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input value="" name="LNAME" class="form-control" id="mce-LNAME" type="text">
+                                                                <input type="text" value="" name="LNAME" class="form-control" id="mce-LNAME">
                                                             </div>
                                                         </div>
                                                         
@@ -130,7 +64,7 @@
                                                         <div class="form-group">
                                                             <label for="mce-EMAIL" class="col-lg-4 col-md-4 col-sm-4 control-label">Email<span class="blue">*</span></label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input value="" name="EMAIL" class="required email form-control" id="mce-EMAIL" type="email">
+                                                                <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL">
                                                             </div>
                                                         </div>
                                                         
@@ -139,7 +73,7 @@
                                                         <div class="form-group">
                                                             <label for="mce-MMERGE4" class="col-lg-4 col-md-4 col-sm-4 control-label">Combien de bacs souhaitez-vous?<span class="blue">*</span></label>
                                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                                <input name="MMERGE4" class="required form-control" value="" id="mce-MMERGE4" type="number">
+                                                                <input type="number" name="MMERGE4" class="required form-control" value="" id="mce-MMERGE4">
                                                                 
                                                             </div>
                                                         </div>
@@ -151,7 +85,7 @@
                                                                 
 
                                                                 
-                                                                <input value="Je réserve" name="subscribe" id="mc-embedded-subscribe" class="button" style="background-color:#65b7f2; color:white" type="submit">
+                                                                <input type="submit" value="Je réserve" name="subscribe" id="mc-embedded-subscribe" class="button" style="background-color:#65b7f2; color:white">
                                                             </label>
                                                             
                                                     </div>
@@ -172,23 +106,23 @@
     <!-- /.container -->               
     
     <div class="container-fluid row" id="comment">
-        <div class="section">
+        <div class="section" >
             <div class="row bandeau">
-                <h2 class="text-center">Comment ça marche?</h2>
+                <h2  class="text-center">Comment ça marche?</h2>
             </div><br>
             <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
             <div class="row">
                     <div class="col-lg-4 col-lg-offset-1 col-md-4 col-sm-4 largeur">
                         
-<?php echo $this->Html->image('un.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>                        
+                        <?php echo $this->Html->image('un.png', array('alt' => 'responsive image', 'class' => 'img-responsive', 'style' => 'margin: 0 auto;')); ?>                        
                     </div>
                     <div class="col-lg-4 col-lg-offset-1 col-md-4 col-sm-4 largeur">
                         
-<?php echo $this->Html->image('deux.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>                        
+                        <?php echo $this->Html->image('deux.png', array('alt' => 'responsive image', 'class' => 'img-responsive', 'style' => 'margin: 0 auto;')); ?>                        
                     </div>
                     <div class="col-lg-4 col-lg-offset-1 col-md-4 col-sm-4 largeur">
                         
-<?php echo $this->Html->image('trois.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>                        
+                        <?php echo $this->Html->image('trois.png', array('alt' => 'responsive image', 'class' => 'img-responsive', 'style' => 'margin: 0 auto;')); ?>                        
                     </div>
             </div><!-- /.row -->
             </div>
@@ -206,14 +140,14 @@
 
             <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
                 <div class="col-lg-5 col-md-6 col-sm-6 text-center">
-<?php echo $this->Html->image('mac.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>                </div>    
+<?php echo $this->Html->image('mac.png', array('alt' => 'responsive image', 'class' => 'img-responsive mac', 'style' => 'margin: 0 auto;')); ?>                </div>    
                 <div class="col-lg-6 col-lg-offset-1 col-md-6 col-sm-6">      
                         
                         <h3 style="color:#65b7f2">Besoin de modifier quelque chose?</h3><br>
-                        <h4>
-                        <?php echo $this->Html->image('triangle90.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>         Gérez vos bacs en ligne sans bouger de chez vous<br><br>
-                            <?php echo $this->Html->image('triangle90.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>         Récupérez vos affaires quand vous le souhaitez<br><br>
-                           <?php echo $this->Html->image('triangle90.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>         Retrouvez un item en 2 clics avec l'inventaire en ligne</h4>     
+                        <h4>                        
+                        <?php echo $this->Html->image('triangle90.png', array('alt' => 'responsive image', 'class' => 'img-responsive uneligne')); ?> Gérez vos bacs en ligne sans bouger de chez vous<br><br>
+                           <?php echo $this->Html->image('triangle90.png', array('alt' => 'responsive image', 'class' => 'img-responsive uneligne')); ?> Récupérez vos affaires quand vous le souhaitez<br><br>
+                            <?php echo $this->Html->image('triangle90.png', array('alt' => 'responsive image', 'class' => 'img-responsive uneligne')); ?> Retrouvez un item en 2 clics avec l'inventaire en ligne</h4>     
                             
                         
                         
@@ -240,13 +174,12 @@
                 
                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
                 <div class="col-lg-4 col-md-4 col-sm-4 largeur">
-
-<?php echo $this->Html->image('contenu_bac.png', array('alt' => 'responsive image', 'class' => 'img-responsive img-home-portfolio')); ?>        
+                  <?php echo $this->Html->image('contenu_bac.png', array('alt' => 'responsive image', 'class' => 'img-responsive img-home-portfolio"', 'style' => 'margin: 0 auto;')); ?>    
                     
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 largeur">
                     <hr>
-<?php echo $this->Html->image('bac_dim.png', array('alt' => 'responsive image', 'class' => 'img-responsive img-home-portfolio')); ?>        
+                  <?php echo $this->Html->image('bac_dim.png', array('alt' => 'responsive image', 'class' => 'img-responsive img-home-portfolio"', 'style' => 'margin: 0 auto;')); ?>    
                     
                 </div>
                 
@@ -275,13 +208,13 @@
     <!-- /.section -->
     <div class="section couleurfond">
         <div class="row bandeau" id="securite">
-            <h2 class="text-center">Sécurité</h2>
+            <h2  class="text-center">Sécurité</h2>
         </div><hr>
         <div class="container-fluid" style="color:#424242; margin:3% 20%">
             
             <div class="row">
                 <div class="col-lg-1 col-lg-offset-2 col-md-1 col-md-offset-2">
-<?php echo $this->Html->image('camera.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>        
+                  <?php echo $this->Html->image('camera.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>    
                 </div>
                 <div class="col-lg-8 col-md-7">
                     <h4>Vos bacs sont stockés dans un entrepôt sécurisé et monitoré 24h/24</h4><br><br>
@@ -291,7 +224,7 @@
             
             <div class="row">
                 <div class="col-lg-1 col-lg-offset-2 col-md-1 col-md-offset-2">
-<?php echo $this->Html->image('cadeanas.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>        
+                  <?php echo $this->Html->image('cadenas.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>    
                 </div>
                 <div class="col-lg-8 col-md-7">
                     <h4>Nous vous fournissons des scellés à usage unique pour fermer vos bacs</h4><br><br>
@@ -301,7 +234,7 @@
             
             <div class="row">
                 <div class="col-lg-1 col-lg-offset-2 col-md-1 col-md-offset-2">
-<?php echo $this->Html->image('ordi.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>        
+                  <?php echo $this->Html->image('ordi.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>    
                 </div>
                 <div class="col-lg-8 col-md-7">
                     <h4>Avec l'inventaire en ligne vous êtes toujours au courant de ce que vous avez stocké</h4><br><br>
@@ -314,57 +247,3 @@
     <!-- /.container -->
     </div>
 
-    
-    <div class="section">     
-    <div class="contact">
-        
-            <div class="container-fluid">
-                <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
-                    
-                    
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <h3 id="contact">Contact</h3>
-                            <h4><span class="glyphicon glyphicon-envelope"></span><a href="#"> support@dezordre.com</a></h4>
-                            <h4><span class="glyphicon glyphicon-earphone"></span> (+33) 09.09.09.09.09</h4>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <h3>A propos</h3>
-                            <p><a href="faq.html">FAQ</a></p>
-                            <p><a href="cgv_dezordre.pdf" target="_blank">CGV</a></p>
-                            
-                            <p><a href="#">Mentions légales</a></p>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 ">
-                            <h3>Suivez-nous!</h3>
-                            <div class="col-lg-3 col-md-5 ">
-                                <a href="https://www.facebook.com/pages/Dezordre/265749423573092?fref=ts"<?php echo $this->Html->image('facebook.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>        
-</a>
-                            </div>
-                            <div class="col-lg-3 col-md-5 ">
-                                <a href="https://twitter.com/Dezordre"><?php echo $this->Html->image('twitter.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>        
-</a>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    
-        <footer>
-            <p class="text-center">dézordre, 10 rue de l'Amiral Courbet 94 160 Saint-Mandé - Ouvert 6j/7 de 8h30à 19h</p>
-        </footer>
-    
-    
-    <!-- /.container -->
-
-    <!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/modern-business.js"></script>
-
-
-
-
-</body></html>
