@@ -51,9 +51,113 @@
                     if(!empty($this->request->params['pass'][0]) && $this->request->params['pass'][0] != 'landing'){
                     ?>
                     <li>
-                        <a href="<?= $this->Html->url(array('controller' => 'users', 'action' => 'login'));?>">Se connecter</a>
-                        
-                    </li>
+                            <!-- MENU -->
+                    <li class="dropdown">
+                        <?php // #### Menu loggé ####
+                        if($this->Session->read('Auth.User.id')):
+                        ?>
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+
+
+                            <li>
+                            <?php echo $this->Html->link(
+                                    'Commander des bacs',
+                                    array(
+                                        'controller'    => 'orders',
+                                        'action'        => 'step1',
+                                        'full_base'     => true,
+                                        'admin'         => false
+                                    )
+                                );?>
+                            </li>
+
+
+                            <li>
+                            <?php echo $this->Html->link(
+                                    'Mes affaires',
+                                    array(
+                                        'controller' => 'users',
+                                        'action' => 'my_bacs',
+                                        'full_base'     => true,
+                                        'admin'         => false                   
+                                        )
+                                );?>
+                            </li>
+
+                            <li>
+                            <?php echo $this->Html->link(
+                                    'Mes commandes',
+                                    array(
+                                        'controller' => 'users',
+                                        'action' => 'my_account#livraisons',
+                                        'full_base'     => true,
+                                        'admin'         => false                                    
+                                        )
+                                );?>
+                            </li>  
+
+                            <li>
+                            <?php echo $this->Html->link(
+                                    'Modifier infos compte',
+                                    array(
+                                        'controller' => 'users',
+                                        'action' => 'my_account#profil',
+                                        'full_base'     => true,
+                                        'admin'         => false                                    
+                                        )
+                                );?>
+                            </li>  
+
+                            <li>
+                            <?php echo $this->Html->link(
+                                    'Logout',
+                                    array(
+                                        'controller' => 'users',
+                                        'action' => 'logout',
+                                        'full_base'     => true,
+                                        'admin'         => false                                    
+                                        )
+                                );?>
+                            </li>  
+
+
+                            <?php
+                            // #### Menu non loggé ####
+                            else:
+                            ?>
+
+                                <li>
+                                <?php echo $this->Html->link(
+                                        "S'enregistrer",
+                                        array(
+                                            'controller' => 'users',
+                                            'action' => 'register',
+                                        'full_base'     => true,
+                                        'admin'         => false                                        
+                                        )
+                                    );?>
+                                </li>
+                               <li>
+                                <?php echo $this->Html->link(
+                                        'Login',
+                                        array(
+                                            'controller' => 'users',
+                                            'action' => 'login',
+                                        'full_base'     => true,
+                                        'admin'         => false                                        
+                                        )
+                                    );?>
+                                </li>
+
+
+
+                            <?php
+                            endif;
+                            ?>
+                            </ul>
+                            <!-- /MENU -->
                     <?php
                     }
                    
@@ -65,7 +169,11 @@
         </div>
         <!-- /.container -->
     </nav>
-    
+
+
+<?php
+if(!empty($this->request->params['pass'][0]) && ($this->request->params['pass'][0] == 'landing' || $this->request->params['pass'][0] == 'home') ){
+?>    
     <div class="image_de_fond">
         <div class="container-fluid">
             <div class="logo-wrapper2">
@@ -77,8 +185,9 @@
             </div>
         </div>
     </div>
-
-    <!-- CONTENT -->
+<?php
+}
+?>
     
     <?= $this->Session->flash();?>
         <?= $this->Session->flash('auth');?>
