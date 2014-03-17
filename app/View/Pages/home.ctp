@@ -88,7 +88,7 @@
                         <li style="color:#898989"> Récupérations de vos bacs en stock : 20€+2€/bac</li>
                     </ul>
                     <?php 
-                    if(!$this->Session->check('Auth.User.id') ){
+                    if(!($this->Session->check('Auth.User.id')) ){
                     ?>
                         <p style="text-align:center"><a class="btn btn-lg" style="background-color:#f75900;color:white" href="#modalDialog" role="button">Je m'inscris</a></p>
                     <?php
