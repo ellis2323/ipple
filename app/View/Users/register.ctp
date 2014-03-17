@@ -10,10 +10,14 @@
 
             <div class="row bandeau">
                 <h2 class="text-center verti">Créer mon compte</h2>
+                
             </div>
-
             <div class="row">
-
+                <?= $this->Session->flash();?>
+                <?= $this->Session->flash('auth');?>
+            </div>
+            <div class="row">
+                
                 
                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 ">
                         <div class="choix">    

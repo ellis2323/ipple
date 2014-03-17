@@ -477,3 +477,11 @@ border-top-style: none;
   color:white;
 /* background-color: #f9f9f9; */
 }
+
+.flash-msg{
+
+  width: 50%;
+  margin:0 auto;
+  text-align: center;
+  font-weight: 600;
+}

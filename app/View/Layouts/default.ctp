@@ -189,10 +189,9 @@ if(!empty($this->request->params['pass'][0]) && ($this->request->params['pass'][
 }
 ?>
     
-    <?= $this->Session->flash();?>
-        <?= $this->Session->flash('auth');?>
+
     <?= $this->fetch('content');?>
-    
+
         
     <!-- /CONTENT -->
        
