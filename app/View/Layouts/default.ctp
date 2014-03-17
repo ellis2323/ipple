@@ -38,16 +38,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#comment">Comment ça marche?</a>
-                    </li>
-                    <li><a href="#prix">Prix</a>
-                    </li>
-                    <li><a href="#securite">Sécurité</a>
-                    </li>
-                    <li>
-                        <a href="faq.html">FAQ</a>
-                        
-                    </li>
+                    <li><a href="#comment">Comment ça marche?</a> </li>
+                    <li><a href="#prix">Prix</a></li>
+                    <li><a href="#securite">Sécurité</a></li>
+                    <li> <a href="faq.html">FAQ</a></li>
                     <li>
                         <a href="#contact">Contact</a>
                         
@@ -217,9 +211,10 @@
                 <div class="col-lg-6 col-lg-offset-1 col-md-6 col-sm-6">      
                         
                         <h3 style="color:#65b7f2">Besoin de modifier quelque chose?</h3><br>
-                        <h4><img class="img-responsive uneligne" alt="responsive image" src="img/triangle90.png"> Gérez vos bacs en ligne sans bouger de chez vous<br><br>
-                            <img class="img-responsive uneligne" alt="responsive image" src="img/triangle90.png"> Récupérez vos affaires quand vous le souhaitez<br><br>
-                            <img class="img-responsive uneligne" alt="responsive image" src="img/triangle90.png"> Retrouvez un item en 2 clics avec l'inventaire en ligne</h4>     
+                        <h4>                        
+                        <?php echo $this->Html->image('triangle90.png', array('alt' => 'responsive image', 'class' => 'img-responsive uneligne')); ?> Gérez vos bacs en ligne sans bouger de chez vous<br><br>
+                           <?php echo $this->Html->image('triangle90.png', array('alt' => 'responsive image', 'class' => 'img-responsive uneligne')); ?> Récupérez vos affaires quand vous le souhaitez<br><br>
+                            <?php echo $this->Html->image('triangle90.png', array('alt' => 'responsive image', 'class' => 'img-responsive uneligne')); ?> Retrouvez un item en 2 clics avec l'inventaire en ligne</h4>     
                             
                         
                         
@@ -246,13 +241,12 @@
                 
                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
                 <div class="col-lg-4 col-md-4 col-sm-4 largeur">
-                    
-                    <img class="img-responsive img-home-portfolio" alt="responsive image" src="img/contenu_bac.png">
+                  <?php echo $this->Html->image('contenu_bac.png', array('alt' => 'responsive image', 'class' => 'img-responsive img-home-portfolio"')); ?>    
                     
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 largeur">
                     <hr>
-                    <img class="img-responsive img-home-portfolio" alt="responsive image" src="img/bac_dim.png">
+                  <?php echo $this->Html->image('bac_dim.png', array('alt' => 'responsive image', 'class' => 'img-responsive img-home-portfolio"')); ?>    
                     
                 </div>
                 
@@ -287,7 +281,7 @@
             
             <div class="row">
                 <div class="col-lg-1 col-lg-offset-2 col-md-1 col-md-offset-2">
-                    <img class="img-responsive" alt="responsive image" src="img/camera.png">
+                  <?php echo $this->Html->image('camera.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>    
                 </div>
                 <div class="col-lg-8 col-md-7">
                     <h4>Vos bacs sont stockés dans un entrepôt sécurisé et monitoré 24h/24</h4><br><br>
@@ -297,7 +291,7 @@
             
             <div class="row">
                 <div class="col-lg-1 col-lg-offset-2 col-md-1 col-md-offset-2">
-                    <img class="img-responsive" alt="responsive image" src="img/cadenas.png">
+                  <?php echo $this->Html->image('cadenas.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>    
                 </div>
                 <div class="col-lg-8 col-md-7">
                     <h4>Nous vous fournissons des scellés à usage unique pour fermer vos bacs</h4><br><br>
@@ -307,7 +301,7 @@
             
             <div class="row">
                 <div class="col-lg-1 col-lg-offset-2 col-md-1 col-md-offset-2">
-                    <img class="img-responsive" alt="responsive image" src="img/ordi.png">
+                  <?php echo $this->Html->image('ordi.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>    
                 </div>
                 <div class="col-lg-8 col-md-7">
                     <h4>Avec l'inventaire en ligne vous êtes toujours au courant de ce que vous avez stocké</h4><br><br>
@@ -332,7 +326,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <h3 id="contact">Contact</h3>
                             <h4><span class="glyphicon glyphicon-envelope"></span><a href="#"> support@dezordre.com</a></h4>
-                            <h4><span class="glyphicon glyphicon-earphone"></span> (+33) 09.09.09.09.09</h4>
+                            <h4><span class="glyphicon glyphicon-phone"></span> (+33) 09.09.09.09.09</h4>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <h3>A propos</h3>
@@ -344,10 +338,12 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 ">
                             <h3>Suivez-nous!</h3>
                             <div class="col-lg-3 col-md-5 ">
-                                <a href="https://www.facebook.com/pages/Dezordre/265749423573092?fref=ts"><img src="img/facebook.png" class="img-responsive" alt="responsive image"></a>
+                                <a href="https://www.facebook.com/pages/Dezordre/265749423573092?fref=ts" target='_blank'><?php echo $this->Html->image('facebook.png', array('alt' => 'responsive image', 'class' => 'img-responsive"')); ?>    
+</a>
                             </div>
                             <div class="col-lg-3 col-md-5 ">
-                                <a href="https://twitter.com/Dezordre"><img src="img/twitter.png" class="img-responsive" alt="responsive image"></a>
+                                <a href="https://twitter.com/Dezordre" target='_blank'><?php echo $this->Html->image('twitter.png', array('alt' => 'responsive image', 'class' => 'img-responsive"')); ?>    
+</a>
                             </div>
                         </div>
                     </div>
