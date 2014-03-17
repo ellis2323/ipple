@@ -205,7 +205,8 @@ class OrdersController extends AppController {
 															'date_withdrawal'		=> $withdrawal->format($format),
 															'hour_withdrawal'		=> 1,
 															'state_withdrawal'		=> 1,
-															'state'					=> 1
+															'state'					=> 1,
+															
 															),
 												"Address" =>
 															array(
@@ -234,7 +235,7 @@ class OrdersController extends AppController {
 															'nb_bacs'			=> $data_full['Order']['nb_bacs'],
 															'hour_deposit'		=> 1,
 															'date_deposit'		=> $deposit->format($format),
-															'state'				=> 1
+															'state'				=> 1,
 															),
 												"Address" =>
 															array(
@@ -249,8 +250,22 @@ class OrdersController extends AppController {
 																'comment'			=> $data_full['Address'][0]['comment'],
 																'phone'				=> $data_full['Address'][0]['phone'],
 																'company'			=> $data_full['Address'][0]['company'],
-																)
+																),
 							);
+						}
+
+						if(!empty($data_full['Order']['cgv'])){
+							$data_user = 	array(		
+												"User"	=> 
+													array(
+															'id'			=> $this->Session->read('Auth.User.id'),
+															'rules'			=> $data_full['Order']['cgv'],
+													),
+										);
+
+							$this->Order->saveAll($data_user);
+							$this->Session->write('Auth.User.rules', $data_full['Order']['cgv']);
+
 						}
 						
 						// Si la commande à bien été enregistré, on ajoute les livraisons associées
@@ -259,7 +274,6 @@ class OrdersController extends AppController {
 								$this->Order->saveField('address_id', $this->Order->Address->id);
 
 								// Envoie de l'email de notification
-								
 
 								$CakeEmail = new CakeEmail('default');
 								$CakeEmail->to('rpietra@gmail.com');
@@ -277,14 +291,15 @@ class OrdersController extends AppController {
 
 						}
 						else {
-
-    						debug($this->validationErrors);
+							debug($this->Order->saveAll($data_order));
+    						debug($this->Order->invalidFields());
     						debug($data_order);
 							$this->Session->setFlash('Erreur lors de la sauvegarde.', 'alert', array('class' => 'danger'));
 						}
 
 					} // Validates
 					else {
+						debug($this->validationErrors);
 						$this->Session->setFlash('Erreur de validation', 'alert', array('class' => 'danger'));
 					}
 

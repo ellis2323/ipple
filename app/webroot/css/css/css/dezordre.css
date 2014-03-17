@@ -412,7 +412,6 @@ border-top-style: none;
 
 .modalDialog {
   position: fixed;
-  overflow: scroll;
   font-family: 'lato_light', Helvetica, sans-serif;
   top: 0;
   right: 0;
@@ -421,11 +420,11 @@ border-top-style: none;
   background: rgba(0,0,0,0.8);
   z-index: 99999;
   opacity:0;
-  -webkit-transition: opacity 250ms ease-in;
-  -moz-transition: opacity 250ms ease-in;
-  -o-transition: opacity 250ms ease-in;
-  -ms-transition: opacity 250ms ease-in;
-  transition: opacity 250ms ease-in;
+  -webkit-transition: opacity 250ms ease-in-out;
+  -moz-transition: opacity 250ms ease-in-out;
+  -o-transition: opacity 250ms ease-in-out;
+  -ms-transition: opacity 250ms ease-in-out;
+  transition: opacity 250ms ease-in-out;
   pointer-events: none;
 }
 
@@ -435,11 +434,10 @@ border-top-style: none;
 }
 
 .modalDialog > div {
-  width: 80%;
   max-width: 500px;
   position: relative;
   margin: 10% auto;
-  padding: 1% 2% 1% 2%;
+  padding: 5px 20px 13px 20px;
   background: #fff;
   background: -moz-linear-gradient(#fff, #999);
   background: -webkit-linear-gradient(#fff, #999);
@@ -466,10 +464,6 @@ border-top-style: none;
 }
 
 .close:hover { background: #00d9ff; }
-
-.form-group {
-  margin: 2%;
-}
 
 .table-striped > tbody > tr:nth-child(odd) > th {
   background-color:#65b7f2;

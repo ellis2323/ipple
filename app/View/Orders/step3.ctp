@@ -216,19 +216,29 @@ $( document ).ready(function() {
 
         <div class="section">
 
-            
+            	<!--
                 <div class="form-group">
                     <label for="code_promo" class="col-lg-3 col-md-3 col-sm-3 col-lg-offset-3 col-md-offset-3 col-sm-offset-3 control-label">Avez-vous un code promo?</label>
                     <div class="col-lg-2 col-md-2 col-sm-2">
                         <input type="text" class="form-control" id="code_promo" placeholder="code promo">
                     </div>
                 </div>
+                -->
                 
             
             <div class="checkbox">
                     <div class='col-lg-3 col-md-3 col-sm-3 col-lg-offset-4 col-md-offset-4 col-sm-offset-4' style='text-align:center;'>
-                    	
-                        <input type="checkbox" required=""> J'ai lu et j'accepte les <a href="">Conditions Générales de ventes</a>
+                    	<?php
+                    			if($this->Session->read('Auth.User.rules') == 0){
+									echo $this->Form->input('cgv', array(
+		                                                'class' => 'form-control',
+		                                                'label' => "J'ai lu et j'accepte les <a href=''>Conditions Générales de ventes</a>",
+		                                                'type'	=> 'checkbox',
+		                                                'required' => true,
+		                          	));
+	                          	}
+	                          	?> 
+                       
 
         				<p><br></p>
 

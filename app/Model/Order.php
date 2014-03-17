@@ -52,6 +52,10 @@ class Order extends AppModel {
 								'withdraw' => array(
 													'rule' => 'notEmpty'
 													),
+								'cgv' => array(
+												'rule' => 'notEmpty',
+
+												),
 								'date_deposit' => array(
 														'CheckDate' =>array(
 																			'rule' => 'checkDate',
