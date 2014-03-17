@@ -184,11 +184,18 @@ if(!empty($this->request->params['pass'][0]) && ($this->request->params['pass'][
         <div class="container-fluid">
 
             <div class="logo-wrapper2">
-                <h2 class="gras">A L'ETROIT CHEZ VOUS ?</h2>
-                <h4 class="gras">Imaginez un placard dans les nuages</h4><br>
-                <h4 style="color:#424242">Parce que le self-stockage traditionnel est trop contraignant,
-                    nous nous occupons de tout pour vous&nbsp;: récupération de vos affaires, stockage et livraison à la demande.</h4>
-                
+                <?php if(!$this->Session->read('Auth.User.id')): ?>
+                    <h2 class="gras">A L'ETROIT CHEZ VOUS ?</h2>
+                    <h4 class="gras">Imaginez un placard dans les nuages</h4><br>
+                    <h4 style="color:#424242">Parce que le self-stockage traditionnel est trop contraignant,
+                        nous nous occupons de tout pour vous&nbsp;: récupération de vos affaires, stockage et livraison à la demande.</h4>
+
+                 <?php else:?>
+                    <a href="mes affaires.html"><button type"submit"="" class="btn-lg color-btn margin25" >Mes affaires en stock</button></a>
+                    <br />
+                    <a href="mes affaires.html"><button type"submit"="" class="btn-lg color-btn" >Prévoir une livraison de bacs vides</button></a>
+
+                <?php endif;?>
             </div>
 
 
@@ -199,17 +206,9 @@ if(!empty($this->request->params['pass'][0]) && ($this->request->params['pass'][
 }
 ?>
 
-    <div class="alert alert-success flash-msg">
-
-    <a href="#" class="close" data-dismiss="alert">&times;</a>
-
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.l
-
+    <div class="row">
+        <?= $this->Session->flash();?>
+        <?= $this->Session->flash('auth');?>
     </div>
 
 

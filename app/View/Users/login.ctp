@@ -1,11 +1,19 @@
 
-<div class="container-fluid">
-        <div class="section">
-            <div class="row">
-                <h2 class="text-center">Se connecter</h2>
+    <div class="image_de_fond">
+        <div class="container-fluid">
 
-                
-            
+        </div>
+    </div>
+
+<div class="container-fluid">
+
+        <div class="section">
+
+            <div class="row bandeau">
+                <h2 class="text-center verti">Se connecter</h2>
+            </div>
+
+            <div class="row">
                     <div class="choix">  
                         <?= $this->Form->create('User'); ?>
   

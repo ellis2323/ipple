@@ -1,4 +1,6 @@
 
+
+
     <div class="container-fluid row" id="comment">
         <div class="section" >
             <div class="row bandeau">
@@ -6,7 +8,7 @@
             </div><br>
 
 
-            
+
             <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
             <div class="row">
                     <div class="col-lg-4 col-lg-offset-1 col-md-4 col-sm-4 largeur">
@@ -37,7 +39,7 @@
 
             <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
                 <div class="col-lg-5 col-md-6 col-sm-6 text-center">
-<?php echo $this->Html->image('mac.png', array('alt' => 'responsive image', 'class' => 'img-responsive mac', 'style' => 'margin: 0 auto;')); ?>                </div>    
+                <?php echo $this->Html->image('mac.png', array('alt' => 'responsive image', 'class' => 'img-responsive mac', 'style' => 'margin: 0 auto;')); ?>                </div>    
                 <div class="col-lg-6 col-lg-offset-1 col-md-6 col-sm-6">      
                         
                         <h3 style="color:#65b7f2">Besoin de modifier quelque chose?</h3><br>

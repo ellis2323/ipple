@@ -200,6 +200,7 @@ footer {
   width: 60%;
   max-width: 600px;
   background-color: #f7f4ef;
+
 }
 
 .image_de_fond {
@@ -260,7 +261,6 @@ footer {
 .choix  {
   border-radius: 5px 5px 5px 5px;
   background-color: #ffffff;
-  padding: 3%;
   margin:1%;
   margin-bottom: 0;
 }
@@ -408,6 +408,7 @@ border-top-style: none;
   width: 60%;
   max-width: 700px;
   background-color: #f6f6f6;
+  padding: 25px;
 }
 
 .modalDialog {
@@ -492,4 +493,15 @@ border-top-style: none;
   left:25%;
   right:25%;
 
+}
+
+.color-btn {
+
+  background-color:#65b7f2;
+  color:white;
+
+}
+
+.margin25 {
+  margin-bottom: 25px;
 }
