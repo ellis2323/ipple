@@ -92,6 +92,14 @@ class OrdersController extends AppController {
 		public function step2($data_get = null) {
 			// Si des données on été passé
 			if(!empty($data_get)){
+
+
+				// On récupère les créneaux horaires
+			   	$hours = new Hour();
+
+			   	$hours = $hours->find('list');
+				$this->set(compact('hours'));
+				
 				// On récupère les codes postaux
 						    $this->Order->bindModel(
 						        array('hasMany' => array(
@@ -119,11 +127,32 @@ class OrdersController extends AppController {
 						// On transforme les données pour les passer au controller
 
 						// On assemble les tableau de données
-						$data_full = $data_get + $data_post;
-						//debug($data_full);
+						
+						//
+
+						$data = array(
+							'Order' => array(
+									'cities' => $data_get['Order']['cities'],
+									'nb_bacs' => $data_get['Order']['nb_bacs'],
+									'date_deposit' => $this->request->data['Order']['date_deposit'],
+									'hour_deposit' => $this->request->data['Order']['date_deposit'],
+							),
+							'Address' => array(
+									'lastname' => $this->request->data['Address'][0]['lastname'],
+									'firstname' => $this->request->data['Address'][0]['firstname'],
+									'company' => $this->request->data['Address'][0]['company'],
+									'phone' => $this->request->data['Address'][0]['phone'],
+									'street' => $this->request->data['Address'][0]['street'],
+									'postals' => $this->request->data['Address'][0]['postals'],
+									'floor' => $this->request->data['Address'][0]['floor'],
+									'digicode' => $this->request->data['Address'][0]['digicode'],
+									'comment' => $this->request->data['Address'][0]['comment'],
+							),
+						);
 
 						// On convertis les données avant de les envoyer
-						$data = base64_encode(serialize($data_full));
+						$data = base64_encode(serialize($data));
+
 
 						$this->redirect(array('controller'=> 'orders','action' => 'step3', $data) );
 					}
@@ -136,24 +165,23 @@ class OrdersController extends AppController {
 
 		// Commande : Etape 3
 		public function step3($data_get = null) {
-			// On récupère les créneaux horaires
-		    $this->Order->bindModel(
-		        array('hasMany' => array(
-		                'Hour' => array(
-		                    'className' => 'Hour'
-		                )
-		            )
-		        )
-		    );
-			$hours = $this->Order->Hour->find('list');
-			$this->set(compact('hours'));
-			// Si des données on été passé
 
+			// On récupère les créneaux horaires
+		   	$hours = new Hour();
+		   	$hours = $hours->find('list');
+			$this->set(compact('hours'));
+
+
+			// Si des données on été passé
 			if(!empty($data_get)){
 
 				// On récupères le tableau en forme
 				$data_get = unserialize(base64_decode($data_get) );
-				//debug($data_get);
+				$date_deposit = $data_get['Order']['date_deposit'];
+
+
+				$split_date=explode("/",$date_deposit);
+				$this->set(compact('split_date'));
 
 				// Si on poste des données
 				if(!empty($this->request->data)){	
@@ -179,15 +207,14 @@ class OrdersController extends AppController {
 
 						$data_full = $data_order + $data_address;
 
-
+						debug($data_full);
 						//Si tout est ok, on enregistre les données
 						/*#######################*/
 						$this->Order->create();
 
 						$format = 'Y-m-d H:i:s';
 
-						$deposit = new DateTime($data_full['Order']['date_deposit']);
-						
+						$deposit = new DateTime($data_order['Order']['date_deposit']);
 
 						// Si on fait un retrait différé
 						if($data_full['Order']['withdraw'] == 2) {
@@ -200,10 +227,10 @@ class OrdersController extends AppController {
 															'user_id'				=> $this->Session->read('Auth.User.id'),
 															'nb_bacs'				=> $data_full['Order']['nb_bacs'],
 															'date_deposit'			=> $deposit->format($format),
-															'hour_deposit'			=> 1,
+															'hour_deposit'			=> $data_full['Order']['hour_deposit'],
 															'state_deposit'			=> 1,
 															'date_withdrawal'		=> $withdrawal->format($format),
-															'hour_withdrawal'		=> 1,
+															'hour_withdrawal'		=> $data_full['Order']['hour_withdrawal'],
 															'state_withdrawal'		=> 1,
 															'state'					=> 1,
 															
@@ -212,13 +239,13 @@ class OrdersController extends AppController {
 															array(
 																'user_id'			=> $this->Session->read('Auth.User.id'),
 																'city_id'			=> $data_full['Order']['cities'],
-																'postal_id'			=> $data_full['Address'][0]['postals'],
-																'firstname'			=> $data_full['Address'][0]['firstname'],
-																'lastname'			=> $data_full['Address'][0]['lastname'],
-																'street'			=> $data_full['Address'][0]['street'],
-																'digicode'			=> $data_full['Address'][0]['digicode'],
-																'floor'				=> $data_full['Address'][0]['floor'],
-																'comment'			=> $data_full['Address'][0]['comment'],
+																'postal_id'			=> $data_full['Address']['postals'],
+																'firstname'			=> $data_full['Address']['firstname'],
+																'lastname'			=> $data_full['Address']['lastname'],
+																'street'			=> $data_full['Address']['street'],
+																'digicode'			=> $data_full['Address']['digicode'],
+																'floor'				=> $data_full['Address']['floor'],
+																'comment'			=> $data_full['Address']['comment'],
 																'state'				=> 1
 																),
 							);
@@ -241,15 +268,15 @@ class OrdersController extends AppController {
 															array(
 																'user_id'			=> $this->Session->read('Auth.User.id'),
 																'city_id'			=> $data_full['Order']['cities'],
-																'postal_id'			=> $data_full['Address'][0]['postals'],
-																'firstname'			=> $data_full['Address'][0]['firstname'],
-																'lastname'			=> $data_full['Address'][0]['lastname'],
-																'street'			=> $data_full['Address'][0]['street'],
-																'digicode'			=> $data_full['Address'][0]['digicode'],
-																'floor'				=> $data_full['Address'][0]['floor'],
-																'comment'			=> $data_full['Address'][0]['comment'],
-																'phone'				=> $data_full['Address'][0]['phone'],
-																'company'			=> $data_full['Address'][0]['company'],
+																'postal_id'			=> $data_full['Address']['postals'],
+																'firstname'			=> $data_full['Address']['firstname'],
+																'lastname'			=> $data_full['Address']['lastname'],
+																'street'			=> $data_full['Address']['street'],
+																'digicode'			=> $data_full['Address']['digicode'],
+																'floor'				=> $data_full['Address']['floor'],
+																'comment'			=> $data_full['Address']['comment'],
+																'phone'				=> $data_full['Address']['phone'],
+																'company'			=> $data_full['Address']['company'],
 																),
 							);
 						}

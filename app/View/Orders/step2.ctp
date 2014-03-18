@@ -1,5 +1,4 @@
-<?= $this->Html->css('datepicker', array('inline' => false) );?>
-<?= $this->Html->script('bootstrap-datepicker', array('inline' => false)); ?>
+<?= $this->Html->css('latoja.datepicker', array('inline' => false)); ?>
 
 <div class="container-fluid">
 <?= $this->Form->create('Order', array(
@@ -130,7 +129,7 @@
                             ?>
                             <?php
                             echo $this->Form->input('Address.0.street', array(
-                                                                            'type' => 'text',
+                                                                            'type' => 'textarea',
                                                                             'label' => false, 
                                                                             'class' => 'form-control',
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
@@ -233,31 +232,62 @@
 
                 <div class="row">
                 <!-- HEURE ET DATE -->
-                    <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?> Quand voulez-vous récupérez les bacs?</h3>  
+                    <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?> Quand voulez-vous récupérer les bacs?</h3>  
 
 
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="form-group">
-                            <label for="date" class="col-lg-4 col-md-4 col-sm-4 control-label">Date de livraison<span class="blue">*</span></label>
-                                
-
-
-                            <?= $this->Form->input("date_deposit", 
-                                array(
-                                'label' => false, 
-                                'id' => 'select_date',
-                                'class' => 'form-control',
-                                'type' => 'text',
-                                'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                )
-                            ); ?>
-
+                            <label for="date_deposit" class="col-lg-4 col-md-4 col-sm-4 control-label">Date de livraison<span class="blue">*</span></label>
                             
+
                                 <!-- DATEPICKER -->
 
- 
 
-                                <!-- /DATEPICKER --> 
+                            <!-- DATEPICKER -->
+                            <?= $this->Form->input("date_deposit", 
+                                array(
+                                    'label' => false, 
+                                    'type' => 'text',
+                                    'id' => 'select_date',
+                                    'class' => 'form-control',
+                                    'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                    'required' => false,
+
+                                )
+                            ); ?>
+                            <div id="datepicker"></div>
+
+                            <?= $this->start('datepicker'); ?>
+
+                            <script type='text/javascript'>
+                             $(document).ready(function(){
+                                        var datesBlocked = ["2014-03-14","2014-03-15","2014-03-16"];
+
+                                          $("#select_date").click(function(){
+                                                 $("#datepicker").datepicker(
+                                                {
+                                                       dateFormat: 'mm/dd/yy',
+                                                       minDate : 0,
+                                                       monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
+                                                       beforeShowDay: function(date){
+                                                            var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+                                                            return [ datesBlocked.indexOf(string) == -1 ];
+                                                        },
+                                                       onSelect: function(dateText, inst){
+                                                             $('#select_date').val(dateText);
+                                                             $("#datepicker").datepicker("destroy");
+                                                      }
+                                                 });
+                                           });
+                                    });
+                             </script>
+                             <?= $this->end(); ?> 
+
+                                 <!-- /DATEPICKER --> 
+
+
+
+
                         <div class="checkbox">
                                 <label class="col-lg-6 col-md-6 col-sm-6" style='margin-left:20px'>
                                     <input type="checkbox" /> Concierge? Oui, laissez les bacs à mon concierge
@@ -271,13 +301,13 @@
 
 
                     </div>
-                        
+
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="form-group">
                             <label for="heure_liv" class="col-lg-4 col-md-4 col-sm-4 control-label">Heure de livraison<span class="blue">*</span></label>
                                 <?php
 
-                                echo $this->Form->input('hours', array(
+                                echo $this->Form->input('hour_deposit', array(
                                                     'class' => 'form-control',
                                                     'label' => false,
                                                     'div' => 'col-lg-6 col-md-6 col-sm-6',

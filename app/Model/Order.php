@@ -59,14 +59,14 @@ class Order extends AppModel {
 								'date_deposit' => array(
 														'CheckDate' =>array(
 																			'rule' => 'checkDate',
-																			'message' => 'La date de dépôt selectionnée est indisponible',
+																			'message' => 'La date selectionnée est indisponible',
 																		),
 								),
 								'date_withdrawal' => array(								
-															'VerifDate' =>array(
-																				'rule' => array('checkWithdraw', 'date_deposit'),
-																				'message' => 'Vérifiez que la date de récupération est supérieur à la date de dépôt'
-																			),
+														'CheckDate' =>array(
+																			'rule' => 'checkDate',
+																			'message' => 'La date selectionnée est indisponible',
+																		),
 								),
 
 						);
@@ -105,7 +105,7 @@ class Order extends AppModel {
 	}
 
 	// Permet de vérifier que la date de retrait est supérieur à la date de dépot
-	public function checkWithdraw($data, $data_deposit){
+	/*public function checkWithdraw($data, $data_deposit){
 		$deposit = $this->data[$this->name][$data_deposit];
 		$deposit = new DateTime($deposit);
 
@@ -128,7 +128,7 @@ class Order extends AppModel {
 			return false;
 			
 		}
-	}
+	}*/
 
 	// Permet de vérifier la disponibilité de la date
 	public function checkDate($data){
@@ -168,6 +168,13 @@ class Order extends AppModel {
 			return true;
 		}		
 
+	}
+
+	public function checkPhone($data){
+
+
+		debug($data);
+		#^0[1-68]([-. ]?[0-9]{2}){4}$#
 	}
 
 }

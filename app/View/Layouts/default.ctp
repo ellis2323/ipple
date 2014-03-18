@@ -13,9 +13,10 @@
     <?= $this->Html->css('bootstrap');?>
     <?= $this->Html->css('dezordre');?>
 
+
+
     <?= $this->Html->script('jquery-1.10.2');?>
     <?= $this->Html->script('jquery-ui-1.10.4.custom.min');?>
-
     <?= $this->Html->script('bootstrap');?>
 
     <?= $this->fetch('css');?>
@@ -44,10 +45,13 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#prix">Prix</a></li>
                     <li><a href="#securite">Sécurité</a></li>
-                    <li> <a href="faq.html">FAQ</a></li>
+                    <!--
+                    <li>
+                        <a href="#contact">F.A.Q</a>
+                    </li>-->
+
                     <li>
                         <a href="#contact">Contact</a>
-                        
                     </li>
 
 
@@ -227,9 +231,10 @@ else {
             <?= $this->Session->flash('auth');?>
 
 
+        
 
+            <?= $this->fetch('content');?>
 
-        <?= $this->fetch('content');?>
 
 </div>          
     <!-- /CONTENT -->
@@ -251,10 +256,10 @@ else {
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <h3>A propos</h3>
-                                <p><a href="faq.html">FAQ</a></p>
-                                <p><a href="cgv_dezordre.pdf" target="_blank">CGV</a></p>
+                               <!-- <p><a href="faq.html">FAQ</a></p>-->
+                                <p><a href="/pdf/cgv_dezordre.pdf" target="_blank">CGV</a></p>
                                 
-                                <p><a href="#">Mentions légales</a></p>
+                                <!-- <p><a href="#">Mentions légales</a></p>-->
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 ">
                                 <h3>Suivez-nous!</h3>

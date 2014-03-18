@@ -103,10 +103,10 @@ class Address extends AppModel {
 		),
 
 		'phone' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				'message' => 'Veuillez entrer votre numéro de téléphone.',
-			),
+			'checkPhone' => array(
+				'rule' => array('checkPhone'),
+				'message' => 'Veuillez entrer un numéro valide.',
+			),			
 		),
 
 
@@ -117,6 +117,13 @@ class Address extends AppModel {
 
 	public function requireNotEmpty($data, $shouldNotBeEmpty) {
 	    return !empty($this->data[$this->name][$shouldNotBeEmpty]);
+	}
+
+
+	public function checkPhone($data){
+		debug($data);
+		die();
+		#^0[1-68]([-. ]?[0-9]{2}){4}$#
 	}
 
 }
