@@ -56,13 +56,13 @@
 
 
                     <?php
-                    if(empty($this->request->params['pass'][0]) || (!empty($this->request->params['pass'][0]) && $this->request->params['pass'][0] == 'home') ){
+                    if(empty($this->request->params['pass'][0]) || (!empty($this->request->params['pass'][0]) && $this->request->params['pass'][0] != 'landing') ){
                     ?>
                     <li>
                             <!-- MENU -->
                     <li class="dropdown">
                         <?php // #### Menu loggé ####
-                        if($this->Session->read('Auth.User.id')):
+                        if($this->Session->check('Auth.User.id')):
                         ?>
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte<b class="caret"></b></a>
@@ -159,8 +159,6 @@
                                     );?>
                                 </li>
 
-
-
                             <?php
                             endif;
                             ?>
@@ -176,8 +174,6 @@
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
-
-
     </nav>
 
 
@@ -246,7 +242,7 @@ else {
             
                 <div class="container-fluid">
                     <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
                         
                         
                             <div class="col-lg-4 col-md-4 col-sm-4">
@@ -271,12 +267,15 @@ else {
                                     <a href="https://twitter.com/Dezordre" target='_blank'><?php echo $this->Html->image('twitter.png', array('alt' => 'responsive image', 'class' => 'img-responsive"')); ?>    
     </a>
                                 </div>
-                            </div>
-                        </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+                            </div> <!-- /col-lg-4 -->
+
+                        </div>  <!-- /col-lg-8 -->
+
+                </div> <!-- /row -->
+            </div> <!-- /container-fluid -->
+        </div> <!-- /contact -->
+    </div> <!-- /section -->
     
     <footer>
         <p class="text-center">dézordre, 10 rue de l'Amiral Courbet 94 160 Saint-Mandé - Ouvert 6j/7 de 8h30à 19h</p>
@@ -286,6 +285,8 @@ else {
     <!-- /.container -->
     <?= $this->fetch('script');?>
     <?= $this->fetch('datepicker');?>
+    <?= $this->fetch('tabs');?>
+
     <!-- JavaScript -->
   
 

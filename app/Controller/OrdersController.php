@@ -310,8 +310,8 @@ class OrdersController extends AppController {
 								$CakeEmail->template('order');
 								//$CakeEmail->send();
 								if(true){
-									$this->Session->setFlash('La commande à bien été enregistrée');
-									$this->redirect(array('controller' => 'users', 'action' => 'my_bacs'));
+									$this->Session->setFlash('La commande à bien été enregistrée', 'alert', array('class' => 'success') );
+									$this->redirect(array('controller' => 'users', 'action' => 'my_account#livraisons'));
 								}
 								else {
 									$this->Session->setFlash('Erreur lors de l\'envoi de l\'email', 'alert', array('class' => 'danger'));

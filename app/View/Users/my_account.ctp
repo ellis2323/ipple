@@ -17,8 +17,9 @@ $(function(){
 
 <div class="container-fluid">
     <div class="section">
+    <h3 class="text-center bandeau">Mon compte</h3>
         <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
-            <h3 class="text-center bandeau">Mon compte</h3>
+            
                 
             <ul id="matab" class="nav nav-tabs">
               
