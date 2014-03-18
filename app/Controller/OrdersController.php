@@ -762,25 +762,6 @@ class OrdersController extends AppController {
 
 			$this->Order->save($data);
 
-
-
-			$this->Order->Delivery->create();
-
-
-			$delivery = array(
-								'Delivery' => array(
-												'order_id' => $order_id,
-												'date' => $order_edit['Order']['date_deposit'],
-												'user_id' => $order_edit['Order']['user_id'],
-												'address_id' => $order_edit['Order']['address_id'],
-												'hour_id' => $order_edit['Order']['hour_deposit'],
-												'state'		=> 1,
-
-											)
-							);
-
-			$this->Order->Delivery->save($delivery);
-
 			if($order_edit['Order']['date_withdrawal'] != NULL) {
 				$delivery_deposit = $this->Order->Delivery->id;
 				$this->Order->Delivery->create();
