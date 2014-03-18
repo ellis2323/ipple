@@ -3,7 +3,8 @@
 <div class="container-fluid">
 <?= $this->Form->create('Order', array(
                                         'class' => 'horizontal-form',
-                                    ));  ?>
+                                    )
+                        );  ?>
 
     <div class="row bandeau">
         <h2 class="text-center">Commander des bacs</h2>
@@ -11,11 +12,6 @@
     
     <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">                                        
          <div class="section">
-
-
-			<?= $this->Form->create('Order', array(
-			 										'class' => 'horizontal-form',
-			 										));  ?>
 
             <div class="row">
                     <h3><?php echo $this->Html->image('fleche_liv.png', array('alt' => 'responsive image'));?> Où voulez-vous vous faire livrer les bacs?</h3>
@@ -27,7 +23,7 @@
 
                         <div class="form-group">
                             <?php
-                            echo $this->Form->label('lastname', 'Nom <span class="blue">*</span>', array(
+                            echo $this->Form->label('Address.0.lastname', 'Nom <span class="blue">*</span>', array(
                                                                             'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                             'style' => 'text-align:right;',
                                                                         )
@@ -51,7 +47,7 @@
 
                         <div class="form-group">                            
                         <?php
-                            echo $this->Form->label('firstname', 'Prénom <span class="blue">*</span>', array(
+                            echo $this->Form->label('Address.0.firstname', 'Prénom <span class="blue">*</span>', array(
                                                                             'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                             'style' => 'text-align:right;',
                                                                         )
@@ -74,7 +70,7 @@
                         <div class="form-group">  
 
                             <?php
-                            echo $this->Form->label('company', 'Entreprise', array(
+                            echo $this->Form->label('Address.0.company', 'Entreprise', array(
                                                                             'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                             'style' => 'text-align:right;',
                                                                         )
@@ -97,7 +93,7 @@
                         <div class="form-group">
 
                             <?php
-                            echo $this->Form->label('phone', 'Téléphone <span class="blue">*</span>', array(
+                            echo $this->Form->label('Address.0.phone', 'Téléphone <span class="blue">*</span>', array(
                                                                             'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                             'style' => 'text-align:right;',
                                                                         )
@@ -121,7 +117,7 @@
                         <div class="form-group">
 
                             <?php
-                            echo $this->Form->label('street', 'Adresse <span class="blue">*</span>', array(
+                            echo $this->Form->label('Address.0.street', 'Adresse <span class="blue">*</span>', array(
                                                                             'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                             'style' => 'text-align:right;',
                                                                         )
@@ -145,7 +141,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="form-group">  
                             <?php
-                            echo $this->Form->label('postals', 'Code postal <span class="blue">*</span>', array(
+                            echo $this->Form->label('Address.0.postals', 'Code postal <span class="blue">*</span>', array(
                                                                             'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                             'style' => 'text-align:right;',
                                                                         )
@@ -167,7 +163,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="form-group">  
                             <?php
-                            echo $this->Form->label('floor', 'Etage <span class="blue">*</span>', array(
+                            echo $this->Form->label('Address.0.floor', 'Etage <span class="blue">*</span>', array(
                                                                             'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                             'style' => 'text-align:right;',
                                                                         )
@@ -175,7 +171,7 @@
                             ?>
                             <?php
                             echo $this->Form->input('Address.0.floor', array(
-                                                                            'type' => 'number',
+                                                                            'type' => 'text',
                                                                             'label' => false, 
                                                                             'class' => 'form-control',
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
@@ -188,7 +184,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="form-group">  
                             <?php
-                            echo $this->Form->label('digicode', 'Digicode', array(
+                            echo $this->Form->label('Address.0.digicode', 'Digicode', array(
                                                                             'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                             'style' => 'text-align:right;',
                                                                         )
@@ -209,7 +205,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <div class="form-group">  
                                 <?php
-                                echo $this->Form->label('comment', 'Commentaires', array(
+                                echo $this->Form->label('Address.0.comment', 'Commentaires', array(
                                                                                 'class' => 'col-lg-2 col-md-2 col-sm-2 control-label',
                                                                                 'style' => 'text-align:right;',
                                                                             )
@@ -236,10 +232,14 @@
 
 
                     <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="form-group">
-                            <label for="date_deposit" class="col-lg-4 col-md-4 col-sm-4 control-label">Date de livraison<span class="blue">*</span></label>
-                            
-
+                        <div class="form-group">                            
+                            <?php
+                            echo $this->Form->label('select_date', 'Date de livraison<span class="blue">*</span>', array(
+                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                            'style' => 'text-align:right;',
+                                                                        )
+                            );
+                            ?>
                                 <!-- DATEPICKER -->
 
 
@@ -257,31 +257,34 @@
                             ); ?>
                             <div id="datepicker"></div>
 
-                            <?= $this->start('datepicker'); ?>
+                                <?= $this->start('datepicker'); ?>
 
-                            <script type='text/javascript'>
-                             $(document).ready(function(){
-                                        var datesBlocked = ["2014-03-14","2014-03-15","2014-03-16"];
 
-                                          $("#select_date").click(function(){
-                                                 $("#datepicker").datepicker(
-                                                {
-                                                       dateFormat: 'mm/dd/yy',
-                                                       minDate : 0,
-                                                       monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
-                                                       beforeShowDay: function(date){
-                                                            var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
-                                                            return [ datesBlocked.indexOf(string) == -1 ];
-                                                        },
-                                                       onSelect: function(dateText, inst){
-                                                             $('#select_date').val(dateText);
-                                                             $("#datepicker").datepicker("destroy");
-                                                      }
-                                                 });
-                                           });
-                                    });
-                             </script>
-                             <?= $this->end(); ?> 
+                                <script type='text/javascript'>
+                                 $(document).ready(function(){
+                                            var datesBlocked = ["2014-03-14","2014-03-15","2014-03-16"];
+
+                                              $("#select_date").click(function(){
+                                                     $("#datepicker").datepicker(
+                                                    {
+                                                           dateFormat: 'mm/dd/yy',
+                                                           minDate : 0,
+                                                           monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
+                                                           beforeShowDay: function(date){
+                                                                var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+                                                                return [ datesBlocked.indexOf(string) == -1 ];
+                                                            },
+                                                           onSelect: function(dateText, inst){
+                                                                 $('#select_date').val(dateText);
+                                                                 $("#datepicker").datepicker("destroy");
+                                                          }
+                                                     });
+                                               });
+                                        });
+                                 </script>
+
+                                 
+                                 <?= $this->end(); ?> 
 
                                  <!-- /DATEPICKER --> 
 
@@ -297,21 +300,23 @@
 
 
                         </div>
-
-
-
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="form-group">
-                            <label for="heure_liv" class="col-lg-4 col-md-4 col-sm-4 control-label">Heure de livraison<span class="blue">*</span></label>
-                                <?php
+                             <?php
+                            echo $this->Form->label('hours', 'Heure de livraison<span class="blue">*</span>', array(
+                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                            'style' => 'text-align:right;',
+                                                                        )
+                            );
 
-                                echo $this->Form->input('hour_deposit', array(
-                                                    'class' => 'form-control',
-                                                    'label' => false,
-                                                    'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                ));?>                                  
+
+                            echo $this->Form->input('hours', array(
+                                                'class' => 'form-control',
+                                                'label' => false,
+                                                'div' => 'col-lg-6 col-md-6 col-sm-6',
+                            ));?>                                  
                         </div>
                     </div>
 
@@ -321,8 +326,7 @@
         			<div class='col-lg-3 col-md-3 col-sm-3 col-lg-offset-4 col-md-offset-4 col-sm-offset-4' style='text-align:center;' >
 
 
-                        <button type"submit" class="btn" style="background-color:#65b7f2;color:white;">Prochaine étape (3/3)</button>
-                        <?= $this->Form->end(); ?>  
+                        <button type="submit" class="btn" style="background-color:#65b7f2;color:white;">Prochaine étape (3/3)</button>
 
                         
                         <div class="col-lg-12 col-md-12 col-sm-12">
@@ -343,5 +347,6 @@
 
 
     </div>  <!-- / container centré -->
+
 
 </div> <!-- /container-fluid -->

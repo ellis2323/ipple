@@ -97,20 +97,22 @@ class OrdersController extends AppController {
 				// On récupère les créneaux horaires
 			   	$hours = new Hour();
 
-			   	$hours = $hours->find('list');
-				$this->set(compact('hours'));
+			    $this->set('hours', $hours->find('list'));
+
+
+
 				
 				// On récupère les codes postaux
-						    $this->Order->bindModel(
-						        array('hasMany' => array(
-						                'Postal' => array(
-						                    'className' => 'Postal'
-						                )
-						            )
-						        )
-						    );			
-							$postals = $this->Order->Postal->find('list');
-							$this->set(compact('postals'));
+			    $this->Order->bindModel(
+			        array('hasMany' => array(
+			                'Postal' => array(
+			                    'className' => 'Postal'
+			                )
+			            )
+			        )
+			    );			
+				$postals = $this->Order->Postal->find('list');
+				$this->set(compact('postals'));
 
 
 				// On récupères le tableau en forme
@@ -168,9 +170,8 @@ class OrdersController extends AppController {
 
 			// On récupère les créneaux horaires
 		   	$hours = new Hour();
-		   	$hours = $hours->find('list');
-			$this->set(compact('hours'));
 
+			$this->set('regis', $hours->find('list'));
 
 			// Si des données on été passé
 			if(!empty($data_get)){
@@ -227,10 +228,10 @@ class OrdersController extends AppController {
 															'user_id'				=> $this->Session->read('Auth.User.id'),
 															'nb_bacs'				=> $data_full['Order']['nb_bacs'],
 															'date_deposit'			=> $deposit->format($format),
-															'hour_deposit'			=> $data_full['Order']['hour_deposit'],
+															'hour_deposit'			=> 1,
 															'state_deposit'			=> 1,
 															'date_withdrawal'		=> $withdrawal->format($format),
-															'hour_withdrawal'		=> $data_full['Order']['hour_withdrawal'],
+															'hour_withdrawal'		=> 1,
 															'state_withdrawal'		=> 1,
 															'state'					=> 1,
 															

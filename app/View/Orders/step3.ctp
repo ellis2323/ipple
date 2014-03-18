@@ -134,7 +134,8 @@ $( document ).ready(function() {
 	                        <div class="col-lg-6 col-md-6 col-sm-6">
 								<?php
 
-								echo $this->Form->input('hours', array(
+								echo $this->Form->input('regis', array(
+
 	                                                'class' => 'form-control',
 	                                                'label' => false
 	                          	));?>                                  
@@ -173,7 +174,7 @@ $( document ).ready(function() {
 
         				<p><br></p>
 
-                        <button type"submit"="" class="btn" style="background-color:#65b7f2;color:white;">Commander</button>
+                        <button type="submit" class="btn" style="background-color:#65b7f2;color:white;">Commander</button>
                         <?= $this->Form->end(); ?> 
 
                         <p><br></p>
