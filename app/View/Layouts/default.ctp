@@ -49,7 +49,25 @@
                     <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'faq') );?>">F.A.Q</a></li>
 
                     <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', '#' => 'contact')  );?>">Contact</a></li>
-                    
+                    <?php if($this->Session->read('Auth.User.role') >= 90) {
+                        ?>
+                            <li>
+                            <?php echo $this->Html->link(
+                                    'Admin panel',
+                                    array(
+                                        'controller'    => 'users',
+                                        'action'        => 'index',
+                                        'full_base'     => true,
+                                        'admin'         => true
+                                    )
+                                );?>
+                            </li>
+
+
+
+                    <?php
+                    }
+                    ?>
 
                             <!-- MENU -->
                     <li class="dropdown">
@@ -273,6 +291,7 @@ else {
     <!-- /.container -->
     <?= $this->fetch('script');?>
     <?= $this->fetch('datepicker');?>
+    <?= $this->fetch('datepicker2');?>
     <?= $this->fetch('tabs');?>
 
     <!-- JavaScript -->

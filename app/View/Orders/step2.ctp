@@ -240,7 +240,7 @@
 
                 <div class="row">
                 <!-- HEURE ET DATE -->
-                    <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?> Quand voulez-vous récupérer les bacs?</h3>  
+                    <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?> Quand voulez-vous faire livrer les bacs chez vous?</h3>  
 
 
                     <div class="col-lg-6 col-md-6 col-sm-6">

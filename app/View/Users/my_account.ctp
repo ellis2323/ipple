@@ -21,7 +21,7 @@ $(function(){
         <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
             
                 
-            <ul id="matab" class="nav nav-tabs">
+            <ul id="matabs" class="nav nav-tabs">
               
               <li class="active"><a href="#profil" data-toggle="tab">Mon profil</a></li>
               <li class=""><a href="#factures" data-toggle="tab">Mes factures</a></li>
@@ -106,50 +106,65 @@ $(function(){
 
 
                                 <div class="form-group">
-                                    <label for="old_password" class="col-lg-6 col-md-6 col-sm-6 control-label">Mot de passe actuel<span class="blue">*</span></label>
+                                <?php
+                                echo $this->Form->label('old_password', 'Mot de passe actuel<span class="blue">*</span>', array(
+                                                                                'class' => 'col-lg-6 col-md-6 col-sm-6 control-label',
+                                                                                'style' => 'text-align:right;',
+                                                                            )
+                                );
+                                ?>
+                                <?= $this->Form->input('old_password', array(
+                                    'type'  => 'password',
+                                    'label' => false, 
+                                    'class' => 'form-control',
+                                    'placeholder' => 'Votre ancien mot de passe',
+                                    'div'           => 'col-lg-6 col-md-6 col-sm-6',
 
-                                    <?= $this->Form->input('old_password', array(
-                                        'type'  => 'password',
-                                        'label' => false, 
-                                        'class' => 'form-control',
-                                        'placeholder' => 'Votre ancien mot de passe',
-                                        'div'           => 'col-lg-6 col-md-6 col-sm-6',
-
-                                        )); ?>                                
+                                    )); ?>                                
 
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="new_password" class="col-lg-6 col-md-6 col-sm-6 control-label">Nouveau mot de passe<span class="blue">*</span></label>
+                                <?php
+                                echo $this->Form->label('password', 'Mot de passe actuel<span class="blue">*</span>', array(
+                                                                                'class' => 'col-lg-6 col-md-6 col-sm-6 control-label',
+                                                                                'style' => 'text-align:right;',
+                                                                            )
+                                );
+                                ?>
+                                <?= $this->Form->input('password', array(
+                                    'label' => false, 
+                                    'class' => 'form-control',
+                                    'placeholder' => 'Votre nouveau mot de passe',
+                                    'div'           => 'col-lg-6 col-md-6 col-sm-6',
 
-                                    <?= $this->Form->input('password', array(
-                                        'label' => false, 
-                                        'class' => 'form-control',
-                                        'placeholder' => 'Votre nouveau mot de passe',
-                                        'div'           => 'col-lg-6 col-md-6 col-sm-6',
-
-                                        )); ?>                                
+                                    )); ?>                                
 
                                 </div>
                         
                             
                                 <div class="form-group">
-                                    <label for="password2" class="col-lg-6 col-md-6 col-sm-6 control-label">Confirmer le nouveau mot de passe<span class="blue">*</span></label>
+                                <?php
+                                echo $this->Form->label('password2', 'Confirmer le nouveau mot de passe<span class="blue">*</span>', array(
+                                                                                'class' => 'col-lg-6 col-md-6 col-sm-6 control-label',
+                                                                                'style' => 'text-align:right;',
+                                                                            )
+                                );
+                                ?>
+                                <?= $this->Form->input('password2', array(
+                                    'type'  => 'password',
+                                    'label' => false, 
+                                    'class' => 'form-control',
+                                    'placeholder' => 'Confirmer votre nouveau mot de passe',
+                                    'div'           => 'col-lg-6 col-md-6 col-sm-6',
 
-                                    <?= $this->Form->input('password2', array(
-                                        'type'  => 'password',
-                                        'label' => false, 
-                                        'class' => 'form-control',
-                                        'placeholder' => 'Confirmer votre nouveau mot de passe',
-                                        'div'           => 'col-lg-6 col-md-6 col-sm-6',
-
-                                        )); ?>                                
+                                    )); ?>                                
 
                                 </div>
                             
                                 <div class="col-lg-6 col-lg-offset-6 col-md-6 col-md-offset-6">
-                                        <p><button type"submit"="" class="btn  btn-md btn-primary btn-block" style="background-color:#65b7f2;color:white">Changer mon mot de passe</button></p>
-                                        <?= $this->Form->end(); ?>
+                                        <p><button class="btn  btn-md btn-primary btn-block" style="background-color:#65b7f2;color:white">Changer mon mot de passe</button></p>
+                                        
                                         <p><span class="blue">*</span> Champs obligatoires</p>
                                 </div>
 
@@ -157,6 +172,7 @@ $(function(){
                             </div>                           
                             
                         </div>
+                    <?= $this->Form->end(); ?>
                </div>
                 <!-- /Password -->
 
@@ -181,27 +197,27 @@ $(function(){
                                 </div>
                             
                                 <div class="form-group">
-                                    <label for="numcarte" class="col-lg-4 col-md-4 col-sm-4 control-label">Numéro de carte<span class="blue">*</span></label>
+                                    <label for="card" class="col-lg-4 col-md-4 col-sm-4 control-label">Numéro de carte<span class="blue">*</span></label>
                                     <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <input required="" class="form-control" id="nom" placeholder="Votre nom" type="text">
+                                        <input required="" class="form-control" id="card" placeholder="Votre nom" type="text">
                                     </div>
                                 </div>
                             
                                 <div class="form-group">
-                                    <label for="dateval" class="col-lg-4 col-md-4 col-sm-4 control-label">Date de validité<span class="blue">*</span></label>
+                                    <label for="validity" class="col-lg-4 col-md-4 col-sm-4 control-label">Date de validité<span class="blue">*</span></label>
                                     <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <input required="" class="form-control" id="prenom" placeholder="Votre prénom" type="text">
+                                        <input required="" class="form-control" id="validity" placeholder="Votre prénom" type="text">
                                     </div>
                                 </div>
                             
                                 <div class="form-group">
-                                    <label for="cvc" class="col-lg-4 col-md-4 col-sm-4 control-label">CVC<span class="blue">*</span></label>
+                                    <label for="ccv" class="col-lg-4 col-md-4 col-sm-4 control-label">CCV<span class="blue">*</span></label>
                                     <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <input required="" class="form-control" id="nom" placeholder="Votre nom" type="text">
+                                        <input required="" class="form-control" id="ccv" placeholder="Votre nom" type="text">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-lg-offset-4 col-md-6 col-md-offset-4">
-                                    <p><button type"submit"="" class="btn  btn-md btn-primary btn-block" style="background-color:#65b7f2;color:white">Je valide</button></p>
+                                    <p><button type="submit" class="btn  btn-md btn-primary btn-block" style="background-color:#65b7f2;color:white">Je valide</button></p>
                                     <p><span class="blue">*</span> Champs obligatoires</p>
                                 </div>
                                 <br>
@@ -390,7 +406,7 @@ $(function(){
              </div> 
              <!-- Tab Content -->
 
-         </div>  
+
 
     <!-- /Section -->
     </div>

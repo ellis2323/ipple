@@ -210,7 +210,7 @@ class OrdersController extends AppController {
 															'concierge_deposit'			=> $data_full['Order']['concierge_deposit'],
 															'date_withdrawal'			=> $withdrawal->format($format),
 															'hour_withdrawal'			=> $this->request->data['Order']['hwithdrawals'],
-															'state_withdrawal'			=> 0,
+															'state_withdrawal'			=> 1,
 															'concierge_withdrawal'		=> $this->request->data['Order']['concierge_withdrawal'],
 															'state'						=> 1,
 															
@@ -243,6 +243,7 @@ class OrdersController extends AppController {
 															'hour_deposit'		=> $data_full['Order']['hour_deposit'],
 															'date_deposit'		=> $deposit->format($format),
 															'state_deposit'		=> 0,
+															'state_withdrawal'	=> 0,
 															'state'				=> 1,
 															),
 												"Address" =>
@@ -348,7 +349,7 @@ class OrdersController extends AppController {
 		}
 
 		// Editer une commande 
-		public function edit($order_id) {
+		public function edit($order_id=null) {
 			$order = $this->Order->find('first', 
 				array(
 					'conditions' => 
@@ -364,7 +365,7 @@ class OrdersController extends AppController {
 			// Si la commande existe et qu'elle appartient bien à l'user
 			if(!empty($order)){
 
-				// On traite le formulaire
+				// On traite le formulaire si on modifie
 				if(!empty($this->request->data)){
 						
 					// Si les données sont validées
@@ -381,7 +382,6 @@ class OrdersController extends AppController {
 														'date_deposit' 		=> $deposit->format($format),
 														'hour_deposit'		=> $this->request->data['Order']['hours'],
 														'concierge_deposit'	=> $this->request->data['Order']['concierge_deposit'],
-														'state'				=> 1
 														),
 											"Address" =>
 														array(
@@ -396,7 +396,6 @@ class OrdersController extends AppController {
 															'comment'			=> $this->request->data['Address'][0]['comment'],
 															'phone'				=> $this->request->data['Address'][0]['phone'],
 															'company'				=> $this->request->data['Address'][0]['company'],
-
 															)
 						);
 						
@@ -418,7 +417,6 @@ class OrdersController extends AppController {
 				$this->set(compact('cities'));
 
 				// On récupère les codes postaux
-			
 				$postals = $this->Order->Address->Postal->find('list');
 				$this->set(compact('postals'));
 		

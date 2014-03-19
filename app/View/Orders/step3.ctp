@@ -37,7 +37,7 @@ $( document ).ready(function() {
 
 
 		        <div class="row">
-		            <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?> Quand voulez-vous que les bacs soient récupérés ?</h3>  
+		            <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?> Quand voulez-vous que les bacs soient récupérés chez vous ?</h3>  
 
 		            <div class="radio col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
 
