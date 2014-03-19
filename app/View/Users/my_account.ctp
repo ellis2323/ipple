@@ -295,7 +295,9 @@ $(function(){
                                     $dateTime = new DateTime($date_withdrawal);
                                     $display_date_withdrawal = date('d/m/Y', strtotime($date_withdrawal) );
 
+                                    if($orders_current[$i]['Order']['state_deposit'] == 0){
                                     ?>
+                                    
                                     <tr class="text-center">
                                         <td><?php echo $orders_current[$i]['Order']['id']; ?></td>
                                         <td><?php echo $display_date_deposit; ?></td>
@@ -317,28 +319,107 @@ $(function(){
                                     </tr>
 
                                   <?php 
+                                } // if deposit
+
+
+                                if($orders_current[$i]['Order']['state_withdrawal'] == 1){
+                                    $hour_withdrawal = $orders_current[$i]['Order']['hour_withdrawal'];
+                                    $state_withdrawal = $orders_current[$i]['Order']['state_withdrawal'];
+                                ?>
+                                <tr class="text-center">
+                                    <td><?php echo $orders_current[$i]['Order']['id']; ?></td>
+                                    <td><?php echo $display_date_withdrawal; ?></td>
+
+                                    <td><?php echo $hours[$hour_withdrawal]; ?></td>
+
+                                    <td><?php echo $state[$state_withdrawal]; ?></td>
+
+                                    <td><?php echo $orders_current[$i]['Order']['nb_bacs']; ?></td>
+
+                                    <td class="blue"><a href="<?= $this->Html->url(
+                                                array(
+                                                            'controller' => 'orders', 
+                                                            'action' => 'edit', $orders_current[$i]['Order']['id']
+                                                        )
+                                                , true
+                                        ); 
+                                    ?>" class="glyphicon glyphicon-pencil">Modifier</a></td>
+                                </tr>
+                                <?php
+                                } // if withdrawal
+                             } // for
+                             ?>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <?php } // if total orders ?>
+
+                    <!-- Commande passée -->
+                    <?php if(!empty($orders_history)){?>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <caption><h3 class="text-left">Historique</h3></caption>
+
+                            <tbody>
+                                <tr class="bleu_blanc">
+                                    <th>#ID</th>
+                                    <th>Date</th>
+                                    <th>Heure de livraison</th>
+                                    <th>Etat de la commande</th>
+                                    <th>Nb d'items</th>
+                                </tr>
+
+
+                                 <?php 
+                                 
+                                  for($i=0;$i<count($orders_history);$i++){
+                                  // Debut foreach
+
+                                    $date_deposit = $orders_history[$i]['Order']['date_deposit'];
+                                    $dateTime = new DateTime($date_deposit);
+                                    $display_date_deposit = date('d/m/Y', strtotime($date_deposit) );
+                                   
+
+
+
+                                    $hour_deposit = $orders_history[$i]['Order']['hour_deposit'];
+                                    $state_deposit = $orders_history[$i]['Order']['state_deposit'];
+
+                                    $date_withdrawal = $orders_history[$i]['Order']['date_withdrawal'];
+                                    $dateTime = new DateTime($date_withdrawal);
+                                    $display_date_withdrawal = date('d/m/Y', strtotime($date_withdrawal) );
+
+                                    ?>
+                                    <tr class="text-center">
+                                        <td><?php echo $orders_history[$i]['Order']['id']; ?></td>
+                                        <td><?php echo $display_date_deposit; ?></td>
+
+                                        <td><?php echo $hours[$hour_deposit]; ?></td>
+
+                                        <td><?php echo $state[$state_deposit]; ?></td>
+
+                                        <td><?php echo $orders_history[$i]['Order']['nb_bacs']; ?></td>
+
+                                    </tr>
+
+                                  <?php 
                                         if(!empty($date_withdrawal)){
-                                            $hour_withdrawal = $orders_current[$i]['Order']['hour_withdrawal'];
-                                            $state_withdrawal = $orders_current[$i]['Order']['state_withdrawal'];
+                                            $hour_withdrawal = $orders_history[$i]['Order']['hour_withdrawal'];
+                                            $state_withdrawal = $orders_history[$i]['Order']['state_withdrawal'];
                                         ?>
                                         <tr class="text-center">
-                                            <td><?php echo $orders_current[$i]['Order']['id']; ?></td>
+                                            <td><?php echo $orders_history[$i]['Order']['id']; ?></td>
                                             <td><?php echo $display_date_withdrawal; ?></td>
 
                                             <td><?php echo $hours[$hour_withdrawal]; ?></td>
 
                                             <td><?php echo $state[$state_withdrawal]; ?></td>
 
-                                            <td><?php echo $orders_current[$i]['Order']['nb_bacs']; ?></td>
+                                            <td><?php echo $orders_history[$i]['Order']['nb_bacs']; ?></td>
 
-                                            <td class="blue"><a href="<?= $this->Html->url(
-                                                        array(
-                                                                    'controller' => 'orders', 
-                                                                    'action' => 'edit', $orders_current[$i]['Order']['id']
-                                                                )
-                                                        , true
-                                                ); 
-                                            ?>" class="glyphicon glyphicon-pencil">Modifier</a></td>
+
                                         </tr>
                                         <?php
                                         }
@@ -350,56 +431,6 @@ $(function(){
                         </table>
                     </div>
                     <?php }?>
-
-                    <!-- Commande passée -->
-                    <?php if(!empty($orders_history)){?>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <caption><h3 class="text-left">Historique des livraisons</h3></caption>
-
-                            <tbody>
-                            <tr>
-                                <th>#ID</th>
-                                <th>Date</th>
-                                <th>Heure</th>
-                                <th>Etat de la commande</th>
-                                <th>Nb d'items</th>
-                            </tr>
-
-                                 <?php 
-                                 
-                                  for($i=0;$i<count($orders_history);$i++){
-                                  // Debut foreach
-
-                                    $date = $orders_history[$i]['Order']['date_deposit'];
-                                    $dateTime = new DateTime($date);
-                                    $display_date = date('d/m/Y', strtotime($date) );
-                                   
-
-                                    $hour_deposit = $orders_history[$i]['Order']['hour_deposit'];
-                                    $state_order = $orders_history[$i]['Order']['state'];
-
-
-                                    ?>
-                                    <tr class="text-center">
-                                        <td><?php echo $orders_history[$i]['Order']['id']; ?></td>
-                                        <td><?php echo $display_date; ?></td>
-
-                                        <td><?php echo $hours[$hour_deposit]; ?></td>
-
-                                        <td><?php echo $state[$state_order]; ?></td>
-
-                                        <td><?php echo $orders_history[$i]['Order']['nb_bacs']; ?></td>
-                                    </tr>
-
-                                  <?php 
-                                  }
-                                  ?>
-                        </tbody></table>
-                        <?php 
-                          }
-                          ?>
-                    </div>
 
                 </div>
                 <!-- /Livraisons -->

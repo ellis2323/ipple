@@ -98,8 +98,12 @@ class UsersController extends AppController {
 			$orders_current = $this->User->Order->find('all', array(
 															'conditions' => array(
 																					'Order.user_id' 		=> $this->Session->read('Auth.User.id'),
-																					'Order.state_deposit =' 		=> 0,
-																					
+																					'Order.state <'			=> 3,
+																					'OR' => array(
+																									'Order.state_deposit ='		=> 0,
+																									'Order.state_withdrawal ='	=> 1,
+																									
+																					)																					
 															),
 															'recursive' => 0,
 															'order'		=> array(
@@ -112,7 +116,10 @@ class UsersController extends AppController {
 			$orders_history = $this->User->Order->find('all', array(
 															'conditions' => array(
 																					'Order.user_id' 		=> $this->Session->read('Auth.User.id'),
-																					'Order.state >=' 		=> 2,
+																					'OR' => array(
+																									'Order.state_withdrawal ='	=> 2 ,
+																									'Order.state_deposit ='		=> 1,
+																					)
 															),
 															'recursive' => 0,
 															'order'		=> array(
