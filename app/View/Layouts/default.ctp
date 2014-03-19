@@ -45,10 +45,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#prix">Prix</a></li>
                     <li><a href="#securite">Sécurité</a></li>
-                    <!--
+                    
                     <li>
-                        <a href="#contact">F.A.Q</a>
-                    </li>-->
+                        <a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'faq') );?>">F.A.Q</a>
+                    </li>
 
                     <li>
                         <a href="#contact">Contact</a>
@@ -252,10 +252,10 @@ else {
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <h3>A propos</h3>
-                               <!-- <p><a href="faq.html">FAQ</a></p>-->
+                               <p><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'faq') );?>">FAQ</a></p>
                                 <p><a href="/pdf/cgv_dezordre.pdf" target="_blank">CGV</a></p>
                                 
-                                <!-- <p><a href="#">Mentions légales</a></p>-->
+                                <p><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'legals') );?>">Mentions légales</a></p>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 ">
                                 <h3>Suivez-nous!</h3>
@@ -285,7 +285,7 @@ else {
     <!-- /.container -->
     <?= $this->fetch('script');?>
     <?= $this->fetch('datepicker');?>
-    <?= $this->fetch('tabs');?>
+    <?= $this->fetch('tabsè ');?>
 
     <!-- JavaScript -->
   
