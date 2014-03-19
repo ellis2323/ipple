@@ -391,6 +391,9 @@ $(function(){
                                     $dateTime = new DateTime($date_withdrawal);
                                     $display_date_withdrawal = date('d/m/Y', strtotime($date_withdrawal) );
 
+
+
+                                    if($orders_current[$i]['Order']['state_deposit'] == 1){
                                     ?>
                                     <tr class="text-center">
                                         <td><?php echo $orders_history[$i]['Order']['id']; ?></td>
@@ -405,7 +408,8 @@ $(function(){
                                     </tr>
 
                                   <?php 
-                                        if(!empty($date_withdrawal)){
+                                    }
+                                     if($orders_current[$i]['Order']['state_withdrawal'] > 1){
                                             $hour_withdrawal = $orders_history[$i]['Order']['hour_withdrawal'];
                                             $state_withdrawal = $orders_history[$i]['Order']['state_withdrawal'];
                                         ?>
