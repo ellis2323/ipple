@@ -81,15 +81,15 @@
 
                                     $this->Js->get('#OrderNbBacs')->event(
                                               'change',
-                                              $this->Js->request(
-                                                array('controller' => 'params' , 'action' => 'price_bacs'),
-                                                array(
-                                                        'update' => '#price',
-                                                        'data'  => $data,
-                                                        'async' => true,    
-                                                        'method' => 'POST',
-                                                        'dataExpression' => true,
-                                                    )
+                                                $this->Js->request(
+                                                    array('controller' => 'params' , 'action' => 'price_bacs'),
+                                                    array(
+                                                            'update' => '#price',
+                                                            'data'  => $data,
+                                                            'async' => true,    
+                                                            'method' => 'POST',
+                                                            'dataExpression' => true,
+                                                        )
                                                 )
                                     );
 

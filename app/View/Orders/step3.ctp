@@ -148,7 +148,7 @@ $( document ).ready(function() {
 
 
                             <div class="checkbox">
-                            <?php
+                            	<?php
                                 echo $this->Form->label('concierge_withdrawal', 'Concierge? Oui, récupérer les bacs chez mon concierge', array(
                                                                                 'class' => 'col-lg-6 col-md-6 col-sm-6',
                                                                             )

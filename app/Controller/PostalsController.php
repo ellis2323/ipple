@@ -2,6 +2,7 @@
 App::uses('AppController', 'Controller');
 
 App::import('Model','City');
+App::import('Model', 'Postals');
 /**
  * Postals Controller
  *
@@ -16,6 +17,23 @@ class PostalsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+
+
+
+
+
+
+	public function listing($city_id=null){
+
+
+		$postals = $this->Postal->findAllByCityId($city_id);
+		if(!empty($postals)){
+			debug($postals);
+
+		}
+	}
+
+
 
 /**
  * admin_index method

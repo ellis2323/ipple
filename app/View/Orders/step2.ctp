@@ -1,4 +1,6 @@
 <?= $this->Html->css('latoja.datepicker', array('inline' => false)); ?>
+<?= $this->Html->script('search_ajax', array('inline' => false)); ?>
+
 
 <div class="container-fluid">
 <?= $this->Form->create('Order', array(
@@ -151,6 +153,7 @@
                                                                         )
                             );
                             ?>
+
                             <?php
                             echo $this->Form->input('Address.0.postals', array(
                                                                             'label' => false, 
@@ -160,6 +163,8 @@
                                                                             
                                                                      )
                             );?>
+
+                            <div id="return"></div>
                         </div>
                          <p><br></p>
                     </div>
@@ -297,13 +302,13 @@
 
 
                             <div class="checkbox">
-                            <?php
-                            echo $this->Form->label('concierge_deposit', 'Concierge? Oui, laissez les bacs à mon concierge', array(
-                                                                            'class' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                            'style' => 'margin-left:20px',
-                                                                        )
-                            );
-                            ?>
+                                <?php
+                                echo $this->Form->label('concierge_deposit', 'Concierge? Oui, laissez les bacs à mon concierge', array(
+                                                                                'class' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                                'style' => 'margin-left:20px',
+                                                                            )
+                                );
+                                ?>
                                 <?php
                                     echo $this->Form->input('concierge_deposit', array(
                                                         'class' => 'form-control',

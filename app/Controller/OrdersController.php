@@ -4,6 +4,8 @@ App::uses('CakeEmail', 'Network/Email');
 App::import('Model','Hour');
 App::import('Model','City');
 App::import('Model','Param');
+App::import('Model', 'Postal');
+
 /**
  * Orders Controller
  *
@@ -85,17 +87,8 @@ class OrdersController extends AppController {
 			    $this->set('hdeposits', $hours->find('list'));
 
 				// On récupère les codes postaux
-			    $this->Order->bindModel(
-			        array('hasMany' => array(
-			                'Postal' => array(
-			                    'className' => 'Postal'
-			                )
-			            )
-			        )
-			    );			
-				$postals = $this->Order->Postal->find('list');
-				$this->set(compact('postals'));
-
+			   	$postals = new Postal();
+			    $this->set('postals', $postals->find('list'));
 
 				// On récupères le tableau en forme
 				$data_get = unserialize(base64_decode($data_get) );
