@@ -96,20 +96,27 @@ class UsersController extends AppController {
 			// Les commandes en cours 
 			$orders_current = $this->User->Order->find('all', array(
 															'conditions' => array(
-																					'Order.user_id' => $this->Session->read('Auth.User.id'),
+																					'Order.user_id' 		=> $this->Session->read('Auth.User.id'),
 																					'Order.state =' 		=> 1,
+																					
 															),
-															'recursive' => 0
+															'recursive' => 0,
+															'order'		=> array(
+																				'Order.created' 		=> 'desc',
+																)
 														)
 				);
 
 			// Les commandes terminées (historique)
 			$orders_history = $this->User->Order->find('all', array(
 															'conditions' => array(
-																					'Order.user_id' => $this->Session->read('Auth.User.id'),
+																					'Order.user_id' 		=> $this->Session->read('Auth.User.id'),
 																					'Order.state >=' 		=> 2,
 															),
-															'recursive' => 0
+															'recursive' => 0,
+															'order'		=> array(
+																				'Order.created' 		=> 'desc',
+															)
 														)
 			);
 			

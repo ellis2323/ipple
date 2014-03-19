@@ -1,10 +1,9 @@
 <?= $this->Html->css('latoja.datepicker', array('inline' => false)); ?>
-
 	    
 <script type='text/javascript'>
 $( document ).ready(function() {
 
-	var concierge = "<?= $this->request->data['Order']['concierge_deposit'];?>";
+	var concierge = "<?= $concierge_deposit;?>";
 
 
 	if(concierge!=1){
@@ -41,7 +40,10 @@ $( document ).ready(function() {
 		            <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?> Quand voulez-vous que les bacs soient récupérés ?</h3>  
 
 		            <div class="radio col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
-		                <?php 
+
+		            <?php 
+		            if($concierge_deposit != 1){
+
 		                    echo $this->Form->input('withdraw', array(
 							 'type' => 'radio',
 							 'legend' => false,
@@ -49,15 +51,33 @@ $( document ).ready(function() {
 							 'hiddenField'=>false,
 							 'checked' => 'checked',
 							));  
-		                ?>
-		                <?php 
+
 		                    echo $this->Form->input('withdraw', array(
 							 'type' => 'radio',
 							 'legend' => false,
 							 'options' => array(2 => 'Je prévois ma date et mon horaire de stockage'),
 							 'hiddenField'=>false
 							));  
-		                ?>		       
+		            }
+		            else {
+		                    echo $this->Form->input('withdraw', array(
+							 'type' => 'radio',
+							 'legend' => false,
+							 'options' => array(1 => 'En même temps (le chauffeur attendra jusqu\'à 20 minutes) '),
+							 'hiddenField'=>false,
+							));  
+
+		                    echo $this->Form->input('withdraw', array(
+							 'type' => 'radio',
+							 'legend' => false,
+							 'options' => array(2 => 'Je prévois ma date et mon horaire de stockage'),
+							 'hiddenField'=>false,
+							 'checked' => 'checked',
+
+							));  
+
+		            }
+		            ?>
 
 		            </div>  
 
@@ -127,11 +147,18 @@ $( document ).ready(function() {
 
 
 
-							<div class="checkbox">
-		                                <label class="col-lg-8 col-md-8 col-sm-8">
-		                                    <input type="checkbox" /> Concierge? Oui, récupérez les chez mon concierge
-		                                </label>
-		                    </div>
+                            <div class="checkbox">
+                                    <label class="col-lg-6 col-md-6 col-sm-6" style='margin-left:20px'>
+                                <?php
+                                    echo $this->Form->input('concierge_withdrawal', array(
+                                                        'class' => 'form-control',
+                                                        'label' => false,
+                                                        'type'  => 'checkbox',
+                                    ));
+                                ?> Concierge? Oui, récupérer les bacs chez mon concierge
+                                    </label>
+                            </div>
+                        
 		                     
 		            	</div>
 		            </div>
@@ -142,7 +169,7 @@ $( document ).ready(function() {
 		                    <div class="col-lg-6 col-md-6 col-sm-6">
 								<?php
 
-								echo $this->Form->input('laurent', array(
+								echo $this->Form->input('hwithdrawals', array(
 
 		                                            'class' => 'form-control',
 		                                            'label' => false

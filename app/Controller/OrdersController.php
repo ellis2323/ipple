@@ -82,12 +82,8 @@ class OrdersController extends AppController {
 
 				// On récupère les créneaux horaires
 			   	$hours = new Hour();
+			    $this->set('hdeposits', $hours->find('list'));
 
-			    $this->set('hours', $hours->find('list'));
-
-
-
-				
 				// On récupère les codes postaux
 			    $this->Order->bindModel(
 			        array('hasMany' => array(
@@ -123,7 +119,8 @@ class OrdersController extends AppController {
 									'cities' => $data_get['Order']['cities'],
 									'nb_bacs' => $data_get['Order']['nb_bacs'],
 									'date_deposit' => $this->request->data['Order']['date_deposit'],
-									'hour_deposit' => $this->request->data['Order']['date_deposit'],
+									'hour_deposit' => $this->request->data['Order']['hdeposits'],
+									'concierge_deposit' => $this->request->data['Order']['concierge_deposit'],
 							),
 							'Address' => array(
 									'lastname' => $this->request->data['Address'][0]['lastname'],
@@ -157,7 +154,7 @@ class OrdersController extends AppController {
 			// On récupère les créneaux horaires
 		   	$hours = new Hour();
 
-			$this->set('laurent', $hours->find('list'));
+			$this->set('hwithdrawals', $hours->find('list'));
 
 			// Si des données on été passé
 			if(!empty($data_get)){
@@ -166,6 +163,8 @@ class OrdersController extends AppController {
 				$data_get = unserialize(base64_decode($data_get) );
 				$date_deposit = $data_get['Order']['date_deposit'];
 
+				$concierge_deposit = $data_get['Order']['concierge_deposit'];
+				$this->set(compact('concierge_deposit'));
 
 				$split_date=explode("/",$date_deposit);
 				$this->set(compact('split_date'));
@@ -176,7 +175,7 @@ class OrdersController extends AppController {
 					$this->Order->set($data_post);
 
 					// Si les données sont validées
-					if($this->Order->validates()){
+					if($this->Order->validates() && $this->Order->Address->validates()){
 						// On transforme les données pour les passer au controller
 						$data = base64_encode(serialize($this->request->data));
 
@@ -194,7 +193,6 @@ class OrdersController extends AppController {
 
 						$data_full = $data_order + $data_address;
 
-						debug($data_full);
 						//Si tout est ok, on enregistre les données
 						/*#######################*/
 						$this->Order->create();
@@ -211,15 +209,17 @@ class OrdersController extends AppController {
 							$data_order = array(
 												"Order" =>
 															array(
-															'user_id'				=> $this->Session->read('Auth.User.id'),
-															'nb_bacs'				=> $data_full['Order']['nb_bacs'],
-															'date_deposit'			=> $deposit->format($format),
-															'hour_deposit'			=> $data_full['Order']['hours'],
-															'state_deposit'			=> 1,
-															'date_withdrawal'		=> $withdrawal->format($format),
-															'hour_withdrawal'		=> $data_full['Order']['regis'],
-															'state_withdrawal'		=> 1,
-															'state'					=> 1,
+															'user_id'					=> $this->Session->read('Auth.User.id'),
+															'nb_bacs'					=> $data_full['Order']['nb_bacs'],
+															'date_deposit'				=> $deposit->format($format),
+															'hour_deposit'				=> $data_full['Order']['hour_deposit'],
+															'state_deposit'				=> 1,
+															'concierge_deposit'			=> $data_full['Order']['concierge_deposit'],
+															'date_withdrawal'			=> $withdrawal->format($format),
+															'hour_withdrawal'			=> $this->request->data['Order']['hwithdrawals'],
+															'state_withdrawal'			=> 1,
+															'concierge_withdrawal'		=> $this->request->data['Order']['concierge_withdrawal'],
+															'state'						=> 1,
 															
 															),
 												"Address" =>
@@ -247,7 +247,7 @@ class OrdersController extends AppController {
 															array(
 															'user_id'			=> $this->Session->read('Auth.User.id'),
 															'nb_bacs'			=> $data_full['Order']['nb_bacs'],
-															'hour_deposit'		=> $data_full['Order']['hour_deposit'],
+															'hour_deposit'		=> $data_full['Order']['hdeposits'],
 															'date_deposit'		=> $deposit->format($format),
 															'state'				=> 1,
 															),

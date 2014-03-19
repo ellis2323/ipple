@@ -234,6 +234,16 @@ $(function(){
 
                 <!-- Livraisons -->
                 <div class="tab-pane fade" id="livraisons">
+                <!-- Si aucune commandes -->
+                <?php if(empty($orders_current) && empty($orders_history)){
+                ?>
+                    <a href="<?= $this->Html->url(array('controller' => 'orders', 'action' => 'step1')); ?>" ><button type"submit" class="btn-lg color-btn" >Prévoir une livraison de bacs vides</button></a>
+                <?php 
+                }
+                ?>
+
+
+                    <!-- Commande en cours -->
                     <?php if(!empty($orders_current)){?>
                     <div class="table-responsive">
                         <table class="table table-striped">
@@ -295,7 +305,7 @@ $(function(){
                     </div>
                     <?php }?>
 
-
+                    <!-- Commande passée -->
                     <?php if(!empty($orders_history)){?>
                     <div class="table-responsive">
                         <table class="table table-striped">

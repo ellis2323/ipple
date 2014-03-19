@@ -34,6 +34,7 @@
                                                                             'type' => 'text',
                                                                             'label' => false, 
                                                                             'class' => 'form-control',
+                                                                            'required'  => true,
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
                                                                             
                                                                      )
@@ -58,6 +59,7 @@
                                                                             'type' => 'text',
                                                                             'label' => false, 
                                                                             'class' => 'form-control',
+                                                                            'required'  => true,
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
                                                                             
                                                                      )
@@ -104,6 +106,7 @@
                                                                             'type' => 'text',
                                                                             'label' => false, 
                                                                             'class' => 'form-control',
+                                                                            'required'  => true,
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
                                                                             
                                                                      )
@@ -128,6 +131,7 @@
                                                                             'type' => 'textarea',
                                                                             'label' => false, 
                                                                             'class' => 'form-control',
+                                                                            'required'  => true,
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
                                                                             'style' => 'height:120px;'
 
@@ -151,6 +155,7 @@
                             echo $this->Form->input('Address.0.postals', array(
                                                                             'label' => false, 
                                                                             'class' => 'form-control',
+                                                                            'required'  => true,
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
                                                                             
                                                                      )
@@ -166,6 +171,7 @@
                             echo $this->Form->label('Address.0.floor', 'Etage <span class="blue">*</span>', array(
                                                                             'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                             'style' => 'text-align:right;',
+                                                                            'required'  => true,
                                                                         )
                             );
                             ?>
@@ -249,6 +255,7 @@
                                     'id' => 'select_date',
                                     'class' => 'form-control',
                                     'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                    'required'  => true,
 
                                 )
                             ); ?>
@@ -309,14 +316,14 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="form-group">
                              <?php
-                            echo $this->Form->label('hours', 'Heure de livraison<span class="blue">*</span>', array(
+                            echo $this->Form->label('hdeposits', 'Heure de livraison<span class="blue">*</span>', array(
                                                                             'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                             'style' => 'text-align:right;',
                                                                         )
                             );
 
 
-                            echo $this->Form->input('hours', array(
+                            echo $this->Form->input('hdeposits', array(
                                                 'class' => 'form-control',
                                                 'label' => false,
                                                 'div' => 'col-lg-6 col-md-6 col-sm-6',
