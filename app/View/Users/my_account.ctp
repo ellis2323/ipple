@@ -442,7 +442,7 @@ $(function(){
              <!-- Tab Content -->
 
 
-
+        </div> <!-- Col-lg-10 -->
     <!-- /Section -->
     </div>
 

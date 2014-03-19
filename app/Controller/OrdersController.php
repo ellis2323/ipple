@@ -366,46 +366,123 @@ class OrdersController extends AppController {
 			if(!empty($order)){
 
 				// On traite le formulaire si on modifie
-				if(!empty($this->request->data)){
+				if(!empty($this->request->data)){	
+
 						
 					// Si les données sont validées
 					if($this->Order->validates() ){
 						$format = 'Y-m-d H:i:s';
-						$deposit = new DateTime($this->request->data['Order']['date_deposit']);
 
-						$data_order = array(
-											"Order" =>
-														array(
-														'id' 				=> $order_id,
-														'user_id'			=> $this->Session->read('Auth.User.id'),
-														'nb_bacs'			=> $this->request->data['Order']['nb_bacs'],
-														'date_deposit' 		=> $deposit->format($format),
-														'hour_deposit'		=> $this->request->data['Order']['hours'],
-														'concierge_deposit'	=> $this->request->data['Order']['concierge_deposit'],
-														),
-											"Address" =>
-														array(
-															'id'				=> $order['Order']['address_id'],
-															'city_id'			=> $this->request->data['Order']['cities'],
-															'postal_id'			=> $this->request->data['Order']['postals'],
-															'firstname'			=> $this->request->data['Address'][0]['firstname'],
-															'lastname'			=> $this->request->data['Address'][0]['lastname'],
-															'street'			=> $this->request->data['Address'][0]['street'],
-															'digicode'			=> $this->request->data['Address'][0]['digicode'],
-															'floor'				=> $this->request->data['Address'][0]['floor'],
-															'comment'			=> $this->request->data['Address'][0]['comment'],
-															'phone'				=> $this->request->data['Address'][0]['phone'],
-															'company'				=> $this->request->data['Address'][0]['company'],
-															)
-						);
+						if(!empty($this->request->data['Order']['date_deposit'])){
+							$deposit = new DateTime($this->request->data['Order']['date_deposit']);
+						}
+
+						if(!empty($this->request->data['Order']['date_withdrawal'])){
+							$withdrawal = new DateTime($this->request->data['Order']['date_withdrawal']);
+						}
+
+						// Si on met à jour la commande de dépot
+						if(!empty($deposit)){
+							$data_order = array(
+												"Order" =>
+															array(
+															'id' 				=> $order_id,
+															'user_id'			=> $this->Session->read('Auth.User.id'),
+															'nb_bacs'			=> $this->request->data['Order']['nb_bacs'],
+															'date_deposit' 		=> $deposit->format($format),
+															'hour_deposit'		=> $this->request->data['Order']['hours'],
+															'concierge_deposit'	=> $this->request->data['Order']['concierge_deposit'],
+
+															),
+												"Address" =>
+															array(
+																'id'				=> $order['Order']['address_id'],
+																'city_id'			=> $this->request->data['Order']['cities'],
+																'postal_id'			=> $this->request->data['Order']['postals'],
+																'firstname'			=> $this->request->data['Address'][0]['firstname'],
+																'lastname'			=> $this->request->data['Address'][0]['lastname'],
+																'street'			=> $this->request->data['Address'][0]['street'],
+																'digicode'			=> $this->request->data['Address'][0]['digicode'],
+																'floor'				=> $this->request->data['Address'][0]['floor'],
+																'comment'			=> $this->request->data['Address'][0]['comment'],
+																'phone'				=> $this->request->data['Address'][0]['phone'],
+																'company'				=> $this->request->data['Address'][0]['company'],
+																)
+							);
+
+						}
+						// Si on met à jour la commande retour
+						elseif(!empty($withdrawal)){
+							$data_order = array(
+												"Order" =>
+															array(
+															'id' 					=> $order_id,
+															'user_id'				=> $this->Session->read('Auth.User.id'),
+															'nb_bacs'				=> $this->request->data['Order']['nb_bacs'],
+															'date_withdrawal' 		=> $withdrawal->format($format),
+															'hour_withdrawal'		=> $this->request->data['Order']['hours'],
+															'concierge_withdrawal'	=> $this->request->data['Order']['concierge_withdrawal'],
+
+															),
+												"Address" =>
+															array(
+																'id'				=> $order['Order']['address_id'],
+																'city_id'			=> $this->request->data['Order']['cities'],
+																'postal_id'			=> $this->request->data['Order']['postals'],
+																'firstname'			=> $this->request->data['Address'][0]['firstname'],
+																'lastname'			=> $this->request->data['Address'][0]['lastname'],
+																'street'			=> $this->request->data['Address'][0]['street'],
+																'digicode'			=> $this->request->data['Address'][0]['digicode'],
+																'floor'				=> $this->request->data['Address'][0]['floor'],
+																'comment'			=> $this->request->data['Address'][0]['comment'],
+																'phone'				=> $this->request->data['Address'][0]['phone'],
+																'company'			=> $this->request->data['Address'][0]['company'],
+																)
+							);
+
+						}
+
+						// Si on édite les deux
+						else {
+							$data_order = array(
+												"Order" =>
+															array(
+															'id' 					=> $order_id,
+															'user_id'				=> $this->Session->read('Auth.User.id'),
+															'nb_bacs'				=> $this->request->data['Order']['nb_bacs'],
+															'date_deposit' 			=> $deposit->format($format),
+															'hour_deposit'			=> $this->request->data['Order']['hours'],
+															'concierge_deposit'		=> $this->request->data['Order']['concierge_deposit'],
+															'date_withdrawal' 		=> $withdrawal->format($format),
+															'hour_withdrawal'		=> $this->request->data['Order']['hours'],
+															'concierge_withdrawal'	=> $this->request->data['Order']['concierge_withdrawal'],
+
+															),
+												"Address" =>
+															array(
+																'id'				=> $order['Order']['address_id'],
+																'city_id'			=> $this->request->data['Order']['cities'],
+																'postal_id'			=> $this->request->data['Order']['postals'],
+																'firstname'			=> $this->request->data['Address'][0]['firstname'],
+																'lastname'			=> $this->request->data['Address'][0]['lastname'],
+																'street'			=> $this->request->data['Address'][0]['street'],
+																'digicode'			=> $this->request->data['Address'][0]['digicode'],
+																'floor'				=> $this->request->data['Address'][0]['floor'],
+																'comment'			=> $this->request->data['Address'][0]['comment'],
+																'phone'				=> $this->request->data['Address'][0]['phone'],
+																'company'				=> $this->request->data['Address'][0]['company'],
+																)
+							);
+
+						}
+
 						
-						if($this->Order->saveAll($data_order)){
+						if($this->Order->saveAll($data_order, array('validate' => 'first', 'deep' => true) ) ){
 							$this->Session->setFlash('Données correctement sauvegardées', 'alert', array('class' => 'success'));
-							$this->redirect(array('action' => 'edit', $order_id));
+							$this->redirect(array('controller' => 'users', 'action' => 'my_account#livraisons'));
 						}
 						else {
 							$this->Session->setFlash('Erreur dans la sauvegarde', 'alert', array('class' => 'warning'));
-							debug($data_order);
 							//$this->redirect(array('action' => 'edit', $order_id));
 						}
 					}

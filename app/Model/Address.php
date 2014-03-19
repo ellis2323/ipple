@@ -104,7 +104,7 @@ class Address extends AppModel {
 
 		'phone' => array(
 			'checkPhone' => array(
-				'rule'=>array('custom','/^([0-9]{1}[0-9]{9})$/'),
+				'rule'=>	'/^([0-9]{1}[0-9]{9})$/',
 				'message' => 'Veuillez entrer un numéro valide.',
 			),			
 		),

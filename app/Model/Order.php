@@ -105,7 +105,7 @@ class Order extends AppModel {
 	}
 
 	// Permet de vérifier que la date de retrait est supérieur à la date de dépot
-	/*public function checkWithdraw($data, $data_deposit){
+	public function checkWithdraw($data, $data_deposit){
 		$deposit = $this->data[$this->name][$data_deposit];
 		$deposit = new DateTime($deposit);
 
@@ -128,7 +128,7 @@ class Order extends AppModel {
 			return false;
 			
 		}
-	}*/
+	}
 
 	// Permet de vérifier la disponibilité de la date
 	public function checkDate($data){
