@@ -88,7 +88,7 @@ class UsersController extends AppController {
 			// Etat de commande
 			$state = array(
 							1 => 'En attente',
-							2 => 'Livraison de bacs vide',
+							2 => 'Terminée',
 							3 => 'Livraison de bacs pleins',
 			);
 			$this->set(compact('state'));

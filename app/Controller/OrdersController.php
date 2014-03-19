@@ -157,7 +157,7 @@ class OrdersController extends AppController {
 			// On récupère les créneaux horaires
 		   	$hours = new Hour();
 
-			$this->set('regis', $hours->find('list'));
+			$this->set('laurent', $hours->find('list'));
 
 			// Si des données on été passé
 			if(!empty($data_get)){
@@ -214,10 +214,10 @@ class OrdersController extends AppController {
 															'user_id'				=> $this->Session->read('Auth.User.id'),
 															'nb_bacs'				=> $data_full['Order']['nb_bacs'],
 															'date_deposit'			=> $deposit->format($format),
-															'hour_deposit'			=> 1,
+															'hour_deposit'			=> $data_full['Order']['hours'],
 															'state_deposit'			=> 1,
 															'date_withdrawal'		=> $withdrawal->format($format),
-															'hour_withdrawal'		=> 1,
+															'hour_withdrawal'		=> $data_full['Order']['regis'],
 															'state_withdrawal'		=> 1,
 															'state'					=> 1,
 															
@@ -247,7 +247,7 @@ class OrdersController extends AppController {
 															array(
 															'user_id'			=> $this->Session->read('Auth.User.id'),
 															'nb_bacs'			=> $data_full['Order']['nb_bacs'],
-															'hour_deposit'		=> 1,
+															'hour_deposit'		=> $data_full['Order']['hour_deposit'],
 															'date_deposit'		=> $deposit->format($format),
 															'state'				=> 1,
 															),
@@ -418,6 +418,7 @@ class OrdersController extends AppController {
 						}
 						else {
 							$this->Session->setFlash('Erreur dans la sauvegarde', 'alert', array('class' => 'warning'));
+							debug($data_order);
 							//$this->redirect(array('action' => 'edit', $order_id));
 						}
 					}
@@ -433,7 +434,7 @@ class OrdersController extends AppController {
 				$postals = $this->Order->Address->Postal->find('list');
 				$this->set(compact('postals'));
 		
-				// On récupère les créneaux horaires
+				// On récupère les créneaux
 				$hours = new Hour();
 				$hours = $hours->find('list');
 				$this->set(compact('hours'));

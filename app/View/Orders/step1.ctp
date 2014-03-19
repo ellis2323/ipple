@@ -48,9 +48,10 @@
                                         );
                                         ?>
                                         <div class='col-lg-4 col-md-4 col-sm-4'>
-                                        <?php $value = array();
+                                        <?php
 
 
+                                        $value = array();
 
                                         for($i=$nb_bac_min;$i<=$nb_bac_max;$i++){
                                             $value[$i] = $i;
@@ -59,7 +60,8 @@
 
                                         <?= $this->Form->input('nb_bacs', array(
                                               'options' => array($value),
-                                              'label'   => false,
+                                              'label'   => '',
+                                              'empty' => '(choisissez)'
                                           ));?>
 
 
@@ -108,8 +110,7 @@
 
                             
                             <div class='col-lg-3 col-md-3 col-sm-3 col-lg-offset-4 col-md-offset-4 col-sm-offset-4' style='text-align:center;'>
-                                <button type"submit"="" class="btn" style="background-color:#65b7f2;color:white;">Prochaine étape (2/3)</button>
-                                <?= $this->Form->end(); ?>  
+                                <button type="submit" class="btn" style="background-color:#65b7f2;color:white;">Prochaine étape (2/3)</button>
 
                                 <p><br></p>
                         
@@ -124,6 +125,7 @@
 
 
         </div> <!-- section -->           
-    </div>         
+    </div>
+<?= $this->Form->end(); ?>               
 </div>        
 

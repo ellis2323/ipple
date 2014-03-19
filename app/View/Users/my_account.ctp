@@ -241,6 +241,7 @@ $(function(){
 
                             <tbody>
                                 <tr class="bleu_blanc">
+                                    <th>#ID</th>
                                     <th>Date</th>
                                     <th>Heure de livraison</th>
                                     <th>Etat de la commande</th>
@@ -265,6 +266,7 @@ $(function(){
 
                                     ?>
                                     <tr class="text-center">
+                                        <td><?php echo $orders_current[$i]['Order']['id']; ?></td>
                                         <td><?php echo $display_date; ?></td>
 
                                         <td><?php echo $hours[$hour_deposit]; ?></td>
@@ -299,10 +301,12 @@ $(function(){
                         <table class="table table-striped">
                             <caption><h3 class="text-left">Historique des livraisons</h3></caption>
 
-                            <tbody><tr>
+                            <tbody>
+                            <tr>
+                                <th>#ID</th>
                                 <th>Date</th>
                                 <th>Heure</th>
-                                <th>Type</th>
+                                <th>Etat de la commande</th>
                                 <th>Nb d'items</th>
                             </tr>
 
@@ -322,6 +326,7 @@ $(function(){
 
                                     ?>
                                     <tr class="text-center">
+                                        <td><?php echo $orders_history[$i]['Order']['id']; ?></td>
                                         <td><?php echo $display_date; ?></td>
 
                                         <td><?php echo $hours[$hour_deposit]; ?></td>

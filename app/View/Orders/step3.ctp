@@ -3,9 +3,13 @@
 	    
 <script type='text/javascript'>
 $( document ).ready(function() {
-    console.log( "ready!" );
-    $('#return').hide();
 
+	var concierge = "<?= $this->request->data['Order']['concierge_deposit'];?>";
+
+
+	if(concierge!=1){
+    	$('#return').hide();
+	}
     $('#OrderWithdraw2').change(function(){
 	 if($(this).is(':checked')) {
 	        $('#return').fadeIn();
@@ -138,7 +142,7 @@ $( document ).ready(function() {
 		                    <div class="col-lg-6 col-md-6 col-sm-6">
 								<?php
 
-								echo $this->Form->input('regis', array(
+								echo $this->Form->input('laurent', array(
 
 		                                            'class' => 'form-control',
 		                                            'label' => false
@@ -191,10 +195,10 @@ $( document ).ready(function() {
 
             </div> <!-- /checkbox -->
 
-            <?= $this->Form->end(); ?> 
 
         </div> <!-- section -->
 
+    <?= $this->Form->end(); ?> 
 
 	</div> <!-- col-lg-8 centré -->
 </div> <!-- container fluid -->

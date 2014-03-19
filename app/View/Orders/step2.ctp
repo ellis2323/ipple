@@ -296,8 +296,6 @@
                                                         'class' => 'form-control',
                                                         'label' => false,
                                                         'type'  => 'checkbox',
-                                                        'required' => true,
-                                                        'default'  => $order['Order']['concierge_deposit']
                                     ));
                                 ?> Concierge? Oui, laissez les bacs à mon concierge
                                     </label>
@@ -354,5 +352,5 @@
 
     </div>  <!-- / container centré -->
 
-
+<?= $this->Form->end(); ?> 
 </div> <!-- /container-fluid -->
