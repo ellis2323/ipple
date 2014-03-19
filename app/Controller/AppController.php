@@ -65,6 +65,13 @@ class AppController extends Controller {
 	            $this->layout = 'admin';
 	        }
 
+
+	        $landing = true;
+
+	        if($landing){
+				$this->layout = 'landing';
+	        }
+
 		}
 
 		public function isAuthorized($user = null){
