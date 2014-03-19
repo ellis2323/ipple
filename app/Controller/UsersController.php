@@ -93,7 +93,8 @@ class UsersController extends AppController {
 			);
 			$this->set(compact('state'));
 
-			$orders = $this->User->Order->find('all', array(
+			// Les commandes en cours 
+			$orders_current = $this->User->Order->find('all', array(
 															'conditions' => array(
 																					'Order.user_id' => $this->Session->read('Auth.User.id'),
 																					'Order.state =' 		=> 1,
@@ -102,13 +103,27 @@ class UsersController extends AppController {
 														)
 				);
 
+			// Les commandes terminées (historique)
+			$orders_history = $this->User->Order->find('all', array(
+															'conditions' => array(
+																					'Order.user_id' => $this->Session->read('Auth.User.id'),
+																					'Order.state >=' 		=> 2,
+															),
+															'recursive' => 0
+														)
+			);
 			
 
 
-			if(!empty($orders)){
+			if(!empty($orders_current)){
 
 				// Si on a des commandes on liste les commandes
-				$this->set(compact('orders'));
+				$this->set(compact('orders_current'));
+			}
+			if(!empty($orders_history)){
+
+				// Si on a des commandes on liste les commandes
+				$this->set(compact('orders_history'));
 			}
 			// #### /Livraisons
 		}

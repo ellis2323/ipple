@@ -365,8 +365,9 @@ class OrdersController extends AppController {
 				array(
 					'conditions' => 
 					array(
-						'Order.id' => $order_id, 
-						'Order.user_id' => $this->Session->read('Auth.User.id')
+						'Order.id' 		=> $order_id, 
+						'Order.user_id' => $this->Session->read('Auth.User.id'),
+						'Order.state <' => 2
 					) 
 				) 
 			);
@@ -377,20 +378,22 @@ class OrdersController extends AppController {
 
 				// On traite le formulaire
 				if(!empty($this->request->data)){
-
+						
 					// Si les données sont validées
 					if($this->Order->validates() ){
-
-
+						$format = 'Y-m-d H:i:s';
+						$deposit = new DateTime($this->request->data['Order']['date_deposit']);
 
 						$data_order = array(
 											"Order" =>
 														array(
-														'id' 			=> $order_id,
-														'user_id'		=> $this->Session->read('Auth.User.id'),
-														'nb_bacs'		=> $this->request->data['Order']['nb_bacs'],
-														'hour_deposit'		=> 	$this->request->data['Order']['hours'],
-														'state'			=> 1
+														'id' 				=> $order_id,
+														'user_id'			=> $this->Session->read('Auth.User.id'),
+														'nb_bacs'			=> $this->request->data['Order']['nb_bacs'],
+														'date_deposit' 		=> $deposit->format($format),
+														'hour_deposit'		=> $this->request->data['Order']['hours'],
+														'concierge_deposit'	=> $this->request->data['Order']['concierge_deposit'],
+														'state'				=> 1
 														),
 											"Address" =>
 														array(
@@ -408,10 +411,14 @@ class OrdersController extends AppController {
 
 															)
 						);
-
-						if($this->Order->saveAssociated($data_order)){
+						
+						if($this->Order->saveAll($data_order)){
 							$this->Session->setFlash('Données correctement sauvegardées', 'alert', array('class' => 'success'));
 							$this->redirect(array('action' => 'edit', $order_id));
+						}
+						else {
+							$this->Session->setFlash('Erreur dans la sauvegarde', 'alert', array('class' => 'warning'));
+							//$this->redirect(array('action' => 'edit', $order_id));
 						}
 					}
 				}
@@ -426,8 +433,7 @@ class OrdersController extends AppController {
 				$postals = $this->Order->Address->Postal->find('list');
 				$this->set(compact('postals'));
 		
-
-			    
+				// On récupère les créneaux horaires
 				$hours = new Hour();
 				$hours = $hours->find('list');
 				$this->set(compact('hours'));
@@ -436,175 +442,9 @@ class OrdersController extends AppController {
 			}
 			// sinon erreur 404
 			else {
-				throw new NotFoundException;
+				throw new NotFoundException('Commande archivé"');
 			}
 		}
-
-		// Passer une commande
-		public function add() {	
-
-			// Si le client à déjà une commande en cours
-			$order = $this->Order->findByUserId($this->Session->read('Auth.User.id'));
-
-			$order = $this->Order->find('count',
-												array('conditions' => array(
-																			'Order.user_id' 	=> $this->Session->read('Auth.User.id')
-
-													)
-												));
-
-			### LIAISONS ###
-			// On récupères les données relatives à la commande et on les passe à la vue
-
-			// On récupère les villes
-		    $this->Order->bindModel(
-		        array('hasMany' => array(
-		                'City' => array(
-		                    'className' => 'City'
-		                )
-		            )
-		        )
-		    );			
-		    $cities = $this->Order->City->find('list');
-			$this->set(compact('cities'));
-
-			// On récupère les codes postaux
-		    $this->Order->bindModel(
-		        array('hasMany' => array(
-		                'Postal' => array(
-		                    'className' => 'Postal'
-		                )
-		            )
-		        )
-		    );			
-			$postals = $this->Order->Postal->find('list');
-			$this->set(compact('postals'));
-
-			// On récupère les créneaux horaires
-		    $this->Order->bindModel(
-		        array('hasMany' => array(
-		                'Hour' => array(
-		                    'className' => 'Hour'
-		                )
-		            )
-		        )
-		    );
-			$hours = $this->Order->Hour->find('list');
-			$this->set(compact('hours'));
-
-			### FIN LIAISON ###
-
-
-
-			// Si le formulaire à été soumis
-			if(!empty($this->request->data)){				
-				// On valide les données
-				if($this->Order->validates()){
-
-					$this->Order->create();
-
-
-
-					if($this->request->data['Order']['withdraw'] == 2){
-						
-
-						$data_order = array(
-											"Order" =>
-														array(
-														'user_id'		=> $this->Session->read('Auth.User.id'),
-														'nb_bacs'		=> $this->request->data['Order']['nb_bacs'],
-
-														'date_deposit'		=> 	$this->request->data['Order']['date_deposit'],
-														'hour_deposit'		=> 	1,
-
-														'date_withdrawal'		=> 	$date_withdrawal,
-														'hour_withdrawal'	=> 	1,
-
-														'state'			=> 1
-														),
-											"Address" =>
-														array(
-															'user_id'			=> $this->Session->read('Auth.User.id'),
-															'city_id'			=> $this->request->data['Order']['cities'],
-															'postal_id'			=> $this->request->data['Order']['postals'],
-															'firstname'			=> $this->request->data['Address'][0]['firstname'],
-															'lastname'			=> $this->request->data['Address'][0]['lastname'],
-															'street'			=> $this->request->data['Address'][0]['street'],
-															'digicode'			=> $this->request->data['Address'][0]['digicode'],
-															'floor'			=> $this->request->data['Address'][0]['floor'],
-															'comment'			=> $this->request->data['Address'][0]['comment'],
-															)
-						);
-
-
-					}
-
-					else {
-
-						$data_order = array(
-											"Order" =>
-														array(
-														'user_id'			=> $this->Session->read('Auth.User.id'),
-														'nb_bacs'			=> $this->request->data['Order']['nb_bacs'],
-														'hour_deposit'		=> 	1,
-														'date_deposit'		=> 	$this->request->data['Order']['date_deposit'],
-														'state'				=> 1
-														),
-											"Address" =>
-														array(
-															'user_id'			=> $this->Session->read('Auth.User.id'),
-															'city_id'			=> $this->request->data['Order']['cities'],
-															'postal_id'			=> $this->request->data['Order']['postals'],
-															'firstname'			=> $this->request->data['Address'][0]['firstname'],
-															'lastname'			=> $this->request->data['Address'][0]['lastname'],
-															'street'			=> $this->request->data['Address'][0]['street'],
-															'digicode'			=> $this->request->data['Address'][0]['digicode'],
-															'floor'				=> $this->request->data['Address'][0]['floor'],
-															'comment'			=> $this->request->data['Address'][0]['comment'],
-															)
-						);
-					}
-
-					// Si la commande à bien été enregistré, on ajoute les livraisons associées
-					if($this->Order->saveAssociated($data_order)) {
-							
-							$this->Order->saveField('address_id', $this->Order->Address->id);
-
-							// Envoie de l'email de notification
-
-							$CakeEmail = new CakeEmail('default');
-							$CakeEmail->to('rpietra@gmail.com');
-							$CakeEmail->subject('Dezordre: Commande #'.$this->Order->id);
-							$CakeEmail->emailFormat('text');
-							$CakeEmail->template('order');
-							$CakeEmail->send();
-
-							$this->redirect(array('controller' => 'users', 'action' => 'my_bacs'));
-
-					}
-					else {
-						$this->Session->setFlash('Erreur lors de la sauvegarde.');
-					}
-
-				}
-				else {
-					//debug($this->Order->invalidFields()); die();
-					$this->Session->setFlash('Veuillez corriger les champs comprenant des erreurs');
-				}
-			}
-
-
-			// On compte le nombre de commande de l'utilisateur
-			$nb_orders = $this->Order->find('count',
-				array(
-						'conditions' => array(
-												'Order.user_id' => $this->Session->read('Auth.User.id'),
-
-						)
-				)
-			);
-		}
-
 
 
 		// Anuler une commande 

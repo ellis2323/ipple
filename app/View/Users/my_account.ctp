@@ -234,7 +234,7 @@ $(function(){
 
                 <!-- Livraisons -->
                 <div class="tab-pane fade" id="livraisons">
-                    <?php if(!empty($orders)){?>
+                    <?php if(!empty($orders_current)){?>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <caption><h3 class="text-left">Livraison(s) prévues</h3></caption>
@@ -251,16 +251,16 @@ $(function(){
 
                                  <?php 
                                  
-                                  for($i=0;$i<count($orders);$i++){
+                                  for($i=0;$i<count($orders_current);$i++){
                                   // Debut foreach
 
-                                    $date = $orders[$i]['Order']['date_deposit'];
+                                    $date = $orders_current[$i]['Order']['date_deposit'];
                                     $dateTime = new DateTime($date);
                                     $display_date = date('d/m/Y', strtotime($date) );
                                    
 
-                                    $hour_deposit = $orders[$i]['Order']['hour_deposit'];
-                                    $state_order = $orders[$i]['Order']['state'];
+                                    $hour_deposit = $orders_current[$i]['Order']['hour_deposit'];
+                                    $state_order = $orders_current[$i]['Order']['state'];
 
 
                                     ?>
@@ -271,12 +271,12 @@ $(function(){
 
                                         <td><?php echo $state[$state_order]; ?></td>
 
-                                        <td><?php echo $orders[$i]['Order']['nb_bacs']; ?></td>
+                                        <td><?php echo $orders_current[$i]['Order']['nb_bacs']; ?></td>
 
                                         <td class="blue"><a href="<?= $this->Html->url(
                                                     array(
                                                                 'controller' => 'orders', 
-                                                                'action' => 'edit', $orders[$i]['Order']['id']
+                                                                'action' => 'edit', $orders_current[$i]['Order']['id']
                                                             )
                                                     , true
                                             ); 
@@ -293,6 +293,8 @@ $(function(){
                     </div>
                     <?php }?>
 
+
+                    <?php if(!empty($orders_history)){?>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <caption><h3 class="text-left">Historique des livraisons</h3></caption>
@@ -303,13 +305,39 @@ $(function(){
                                 <th>Type</th>
                                 <th>Nb d'items</th>
                             </tr>
-                            <tr class="text-center">
-                                <td>14/03/2014</td>
-                                <td>8h-10h</td>
-                                <td>Livraison bacs vides</td>
-                                <td>6</td>
-                            </tr>
+
+                                 <?php 
+                                 
+                                  for($i=0;$i<count($orders_history);$i++){
+                                  // Debut foreach
+
+                                    $date = $orders_history[$i]['Order']['date_deposit'];
+                                    $dateTime = new DateTime($date);
+                                    $display_date = date('d/m/Y', strtotime($date) );
+                                   
+
+                                    $hour_deposit = $orders_history[$i]['Order']['hour_deposit'];
+                                    $state_order = $orders_history[$i]['Order']['state'];
+
+
+                                    ?>
+                                    <tr class="text-center">
+                                        <td><?php echo $display_date; ?></td>
+
+                                        <td><?php echo $hours[$hour_deposit]; ?></td>
+
+                                        <td><?php echo $state[$state_order]; ?></td>
+
+                                        <td><?php echo $orders_history[$i]['Order']['nb_bacs']; ?></td>
+                                    </tr>
+
+                                  <?php 
+                                  }
+                                  ?>
                         </tbody></table>
+                        <?php 
+                          }
+                          ?>
                     </div>
 
                 </div>

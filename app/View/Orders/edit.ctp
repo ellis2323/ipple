@@ -343,7 +343,15 @@
 
                             <div class="checkbox">
                                     <label class="col-lg-6 col-md-6 col-sm-6" style='margin-left:20px'>
-                                        <input type="checkbox" /> Concierge? Oui, laissez les bacs à mon concierge
+                                <?php
+                                    echo $this->Form->input('concierge_deposit', array(
+                                                        'class' => 'form-control',
+                                                        'label' => false,
+                                                        'type'  => 'checkbox',
+                                                        'required' => true,
+                                                        'default'  => $order['Order']['concierge_deposit']
+                                    ));
+                                ?> Concierge? Oui, laissez les bacs à mon concierge
                                     </label>
                             </div>
                             
