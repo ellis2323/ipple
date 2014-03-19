@@ -98,7 +98,7 @@ $( document ).ready(function() {
 		    <div class="choix">
 		    	<div class="row">
 		            <div class="form-group">
-		                <label for="date" class="col-lg-2 col-md-2 col-sm-2 control-label">Date de récupération<span class="blue">*</span></label>
+		                <label for="date_withdrawal" class="col-lg-2 col-md-2 col-sm-2 control-label">Date de récupération<span class="blue">*</span></label>
 
 		                <div class="col-lg-4 col-md-4 col-sm-4">
                             <!-- DATEPICKER -->
@@ -169,7 +169,7 @@ $( document ).ready(function() {
 
 		            <div class="col-lg-6 col-md-6 col-sm-6">
 		                <div class="form-group">
-		                    <label for="heure_liv" class="col-lg-4 col-md-4 col-sm-4 control-label">Heure de récupération<span class="blue">*</span></label>
+		                    <label for="hwithdrawals" class="col-lg-4 col-md-4 col-sm-4 control-label">Heure de récupération<span class="blue">*</span></label>
 		                    <div class="col-lg-6 col-md-6 col-sm-6">
 								<?php
 

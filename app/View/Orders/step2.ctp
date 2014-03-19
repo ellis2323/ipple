@@ -150,6 +150,7 @@
                             echo $this->Form->label('Address.0.postals', 'Code postal <span class="blue">*</span>', array(
                                                                             'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                             'style' => 'text-align:right;',
+
                                                                         )
                             );
                             ?>
@@ -160,6 +161,7 @@
                                                                             'class' => 'form-control',
                                                                             'required'  => true,
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                            'empty' => '(choisissez)'
                                                                             
                                                                      )
                             );?>
@@ -176,7 +178,6 @@
                             echo $this->Form->label('Address.0.floor', 'Etage <span class="blue">*</span>', array(
                                                                             'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                             'style' => 'text-align:right;',
-                                                                            'required'  => true,
                                                                         )
                             );
                             ?>
@@ -245,19 +246,20 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="form-group">                            
                             <?php
-                            echo $this->Form->label('select_date', 'Date de livraison<span class="blue">*</span>', array(
-                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
-                                                                            'style' => 'text-align:right;',
-                                                                        )
+                            echo $this->Form->label("select_date", 'Date de livraison<span class="blue">*</span>', array(
+                                                                                                                        'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                                                                        'style' => 'text-align:right;',
+
+                                                                                                                    )
                             );
                             ?>
 
                             <!-- DATEPICKER -->
-                            <?= $this->Form->input("date_deposit", 
+                            <?= $this->Form->input("Order.date_deposit", 
                                 array(
                                     'label' => false, 
                                     'type' => 'text',
-                                    'id' => 'select_date',
+                                    'id' => 'OrderSelectDate',
                                     'class' => 'form-control',
                                     'div' => 'col-lg-6 col-md-6 col-sm-6',
                                     'required'  => true,
@@ -273,7 +275,7 @@
                                  $(document).ready(function(){
                                             var datesBlocked = ["2014-03-14","2014-03-15","2014-03-16"];
 
-                                              $("#select_date").click(function(){
+                                              $("#OrderSelectDate").click(function(){
                                                      $("#datepicker").datepicker(
                                                     {
                                                            dateFormat: 'mm/dd/yy',
@@ -284,7 +286,7 @@
                                                                 return [ datesBlocked.indexOf(string) == -1 ];
                                                             },
                                                            onSelect: function(dateText, inst){
-                                                                 $('#select_date').val(dateText);
+                                                                 $('#OrderSelectDate').val(dateText);
                                                                  $("#datepicker").datepicker("destroy");
                                                           }
                                                      });
@@ -303,17 +305,17 @@
 
                             <div class="checkbox">
                                 <?php
-                                echo $this->Form->label('concierge_deposit', 'Concierge? Oui, laissez les bacs à mon concierge', array(
-                                                                                'class' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                                'style' => 'margin-left:20px',
-                                                                            )
+                                echo $this->Form->label('Order.concierge_deposit', 'Concierge? Oui, laissez les bacs à mon concierge', array(
+                                                                                                                                    'class' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                                                                                )
                                 );
                                 ?>
                                 <?php
-                                    echo $this->Form->input('concierge_deposit', array(
+                                    echo $this->Form->input('Order.concierge_deposit', array(
                                                         'class' => 'form-control',
                                                         'label' => false,
                                                         'type'  => 'checkbox',
+
                                     ));
                                 ?>
                             </div>

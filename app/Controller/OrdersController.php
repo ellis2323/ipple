@@ -294,13 +294,13 @@ class OrdersController extends AppController {
 
 						}
 						else {
-    						debug($this->Order->invalidFields());
+    						//debug($this->Order->invalidFields());
 							$this->Session->setFlash('Erreur lors de la sauvegarde.', 'alert', array('class' => 'danger'));
 						}
 
 					} // Validates
 					else {
-						debug($this->validationErrors);
+						//debug($this->validationErrors);
 						$this->Session->setFlash('Erreur de validation', 'alert', array('class' => 'danger'));
 					}
 
