@@ -278,7 +278,7 @@
                                               $("#OrderSelectDate").click(function(){
                                                      $("#datepicker").datepicker(
                                                     {
-                                                           dateFormat: 'mm/dd/yy',
+                                                           dateFormat: 'dd-mm-yy',
                                                            minDate : 0,
                                                            monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
                                                            beforeShowDay: function(date){

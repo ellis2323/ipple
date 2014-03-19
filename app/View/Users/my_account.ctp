@@ -376,8 +376,9 @@ $(function(){
                                   for($i=0;$i<count($orders_history);$i++){
                                   // Debut foreach
 
-                                    $date_deposit = $orders_history[$i]['Order']['date_deposit'];
-                                    $display_date_deposit = date('d/m/Y', strtotime($date_deposit) );
+                                    $date_deposit = strtotime($orders_history[$i]['Order']['date_deposit']);
+
+                                    $display_date_deposit = date('d/m/Y', $date_deposit);
                                    
                                     $hour_deposit = $orders_history[$i]['Order']['hour_deposit'];
                                     $state_deposit = $orders_history[$i]['Order']['state_deposit'];

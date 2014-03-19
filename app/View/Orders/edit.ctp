@@ -329,7 +329,7 @@
                                               $("#date_deposit").click(function(){
                                                      $("#datepicker").datepicker(
                                                     {
-                                                           dateFormat: 'mm/dd/yy',
+                                                           dateFormat: 'dd-mm-yy',
                                                            minDate : 0,
                                                            monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
                                                            beforeShowDay: function(date){
@@ -447,7 +447,7 @@ if($order['Order']['state_withdrawal'] == 1) {
                                               $("#date_withdrawal").click(function(){
                                                      $("#datepicker2").datepicker(
                                                     {
-                                                           dateFormat: 'dd/mm/yy',
+                                                           dateFormat: 'dd-mm-yy',
                                                            minDate : "<?= $order['Order']['date_deposit'];?>"+2d,
                                                            monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
                                                            beforeShowDay: function(date){
