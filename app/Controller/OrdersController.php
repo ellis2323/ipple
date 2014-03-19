@@ -2,6 +2,7 @@
 App::uses('AppController', 'Controller');
 App::uses('CakeEmail', 'Network/Email');
 App::import('Model','Hour');
+App::import('Model','City');
 App::import('Model','Param');
 /**
  * Orders Controller
@@ -24,13 +25,6 @@ class OrdersController extends AppController {
  */
 	public $components = array('Paginator');
 
-
-		// Liste des commandes utilisateur 
-		public function index() {
-		
-
-		}
-
 		/* ETAPE DE COMMANDE DES BACS */
 
 		// Commande : Etape 1
@@ -40,16 +34,8 @@ class OrdersController extends AppController {
 			// On récupères les données relatives à la commande et on les passe à la vue
 
 			// On récupère les villes
-		    $this->Order->bindModel(
-		        array('hasMany' => array(
-		                'City' => array(
-		                    'className' => 'City'
-		                )
-		            )
-		        )
-		    );			
-		    $cities = $this->Order->City->find('list');
-			$this->set(compact('cities'));
+			$cities = new City();
+			$this->set('cities', $cities->find('list'));
 
 
 			### FIN LIAISON ###
@@ -740,14 +726,8 @@ class OrdersController extends AppController {
 
 
 	public function admin_confirm($order_id) {
-		$order_edit = $this->Order->find('first', 
-			array(
-				'conditions' => 
-				array(
-					'Order.id' => $order_id, 
-				) 
-			) 
-		);
+
+		$order_edit = $this->Order->findById($order_id);
 
 		if(!empty($order_id)){
 
@@ -761,29 +741,6 @@ class OrdersController extends AppController {
 					);
 
 			$this->Order->save($data);
-
-			if($order_edit['Order']['date_withdrawal'] != NULL) {
-				$delivery_deposit = $this->Order->Delivery->id;
-				$this->Order->Delivery->create();
-				$delivery = array(
-									'Delivery' => array(
-													'delivery_id' => $delivery_deposit,
-													'order_id' => $order_id,
-													'date' => $order_edit['Order']['date_withdrawal'],
-													'user_id' => $order_edit['Order']['user_id'],
-													'address_id' => $order_edit['Order']['address_id'],
-													'hour_id' => $order_edit['Order']['hour_withdrawal'],
-												)
-								);
-
-				$this->Order->Delivery->save($delivery);
-
-
-			}
-
-
-		   // debug($this->Order->find('all'));
-
 
 			return $this->redirect(array('controller' => 'orders', 'action' => 'index', 'admin' => true));
 		}

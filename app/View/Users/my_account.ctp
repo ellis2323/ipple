@@ -242,15 +242,15 @@ $(function(){
                             <tbody>
                                 <tr class="bleu_blanc">
                                     <th>Date</th>
-                                    <th>Heure</th>
-                                    <th>Type</th>
+                                    <th>Heure de livraison</th>
+                                    <th>Etat de la commande</th>
                                     <th>Nb d'items</th>
                                     <th>Modifier</th>
                                 </tr>
 
 
                                  <?php 
-                                 //debug($orders);
+                                 
                                   for($i=0;$i<count($orders);$i++){
                                   // Debut foreach
 
@@ -258,13 +258,21 @@ $(function(){
                                     $dateTime = new DateTime($date);
                                     $display_date = date('d/m/Y', strtotime($date) );
                                    
+
+                                    $hour_deposit = $orders[$i]['Order']['hour_deposit'];
+                                    $state_order = $orders[$i]['Order']['state'];
+
+
                                     ?>
                                     <tr class="text-center">
                                         <td><?php echo $display_date; ?></td>
-                                        <td><?php echo $orders[$i]['Hour']['hour']; ?></td>
-                                        
-                                        <td><?php echo $orders[$i]['Order']['state']; ?></td>
+
+                                        <td><?php echo $hours[$hour_deposit]; ?></td>
+
+                                        <td><?php echo $state[$state_order]; ?></td>
+
                                         <td><?php echo $orders[$i]['Order']['nb_bacs']; ?></td>
+
                                         <td class="blue"><a href="<?= $this->Html->url(
                                                     array(
                                                                 'controller' => 'orders', 

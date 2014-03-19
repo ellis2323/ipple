@@ -66,7 +66,7 @@ class AppController extends Controller {
 	        }
 
 
-	        $landing = true;
+	        $landing = false;
 
 	        if($landing){
 				$this->layout = 'landing';

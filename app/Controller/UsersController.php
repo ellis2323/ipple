@@ -1,6 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('CakeEmail', 'Network/Email');
+App::import('Model', 'Hour');
 
 class UsersController extends AppController {
 
@@ -80,16 +81,18 @@ class UsersController extends AppController {
 			// #### Livraisons
 
 			// On relie les créneaux associés
-			$this->User->Order->bindModel(
-		        array('belongsTo' => array(
-		                'Hour' => array(
-		                    'className' => 'Hour',
-		                    'foreignKey' => 'hour_deposit'
-		                ),
+			$hours = new Hour();
+			$hours = $hours->find('list');
+			$this->set(compact('hours'));
 
-		            )
-		        )
-		    );	
+			// Etat de commande
+			$state = array(
+							1 => 'En attente',
+							2 => 'Livraison de bacs vide',
+							3 => 'Livraison de bacs pleins',
+			);
+			$this->set(compact('state'));
+
 			$orders = $this->User->Order->find('all', array(
 															'conditions' => array(
 																					'Order.user_id' => $this->Session->read('Auth.User.id'),

@@ -43,12 +43,12 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                     <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', '#' => 'prix') );?>">Prix</a></li>
-                    <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', '#' => 'securite') );?>">Sécurité</a></li>
+                     <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'landing', '#' => 'prix') );?>">Prix</a></li>
+                    <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'landing', '#' => 'securite') );?>">Sécurité</a></li>
                     
                     <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'faq') );?>">F.A.Q</a></li>
 
-                    <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', '#' => 'contact')  );?>">Contact</a></li>
+                    <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'landing', '#' => 'contact')  );?>">Contact</a></li>
                     
                 </ul>
             </div>
@@ -134,7 +134,7 @@ else {
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <h3>A propos</h3>
                                <p><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'faq') );?>">FAQ</a></p>
-                                <p><a href="/dezordre/pdf/cgv_dezordre.pdf" target="_blank">CGV</a></p>
+                                <p><a href="/pdf/cgv_dezordre.pdf" target="_blank">CGV</a></p>
                                 
                                 <p><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'legals') );?>">Mentions légales</a></p>
                             </div>

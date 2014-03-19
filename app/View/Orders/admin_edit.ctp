@@ -12,6 +12,99 @@
 
 
 	?>
+
+
+    <!-- DATEPICKER  deposit-->
+    <?= $this->Form->input("date_deposit", 
+        array(
+            'label' => false, 
+            'type' => 'text',
+            'id' => 'select_date',
+            'class' => 'form-control',
+            'div' => 'col-lg-6 col-md-6 col-sm-6',
+            'required' => false,
+
+        )
+    ); ?>
+    <div id="datepicker"></div>
+
+        <?= $this->start('datepicker'); ?>
+
+
+        <script type='text/javascript'>
+         $(document).ready(function(){
+                    var datesBlocked = ["2014-03-14","2014-03-15","2014-03-16"];
+
+                      $("#select_date").click(function(){
+                             $("#datepicker").datepicker(
+                            {
+                                   dateFormat: 'mm/dd/yy',
+                                   minDate : 0,
+                                   monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
+                                   beforeShowDay: function(date){
+                                        var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+                                        return [ datesBlocked.indexOf(string) == -1 ];
+                                    },
+                                   onSelect: function(dateText, inst){
+                                         $('#select_date').val(dateText);
+                                         $("#datepicker").datepicker("destroy");
+                                  }
+                             });
+                       });
+                });
+         </script>
+
+         
+         <?= $this->end(); ?> 
+
+         <!-- /DATEPICKER deposit --> 
+
+
+    <!-- DATEPICKER  withdraw -->
+    <?= $this->Form->input("date_withdrawal", 
+        array(
+            'label' => false, 
+            'type' => 'text',
+            'id' => 'select_date',
+            'class' => 'form-control',
+            'div' => 'col-lg-6 col-md-6 col-sm-6',
+            'required' => false,
+
+        )
+    ); ?>
+    <div id="datepicker2"></div>
+
+        <?= $this->start('datepicker2'); ?>
+
+
+        <script type='text/javascript'>
+         $(document).ready(function(){
+                    var datesBlocked = ["2014-03-14","2014-03-15","2014-03-16"];
+
+                      $("#select_date2").click(function(){
+                             $("#datepicker2").datepicker(
+                            {
+                                   dateFormat: 'mm/dd/yy',
+                                   minDate : 0,
+                                   monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
+                                   beforeShowDay: function(date){
+                                        var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+                                        return [ datesBlocked.indexOf(string) == -1 ];
+                                    },
+                                   onSelect: function(dateText, inst){
+                                         $('#select_date2').val(dateText);
+                                         $("#datepicker2").datepicker("destroy");
+                                  }
+                             });
+                       });
+                });
+         </script>
+
+         
+         <?= $this->end(); ?> 
+
+         <!-- /DATEPICKER withdraw --> 
+
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>

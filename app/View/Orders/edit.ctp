@@ -1,4 +1,5 @@
 <div class="container-fluid">
+<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">     
 	<div class="section">
 
 		<div class="choix">    
@@ -268,33 +269,111 @@
                                                                             'class' => 'form-control',
                                                                             'div' => 'col-lg-9 col-md-9 col-sm-9',
                                                                             'style' => 'margin-left:-5px;',
-                                                                            'value'     => $order['Address']['comment']
+                                                                            'default'     => $order['Address']['comment']
                                                                      )
                             );?>
                         </div>
                     </div>
 
-					
+
+
+              <div class="row">
+                <!-- HEURE ET DATE -->
+                    <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?> Quand voulez-vous récupérer les bacs?</h3>  
+
+
                     <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="form-group">  
+                        <div class="form-group">                            
                             <?php
-                            echo $this->Form->label('hours', 'Heure de la livraison', array(
+                            echo $this->Form->label('select_date', 'Date de livraison<span class="blue">*</span>', array(
                                                                             'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                             'style' => 'text-align:right;',
                                                                         )
                             );
                             ?>
-                            <?php
-                            echo $this->Form->input('hours', array(
-                                                                            'label' => false, 
-                                                                            'class' => 'form-control',
-                                                                            'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                            'default'     => $order['Order']['hour_deposit']
-                                                                     )
-                            );?>
+
+                            <!-- DATEPICKER -->
+                            <?= $this->Form->input("date_deposit", 
+                                array(
+                                    'label' => false, 
+                                    'type' => 'text',
+                                    'id' => 'select_date',
+                                    'class' => 'form-control',
+                                    'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                    'required' => true,
+                                    'value'     => $order['Order']['date_deposit']
+
+                                )
+                            ); ?>
+                            <div id="datepicker"></div>
+
+                                <?= $this->start('datepicker'); ?>
+
+                                <script type='text/javascript'>
+                                 $(document).ready(function(){
+                                            var datesBlocked = ["2014-03-14","2014-03-15","2014-03-16"];
+
+                                              $("#select_date").click(function(){
+                                                     $("#datepicker").datepicker(
+                                                    {
+                                                           dateFormat: 'mm/dd/yy',
+                                                           minDate : 0,
+                                                           monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
+                                                           beforeShowDay: function(date){
+                                                                var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+                                                                return [ datesBlocked.indexOf(string) == -1 ];
+                                                            },
+                                                           onSelect: function(dateText, inst){
+                                                                 $('#select_date').val(dateText);
+                                                                 $("#datepicker").datepicker("destroy");
+                                                          }
+                                                     });
+                                               });
+                                        });
+                                 </script>
+
+
+                                 
+                                 <?= $this->end(); ?> 
+
+                                 <!-- /DATEPICKER --> 
+
+
+
+
+                            <div class="checkbox">
+                                    <label class="col-lg-6 col-md-6 col-sm-6" style='margin-left:20px'>
+                                        <input type="checkbox" /> Concierge? Oui, laissez les bacs à mon concierge
+                                    </label>
+                            </div>
+                            
+
+
                         </div>
-                        <p><br></p>
                     </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="form-group">  
+                                <?php
+                                echo $this->Form->label('hours', 'Heure de la livraison', array(
+                                                                                'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                                'style' => 'text-align:right;',
+                                                                            )
+                                );
+                                ?>
+                                <?php
+                                echo $this->Form->input('hours', array(
+                                                                                'label' => false, 
+                                                                                'class' => 'form-control',
+                                                                                'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                                'default'     => $order['Order']['hour_deposit']
+                                                                         )
+                                );?>
+                            </div>
+                            <p><br></p>
+                        </div>
+
+
+                    </div> <!-- /row -->
 
         			<div class='col-lg-12 col-md-12 col-sm-12 ' style='text-align:center;'>
         				<p><br></p>
@@ -311,6 +390,7 @@
 		</div>
 
 	</div>
+    </div>
 </div>
 
 

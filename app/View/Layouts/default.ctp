@@ -241,7 +241,7 @@ else {
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <h3>A propos</h3>
                                <p><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'faq') );?>">FAQ</a></p>
-                                <p><a href="/dezordre/pdf/cgv_dezordre.pdf" target="_blank">CGV</a></p>
+                                <p><a href="/pdf/cgv_dezordre.pdf" target="_blank">CGV</a></p>
                                 
                                 <p><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'legals') );?>">Mentions légales</a></p>
                             </div>

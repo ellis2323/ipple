@@ -240,8 +240,6 @@
                                                                         )
                             );
                             ?>
-                                <!-- DATEPICKER -->
-
 
                             <!-- DATEPICKER -->
                             <?= $this->Form->input("date_deposit", 
@@ -251,7 +249,6 @@
                                     'id' => 'select_date',
                                     'class' => 'form-control',
                                     'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                    'required' => false,
 
                                 )
                             ); ?>
