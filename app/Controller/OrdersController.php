@@ -247,7 +247,7 @@ class OrdersController extends AppController {
 															array(
 															'user_id'			=> $this->Session->read('Auth.User.id'),
 															'nb_bacs'			=> $data_full['Order']['nb_bacs'],
-															'hour_deposit'		=> $data_full['Order']['hdeposits'],
+															'hour_deposit'		=> $data_full['Order']['hour_deposit'],
 															'date_deposit'		=> $deposit->format($format),
 															'state'				=> 1,
 															),
@@ -295,19 +295,13 @@ class OrdersController extends AppController {
 								$CakeEmail->emailFormat('text');
 								$CakeEmail->template('order');
 								//$CakeEmail->send();
-								if(true){
-									$this->Session->setFlash('La commande à bien été enregistrée', 'alert', array('class' => 'success') );
-									$this->redirect(array('controller' => 'users', 'action' => 'my_account#livraisons'));
-								}
-								else {
-									$this->Session->setFlash('Erreur lors de l\'envoi de l\'email', 'alert', array('class' => 'danger'));
-								}
+
+								$this->Session->setFlash('La commande à bien été enregistrée', 'alert', array('class' => 'success') );
+								$this->redirect(array('controller' => 'users', 'action' => 'my_account#livraisons'));
 
 						}
 						else {
-							debug($this->Order->saveAll($data_order));
     						debug($this->Order->invalidFields());
-    						debug($data_order);
 							$this->Session->setFlash('Erreur lors de la sauvegarde.', 'alert', array('class' => 'danger'));
 						}
 
