@@ -206,11 +206,11 @@ class OrdersController extends AppController {
 															'nb_bacs'					=> $data_full['Order']['nb_bacs'],
 															'date_deposit'				=> $deposit->format($format),
 															'hour_deposit'				=> $data_full['Order']['hour_deposit'],
-															'state_deposit'				=> 1,
+															'state_deposit'				=> 0,
 															'concierge_deposit'			=> $data_full['Order']['concierge_deposit'],
 															'date_withdrawal'			=> $withdrawal->format($format),
 															'hour_withdrawal'			=> $this->request->data['Order']['hwithdrawals'],
-															'state_withdrawal'			=> 1,
+															'state_withdrawal'			=> 0,
 															'concierge_withdrawal'		=> $this->request->data['Order']['concierge_withdrawal'],
 															'state'						=> 1,
 															
@@ -242,6 +242,7 @@ class OrdersController extends AppController {
 															'nb_bacs'			=> $data_full['Order']['nb_bacs'],
 															'hour_deposit'		=> $data_full['Order']['hour_deposit'],
 															'date_deposit'		=> $deposit->format($format),
+															'state_deposit'		=> 0,
 															'state'				=> 1,
 															),
 												"Address" =>

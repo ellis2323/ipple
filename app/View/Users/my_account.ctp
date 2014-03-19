@@ -265,23 +265,28 @@ $(function(){
                                   for($i=0;$i<count($orders_current);$i++){
                                   // Debut foreach
 
-                                    $date = $orders_current[$i]['Order']['date_deposit'];
-                                    $dateTime = new DateTime($date);
-                                    $display_date = date('d/m/Y', strtotime($date) );
+                                    $date_deposit = $orders_current[$i]['Order']['date_deposit'];
+                                    $dateTime = new DateTime($date_deposit);
+                                    $display_date_deposit = date('d/m/Y', strtotime($date_deposit) );
                                    
 
-                                    $hour_deposit = $orders_current[$i]['Order']['hour_deposit'];
-                                    $state_order = $orders_current[$i]['Order']['state'];
 
+
+                                    $hour_deposit = $orders_current[$i]['Order']['hour_deposit'];
+                                    $state_deposit = $orders_current[$i]['Order']['state_deposit'];
+
+                                    $date_withdrawal = $orders_current[$i]['Order']['date_withdrawal'];
+                                    $dateTime = new DateTime($date_withdrawal);
+                                    $display_date_withdrawal = date('d/m/Y', strtotime($date_withdrawal) );
 
                                     ?>
                                     <tr class="text-center">
                                         <td><?php echo $orders_current[$i]['Order']['id']; ?></td>
-                                        <td><?php echo $display_date; ?></td>
+                                        <td><?php echo $display_date_deposit; ?></td>
 
                                         <td><?php echo $hours[$hour_deposit]; ?></td>
 
-                                        <td><?php echo $state[$state_order]; ?></td>
+                                        <td><?php echo $state[$state_deposit]; ?></td>
 
                                         <td><?php echo $orders_current[$i]['Order']['nb_bacs']; ?></td>
 
@@ -296,6 +301,31 @@ $(function(){
                                     </tr>
 
                                   <?php 
+                                        if(!empty($date_withdrawal)){
+                                            $hour_withdrawal = $orders_current[$i]['Order']['hour_withdrawal'];
+                                            $state_withdrawal = $orders_current[$i]['Order']['state_withdrawal'];
+                                        ?>
+                                        <tr class="text-center">
+                                            <td><?php echo $orders_current[$i]['Order']['id']; ?></td>
+                                            <td><?php echo $display_date_withdrawal; ?></td>
+
+                                            <td><?php echo $hours[$hour_withdrawal]; ?></td>
+
+                                            <td><?php echo $state[$state_withdrawal]; ?></td>
+
+                                            <td><?php echo $orders_current[$i]['Order']['nb_bacs']; ?></td>
+
+                                            <td class="blue"><a href="<?= $this->Html->url(
+                                                        array(
+                                                                    'controller' => 'orders', 
+                                                                    'action' => 'edit', $orders_current[$i]['Order']['id']
+                                                                )
+                                                        , true
+                                                ); 
+                                            ?>" class="glyphicon glyphicon-pencil">Modifier</a></td>
+                                        </tr>
+                                        <?php
+                                        }
                                   }
                                   ?>
 

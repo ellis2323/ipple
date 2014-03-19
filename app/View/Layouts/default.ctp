@@ -57,7 +57,7 @@
                         if($this->Session->check('Auth.User.id')):
                         ?>
 
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?= $this->Session->read('Auth.User.email');?><b class="caret"></b></a>
                         <ul class="dropdown-menu">
 
 

@@ -87,6 +87,7 @@ class UsersController extends AppController {
 
 			// Etat de commande
 			$state = array(
+							0 => 'Commande',
 							1 => 'En attente',
 							2 => 'Terminée',
 							3 => 'Livraison de bacs pleins',
@@ -97,7 +98,7 @@ class UsersController extends AppController {
 			$orders_current = $this->User->Order->find('all', array(
 															'conditions' => array(
 																					'Order.user_id' 		=> $this->Session->read('Auth.User.id'),
-																					'Order.state =' 		=> 1,
+																					'Order.state_deposit =' 		=> 0,
 																					
 															),
 															'recursive' => 0,
@@ -123,7 +124,6 @@ class UsersController extends AppController {
 
 
 			if(!empty($orders_current)){
-
 				// Si on a des commandes on liste les commandes
 				$this->set(compact('orders_current'));
 			}
