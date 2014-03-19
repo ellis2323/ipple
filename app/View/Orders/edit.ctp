@@ -173,14 +173,14 @@
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="form-group">  
                                 <?php
-                                echo $this->Form->label('Address.cities', 'Ville', array(
+                                echo $this->Form->label('cities', 'Ville', array(
                                                                                 'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                                 'style' => 'text-align:right;',
                                                                             )
                                 );
                                 ?>
                                 <?php
-                                echo $this->Form->input('Address.cities', array(
+                                echo $this->Form->input('cities', array(
                                                                                 'label' => false, 
                                                                                 'class' => 'form-control',
                                                                                 'div' => 'col-lg-6 col-md-6 col-sm-6',
@@ -195,14 +195,14 @@
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="form-group">  
                                 <?php
-                                echo $this->Form->label('Address.postals', 'Code postal', array(
+                                echo $this->Form->label('postals', 'Code postal', array(
                                                                                 'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                                 'style' => 'text-align:right;',
                                                                             )
                                 );
                                 ?>
                                 <?php
-                                echo $this->Form->input('Address.postals', array(
+                                echo $this->Form->input('postals', array(
                                                                                 'label' => false, 
                                                                                 'class' => 'form-control',
                                                                                 'div' => 'col-lg-6 col-md-6 col-sm-6',

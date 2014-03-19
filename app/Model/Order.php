@@ -107,21 +107,14 @@ class Order extends AppModel {
 	// Permet de vérifier que la date de retrait est supérieur à la date de dépot
 	public function checkWithdraw($data, $data_deposit){
 		$deposit = $this->data[$this->name][$data_deposit];
-		$deposit = new DateTime($deposit);
 
 		// On convertis le datetime en timestamp
 		foreach($data as $withdraw){
-			$withdraw = new DateTime($withdraw);
+			$withdraw = strtotime($withdraw);
 		}
 
-		$interval = $deposit->diff($withdraw);
-		$valid = $interval->invert;
 		
-		if(empty($withdraw)){
-			return true;
-		}
-
-		if($valid != 1){
+		if($deposit < $withdraw){
 			return true;
 		}
 		else {
@@ -142,8 +135,7 @@ class Order extends AppModel {
 		// On convertis le datetime en timestamp
 		$date = array_shift($data);
 
-		$date = new DateTime($date);
-		$date = $date->getTimestamp();
+		$date = strtotime($date);
 
 		// On définis nos attributs
 		/* On inverse le jour et le mois car date américaine */

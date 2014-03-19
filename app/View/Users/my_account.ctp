@@ -282,7 +282,7 @@ $(function(){
                                   // Debut foreach
 
                                     $date_deposit = $orders_current[$i]['Order']['date_deposit'];
-                                    $dateTime = new DateTime($date_deposit);
+
                                     $display_date_deposit = date('d/m/Y', strtotime($date_deposit) );
                                    
 
@@ -292,7 +292,6 @@ $(function(){
                                     $state_deposit = $orders_current[$i]['Order']['state_deposit'];
 
                                     $date_withdrawal = $orders_current[$i]['Order']['date_withdrawal'];
-                                    $dateTime = new DateTime($date_withdrawal);
                                     $display_date_withdrawal = date('d/m/Y', strtotime($date_withdrawal) );
 
                                     if($orders_current[$i]['Order']['state_deposit'] == 0){
@@ -378,17 +377,12 @@ $(function(){
                                   // Debut foreach
 
                                     $date_deposit = $orders_history[$i]['Order']['date_deposit'];
-                                    $dateTime = new DateTime($date_deposit);
                                     $display_date_deposit = date('d/m/Y', strtotime($date_deposit) );
                                    
-
-
-
                                     $hour_deposit = $orders_history[$i]['Order']['hour_deposit'];
                                     $state_deposit = $orders_history[$i]['Order']['state_deposit'];
 
                                     $date_withdrawal = $orders_history[$i]['Order']['date_withdrawal'];
-                                    $dateTime = new DateTime($date_withdrawal);
                                     $display_date_withdrawal = date('d/m/Y', strtotime($date_withdrawal) );
 
 

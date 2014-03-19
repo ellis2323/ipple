@@ -374,11 +374,11 @@ class OrdersController extends AppController {
 						$format = 'Y-m-d H:i:s';
 
 						if(!empty($this->request->data['Order']['date_deposit'])){
-							$deposit = new DateTime($this->request->data['Order']['date_deposit']);
+							$deposit = $this->request->data['Order']['date_deposit'];
 						}
 
 						if(!empty($this->request->data['Order']['date_withdrawal'])){
-							$withdrawal = new DateTime($this->request->data['Order']['date_withdrawal']);
+							$withdrawal = $this->request->data['Order']['date_withdrawal'];
 						}
 
 						// Si on met à jour la commande de dépot
@@ -389,7 +389,7 @@ class OrdersController extends AppController {
 															'id' 				=> $order_id,
 															'user_id'			=> $this->Session->read('Auth.User.id'),
 															'nb_bacs'			=> $this->request->data['Order']['nb_bacs'],
-															'date_deposit' 		=> $deposit->format($format),
+															'date_deposit' 		=> $deposit,
 															'hour_deposit'		=> $this->request->data['Order']['hours'],
 															'concierge_deposit'	=> $this->request->data['Order']['concierge_deposit'],
 
@@ -399,14 +399,14 @@ class OrdersController extends AppController {
 																'id'				=> $order['Order']['address_id'],
 																'city_id'			=> $this->request->data['Order']['cities'],
 																'postal_id'			=> $this->request->data['Order']['postals'],
-																'firstname'			=> $this->request->data['Address'][0]['firstname'],
-																'lastname'			=> $this->request->data['Address'][0]['lastname'],
-																'street'			=> $this->request->data['Address'][0]['street'],
-																'digicode'			=> $this->request->data['Address'][0]['digicode'],
-																'floor'				=> $this->request->data['Address'][0]['floor'],
-																'comment'			=> $this->request->data['Address'][0]['comment'],
-																'phone'				=> $this->request->data['Address'][0]['phone'],
-																'company'				=> $this->request->data['Address'][0]['company'],
+																'firstname'			=> $this->request->data['Address']['firstname'],
+																'lastname'			=> $this->request->data['Address']['lastname'],
+																'street'			=> $this->request->data['Address']['street'],
+																'digicode'			=> $this->request->data['Address']['digicode'],
+																'floor'				=> $this->request->data['Address']['floor'],
+																'comment'			=> $this->request->data['Address']['comment'],
+																'phone'				=> $this->request->data['Address']['phone'],
+																'company'			=> $this->request->data['Address']['company'],
 																)
 							);
 
@@ -419,7 +419,7 @@ class OrdersController extends AppController {
 															'id' 					=> $order_id,
 															'user_id'				=> $this->Session->read('Auth.User.id'),
 															'nb_bacs'				=> $this->request->data['Order']['nb_bacs'],
-															'date_withdrawal' 		=> $withdrawal->format($format),
+															'date_withdrawal' 		=> $withdrawal,
 															'hour_withdrawal'		=> $this->request->data['Order']['hours'],
 															'concierge_withdrawal'	=> $this->request->data['Order']['concierge_withdrawal'],
 
@@ -429,14 +429,14 @@ class OrdersController extends AppController {
 																'id'				=> $order['Order']['address_id'],
 																'city_id'			=> $this->request->data['Order']['cities'],
 																'postal_id'			=> $this->request->data['Order']['postals'],
-																'firstname'			=> $this->request->data['Address'][0]['firstname'],
-																'lastname'			=> $this->request->data['Address'][0]['lastname'],
-																'street'			=> $this->request->data['Address'][0]['street'],
-																'digicode'			=> $this->request->data['Address'][0]['digicode'],
-																'floor'				=> $this->request->data['Address'][0]['floor'],
-																'comment'			=> $this->request->data['Address'][0]['comment'],
-																'phone'				=> $this->request->data['Address'][0]['phone'],
-																'company'			=> $this->request->data['Address'][0]['company'],
+																'firstname'			=> $this->request->data['Address']['firstname'],
+																'lastname'			=> $this->request->data['Address']['lastname'],
+																'street'			=> $this->request->data['Address']['street'],
+																'digicode'			=> $this->request->data['Address']['digicode'],
+																'floor'				=> $this->request->data['Address']['floor'],
+																'comment'			=> $this->request->data['Address']['comment'],
+																'phone'				=> $this->request->data['Address']['phone'],
+																'company'			=> $this->request->data['Address']['company'],
 																)
 							);
 
@@ -450,10 +450,10 @@ class OrdersController extends AppController {
 															'id' 					=> $order_id,
 															'user_id'				=> $this->Session->read('Auth.User.id'),
 															'nb_bacs'				=> $this->request->data['Order']['nb_bacs'],
-															'date_deposit' 			=> $deposit->format($format),
+															'date_deposit' 			=> $deposit,
 															'hour_deposit'			=> $this->request->data['Order']['hours'],
 															'concierge_deposit'		=> $this->request->data['Order']['concierge_deposit'],
-															'date_withdrawal' 		=> $withdrawal->format($format),
+															'date_withdrawal' 		=> $withdrawal,
 															'hour_withdrawal'		=> $this->request->data['Order']['hours'],
 															'concierge_withdrawal'	=> $this->request->data['Order']['concierge_withdrawal'],
 
@@ -463,14 +463,14 @@ class OrdersController extends AppController {
 																'id'				=> $order['Order']['address_id'],
 																'city_id'			=> $this->request->data['Order']['cities'],
 																'postal_id'			=> $this->request->data['Order']['postals'],
-																'firstname'			=> $this->request->data['Address'][0]['firstname'],
-																'lastname'			=> $this->request->data['Address'][0]['lastname'],
+																'firstname'			=> $this->request->data['Address']['firstname'],
+																'lastname'			=> $this->request->data['Address']['lastname'],
 																'street'			=> $this->request->data['Address'][0]['street'],
 																'digicode'			=> $this->request->data['Address'][0]['digicode'],
 																'floor'				=> $this->request->data['Address'][0]['floor'],
 																'comment'			=> $this->request->data['Address'][0]['comment'],
 																'phone'				=> $this->request->data['Address'][0]['phone'],
-																'company'				=> $this->request->data['Address'][0]['company'],
+																'company'			=> $this->request->data['Address'][0]['company'],
 																)
 							);
 
@@ -479,7 +479,7 @@ class OrdersController extends AppController {
 						
 						if($this->Order->saveAll($data_order, array('validate' => 'first', 'deep' => true) ) ){
 							$this->Session->setFlash('Données correctement sauvegardées', 'alert', array('class' => 'success'));
-							$this->redirect(array('controller' => 'users', 'action' => 'my_account#livraisons'));
+							$this->redirect(array('controller' => 'users', 'action' => 'my_account', '#' => 'livraisons'));
 						}
 						else {
 							$this->Session->setFlash('Erreur dans la sauvegarde', 'alert', array('class' => 'warning'));
