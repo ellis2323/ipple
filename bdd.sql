@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 19, 2014 at 05:52 PM
+-- Generation Time: Mar 20, 2014 at 06:44 PM
 -- Server version: 5.5.35
 -- PHP Version: 5.3.10-1ubuntu3.10
 
@@ -39,26 +39,10 @@ CREATE TABLE IF NOT EXISTS `addresses` (
   `postal_id` int(11) NOT NULL,
   `city_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
-
---
--- Dumping data for table `addresses`
---
-
-INSERT INTO `addresses` (`id`, `firstname`, `lastname`, `phone`, `company`, `street`, `floor`, `comment`, `digicode`, `postal_id`, `city_id`, `user_id`) VALUES
-(1, 'corentin', 'chateil', '0144445500', '', 'dfgfdg', 5, '', '', 2, 3, 6),
-(2, 'corentin', 'chateil', '', '', 'qsdqsd', 5, '', '', 2, 3, 6),
-(3, 'corentin22', 'chateil', '0144445500', '', 'dsfsdfsdf', 5, '', '', 2, 3, 6),
-(4, 'q', 'qsdqsd', '', '', 'sdfsdfsfsdfsd', 2, '', '', 2, 3, 6),
-(5, 'corentin', 'chateil', '', '', 'qsdqsdqsdqsdqs', 5, '', '', 2, 3, 6),
-(6, 'corentin', 'chateil', '', '', 'dsfsdfsdf', 5, '', '', 2, 3, 6),
-(7, 'corentin', 'chateil', '0144445500', '', 'sdfsdfsdf', 5, '', '', 2, 3, 6),
-(8, 'corentin', 'chateil', '0144445500', '', 'dfgdfg', 5, '', '', 2, 3, 6),
-(9, 'corentin', 'chateil', '', '', 'qqdqd 8', 5, '', '', 2, 3, 6),
-(10, 'y', 'pie', '', '', 'fgfffg', 3, '', '', 2, 3, 6),
-(11, 'corentin', 'chateil', '0144445500', '', 'xcvcv', 5, '', '', 2, 3, 6),
-(12, 'corentinssss', 'chateilsss', '', '', 'qdqsd re qdqdqd qsd', 2, '', '', 2, 3, 6);
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -237,7 +221,14 @@ CREATE TABLE IF NOT EXISTS `dates_block` (
   `value` tinyint(2) NOT NULL,
   `type` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `dates_block`
+--
+
+INSERT INTO `dates_block` (`id`, `value`, `type`) VALUES
+(1, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -315,11 +306,11 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `address_id` int(11) NOT NULL,
-  `date_deposit` datetime DEFAULT NULL,
+  `date_deposit` varchar(255) DEFAULT NULL,
   `hour_deposit` int(11) DEFAULT NULL,
   `state_deposit` int(11) DEFAULT NULL,
   `concierge_deposit` tinyint(1) NOT NULL,
-  `date_withdrawal` datetime DEFAULT NULL,
+  `date_withdrawal` varchar(255) DEFAULT NULL,
   `hour_withdrawal` int(11) DEFAULT NULL,
   `state_withdrawal` int(11) DEFAULT NULL,
   `concierge_withdrawal` tinyint(1) NOT NULL,
@@ -328,15 +319,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Permet de gérer les commandes et à lier les différentes livr' AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`id`, `user_id`, `address_id`, `date_deposit`, `hour_deposit`, `state_deposit`, `concierge_deposit`, `date_withdrawal`, `hour_withdrawal`, `state_withdrawal`, `concierge_withdrawal`, `nb_bacs`, `state`, `created`, `modified`) VALUES
-(1, 6, 11, '2014-03-22 00:00:00', 3, 0, 0, NULL, NULL, NULL, 0, 4, 1, '2014-03-19 17:33:59', '2014-03-19 17:33:59'),
-(2, 6, 12, '2014-03-22 00:00:00', 3, 0, 1, '2014-03-29 00:00:00', 3, 0, 1, 7, 1, '2014-03-19 17:36:36', '2014-03-19 17:36:36');
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Permet de gérer les commandes et à lier les différentes livr' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -372,14 +355,16 @@ CREATE TABLE IF NOT EXISTS `postals` (
   `state` tinyint(1) NOT NULL,
   `city_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `postals`
 --
 
 INSERT INTO `postals` (`id`, `label`, `state`, `city_id`) VALUES
-(2, '75000', 0, 4);
+(2, '75000', 0, 4),
+(5, '75002', 1, 1),
+(6, '78005', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -402,21 +387,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `modified` datetime NOT NULL,
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `rules`, `bac_count`, `order_count`, `role`, `token`, `created`, `modified`, `active`) VALUES
-(6, 'admin@admin.admin', 'ff8fa08d63f973515aea4bffae9601e3d412c660', '', '', 1, 0, 0, 90, '0f4ec3c7f59b6346e2c0f3a521db89fc', '2014-03-14 11:49:43', '2014-03-17 10:55:40', 1),
-(7, '1@qq5.glourk', '464d46b0a614af1f55efe184f76f3b0caf29f3fb', '', '', 0, 0, 0, 0, 'b252c30fee2074366c66db6257af8f7a', '2014-03-14 14:19:52', '2014-03-14 14:19:52', 0),
-(8, '1@qq5.glourkm', '464d46b0a614af1f55efe184f76f3b0caf29f3fb', '', '', 0, 0, 0, 0, '3df36fce007ff45c8739bcc5bcf78e88', '2014-03-14 14:22:08', '2014-03-14 14:22:08', 0),
-(9, 'test@test.test', '6d0d914eb0dd5b84bb092f568684e35e0c70e946', '', '', 0, 0, 0, 0, '162fe881c0afa0d599e1cfee746d708c', '2014-03-15 18:45:11', '2014-03-15 18:45:11', 0),
-(10, 'test@e3b.org', '1e8912b23578ebb42820e31fb6364f63bb51e6a8', '', '', 0, 0, 0, 0, '', '2014-03-15 18:49:03', '2014-03-15 18:50:17', 1),
-(11, 'user@user.user', '7cd9912330da349edbd8005a9c905b6033d1fb08', '', '', 1, 0, 0, 0, '7acd055cfc4a82ef311a3f6b809fbe02', '2014-03-17 10:56:29', '2014-03-17 11:04:59', 1),
-(12, 'testus@e3b.org', '6d0d914eb0dd5b84bb092f568684e35e0c70e946', '', '', 0, 0, 0, 0, '', '2014-03-17 17:19:27', '2014-03-17 17:19:27', 1),
-(13, 'rpietra@gmail.com', 'c7ebc4a8579b44a50ed2838562d6732a452de198', '', '', 0, 0, 0, 0, '8ef7e6dac8528188e2be815467a97e5a', '2014-03-18 11:02:12', '2014-03-18 11:02:12', 0);
+(1, 'rpietra@gmail.com', 'f6f765068a7b0033b49cdad2e08f599d08dbc338', '', '', 1, 0, 0, 0, 'a48e0f6d99833fbe6858ccb183fcd343', '2014-03-20 16:04:58', '2014-03-20 16:20:13', 1),
+(2, 'admin@admin.admin', 'ff8fa08d63f973515aea4bffae9601e3d412c660', '', '', 1, 0, 0, 0, '', '2014-03-20 16:11:36', '2014-03-20 16:18:22', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
