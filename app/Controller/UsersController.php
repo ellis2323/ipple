@@ -53,6 +53,9 @@ class UsersController extends AppController {
 				$verif_password = $this->User->findByIdAndPassword($user_id, $this->Auth->password($password));
 
 				// Validation des données
+
+				$this->User->set($this->request->data);
+
 				if($this->User->validates()) {
 
 					if(!empty($verif_password) ){
@@ -65,15 +68,21 @@ class UsersController extends AppController {
 						// Si tout est ok, on sauvegarde
 						$this->User->save();
 
-						$this->Session->setFlash('Votre mot de passe à correctement été modifié', 'alert', array('class' => 'success'));
-						$this->redirect(array('controller' => 'users', 'action' => 'my_account#password'));
+						$this->Session->destroy(); // on efface la session courante
 
+						$this->Session->setFlash('Votre mot de passe à correctement été modifié. Merci de vous reconnecter.', 'alert', array('class' => 'success'));
+						$this->redirect(array('controller' => 'users', 'action' => 'login'));
 
+						
 					}
 					else {
-						$this->Session->setFlash('Votre mot de passe actuel est incorrect', 'alert', array('class' => 'danger'));
+						$this->Session->setFlash('Veuillez renseignez votre mot de passe', 'alert', array('class' => 'danger'));
 						$this->redirect(array('controller' => 'users', 'action' => 'my_account#password'));
 					}
+				}
+				else {
+					$this->Session->setFlash('Votre mot de passe actuel est incorrect', 'alert', array('class' => 'danger'));
+					$this->redirect(array('controller' => 'users', 'action' => 'my_account#password'));
 				}
 			}
 			// #### /Password
@@ -379,7 +388,7 @@ class UsersController extends AppController {
 			}
 		}
 
-		/* Editer un bac */
+		/* Editer le compte  */
 		public function edit() {
 
 				// Si on reçoit des données post

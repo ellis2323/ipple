@@ -65,7 +65,6 @@ class AppController extends Controller {
 	            $this->layout = 'admin';
 	        }
 
-
 	        $landing = false;
 
 	        if($landing){

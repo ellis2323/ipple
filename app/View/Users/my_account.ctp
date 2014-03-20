@@ -163,7 +163,7 @@ $(function(){
                                 </div>
                             
                                 <div class="col-lg-6 col-lg-offset-6 col-md-6 col-md-offset-6">
-                                        <p><button class="btn  btn-md btn-primary btn-block" style="background-color:#65b7f2;color:white">Changer mon mot de passe</button></p>
+                                        <p><button type="submit" class="btn  btn-md btn-primary btn-block" style="background-color:#65b7f2;color:white">Changer mon mot de passe</button></p>
                                         
                                         <p><span class="blue">*</span> Champs obligatoires</p>
                                 </div>
@@ -253,7 +253,11 @@ $(function(){
                 <!-- Si aucune commandes -->
                 <?php if(empty($orders_current) && empty($orders_history)){
                 ?>
-                    <a href="<?= $this->Html->url(array('controller' => 'orders', 'action' => 'step1')); ?>" ><button type"submit" class="btn-lg color-btn" >Prévoir une livraison de bacs vides</button></a>
+                    <a href="<?= $this->Html->url(array('controller' => 'orders', 'action' => 'step1')); ?>" >
+                        <div class="btn btn-lg color-btn">
+                            Prévoir une livraison de bacs vides
+                        </div>
+                    </a>
                 <?php 
                 }
                 ?>
