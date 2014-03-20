@@ -20,15 +20,18 @@ class Order extends AppModel {
 
 	public $belongsTo = array(
 							'User',
-							'Address'
+							'Address',
+
 	);
+
 
 	public $hasAndBelongsToMany = array('Bac');
 
 	public $hasMany = array(
 							'BacR' => array(
 											'dependent' => true
-											)
+											),
+
 							);
 
 	 

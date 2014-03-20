@@ -72,10 +72,6 @@ class Address extends AppModel {
 
 		'postal' => array(
 
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				'message' => 'Veuillez choisir un code postal',
-			),
 			'numeric' => array(
 				'rule' => array('numeric'),
 				'message' => 'Veuillez choisir un code postal valide',
@@ -91,14 +87,7 @@ class Address extends AppModel {
 		),
 
 		'floor' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				
-			),
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				'message' => 'Veuillez préciser votre étage',			
-				),
+
 
 		),
 

@@ -5,7 +5,7 @@ App::import('Model','Hour');
 App::import('Model','City');
 App::import('Model','Param');
 App::import('Model', 'Postal');
-
+App::import('Model', 'Address');
 /**
  * Orders Controller
  *
@@ -19,6 +19,20 @@ class OrdersController extends AppController {
 		parent::beforeFilter();
 		$this->Auth->deny();
 	}
+
+    public function beforeRender() {
+        parent::beforeRender();
+        $params = $this->Session->read('form.params');
+        $this->set('params', $params);
+    }
+
+
+    public function index() {
+
+    	debug($this->Order->find('all'));
+
+    }
+
 
 /**
  * Components
@@ -61,8 +75,13 @@ class OrdersController extends AppController {
 				$data = $this->request->data;
 				$this->Order->set($data);
 
+				$address = new Address();
+				$address->set($data);
+	
+
+
 				// Si les données sont validées
-				if($this->Order->validates()){
+				if($this->Order->validates() && $address->validates()){
 					// On transforme les données pour les passer au controller
 					$data = base64_encode(serialize($this->request->data));
 					//debug($data);
@@ -96,43 +115,49 @@ class OrdersController extends AppController {
 
 				// Si on poste des données
 				if(!empty($this->request->data)){	
+					//$address = new Address();
+
 					$data_post = $this->request->data;
+
 					$this->Order->set($data_post);
+					$r =  $this->Order->validates() ;
 
 					// Si les données sont validées
-					if($this->Order->validates()){
-						// On transforme les données pour les passer au controller
+					if($r){
 
-						// On assemble les tableau de données
+						$address = new Address();
+
+						if($address->save($this->request->data) ){
+							$address_id = $address->id;
+
+							$data = array(
+								'Order' => array(
+										'cities' => $data_get['Order']['cities'],
+										'nb_bacs' => $data_get['Order']['nb_bacs'],
+										'date_deposit' => $this->request->data['Order']['date_deposit'],
+										'hour_deposit' => $this->request->data['Order']['hdeposits'],
+										'concierge_deposit' => $this->request->data['Order']['concierge_deposit'],
+								),
+								'Id' => $address_id,
+
+							);
+							// On convertis les données avant de les envoyer
+							$data = base64_encode(serialize($data));
+
+							$this->redirect(array('controller'=> 'orders','action' => 'step3', $data) );
+							
+
+						}
+						else { 
+
+							$this->Session->setFlash('Erreur lors de l\'enregistrement, merci de corriger vos erreures', 'alert', array('class' => 'danger'));
+						}
+
 						
-						//
+					}
+					else {
 
-						$data = array(
-							'Order' => array(
-									'cities' => $data_get['Order']['cities'],
-									'nb_bacs' => $data_get['Order']['nb_bacs'],
-									'date_deposit' => $this->request->data['Order']['date_deposit'],
-									'hour_deposit' => $this->request->data['Order']['hdeposits'],
-									'concierge_deposit' => $this->request->data['Order']['concierge_deposit'],
-							),
-							'Address' => array(
-									'lastname' => $this->request->data['Address'][0]['lastname'],
-									'firstname' => $this->request->data['Address'][0]['firstname'],
-									'company' => $this->request->data['Address'][0]['company'],
-									'phone' => $this->request->data['Address'][0]['phone'],
-									'street' => $this->request->data['Address'][0]['street'],
-									'postals' => $this->request->data['Address'][0]['postals'],
-									'floor' => $this->request->data['Address'][0]['floor'],
-									'digicode' => $this->request->data['Address'][0]['digicode'],
-									'comment' => $this->request->data['Address'][0]['comment'],
-							),
-						);
-
-						// On convertis les données avant de les envoyer
-						$data = base64_encode(serialize($data));
-
-
-						$this->redirect(array('controller'=> 'orders','action' => 'step3', $data) );
+						echo " erreur";
 					}
 				}
 			}
@@ -156,6 +181,8 @@ class OrdersController extends AppController {
 				$data_get = unserialize(base64_decode($data_get) );
 				$date_deposit = $data_get['Order']['date_deposit'];
 
+				$address_id = $data_get['Id'];
+
 				$concierge_deposit = $data_get['Order']['concierge_deposit'];
 				$this->set(compact('concierge_deposit'));
 
@@ -165,10 +192,14 @@ class OrdersController extends AppController {
 				// Si on poste des données
 				if(!empty($this->request->data)){	
 					$data_post = $this->request->data;
+
+
+
 					$this->Order->set($data_post);
 
+
 					// Si les données sont validées
-					if($this->Order->validates() && $this->Order->Address->validates()){
+					if($this->Order->validates() ){
 						// On transforme les données pour les passer au controller
 						$data = base64_encode(serialize($this->request->data));
 
@@ -181,10 +212,8 @@ class OrdersController extends AppController {
 						// On redéfinis l'index des informations de la commande
 						$data_order = array('Order' => $data_order);
 
-						// On redéfinis l'index des informations de l'adresse
-						$data_address = array('Address' => $data_get['Address']);
 
-						$data_full = $data_order + $data_address;
+						$data_full = $data_order;
 
 						//Si tout est ok, on enregistre les données
 						/*#######################*/
@@ -215,21 +244,8 @@ class OrdersController extends AppController {
 															'state'						=> 1,
 															
 															),
-												"Address" =>
-															array(
-																'user_id'			=> $this->Session->read('Auth.User.id'),
-																'city_id'			=> $data_full['Order']['cities'],
-																'postal_id'			=> $data_full['Address']['postals'],
-																'firstname'			=> $data_full['Address']['firstname'],
-																'lastname'			=> $data_full['Address']['lastname'],
-																'street'			=> $data_full['Address']['street'],
-																'digicode'			=> $data_full['Address']['digicode'],
-																'floor'				=> $data_full['Address']['floor'],
-																'comment'			=> $data_full['Address']['comment'],
-																'state'				=> 1
-																),
-							);
 
+							);
 
 						}
 
@@ -246,20 +262,7 @@ class OrdersController extends AppController {
 															'state_withdrawal'	=> 0,
 															'state'				=> 1,
 															),
-												"Address" =>
-															array(
-																'user_id'			=> $this->Session->read('Auth.User.id'),
-																'city_id'			=> $data_full['Order']['cities'],
-																'postal_id'			=> $data_full['Address']['postals'],
-																'firstname'			=> $data_full['Address']['firstname'],
-																'lastname'			=> $data_full['Address']['lastname'],
-																'street'			=> $data_full['Address']['street'],
-																'digicode'			=> $data_full['Address']['digicode'],
-																'floor'				=> $data_full['Address']['floor'],
-																'comment'			=> $data_full['Address']['comment'],
-																'phone'				=> $data_full['Address']['phone'],
-																'company'			=> $data_full['Address']['company'],
-																),
+
 							);
 						}
 
@@ -272,6 +275,8 @@ class OrdersController extends AppController {
 													),
 										);
 
+							
+
 							$this->Order->saveAll($data_user);
 							$this->Session->write('Auth.User.rules', $data_full['Order']['cgv']);
 
@@ -280,7 +285,7 @@ class OrdersController extends AppController {
 						// Si la commande à bien été enregistré, on ajoute les livraisons associées
 						if($this->Order->saveAll($data_order)) {
 								
-								$this->Order->saveField('address_id', $this->Order->Address->id);
+								$this->Order->saveField('address_id', $address_id);
 
 								// Envoie de l'email de notification
 
@@ -314,6 +319,109 @@ class OrdersController extends AppController {
 		} 
 
 		/* FIN COMMANDE DES BACS */
+
+
+##############################
+
+	public function msf_index() {
+		$this->Session->delete('form');
+	}
+	
+	/**
+	 * this method is executed before starting the form and retrieves one important parameter:
+	 * the form steps number
+	 * you can hardcode it, but in this example we are getting it by counting the number of files that start with msf_step_
+	 */
+	public function msf_setup() {
+		App::uses('Folder', 'Utility');
+		$ordersViewFolder = new Folder(APP.'View'.DS.'Orders');
+		$steps = count($ordersViewFolder->find('msf_step_.*\.ctp'));
+		
+		$this->Session->write('form.params.steps', $steps);
+		$this->Session->write('form.params.maxProgress', 0);
+
+
+		$this->redirect(array('action' => 'msf_step', 1));
+	}
+	
+	/**
+	 * this is the core step handling method
+	 * it gets passed the desired step number, performs some checks to prevent smart users skipping steps
+	 * checks fields validation, and when succeding, it saves the array in a session, merging with previous results
+	 * if we are at last step, data is saved
+	 * when no form data is submitted (not a POST request) it sets this->request->data to the values stored in session
+	 */
+	public function msf_step($stepNumber) {
+		
+		/**
+		 * check if a view file for this step exists, otherwise redirect to index
+		 */
+		if (!file_exists(APP.'View'.DS.'Orders'.DS.'msf_step_'.$stepNumber.'.ctp')) {
+			$this->redirect('/users/msf_index');
+		}
+		
+		/**
+		 * determines the max allowed step (the last completed + 1)
+		 * if choosen step is not allowed (URL manually changed) the user gets redirected
+		 * otherwise we store the current step value in the session
+		 */
+		$maxAllowed = $this->Session->read('form.params.maxProgress') + 1;
+		if ($stepNumber > $maxAllowed) {
+			$this->redirect('/orders/msf_step/'.$maxAllowed);
+		} else {
+			$this->Session->write('form.params.currentStep', $stepNumber);
+		}
+		
+		/**
+		 * check if some data has been submitted via POST
+		 * if not, sets the current data to the session data, to automatically populate previously saved fields
+		 */
+		if ($this->request->is('post')) {
+			$address = new Address();
+			/**
+			 * set passed data to the model, so we can validate against it without saving
+			 */
+			$this->Order->set($this->request->data);
+			$address->set($this->request->data);
+			/**
+			 * if data validates we merge previous session data with submitted data, using CakePHP powerful Hash class (previously called Set)
+			 */
+
+
+			if ($this->Order->validates() && $address->validates() ) {
+				$prevSessionData = $this->Session->read('form.data');
+				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+				
+				/**
+				 * if this is not the last step we replace session data with the new merged array
+				 * update the max progress value and redirect to the next step
+				 */
+				if ($stepNumber < $this->Session->read('form.params.steps')) {
+					$this->Session->write('form.data', $currentSessionData);
+					$this->Session->write('form.params.maxProgress', $stepNumber);
+					$this->redirect(array('action' => 'msf_step', $stepNumber+1));
+				} else {
+					/**
+					 * otherwise, this is the final step, so we have to save the data to the database
+					 */
+					$this->Order->save($currentSessionData);
+					$this->Session->setFlash('Account created!');
+					$this->redirect('/orders/msf_index');
+				}
+			}
+		} else {
+			$this->request->data = $this->Session->read('form.data');
+		}
+		
+		/**
+		 * here we load the proper view file, depending on the stepNumber variable passed via GET
+		 */
+		$this->render('msf_step_'.$stepNumber);
+	}
+
+
+##############################
+
 
 		public function view($order_id) {
 			$order_edit = $this->Order->find('first', 

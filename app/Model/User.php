@@ -11,7 +11,7 @@ class User extends AppModel {
 
 
 
-	public $hasMany = array('Order' => array('dependent' => true), 'Bac');
+	public $hasMany = array('Order' => array('dependent' => true), 'Bac', 'Address' => array('dependent' => true));
 
 
 /**
