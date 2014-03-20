@@ -152,7 +152,7 @@ class OrdersController extends AppController {
 
 					$this->Order->set($data_post);
 
-					$r =  $this->Order->validates() ;
+					$r = $this->Order->validates() ;
 
 					// Si les données sont validées
 					if($r){

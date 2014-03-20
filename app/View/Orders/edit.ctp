@@ -314,6 +314,7 @@
                                     'class' => 'form-control',
                                     'div' => 'col-lg-6 col-md-6 col-sm-6',
                                     'required' => true,
+                                    'id'        => 'OrderDateDeposit',
                                     'value'     => $order['Order']['date_deposit']
 
                                 )
@@ -326,7 +327,7 @@
                                  $(document).ready(function(){
                                             var datesBlocked = ["2014-03-14","2014-03-15","2014-03-16"];
 
-                                              $("#date_deposit").click(function(){
+                                              $("#OrderDateDeposit").click(function(){
                                                      $("#datepicker").datepicker(
                                                     {
                                                            dateFormat: 'dd-mm-yy',
@@ -337,7 +338,7 @@
                                                                 return [ datesBlocked.indexOf(string) == -1 ];
                                                             },
                                                            onSelect: function(dateText, inst){
-                                                                 $('#date_deposit').val(dateText);
+                                                                 $('#OrderDateDeposit').val(dateText);
                                                                  $("#datepicker").datepicker("destroy");
                                                           }
                                                      });
@@ -362,7 +363,6 @@
                                 ?>
                                 <?php
                                     echo $this->Form->input('Order.concierge_deposit', array(
-                                                        'class' => 'form-control',
                                                         'label' => false,
                                                         'type'  => 'checkbox',
 
