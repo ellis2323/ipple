@@ -5,10 +5,16 @@ $( document ).ready(function() {
 
 	var concierge = "<?= $concierge_deposit;?>";
 
+	var lol = "<?= $lol;?>";
 
-	if(concierge!=1){
-    	$('#return').hide();
-	}
+	if(lol==0){
+		// Si on ne dépose pas chez le concierge
+		if(concierge == 0 ){
+	    	$('#return').hide(); // on cache le bloc 
+		}
+	}	
+
+
 	else {
 	    $("#OrderSelectDate").prop('required',true);
 	};

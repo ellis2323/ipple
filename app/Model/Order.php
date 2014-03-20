@@ -61,15 +61,16 @@ class Order extends AppModel {
 												),
 								'date_deposit' => array(
 														'CheckDate' =>array(
-																			'rule' => 'checkDate',
+																			'rule' => array('checkDate', null),
 																			'message' => 'La date selectionnée est indisponible',
 																		),
 								),
 								'date_withdrawal' => array(								
 														'CheckDate' =>array(
-																			'rule' => 'checkDate',
+																			'rule' => array('checkDate', 'withdraw'),
 																			'message' => 'La date selectionnée est indisponible',
 																		),
+
 								),
 
 						);
@@ -108,7 +109,7 @@ class Order extends AppModel {
 	}
 
 	// Permet de vérifier que la date de retrait est supérieur à la date de dépot
-	public function checkWithdraw($data, $data_deposit){
+	public function checkWithdraw($data, $field){
 		$deposit = $this->data[$this->name][$data_deposit];
 
 		// On convertis le datetime en timestamp
@@ -126,8 +127,11 @@ class Order extends AppModel {
 	}
 
 	// Permet de vérifier la disponibilité de la date
-	public function checkDate($data){
+	public function checkDate($data, $field=null){
 
+			if($field != NULL && $this->data[$this->alias][$field] == 1){
+				return true;
+			}
 		// On charge le model contenant les dates bloquées
 
 		$DatesBlock = new DatesBlock();
@@ -138,6 +142,7 @@ class Order extends AppModel {
 		$date = array_shift($data);
 
 		$date = strtotime($date);
+		$today = time();
 
 		// On définis nos attributs
 		/* On inverse le jour et le mois car date américaine */
@@ -154,13 +159,20 @@ class Order extends AppModel {
 		$day_week_block = $DatesBlock->findByValueAndType($day_week, 4);
 
 
+
 		// Si on trouve la date
 		if(!empty($day_block) ||  !empty($month_block) || !empty($week_block) || !empty($day_week_block)){
 			return false;
 
 		}
 		else {
-			return true;
+			// On vérifie que la date est supérieur à aujourd'hui
+			if($date < $today){
+				return false;
+			}
+			else {
+				return true;
+			}
 		}		
 
 	}

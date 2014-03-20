@@ -102,18 +102,33 @@ class OrdersController extends AppController {
 			if(!empty($data_get)){
 
 
+				if(empty($this->request->data)){
+					// Si l'utilisateur à déjà une adresse enregistrée
+					$address_user = new Address();
+					$data_user = $address_user->find('first', array(
+															'conditions' => array(
+																					'user_id' => $this->Session->read('Auth.User.id'),
+															),
+															'order'		=> array(
+																					'Address.created' => 'desc',
+															),
+															'recursive'	=> -1
 
-				// Si l'utilisateur à déjà une adresse enregistrée
-				$user = new User();
-				$data_user = $user->find('first', array(
-														'conditions' => array(
-																				'id' => $this->Session->read('Auth.User.id'),
-															)
+					));
 
-				));
-				if($data_user){
-					$data_address = $data_user['Address'];
-					$this->set('data_user', $data_address);
+					// les données de la bdd
+					if($data_user){
+						$data_address[0] = $data_user['Address'];
+						$this->set('data_user', $data_address);
+					}
+				}
+				// les données du formulaire
+				else {
+
+					$var[0] = $this->request->data['Address'];
+					$var[0]['postal_id'] = $this->request->data['Address']['postals'];
+
+					$this->set('data_user', $var);
 				}
 
 
@@ -136,14 +151,16 @@ class OrdersController extends AppController {
 					$data_post = $this->request->data;
 
 					$this->Order->set($data_post);
-					
+
 					$r =  $this->Order->validates() ;
 
 					// Si les données sont validées
 					if($r){
-
+						debug($data_get);
 						$address = new Address();
-
+						//debug($this->request->data);
+						$this->request->data['Address']['postal_id'] = $this->request->data['Address']['postals'];
+						$this->request->data['Address']['city_id'] = $data_get['Order']['cities'];
 
 						if($address->save($this->request->data) ){
 							$address->saveField('user_id', $this->Session->read('Auth.User.id'));
@@ -170,14 +187,14 @@ class OrdersController extends AppController {
 						}
 						else { 
 
-							$this->Session->setFlash('Erreur lors de l\'enregistrement, merci de corriger vos erreures', 'alert', array('class' => 'danger'));
+							$this->Session->setFlash('Erreur lors de l\'enregistrement, merci de corriger vos erreurs', 'alert', array('class' => 'danger'));
 						}
 
 						
 					}
 					else {
 
-						$this->Session->setFlash('Erreur lors de l\'enregistrement, merci de corriger vos erreures', 'alert', array('class' => 'danger'));
+						$this->Session->setFlash('Erreur lors de l\'enregistrement, merci de corriger vos erreurs', 'alert', array('class' => 'danger'));
 					}
 				}
 			}
@@ -188,7 +205,7 @@ class OrdersController extends AppController {
 
 		// Commande : Etape 3
 		public function step3($data_get = null) {
-
+			$this->set('lol', 0);
 			// On récupère les créneaux horaires
 		   	$hours = new Hour();
 
@@ -214,6 +231,8 @@ class OrdersController extends AppController {
 
 				// Si on poste des données
 				if(!empty($this->request->data)){	
+					$this->set('lol', 1);
+
 					$data_post = $this->request->data;
 
 

@@ -18,9 +18,10 @@ if(empty($data_user)) {
                                     'digicode'  => null,
                                     'postal_id' => null,
                                     'city_id'   => null,
-                            )
+                                    )
                     );
 }
+
 
 ?>
 

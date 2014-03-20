@@ -18,7 +18,7 @@
     <?= $this->Html->script('jquery-1.10.2');?>
     <?= $this->Html->script('jquery-ui-1.10.4.custom.min');?>
     <?= $this->Html->script('bootstrap');?>
-
+    <?= $this->Html->script('cakeboostrap');?>
     <?= $this->fetch('css');?>
 
 </head>
