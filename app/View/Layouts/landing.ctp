@@ -35,7 +35,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-                <a class="navbar-brand" href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'landing'));?>">                   
+                <a class="navbar-brand" href="<?= $this->Html->url('/');?>">                   
                     <?php echo $this->Html->image('logo2.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>
                 </a>
             </div>

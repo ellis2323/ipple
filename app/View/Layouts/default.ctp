@@ -35,7 +35,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-                <a class="navbar-brand" href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'landing'));?>">                   
+                <a class="navbar-brand" href="<?= $this->Html->url('/');?>">                   
                     <?php echo $this->Html->image('logo2.png', array('alt' => 'responsive image', 'class' => 'img-responsive')); ?>
                 </a>
             </div>
@@ -44,13 +44,21 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
 
-                    <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', '#' => 'prix') );?>">Prix</a></li>
+                    <li>
+                        <a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', '#' => 'prix') );?>">Prix</a>
+                   </li>
 
-                    <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', '#' => 'securite') );?>">Sécurité</a></li>
+                    <li>
+                        <a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', '#' => 'securite') );?>">Sécurité</a>
+                    </li>
                     
-                    <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'faq') );?>">F.A.Q</a></li>
+                    <li>
+                        <a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'faq') );?>">F.A.Q</a>
+                    </li>
 
-                    <li><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', '#' => 'contact')  );?>">Contact</a></li>
+                    <li>
+                        <a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', '#' => 'contact')  );?>">Contact</a>
+                    </li>
 
                     <?php if($this->Session->read('Auth.User.role') >= 90) {
                         ?>
@@ -79,8 +87,9 @@
 
                         if($this->Session->check('Auth.User.id')):
                         ?>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?= $this->Session->read('Auth.User.email');?><b class="caret"></b></a>
-                            <ul class="dropdown-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?= $this->Session->read('Auth.User.email');?><b class="caret"></b></a>
+
+                        <ul class="dropdown-menu">
                             
                     
 
@@ -146,41 +155,44 @@
                                 );?>
                             </li>  
 
-                        </ul>
+                        </ul> 
+                    </li>
+                    <!-- /MENU -->  
+
                         <?php
                         // #### Menu non loggé ####
                         else:
                         ?>
 
                             <li>
-                            <?php echo $this->Html->link(
-                                    "S'enregistrer",
-                                    array(
-                                        'controller' => 'users',
-                                        'action' => 'register',
-                                    'full_base'     => true,
-                                    'admin'         => false                                        
-                                    )
-                                );?>
+                                <?php echo $this->Html->link(
+                                        "S'enregistrer",
+                                        array(
+                                            'controller' => 'users',
+                                            'action' => 'register',
+                                        'full_base'     => true,
+                                        'admin'         => false                                        
+                                        )
+                                    );?>
                             </li>
-                           <li>
-                            <?php echo $this->Html->link(
-                                    'Login',
-                                    array(
-                                        'controller' => 'users',
-                                        'action' => 'login',
-                                    'full_base'     => true,
-                                    'admin'         => false                                        
-                                    )
-                                );?>
+
+                            <li>
+                                <?php echo $this->Html->link(
+                                        'Login',
+                                        array(
+                                            'controller' => 'users',
+                                            'action' => 'login',
+                                        'full_base'     => true,
+                                        'admin'         => false                                        
+                                        )
+                                    );?>
                             </li>
 
                         <?php
                         endif;
                         ?>
-                        
-                        <!-- /MENU -->
-                    </li>
+
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

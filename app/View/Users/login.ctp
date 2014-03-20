@@ -1,7 +1,5 @@
-
-
 <div class="container-fluid">
-
+ <?= $this->Form->create('User'); ?>
         <div class="section">
 
             <div class="row bandeau">
@@ -10,7 +8,7 @@
 
             <div class="row">
                     <div class="choix">  
-                        <?= $this->Form->create('User'); ?>
+                       
   
                         <div class="row">
                             <div class="form-group">  
@@ -57,8 +55,8 @@
                         <div class="row" style='text-align:center;'>   
                         <p><br></p>
                             <div class='col-lg-3 col-md-3 col-sm-3 col-lg-offset-4 col-md-offset-4 col-sm-offset-4'>
-                                <button type"submit"="" class="btn" style="background-color:#65b7f2;color:white">Se connecter</button>
-    							<?= $this->Form->end(); ?>                                    
+                                <button type="submit" class="btn" style="background-color:#65b7f2;color:white">Se connecter</button>
+    							                                
                        		</div>
                             <div class='col-lg-3 col-md-3 col-sm-3 col-lg-offset-4 col-md-offset-4 col-sm-offset-4'>
                             <?= $this->Html->link('Mot de passe oublié ?', array('action' => 'forgot' )); ?>
@@ -70,7 +68,7 @@
         
             
         </div>  
-
+<?= $this->Form->end(); ?>    
 </div>
 
                                     

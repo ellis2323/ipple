@@ -94,7 +94,7 @@
                     <?php 
                     if(!($this->Session->check('Auth.User.id')) ){
                     ?>
-                        <p style="text-align:center"><a class="btn btn-lg" href='<?= $this->Html->url(array('controller' => 'users', 'action' => 'register')); ?>' style="background-color:#f75900;color:white" href="#modalDialog" role="button">Je m'inscris</a></p>
+                        <p style="text-align:center"><a class="btn btn-lg" href='<?= $this->Html->url(array('controller' => 'users', 'action' => 'register')); ?>' style="background-color:#f75900;color:white" role="button">Je m'inscris</a></p>
                     <?php
                     }
                     ?>

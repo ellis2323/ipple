@@ -6,6 +6,7 @@ App::import('Model','City');
 App::import('Model','Param');
 App::import('Model', 'Postal');
 App::import('Model', 'Address');
+App::import('Model', 'User');
 /**
  * Orders Controller
  *
@@ -101,6 +102,21 @@ class OrdersController extends AppController {
 			if(!empty($data_get)){
 
 
+
+				// Si l'utilisateur à déjà une adresse enregistrée
+				$user = new User();
+				$data_user = $user->find('first', array(
+														'conditions' => array(
+																				'id' => $this->Session->read('Auth.User.id'),
+															)
+
+				));
+				if($data_user){
+					$data_address = $data_user['Address'];
+					$this->set('data_user', $data_address);
+				}
+
+
 				// On récupère les créneaux horaires
 			   	$hours = new Hour();
 			    $this->set('hdeposits', $hours->find('list'));
@@ -120,6 +136,7 @@ class OrdersController extends AppController {
 					$data_post = $this->request->data;
 
 					$this->Order->set($data_post);
+					
 					$r =  $this->Order->validates() ;
 
 					// Si les données sont validées
@@ -127,7 +144,10 @@ class OrdersController extends AppController {
 
 						$address = new Address();
 
+
 						if($address->save($this->request->data) ){
+							$address->saveField('user_id', $this->Session->read('Auth.User.id'));
+
 							$address_id = $address->id;
 
 							$data = array(
@@ -157,7 +177,7 @@ class OrdersController extends AppController {
 					}
 					else {
 
-						echo " erreur";
+						$this->Session->setFlash('Erreur lors de l\'enregistrement, merci de corriger vos erreures', 'alert', array('class' => 'danger'));
 					}
 				}
 			}

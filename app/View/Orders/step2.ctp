@@ -1,7 +1,28 @@
 <?= $this->Html->css('latoja.datepicker', array('inline' => false)); ?>
 <?= $this->Html->script('search_ajax', array('inline' => false)); ?>
 
+<?php
 
+
+if(empty($data_user)) {
+    // Sinon on met les valeurs à null
+    $data_user= array( 
+                        0 => array(
+                                    'lastname'  => null,
+                                    'firstname' => null,
+                                    'phone'     => null,
+                                    'company'   => null,
+                                    'street'    => null,
+                                    'floor'     => null,
+                                    'comment'   => null,
+                                    'digicode'  => null,
+                                    'postal_id' => null,
+                                    'city_id'   => null,
+                            )
+                    );
+}
+
+?>
 
 <div class="container-fluid">
 <?= $this->Form->create('Address', array(
@@ -27,18 +48,20 @@
                         <div class="form-group">
                             <?php
                             echo $this->Form->label('lastname', 'Nom <span class="blue">*</span>', array(
-                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
-                                                                            'style' => 'text-align:right;',
+                                                                            'class'     => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                            'style'     => 'text-align:right;',
+                                                                            
                                                                         )
                             );
                             ?>
                             <?php
                             echo $this->Form->input('lastname', array(
-                                                                            'type' => 'text',
-                                                                            'label' => false, 
-                                                                            'class' => 'form-control',
+                                                                            'type'      => 'text',
+                                                                            'label'     => false, 
+                                                                            'class'     => 'form-control',
                                                                             'required'  => true,
-                                                                            'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                            'div'       => 'col-lg-6 col-md-6 col-sm-6',
+                                                                            'value'     =>  $data_user['0']['lastname'],
                                                                             
                                                                      )
                             );?>
@@ -64,6 +87,7 @@
                                                                             'class' => 'form-control',
                                                                             'required'  => true,
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                            'value'     =>  $data_user['0']['firstname'],
                                                                             
                                                                      )
                             );?>
@@ -87,6 +111,7 @@
                                                                             'label' => false, 
                                                                             'class' => 'form-control',
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                            'value'     =>  $data_user['0']['company'],
                                                                             
                                                                      )
                             );?>
@@ -111,6 +136,7 @@
                                                                             'class' => 'form-control',
                                                                             'required'  => true,
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                            'value'     =>  $data_user['0']['phone'],
                                                                             
                                                                      )
                             );?>
@@ -136,8 +162,8 @@
                                                                             'class' => 'form-control',
                                                                             'required'  => true,
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                            'style' => 'height:120px;'
-
+                                                                            'style' => 'height:120px;',
+                                                                            'value'     =>  $data_user['0']['street'],
                                                                      )
                             );?>
                         </div>
@@ -162,7 +188,8 @@
                                                                             'class' => 'form-control',
                                                                             'required'  => true,
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                            'empty' => '(choisissez)'
+                                                                            'empty' => '(choisissez)',
+                                                                            'default'     =>  $data_user['0']['postal_id'],
                                                                             
                                                                      )
                             );?>
@@ -188,6 +215,7 @@
                                                                             'label' => false, 
                                                                             'class' => 'form-control',
                                                                             'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                            'value'     =>  $data_user['0']['floor'],
                                                                      )
                             );?>
                         </div>
@@ -205,10 +233,11 @@
                             ?>
                             <?php
                             echo $this->Form->input('digicode', array(
-                                                                            'type' => 'text',
-                                                                            'label' => false, 
-                                                                            'class' => 'form-control',
-                                                                            'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                            'type'      => 'text',
+                                                                            'label'     => false, 
+                                                                            'class'     => 'form-control',
+                                                                            'div'       => 'col-lg-6 col-md-6 col-sm-6',
+                                                                            'value'     =>  $data_user['0']['digicode'],
                                                                      )
                             );?>
                         </div>
@@ -231,7 +260,8 @@
                                                                                 'label' => false, 
                                                                                 'class' => 'form-control',
                                                                                 'div' => 'col-lg-9 col-md-9 col-sm-9',
-                                                                                'placeholder' =>   ' Facilitez votre livraison en nous indiquant votre digicode, etc...'
+                                                                                'placeholder' =>   ' Facilitez votre livraison en nous indiquant votre digicode, etc...',
+                                                                                'value'     =>  $data_user['0']['comment'],
                                                                          )
                                 );?>
                             </div>
