@@ -252,11 +252,17 @@ $(function(){
                 <!-- Si aucune commandes -->
                 <?php if(empty($orders_current) && empty($orders_history)){
                 ?>
-                    <a href="<?= $this->Html->url(array('controller' => 'orders', 'action' => 'step1')); ?>" >
-                        <div class="btn btn-lg color-btn">
-                            Prévoir une livraison de bacs vides
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
+                        <div class="row">
+                            <h4>Vous n'avez pas de bacs chez vous.<br/>
+                            voulez-vous commander?</h4>
+                            <a href="<?= $this->Html->url(array('controller' => 'orders', 'action' => 'step1')); ?>" >
+                                <div class="btn btn-md color-btn">
+                                    Prévoir une livraison de bacs vides
+                                </div>
+                            </a>
                         </div>
-                    </a>
+                    </div>
                 <?php 
                 }
                 ?>
