@@ -10,7 +10,6 @@ echo $this->Form->input('Bac.code', array(
 <?php
 if(!empty($bacs)){
 		foreach($bacs as $bac){
-			debug($bac);
 			echo $bac['code']."<a href='".$this->Html->url(array('controller'=>'orders', 'action' => 'delete_bac', $bac['BacsOrder']['order_id'], $bac['id'], 'admin' => true, ))."'>[X]</a> <br />";
 		}
 

@@ -420,7 +420,7 @@ class OrdersController extends AppController {
 					array(
 						'Order.id' 		=> $order_id, 
 						'Order.user_id' => $this->Session->read('Auth.User.id'),
-						'Order.state <' => 2
+						'Order.state <=' => 2
 					) 
 				) 
 			);
@@ -737,52 +737,74 @@ class OrdersController extends AppController {
 	public function admin_add_bac($order_id = null) {
 		// On récupère les bacs liés
 	    $bacs = $this->Order->findAllById($order_id);
+	    $order = $bacs[0]['Order'];
+	    $user_id = $order['user_id'];
 	    $bacs = $bacs[0]['Bac'];
 		// On les envoeis à la vue
 		$this->set(compact('bacs'));
 
 	    $this->set(compact('order_id'));
 
-	    
+	    $nb_bac_max = $order['nb_bacs'];
+	    $nb_bac_current = $this->Order->BacR->find('count', array(
+	    															'conditions' => array(
+	    																					'order_id' => $order['id']
+	    																)
 
+
+	    ));
+	    //debug($nb_bac_current);
+	    print_r($nb_bac_current);
+	    print_r($nb_bac_max);
 		// Si on ajoute un bac
 		if ($this->request->is('post')) {
+			if($nb_bac_current < $nb_bac_max){
+			    $bac = $this->Order->Bac->findByCode($this->request->data['Bac']['code']);
 
-		    $bac = $this->Order->Bac->findByCode($this->request->data['Bac']['code']);
-		    if(!empty($bac)){
+			    // Si le bac existe
+			    if(!empty($bac)){
 
-		    	$exist = $this->Order->BacR->findByBacIdAndOrderId($bac['Bac']['id'], $order_id);
-		    	if(empty($exist)){
-			    	$this->Order->BacR->create();
+			    	// Si le bac n'est pas déjà associé
+			    	$exist = $this->Order->BacR->findByBacIdAndOrderId($bac['Bac']['id'], $order_id);
+			    	if(empty($exist)){
 
+				    	$this->Order->BacR->create();
 
-			    	$this->Order->BacR->save(array(
-										    			'order_id' => $order_id,
-										    			'bac_id' => $bac['Bac']['id']
-										      		)
-					      						);
+				    	$this->Order->BacR->save(array(
+											    			'order_id' => $order_id,
+											    			'bac_id' => $bac['Bac']['id']
+											      		)
+						      						);
 
-			    	$this->Session->setFlash('Bac correctement associé');
-					$this->redirect(array('controller' => 'orders', 'action' => 'add_bac', $order_id, 'admin' => true));
+				    	$this->Order->Bac->id = $bac['Bac']['id'];
+				    	$this->Order->Bac->saveField('user_id', $user_id);
+				    	$this->Order->Bac->saveField('state', 1);
+
+				    	$this->Session->setFlash('Bac correctement associé');
+						$this->redirect(array('controller' => 'orders', 'action' => 'add_bac', $order_id, 'admin' => true));
+
+				    }
+				    else{
+				    	$this->Session->setFlash('Bac déjà associé');
+				    }
 
 			    }
-			    else{
-			    	$this->Session->setFlash('Bac déjà associé');
+			    else {
+			    	throw new NotFoundException('Bac inexistant');
+
 			    }
 
-		    }
-		    else {
-		    	echo "erreur";
-
-		    }
-
-
+			}
+			else {
+					$this->Session->setFlash('Nombre de bac à associer atteint');
+			}
 		}
 
 
 
 	}
 
+	// Permet de supprimer l'association d'un bac à une commande
 	public function admin_delete_bac($order_id = null, $bac_id = null) {
 
 		$bac = $this->Order->BacR->findByBacIdAndOrderId($bac_id, $order_id);
@@ -797,6 +819,7 @@ class OrdersController extends AppController {
 						);
 
 			if($this->Order->BacR->delete($bac['BacR']['id'])){
+
 
 				$this->Session->setFlash('Bac dissocié');
 				$this->redirect(array('controller' => 'orders', 'action' => 'add_bac', $order_id, 'admin' => true));

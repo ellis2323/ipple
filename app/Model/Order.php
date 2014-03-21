@@ -117,9 +117,6 @@ class Order extends AppModel {
 	// Permet de vérifier que la date de retrait est supérieur à la date de dépot
 	public function checkWithdraw($data, $field=NULL, $withdraw=NULL){
 
-
-
-
 		if($withdraw != NULL) {
 			//print_r('Champs withdraw:'.$withdraw.'<br />');
 
@@ -137,17 +134,12 @@ class Order extends AppModel {
 		}
 
 		if(array_key_exists($field, $this->data[$this->name])){
-			//print_r("checkWithdraw 1<br>".$this->data[$this->name][$field].'<br>');
 			$deposit = $this->data[$this->name][$field];
-			//print_r('Field:'.$field."<br >");
-			//print_r('Data'.$data['date_withdrawal']);
 
 			// On convertis le datetime en timestamp
 			$withdraw = strtotime($data['date_withdrawal']);
 			$deposit = strtotime($deposit);
 
-			//print_r('<br >Depot'.$deposit);
-			//print_r('<br >Retrait'.$withdraw);
 			if($deposit < $withdraw){
 				return true;
 			}
@@ -156,18 +148,17 @@ class Order extends AppModel {
 			}
 		}
 		else {
-			//print_r("checkWithdraw 2<br>");
-			//print_r('Field:'.$field."<br >");
-			//print_r('Data'.$data['date_withdrawal']);
+
 			return true;
 		}	
 	}
 
 	// Permet de vérifier la disponibilité de la date
 	public function checkDate($data, $field=NULL){
-		//print_r("checkDate<br>");
-		//print_r($data.'<br>');
-		//print_r($field."<br >");
+		print_r('<br /><br />Data 1:');
+
+		print_r($data);
+
 
 		if(array_key_exists($field, $this->data[$this->name])){
 			if($this->data[$this->name][$field] == 1){
@@ -176,21 +167,27 @@ class Order extends AppModel {
 		}
 
 		// On charge le model contenant les dates bloquées
-
+		$params = new Param();
 		$DatesBlock = new DatesBlock();
 		
 		//$date = $data['date_deposit'];
+		$max_date = $params->findByKey('max_date_withdrawal');
+		$max_date = $max_date['Param']['value'];
+
+		$min_date = $params->findByKey('min_date_deposit');
+		$min_date = $min_date['Param']['value'];
 
 		// On convertis le datetime en timestamp
-		$date = array_shift($data);
+		$date = array();
+		$date = $data;
+		$date = array_shift($date);
 
 		$date = strtotime($date);
 		$today = time();
 
 		// On définis nos attributs
-		/* On inverse le jour et le mois car date américaine */
-		$day = date('n', $date); // Mois
-		$month = date('d', $date); // Jour calendaire
+		$day = date('d', $date); // Jour calendaire
+		$month = date('n', $date); // Mois
 		$day_week = date('w', $date); // Jour de la semaine
 		$week = date('W', $date); // Semaine
 		
@@ -209,12 +206,27 @@ class Order extends AppModel {
 
 		}
 		else {
-			// On vérifie que la date est supérieur à aujourd'hui
-			if($date < $today){
-				return false;
+
+
+			// on vérifie la date de retrait
+			if(array_key_exists('date_withdrawal', $data)) {
+				if($date < $today+((3600*24)*$max_date) ) {
+					print_r('win');
+					return true;
+			
+				}
+				else{
+					return false;
+				}
 			}
 			else {
-				return true;
+				// On vérifie que la date est supérieur à aujourd'hui
+				if($date < $today ) {
+					return false;
+				}
+				else {
+					return true;
+				}
 			}
 		}		
 

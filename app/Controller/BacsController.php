@@ -16,7 +16,7 @@ class BacsController extends AppController {
 		public function edit($bac_id) {
 
 			// On cherche les infos sur le bac
-			$bac = $this->Bac->findByUserIdAndIdAndState($this->Session->read('Auth.User.id'), $bac_id, 3);
+			$bac = $this->Bac->findByUserIdAndIdAndState($this->Session->read('Auth.User.id'), $bac_id, 1);
 
 
 
@@ -42,7 +42,6 @@ class BacsController extends AppController {
 				// On affiche les données déjà entré par l'user
 				$this->set(compact('bac'));
 
-				debug($bac);
 			}
 			// sinon erreur 404
 			else {
@@ -116,10 +115,7 @@ class BacsController extends AppController {
 
 		// Editer un bac
 		public function admin_edit($bac_id){
-			// Si l'utilisateur est admin
-			if(!($this->Session->read('Auth.User.role') >= 90)) {
-				throw new NotFoundException;
-			}
+
 			
 
 
@@ -174,7 +170,7 @@ class BacsController extends AppController {
 
 						)
 					);
-					$this->set(compact('bac'));
+				$this->set(compact('bac'));
 			}
 
 
@@ -189,12 +185,6 @@ class BacsController extends AppController {
 		}
 
 		public function admin_delete($id = null) {
-			// Si l'utilisateur est admin
-			if(!($this->Session->read('Auth.User.role') >= 90)) {
-				throw new NotFoundException;
-			}
-			$this->layout = 'admin'; // Layout admin
-
 			
 			$this->Bac->id = $id;
 			if (!$this->Bac->exists()) {

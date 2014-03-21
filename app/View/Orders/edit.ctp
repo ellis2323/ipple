@@ -55,7 +55,7 @@ $( document ).ready(function() {
 <?= $this->Form->create('Order', array(
 'class' => 'horizontal-form',
 ));  ?>
-
+<?php
 // Si la commande est editable
 if($order['Order']['state'] < 3){?>
 
@@ -389,7 +389,7 @@ if($order['Order']['state'] < 3){?>
                                                              $("#datepicker").datepicker(
                                                             {
                                                                    dateFormat: 'dd-mm-yy',
-                                                                   minDate : 0,
+                                                                   minDate : '+<?= $min_date;?>d',
                                                                    monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
                                                                    beforeShowDay: function(date){
                                                                         var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
@@ -515,6 +515,8 @@ if($order['Order']['state'] < 3){?>
 
     // Si le dépot est disponible
      if($order['Order']['state_deposit'] == 1){?>
+
+
          <div class='row'>
                 <p><br /></p>
                <h3><?php echo $this->Html->image('fleche_liv.png', array('alt' => 'responsive image'));?> Quand voulez-vous que les bacs soient récupérés chez vous ?</h3>
@@ -554,25 +556,72 @@ if($order['Order']['state'] < 3){?>
                     <?= $this->start('datepicker2'); ?>
                     <script type='text/javascript'>
                      $(document).ready(function(){
-                                var datesBlocked = ["2014-03-14","2014-03-15","2014-03-16"];
+                            var datesBlocked = ["2014-03-14","2014-03-15","2014-03-16"];
 
-                                  $("#OrderDateWithdrawal").click(function(){
-                                         $("#datepicker2").datepicker(
-                                        {
-                                               dateFormat: 'dd-mm-yy',
-                                               minDate : $('#OrderDateDeposit').val(),
-                                               monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
-                                               beforeShowDay: function(date){
-                                                    var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
-                                                    return [ datesBlocked.indexOf(string) == -1 ];
-                                                },
-                                               onSelect: function(dateText, inst){
-                                                     $('#OrderDateWithdrawal').val(dateText);
-                                                     $("#datepicker2").datepicker("destroy");
-                                              }
-                                         });
-                                   });
+
+                            var delta = 86400000*'<?= $max_date;?>';
+                            var new_date = 0;
+                            var date_deposit = $('#OrderDateDeposit').val(); // on récupères la date
+
+
+                            date_deposit = date_deposit.split('-'); // On split la date 
+                            new_date = date_deposit[2]+'-'+date_deposit[1]+'-'+date_deposit[0]; // on reforme la chaine 
+
+                            new_date = Date.parse(new_date); // On transforme la chaine en timestamp Milliseconds
+                            
+                            new_date += delta; // On rajoute le nombre de jours max
+
+                            new_date = new Date(new_date); // On convertis en date
+
+                            // Si il n'y à pas de date de dépot, alors on définis la date minimum
+                            if(date_deposit == "" || date_deposit == null){
+                                date_deposit = '+<?= $min_date;?>d';
+                            }
+                            
+
+                            // Quand on clic sur la date de dépot
+                            $("#OrderDateWithdrawal").click(function(){
+                                    date_deposit = $('#OrderDateDeposit').val();
+                                    date_deposit = date_deposit.split('-');
+
+                                    new_date = date_deposit[2]+'-'+date_deposit[1]+'-'+date_deposit[0];
+
+                                    new_date = Date.parse(new_date);
+                                    
+                                    // date de dépot
+                                    new_date_deposit = new Date(new_date);
+
+                                    // Date maximale = date + delta
+                                    new_date += delta;
+                                    new_date = new Date(new_date);
+
+
+
+                                    $("#datepicker2").datepicker(
+                                    {
+                                        dateFormat: 'dd-mm-yy',
+                                        minDate : new_date_deposit,
+                                        maxDate : new_date,
+                                        monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
+                                        beforeShowDay: function(date){
+                                                var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+                                                return [ datesBlocked.indexOf(string) == -1 ];
+                                        },
+                                        onSelect: function(dateText, inst){
+                                                 $('#OrderDateWithdrawal').val(dateText);
+                                                 $("#datepicker2").datepicker("destroy");
+                                        }
+                                    });
                             });
+    
+                            // Quand la valeur de la date de dépot change
+                            $("OrderDateDeposit").change(function(){
+                                
+
+                            });
+
+                                    
+                    });
                      </script>
 
 
