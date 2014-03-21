@@ -24,6 +24,7 @@ Lien développement : http://s324399021.onlinehome.fr/dezordre/index.php/ OU 192
 Lien production :  http://cluster013.ovh.net/~dezordre/prod/index.php/
 
 compte :
+————
 
 user@user.user / user
 admin@admin.admin / admin
