@@ -160,7 +160,6 @@ class OrdersController extends AppController {
 
 					// Si les données sont validées
 					if($r){
-						debug($data_get);
 						$address = new Address();
 						//debug($this->request->data);
 						$this->request->data['Address']['postal_id'] = $this->request->data['Address']['postals'];
@@ -402,6 +401,19 @@ class OrdersController extends AppController {
 
 		// Editer une commande 
 		public function edit($order_id=null) {
+			$param = new Param();
+
+			$min_date = $param->findByKey('min_date_deposit');
+			$min_date = $min_date['Param']['value'];
+			$this->set('min_date', $min_date);
+
+			$max_date = $param->findByKey('max_date_withdrawal') ;
+			$max_date = $max_date['Param']['value'];
+			$this->set('max_date', $max_date);
+
+
+
+
 			$order = $this->Order->find('first', 
 				array(
 					'conditions' => 
