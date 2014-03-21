@@ -126,30 +126,34 @@ else {
                         <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
                         
                         
-                            <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="col-lg-3 col-md-3 col-sm-3">
                                 <h3 id="contact">Contact</h3>
                                 <h4><span class="glyphicon glyphicon-envelope"></span><a href="#"> support@dezordre.com</a></h4>
                                 <h4><span class="glyphicon glyphicon-phone"></span> (+33) 09.09.09.09.09</h4>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="col-lg-3 col-md-3 col-sm-3">
                                 <h3>A propos</h3>
                                <p><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'faq') );?>">FAQ</a></p>
                                 <p><a href="/pdf/cgv_dezordre.pdf" target="_blank">CGV</a></p>
                                 
                                 <p><a href="<?= $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'legals') );?>">Mentions légales</a></p>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 ">
+                            <div class="col-lg-3 col-md-3 col-sm-3">
                                 <h3>Suivez-nous!</h3>
-                                <div class="col-lg-3 col-md-5 ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 ">
                                     <a href="https://www.facebook.com/pages/Dezordre/265749423573092?fref=ts" target='_blank'><?php echo $this->Html->image('facebook.png', array('alt' => 'responsive image', 'class' => 'img-responsive"')); ?>    
     </a>
                                 </div>
-                                <div class="col-lg-3 col-md-5 ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 ">
                                     <a href="https://twitter.com/Dezordre" target='_blank'><?php echo $this->Html->image('twitter.png', array('alt' => 'responsive image', 'class' => 'img-responsive"')); ?>    
     </a>
                                 </div>
 
-                            </div> <!-- /col-lg-4 -->
+                            </div> <!-- /col-lg-3 -->
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <h3>Nous</h3>
+                                <p>Dézordre est une marque de <a href="http://www.happymove.fr"><strong>HAPPYMOVE </strong></a> depuis 2011.</p>
+                            </div>
 
                         </div>  <!-- /col-lg-8 -->
 
