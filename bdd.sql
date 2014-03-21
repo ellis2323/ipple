@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 20, 2014 at 06:44 PM
+-- Generation Time: Mar 21, 2014 at 05:50 PM
 -- Server version: 5.5.35
 -- PHP Version: 5.3.10-1ubuntu3.10
 
@@ -42,7 +42,20 @@ CREATE TABLE IF NOT EXISTS `addresses` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `addresses`
+--
+
+INSERT INTO `addresses` (`id`, `firstname`, `lastname`, `phone`, `company`, `street`, `floor`, `comment`, `digicode`, `postal_id`, `city_id`, `user_id`, `created`, `modified`) VALUES
+(1, 'Regis', 'PIETRASZEWSKI', '3364540731', '', '76 rue saint didier', 0, 'kill regis', 'ret', 5, 3, 3, '2014-03-20 19:32:49', '2014-03-20 19:32:49'),
+(2, '456456', 'cahteil', '0102030405', '', 'qsdqdqsd', 0, '', '', 2, 3, 2, '2014-03-20 19:35:44', '2014-03-20 19:35:44'),
+(3, 'Regis', 'PIETRASZEWSKI', '3364540731', '', '76 rue saint didier', 3, 'yiyi', 'yuyu', 2, 3, 1, '2014-03-21 10:43:49', '2014-03-21 10:43:49'),
+(4, 'Regis', 'PIETRASZEWSKI', '3364540731', '', '76 rue saint didier', 3, 'yiyiyiyi', 'yuyu', 5, 3, 1, '2014-03-21 10:44:09', '2014-03-21 13:15:53'),
+(5, '456456', 'cahteil', '0102030405', '', 'qsdqdqsd', 0, '', '', 2, 3, 2, '2014-03-21 11:15:39', '2014-03-21 16:49:00'),
+(6, 'Regis', 'PIETRASZEWSKI', '3364540731', '', '76 rue saint didier', 3, 'yiyiyiyi', 'yuyu', 5, 3, 1, '2014-03-21 13:17:48', '2014-03-21 14:25:27'),
+(7, 'Regis', 'PIETRASZEWSKI', '3364540731', 'lklk', '76 rue saint roger', 3, 'to\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\n', 'yuyu', 5, 3, 1, '2014-03-21 15:11:02', '2014-03-21 17:31:41');
 
 -- --------------------------------------------------------
 
@@ -309,17 +322,30 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `date_deposit` varchar(255) DEFAULT NULL,
   `hour_deposit` int(11) DEFAULT NULL,
   `state_deposit` int(11) DEFAULT NULL,
-  `concierge_deposit` tinyint(1) NOT NULL,
+  `concierge_deposit` tinyint(2) NOT NULL,
   `date_withdrawal` varchar(255) DEFAULT NULL,
   `hour_withdrawal` int(11) DEFAULT NULL,
   `state_withdrawal` int(11) DEFAULT NULL,
-  `concierge_withdrawal` tinyint(1) NOT NULL,
+  `concierge_withdrawal` tinyint(2) NOT NULL,
   `nb_bacs` int(11) DEFAULT NULL COMMENT 'Nombre de bac commandé',
   `state` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Permet de gérer les commandes et à lier les différentes livr' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Permet de gérer les commandes et à lier les différentes livr' AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `address_id`, `date_deposit`, `hour_deposit`, `state_deposit`, `concierge_deposit`, `date_withdrawal`, `hour_withdrawal`, `state_withdrawal`, `concierge_withdrawal`, `nb_bacs`, `state`, `created`, `modified`) VALUES
+(1, 3, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, '2014-03-20 19:32:57', '2014-03-20 19:32:57'),
+(2, 3, 1, '2014-03-29 00:00:00', 3, 0, 0, NULL, NULL, 0, 0, 7, 1, '2014-03-20 19:32:57', '2014-03-20 19:32:57'),
+(3, 2, 2, '2014-03-29 00:00:00', 3, 0, 0, NULL, NULL, 0, 0, 8, 1, '2014-03-20 19:35:49', '2014-03-20 19:35:49'),
+(4, 1, 4, '25-03-2014', 3, 0, 0, '2014-03-28 00:00:00', 3, 1, 0, 5, 1, '2014-03-21 10:44:15', '2014-03-21 13:15:53'),
+(5, 2, 5, '28-06-2014', 3, 0, 1, '29-03-2014', 3, 1, 0, 8, 1, '2014-03-21 11:15:48', '2014-03-21 16:49:00'),
+(6, 1, 6, '25-03-2014', 3, 0, 0, '26-03-2014', 3, 0, 0, 5, 1, '2014-03-21 13:18:02', '2014-03-21 14:25:27'),
+(7, 1, 7, '26-03-2014', 3, 1, 0, '30-03-2014', 3, 1, 0, 5, 1, '2014-03-21 15:11:20', '2014-03-21 17:31:41');
 
 -- --------------------------------------------------------
 
@@ -332,7 +358,7 @@ CREATE TABLE IF NOT EXISTS `params` (
   `key` varchar(255) NOT NULL,
   `value` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `params`
@@ -341,7 +367,9 @@ CREATE TABLE IF NOT EXISTS `params` (
 INSERT INTO `params` (`id`, `key`, `value`) VALUES
 (1, 'price_bac_monthly', '6.25'),
 (2, 'nb_bac_max', '10'),
-(3, 'nb_bac_min', '4');
+(3, 'nb_bac_min', '4'),
+(4, 'max_date_withdrawal', '8'),
+(5, 'min_date_deposit', '1');
 
 -- --------------------------------------------------------
 
@@ -387,15 +415,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `modified` datetime NOT NULL,
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `rules`, `bac_count`, `order_count`, `role`, `token`, `created`, `modified`, `active`) VALUES
-(1, 'rpietra@gmail.com', 'f6f765068a7b0033b49cdad2e08f599d08dbc338', '', '', 1, 0, 0, 0, 'a48e0f6d99833fbe6858ccb183fcd343', '2014-03-20 16:04:58', '2014-03-20 16:20:13', 1),
-(2, 'admin@admin.admin', 'ff8fa08d63f973515aea4bffae9601e3d412c660', '', '', 1, 0, 0, 0, '', '2014-03-20 16:11:36', '2014-03-20 16:18:22', 1);
+(1, 'rpietra@gmail.com', '3efb6a65d6d0559f7d59bed9b5216384d8d3e509', '', '', 1, 0, 0, 0, 'a48e0f6d99833fbe6858ccb183fcd343', '2014-03-20 16:04:58', '2014-03-21 15:50:38', 1),
+(2, 'admin@admin.admin', '9202ec82c91242c5f4ff29f27bd6b63425ca4b9e', '', '', 1, 0, 0, 0, '', '2014-03-20 16:11:36', '2014-03-20 19:18:01', 1),
+(3, 'laurentmallet@gmail.com', '8c7fd3b2abc66a1b2e110aa592a639d526c64f25', '', '', 1, 0, 0, 0, '', '2014-03-20 19:19:54', '2014-03-21 16:37:27', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
