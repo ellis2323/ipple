@@ -42,14 +42,19 @@ class AppController extends Controller {
 				),
 				'authError' => 'Accès interdit',
 		        'authenticate' => array(
-			            'Form' => array(
-					                'fields' 	=> array(
-					                	'username' => 'email'
-					                	),
-					                'scope'		=> array('User.active' => 1
-		                				),
-		            				)
-		        )
+						            'Form' => array(
+								                'fields' 	=> array(
+								                	'username' => 'email'
+								                	),
+								                'scope'		=> array('User.active' => 1
+					                				),
+					            				)
+		        ),
+		        'flash'	=> array(
+		        					'element' 	=> 'alert',
+		        					'params'	=> array(),
+		        					'key'		=> 'auth'
+		        	),
 		    )
 		);
 
