@@ -17,8 +17,7 @@
 
     <?= $this->Html->script('jquery-1.10.2');?>
     <?= $this->Html->script('jquery-ui-1.10.4.custom.min');?>
-    <?= $this->Html->script('bootstrap');?>
-    <?= $this->Html->script('cakeboostrap');?>
+
     <?= $this->fetch('css');?>
 
 </head>
@@ -250,9 +249,6 @@ else {
             <?= $this->Session->flash();?>
             <?= $this->Session->flash('auth');?>
 
-
-        
-
             <?= $this->fetch('content');?>
 
 
@@ -308,10 +304,12 @@ else {
     
     <!-- /.container -->
     <?= $this->fetch('script');?>
+    <?= $this->Html->script('bootstrap');?>
+    <?= $this->Html->script('cakebootstrap');?>
     <?= $this->fetch('datepicker');?>
     <?= $this->fetch('datepicker2');?>
     <?= $this->fetch('tabs');?>
-
+    <?= $this->fetch('radio_control');?>
     <!-- JavaScript -->
   
 

@@ -60,16 +60,22 @@ class Order extends AppModel {
 
 												),
 								'date_deposit' => array(
-														'CheckDate' =>array(
+														'CheckDates' =>array(
 																			'rule' => array('checkDate', null),
 																			'message' => 'La date selectionnée est indisponible',
 																		),
 								),
-								'date_withdrawal' => array(								
-														'CheckDate' =>array(
+								'date_withdrawal' => array(	
+														'CheckWithdrawal' =>array(
+																			'rule' => array('checkWithdraw', 'date_deposit', 'withdraw'),
+																			'message' => 'Date de retrait inférieure',
+																		),							
+														'CheckDates' =>array(
 																			'rule' => array('checkDate', 'withdraw'),
-																			'message' => 'La date selectionnée est indisponible',
+																			'message' => 'Date indisponible',
 																		),
+														
+
 
 								),
 
@@ -109,29 +115,66 @@ class Order extends AppModel {
 	}
 
 	// Permet de vérifier que la date de retrait est supérieur à la date de dépot
-	public function checkWithdraw($data, $field){
-		$deposit = $this->data[$this->name][$data_deposit];
+	public function checkWithdraw($data, $field=NULL, $withdraw=NULL){
 
-		// On convertis le datetime en timestamp
-		foreach($data as $withdraw){
-			$withdraw = strtotime($withdraw);
+
+
+
+		if($withdraw != NULL) {
+			//print_r('Champs withdraw:'.$withdraw.'<br />');
+
+			if(array_key_exists($withdraw, $this->data[$this->name]) ) {
+				//print_r($this->data[$this->name][$withdraw]);
+
+				$data_withdraw = $this->data[$this->name][$withdraw];
+
+				if($data_withdraw){
+					return true;
+				}
+			}
+
+
 		}
 
-		if($deposit < $withdraw){
-			return true;
+		if(array_key_exists($field, $this->data[$this->name])){
+			//print_r("checkWithdraw 1<br>".$this->data[$this->name][$field].'<br>');
+			$deposit = $this->data[$this->name][$field];
+			//print_r('Field:'.$field."<br >");
+			//print_r('Data'.$data['date_withdrawal']);
+
+			// On convertis le datetime en timestamp
+			$withdraw = strtotime($data['date_withdrawal']);
+			$deposit = strtotime($deposit);
+
+			//print_r('<br >Depot'.$deposit);
+			//print_r('<br >Retrait'.$withdraw);
+			if($deposit < $withdraw){
+				return true;
+			}
+			else {
+				return false;
+			}
 		}
 		else {
-			return false;
-			
-		}
+			//print_r("checkWithdraw 2<br>");
+			//print_r('Field:'.$field."<br >");
+			//print_r('Data'.$data['date_withdrawal']);
+			return true;
+		}	
 	}
 
 	// Permet de vérifier la disponibilité de la date
-	public function checkDate($data, $field=null){
+	public function checkDate($data, $field=NULL){
+		//print_r("checkDate<br>");
+		//print_r($data.'<br>');
+		//print_r($field."<br >");
 
-			if($field != NULL && $this->data[$this->alias][$field] == 1){
+		if(array_key_exists($field, $this->data[$this->name])){
+			if($this->data[$this->name][$field] == 1){
 				return true;
 			}
+		}
+
 		// On charge le model contenant les dates bloquées
 
 		$DatesBlock = new DatesBlock();
@@ -177,11 +220,6 @@ class Order extends AppModel {
 
 	}
 
-	public function checkPhone($data){
 
-
-		debug($data);
-		#^0[1-68]([-. ]?[0-9]{2}){4}$#
-	}
 
 }

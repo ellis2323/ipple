@@ -1,4 +1,49 @@
+<?= $this->start('radio_control');?>
+<script type='text/javascript'>
+$( document ).ready(function() {
+
+    var withdraw = "<?= $state_withdrawal;?>";
+
+
+    if(withdraw == 0 ){
+        $('#return').hide(); // on cache le bloc 
+    }
+  
+
+    $('#OrderWithdraw2').change(function(){
+     if($(this).is(':checked')) {
+            $('#return').fadeIn();
+            $("#OrderSelectDate").prop('required',true);
+        }
+    });
+
+
+
+    $('#OrderWithdraw1').change(function(){
+     if($(this).is(':checked')) {
+            $('#return').fadeOut();
+            $("#OrderSelectDate").prop('required',false);
+        }
+    }); 
+
+});
+        
+</script>
+
+
+<?= $this->end();?>
+
+
 <div class="container-fluid">
+ <?php
+// Si la commande n'est pas finie
+if($order['Order']['state'] < 3){?>
+
+
+<?= $this->Form->create('Order', array(
+'class' => 'horizontal-form',
+));  ?>
+
 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">     
 	<div class="section">
 
@@ -8,12 +53,7 @@
 
 		<div class="choix">    
 
-                <?php
-                // Si la commande n'est pas finie
-                 if($order['Order']['state'] < 3){?>
-                    <?= $this->Form->create('Order', array(
-                    'class' => 'horizontal-form',
-                    ));  ?>
+               
 
                         <div class="row">
                             
@@ -45,242 +85,241 @@
                         </div>
 
                         <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
 
-                            <div class="form-group">
-                                <?php
-                                echo $this->Form->label('Address.lastname', 'Nom', array(
-                                                                                'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
-                                                                                'style' => 'text-align:right;',
+                                <div class="form-group">
+                                    <?php
+                                    echo $this->Form->label('Address.lastname', 'Nom', array(
+                                                                                    'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                                    'style' => 'text-align:right;',
 
-                                                                            )
-                                );
-                                ?>
-                                <?php
-                                echo $this->Form->input('Address.lastname', array(
-                                                                                'type' => 'text',
-                                                                                'label' => false, 
-                                                                                'class' => 'form-control',
-                                                                                'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                                'value'     => $order['Address']['lastname']
-                                                                                
-                                                                         )
-                                );?>
+                                                                                )
+                                    );
+                                    ?>
+                                    <?php
+                                    echo $this->Form->input('Address.lastname', array(
+                                                                                    'type' => 'text',
+                                                                                    'label' => false, 
+                                                                                    'class' => 'form-control',
+                                                                                    'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                                    'value'     => $order['Address']['lastname']
+                                                                                    
+                                                                             )
+                                    );?>
 
+                                </div>
+                                 <p><br></p>
                             </div>
-                             <p><br></p>
-                        </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
 
-                            <div class="form-group">                            
-                            <?php
-                                echo $this->Form->label('Address.firstname', 'Prénom', array(
-                                                                                'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
-                                                                                'style' => 'text-align:right;',
-                                                                            )
-                                );
-                                ?>
+                                <div class="form-group">                            
                                 <?php
-                                echo $this->Form->input('Address.firstname', array(
-                                                                                'type' => 'text',
-                                                                                'label' => false, 
-                                                                                'class' => 'form-control',
-                                                                                'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                                'value'     => $order['Address']['firstname']
-                                                                                
-                                                                         )
-                                );?>
+                                    echo $this->Form->label('Address.firstname', 'Prénom', array(
+                                                                                    'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                                    'style' => 'text-align:right;',
+                                                                                )
+                                    );
+                                    ?>
+                                    <?php
+                                    echo $this->Form->input('Address.firstname', array(
+                                                                                    'type' => 'text',
+                                                                                    'label' => false, 
+                                                                                    'class' => 'form-control',
+                                                                                    'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                                    'value'     => $order['Address']['firstname']
+                                                                                    
+                                                                             )
+                                    );?>
+                                </div>
+                                 <p><br></p>
                             </div>
-                             <p><br></p>
-                        </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="form-group">  
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">  
 
-                                <?php
-                                echo $this->Form->label('Address.company', 'Entreprise', array(
-                                                                                'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
-                                                                                'style' => 'text-align:right;',
-                                                                            )
-                                );
-                                ?>
-                                <?php
-                                echo $this->Form->input('Address.company', array(
-                                                                                'type' => 'text',
-                                                                                'label' => false, 
-                                                                                'class' => 'form-control',
-                                                                                'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                                'value'     => $order['Address']['company']
-                                                                                
-                                                                         )
-                                );?>
+                                    <?php
+                                    echo $this->Form->label('Address.company', 'Entreprise', array(
+                                                                                    'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                                    'style' => 'text-align:right;',
+                                                                                )
+                                    );
+                                    ?>
+                                    <?php
+                                    echo $this->Form->input('Address.company', array(
+                                                                                    'type' => 'text',
+                                                                                    'label' => false, 
+                                                                                    'class' => 'form-control',
+                                                                                    'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                                    'value'     => $order['Address']['company']
+                                                                                    
+                                                                             )
+                                    );?>
+                                </div>
+                                 <p><br></p>
                             </div>
-                             <p><br></p>
-                        </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="form-group">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
 
-                                <?php
-                                echo $this->Form->label('Address.phone', 'Téléphone', array(
-                                                                                'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
-                                                                                'style' => 'text-align:right;',
-                                                                            )
-                                );
-                                ?>
-                                <?php
-                                echo $this->Form->input('Address.phone', array(
-                                                                                'type' => 'text',
-                                                                                'label' => false, 
-                                                                                'class' => 'form-control',
-                                                                                'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                                'value'     => $order['Address']['phone']
-                                                                                
-                                                                         )
-                                );?>
+                                    <?php
+                                    echo $this->Form->label('Address.phone', 'Téléphone', array(
+                                                                                    'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                                    'style' => 'text-align:right;',
+                                                                                )
+                                    );
+                                    ?>
+                                    <?php
+                                    echo $this->Form->input('Address.phone', array(
+                                                                                    'type' => 'text',
+                                                                                    'label' => false, 
+                                                                                    'class' => 'form-control',
+                                                                                    'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                                    'value'     => $order['Address']['phone']
+                                                                                    
+                                                                             )
+                                    );?>
+                                </div>
+                                 <p><br></p>
                             </div>
-                             <p><br></p>
-                        </div>
 
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                        
-                            <div class="form-group">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                            
+                                <div class="form-group">
 
-                                <?php
-                                echo $this->Form->label('Address.street', 'Adresse <span class="blue">*</span>', array(
-                                                                                'class' => 'col-lg-2 col-md-2 col-sm-2 control-label',
-                                                                                'style' => 'text-align:right;',
-                                                                            )
-                                );
-                                ?>
-                                <?php
-                                echo $this->Form->input('Address.street', array(
-                                                                                'type' => 'text',
-                                                                                'label' => false, 
-                                                                                'class' => 'form-control',
-                                                                                'style' => "margin-left:-5px;",
-                                                                                'div' => 'col-lg-9 col-md-9 col-sm-9',
-                                                                                'value'     => $order['Address']['street']
-                                                                                
-                                                                         )
-                                );?>
+                                    <?php
+                                    echo $this->Form->label('Address.street', 'Adresse <span class="blue">*</span>', array(
+                                                                                    'class' => 'col-lg-2 col-md-2 col-sm-2 control-label',
+                                                                                    'style' => 'text-align:right;',
+                                                                                )
+                                    );
+                                    ?>
+                                    <?php
+                                    echo $this->Form->input('Address.street', array(
+                                                                                    'type' => 'text',
+                                                                                    'label' => false, 
+                                                                                    'class' => 'form-control',
+                                                                                    'style' => "margin-left:-5px;",
+                                                                                    'div' => 'col-lg-9 col-md-9 col-sm-9',
+                                                                                    'value'     => $order['Address']['street']
+                                                                                    
+                                                                             )
+                                    );?>
+                                </div>
+                                 <p><br></p>
                             </div>
-                             <p><br></p>
 
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="form-group">  
-                                <?php
-                                echo $this->Form->label('cities', 'Ville', array(
-                                                                                'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
-                                                                                'style' => 'text-align:right;',
-                                                                            )
-                                );
-                                ?>
-                                <?php
-                                echo $this->Form->input('cities', array(
-                                                                                'label' => false, 
-                                                                                'class' => 'form-control',
-                                                                                'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                                'default'     => $order['Address']['city_id']
-                                                                                
-                                                                         )
-                                );?>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">  
+                                    <?php
+                                    echo $this->Form->label('cities', 'Ville', array(
+                                                                                    'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                                    'style' => 'text-align:right;',
+                                                                                )
+                                    );
+                                    ?>
+                                    <?php
+                                    echo $this->Form->input('cities', array(
+                                                                                    'label' => false, 
+                                                                                    'class' => 'form-control',
+                                                                                    'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                                    'default'     => $order['Address']['city_id']
+                                                                                    
+                                                                             )
+                                    );?>
+                                </div>
+                                 <p><br></p>
                             </div>
-                             <p><br></p>
-                        </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="form-group">  
-                                <?php
-                                echo $this->Form->label('postals', 'Code postal', array(
-                                                                                'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
-                                                                                'style' => 'text-align:right;',
-                                                                            )
-                                );
-                                ?>
-                                <?php
-                                echo $this->Form->input('postals', array(
-                                                                                'label' => false, 
-                                                                                'class' => 'form-control',
-                                                                                'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                                'default'     => $order['Address']['postal_id']
-                                                                                
-                                                                         )
-                                );?>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">  
+                                    <?php
+                                    echo $this->Form->label('postals', 'Code postal', array(
+                                                                                    'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                                    'style' => 'text-align:right;',
+                                                                                )
+                                    );
+                                    ?>
+                                    <?php
+                                    echo $this->Form->input('postals', array(
+                                                                                    'label' => false, 
+                                                                                    'class' => 'form-control',
+                                                                                    'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                                    'default'     => $order['Address']['postal_id']
+                                                                                    
+                                                                             )
+                                    );?>
+                                </div>
+                                 <p><br></p>
                             </div>
-                             <p><br></p>
-                        </div>
 
 
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="form-group">  
-                                <?php
-                                echo $this->Form->label('Address.floor', 'Etage', array(
-                                                                                'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
-                                                                                'style' => 'text-align:right;',
-                                                                            )
-                                );
-                                ?>
-                                <?php
-                                echo $this->Form->input('Address.floor', array(
-                                                                                'type' => 'number',
-                                                                                'label' => false, 
-                                                                                'class' => 'form-control',
-                                                                                'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                                'value'     => $order['Address']['floor']
-                                                                         )
-                                );?>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">  
+                                    <?php
+                                    echo $this->Form->label('Address.floor', 'Etage', array(
+                                                                                    'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                                    'style' => 'text-align:right;',
+                                                                                )
+                                    );
+                                    ?>
+                                    <?php
+                                    echo $this->Form->input('Address.floor', array(
+                                                                                    'type' => 'number',
+                                                                                    'label' => false, 
+                                                                                    'class' => 'form-control',
+                                                                                    'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                                    'value'     => $order['Address']['floor']
+                                                                             )
+                                    );?>
+                                </div>
+                                 <p><br></p>
                             </div>
-                             <p><br></p>
-                        </div>
 
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="form-group">  
-                                <?php
-                                echo $this->Form->label('Address.digicode', 'Digicode', array(
-                                                                                'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
-                                                                                'style' => 'text-align:right;',
-                                                                            )
-                                );
-                                ?>
-                                <?php
-                                echo $this->Form->input('Address.digicode', array(
-                                                                                'type' => 'text',
-                                                                                'label' => false, 
-                                                                                'class' => 'form-control',
-                                                                                'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                                'value'     => $order['Address']['digicode']
-                                                                         )
-                                );?>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">  
+                                    <?php
+                                    echo $this->Form->label('Address.digicode', 'Digicode', array(
+                                                                                    'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                                    'style' => 'text-align:right;',
+                                                                                )
+                                    );
+                                    ?>
+                                    <?php
+                                    echo $this->Form->input('Address.digicode', array(
+                                                                                    'type' => 'text',
+                                                                                    'label' => false, 
+                                                                                    'class' => 'form-control',
+                                                                                    'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                                    'value'     => $order['Address']['digicode']
+                                                                             )
+                                    );?>
+                                </div>
+                                <p><br></p>
                             </div>
-                            <p><br></p>
-                        </div>
 
-                        <div class="col-lg-12 col-md-12 col-sm-12" >
-                            <div class="form-group">  
-                                <?php
-                                echo $this->Form->label('Address.comment', 'Commentaire', array(
-                                                                                'class' => 'col-lg-2 col-md-2 col-sm-2 control-label',
-                                                                                'style' => 'text-align:right;',
-                                                                            )
-                                );
-                                ?>
+                            <div class="col-lg-12 col-md-12 col-sm-12" >
+                                <div class="form-group">  
+                                    <?php
+                                    echo $this->Form->label('Address.comment', 'Commentaire', array(
+                                                                                    'class' => 'col-lg-2 col-md-2 col-sm-2 control-label',
+                                                                                    'style' => 'text-align:right;',
+                                                                                )
+                                    );
+                                    ?>
 
-                                <?php
-                                echo $this->Form->input('Address.comment', array(
-                                                                                'type' => 'textarea',
-                                                                                'label' => false, 
-                                                                                'class' => 'form-control',
-                                                                                'div' => 'col-lg-9 col-md-9 col-sm-9',
-                                                                                'style' => 'margin-left:-5px;',
-                                                                                'default'     => $order['Address']['comment']
-                                                                         )
-                                );?>
+                                    <?php
+                                    echo $this->Form->input('Address.comment', array(
+                                                                                    'type' => 'textarea',
+                                                                                    'label' => false, 
+                                                                                    'class' => 'form-control',
+                                                                                    'div' => 'col-lg-9 col-md-9 col-sm-9',
+                                                                                    'style' => 'margin-left:-5px;',
+                                                                                    'default'     => $order['Address']['comment']
+                                                                             )
+                                    );?>
+                                </div>
                             </div>
-                        </div>
 
 
 
@@ -356,7 +395,7 @@
 
                             <div class="checkbox">
                                 <?php
-                                echo $this->Form->label('concierge_deposit', 'Concierge? Oui, récupérez les bacs chez mon concierge', array(
+                                echo $this->Form->label('concierge_deposit', 'Concierge? Oui, laisser les bacs chez mon concierge', array(
                                                                                                                                     'class' => 'col-lg-6 col-md-6 col-sm-6',
                                                                                                                                 )
                                 );
@@ -375,43 +414,94 @@
 
                         </div>
                     </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="form-group">  
-                                <?php
-                                echo $this->Form->label('hours', 'Heure de la livraison', array(
-                                                                                'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
-                                                                                'style' => 'text-align:right;',
-                                                                            )
-                                );
-                                ?>
-                                <?php
-                                echo $this->Form->input('hours', array(
-                                                                                'label' => false, 
-                                                                                'class' => 'form-control',
-                                                                                'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                                'default'     => $order['Order']['hour_deposit']
-                                                                         )
-                                );?>
-                            </div>
-                            <p><br></p>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="form-group">  
+                            <?php
+                            echo $this->Form->label('HoursDeposit', 'Heure de la livraison', array(
+                                                                            'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                            'style' => 'text-align:right;',
+                                                                        )
+                            );
+                            ?>
+                            <?php
+                            echo $this->Form->input('hours', array(
+                                                                            'label' => false, 
+                                                                            'class' => 'form-control',
+                                                                            'id'    => 'OrderHoursDeposit',
+
+                                                                            'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                            'default'     => $order['Order']['hour_deposit']
+                                                                     )
+                            );?>
                         </div>
+                        <p><br></p>
+                    </div>
 
 
-                    </div> <!-- /row -->
+            </div> <!-- /row -->
 
 
 
-				</div>
+		</div> <!-- /choix -->
 <?php } 
 // fin if livraison
 
+?>
+                <div class="row">
+                    <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?> Quand voulez-vous que les bacs soient récupérés chez vous ?</h3>  
+
+                    <div class="radio col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
+
+                    <?php 
+                    if(empty($state_withdrawal)){
+
+                            echo $this->Form->input('withdraw', array(
+                             'type' => 'radio',
+                             'legend' => false,
+                             'options' => array(1 => 'En même temps (le chauffeur attendra jusqu\'à 20 minutes) '),
+                             'hiddenField'=>false,
+                             'checked' => 'checked',
+                            ));  
+
+                            echo $this->Form->input('withdraw', array(
+                             'type' => 'radio',
+                             'legend' => false,
+                             'options' => array(2 => 'Je prévois ma date et mon horaire de stockage'),
+                             'hiddenField'=>false
+                            ));  
+                    }
+                    else {
+                            echo $this->Form->input('withdraw', array(
+                             'type' => 'radio',
+                             'legend' => false,
+                             'options' => array(1 => 'En même temps (le chauffeur attendra jusqu\'à 20 minutes) '),
+                             'hiddenField'=>false,
+                            ));  
+
+                            echo $this->Form->input('withdraw', array(
+                             'type' => 'radio',
+                             'legend' => false,
+                             'options' => array(2 => 'Je prévois ma date et mon horaire de stockage'),
+                             'hiddenField'=>false,
+                             'checked' => 'checked',
+
+                            ));  
+
+                    }
+                    ?>
+
+                    </div>  
+
+                </div> <!-- /row -->
+<?php
+
 
 // Si la récupération est disponible
-if($order['Order']['state_withdrawal'] == 1) {
+//if($order['Order']['state_withdrawal'] == 1) {
 ?>
-              <div class="row">
+                <div class="row" id="return">
                 <!-- HEURE ET DATE -->
-                    <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?> Quand voulez-vous que les bacs soient récupérés chez vous ?</h3>  
 
 
                     <div class="col-lg-6 col-md-6 col-sm-6">
@@ -432,30 +522,30 @@ if($order['Order']['state_withdrawal'] == 1) {
                                     'class' => 'form-control',
                                     'div' => 'col-lg-6 col-md-6 col-sm-6',
                                     'required' => true,
-                                    'value'     => $order['Order']['date_deposit']
+                                    'id'        => 'OrderDateWithdrawal',
+                                    'value'     => $order['Order']['date_withdrawal']
 
                                 )
                             ); ?>
                             <div id="datepicker2"></div>
 
                                 <?= $this->start('datepicker2'); ?>
-
                                 <script type='text/javascript'>
                                  $(document).ready(function(){
                                             var datesBlocked = ["2014-03-14","2014-03-15","2014-03-16"];
 
-                                              $("#date_withdrawal").click(function(){
+                                              $("#OrderDateWithdrawal").click(function(){
                                                      $("#datepicker2").datepicker(
                                                     {
                                                            dateFormat: 'dd-mm-yy',
-                                                           minDate : "<?= $order['Order']['date_deposit'];?>"+2d,
+                                                           minDate : $('#OrderDateDeposit').val(),
                                                            monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
                                                            beforeShowDay: function(date){
                                                                 var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
                                                                 return [ datesBlocked.indexOf(string) == -1 ];
                                                             },
                                                            onSelect: function(dateText, inst){
-                                                                 $('#date_withdrawal').val(dateText);
+                                                                 $('#OrderDateWithdrawal').val(dateText);
                                                                  $("#datepicker2").datepicker("destroy");
                                                           }
                                                      });
@@ -481,7 +571,6 @@ if($order['Order']['state_withdrawal'] == 1) {
                                 ?>
                                 <?php
                                     echo $this->Form->input('Order.concierge_withdrawal', array(
-                                                        'class' => 'form-control',
                                                         'label' => false,
                                                         'type'  => 'checkbox',
 
@@ -491,12 +580,13 @@ if($order['Order']['state_withdrawal'] == 1) {
                             
 
 
-                        </div>
-                    </div>
+                        </div> <!-- /formgroup -->
+                    </div> <!-- col lg 2 -->
+
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="form-group">  
                                 <?php
-                                echo $this->Form->label('hours', 'Heure de la livraison', array(
+                                echo $this->Form->label('HoursWithdrawal', 'Heure de la livraison', array(
                                                                                 'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                                 'style' => 'text-align:right;',
                                                                             )
@@ -506,6 +596,7 @@ if($order['Order']['state_withdrawal'] == 1) {
                                 echo $this->Form->input('hours', array(
                                                                                 'label' => false, 
                                                                                 'class' => 'form-control',
+                                                                                'id'    => 'OrderHoursWithdrawal',
                                                                                 'div' => 'col-lg-6 col-md-6 col-sm-6',
                                                                                 'default'     => $order['Order']['hour_deposit']
                                                                          )
@@ -515,16 +606,16 @@ if($order['Order']['state_withdrawal'] == 1) {
                         </div>
 
 
-                    </div> <!-- /row -->
+            </div> <!-- /row -->
 
 
 
-                </div>
+    </div>
 
 
 
 <?php
-} // fin if récupération
+//} // fin if récupération
 ?>
                     <div class='col-lg-12 col-md-12 col-sm-12 ' style='text-align:center;'>
                         <p><br></p>
@@ -538,7 +629,7 @@ if($order['Order']['state_withdrawal'] == 1) {
                         </div>                                   
                     </div>
 
-                <?= $this->Form->end(); ?>  
+               
 
 
 <?php
@@ -549,8 +640,10 @@ if($order['Order']['state_withdrawal'] == 1) {
 		</div>
 
 	</div>
-    </div>
+ <?= $this->Form->end(); ?>  
+   
 </div>
+
 
 
 

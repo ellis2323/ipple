@@ -15,6 +15,15 @@ App::import('Model', 'User');
  */
 class OrdersController extends AppController {
 
+
+/**
+ * Components
+ *
+ * @var array
+ */
+	public $components = array('Paginator');
+
+
 	// Autorisation
 	public function beforeFilter() {
 		parent::beforeFilter();
@@ -35,12 +44,7 @@ class OrdersController extends AppController {
     }
 
 
-/**
- * Components
- *
- * @var array
- */
-	public $components = array('Paginator');
+
 
 		/* ETAPE DE COMMANDE DES BACS */
 
@@ -275,11 +279,11 @@ class OrdersController extends AppController {
 															array(
 															'user_id'					=> $this->Session->read('Auth.User.id'),
 															'nb_bacs'					=> $data_full['Order']['nb_bacs'],
-															'date_deposit'				=> $deposit->format($format),
+															'date_deposit'				=> $data_full['Order']['date_deposit'],
 															'hour_deposit'				=> $data_full['Order']['hour_deposit'],
 															'state_deposit'				=> 0,
 															'concierge_deposit'			=> $data_full['Order']['concierge_deposit'],
-															'date_withdrawal'			=> $withdrawal->format($format),
+															'date_withdrawal'			=> $data_full['Order']['date_withdrawal'],
 															'hour_withdrawal'			=> $this->request->data['Order']['hwithdrawals'],
 															'state_withdrawal'			=> 1,
 															'concierge_withdrawal'		=> $this->request->data['Order']['concierge_withdrawal'],
@@ -363,108 +367,6 @@ class OrdersController extends AppController {
 		/* FIN COMMANDE DES BACS */
 
 
-##############################
-
-	public function msf_index() {
-		$this->Session->delete('form');
-	}
-	
-	/**
-	 * this method is executed before starting the form and retrieves one important parameter:
-	 * the form steps number
-	 * you can hardcode it, but in this example we are getting it by counting the number of files that start with msf_step_
-	 */
-	public function msf_setup() {
-		App::uses('Folder', 'Utility');
-		$ordersViewFolder = new Folder(APP.'View'.DS.'Orders');
-		$steps = count($ordersViewFolder->find('msf_step_.*\.ctp'));
-		
-		$this->Session->write('form.params.steps', $steps);
-		$this->Session->write('form.params.maxProgress', 0);
-
-
-		$this->redirect(array('action' => 'msf_step', 1));
-	}
-	
-	/**
-	 * this is the core step handling method
-	 * it gets passed the desired step number, performs some checks to prevent smart users skipping steps
-	 * checks fields validation, and when succeding, it saves the array in a session, merging with previous results
-	 * if we are at last step, data is saved
-	 * when no form data is submitted (not a POST request) it sets this->request->data to the values stored in session
-	 */
-	public function msf_step($stepNumber) {
-		
-		/**
-		 * check if a view file for this step exists, otherwise redirect to index
-		 */
-		if (!file_exists(APP.'View'.DS.'Orders'.DS.'msf_step_'.$stepNumber.'.ctp')) {
-			$this->redirect('/users/msf_index');
-		}
-		
-		/**
-		 * determines the max allowed step (the last completed + 1)
-		 * if choosen step is not allowed (URL manually changed) the user gets redirected
-		 * otherwise we store the current step value in the session
-		 */
-		$maxAllowed = $this->Session->read('form.params.maxProgress') + 1;
-		if ($stepNumber > $maxAllowed) {
-			$this->redirect('/orders/msf_step/'.$maxAllowed);
-		} else {
-			$this->Session->write('form.params.currentStep', $stepNumber);
-		}
-		
-		/**
-		 * check if some data has been submitted via POST
-		 * if not, sets the current data to the session data, to automatically populate previously saved fields
-		 */
-		if ($this->request->is('post')) {
-			$address = new Address();
-			/**
-			 * set passed data to the model, so we can validate against it without saving
-			 */
-			$this->Order->set($this->request->data);
-			$address->set($this->request->data);
-			/**
-			 * if data validates we merge previous session data with submitted data, using CakePHP powerful Hash class (previously called Set)
-			 */
-
-
-			if ($this->Order->validates() && $address->validates() ) {
-				$prevSessionData = $this->Session->read('form.data');
-				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
-				
-				/**
-				 * if this is not the last step we replace session data with the new merged array
-				 * update the max progress value and redirect to the next step
-				 */
-				if ($stepNumber < $this->Session->read('form.params.steps')) {
-					$this->Session->write('form.data', $currentSessionData);
-					$this->Session->write('form.params.maxProgress', $stepNumber);
-					$this->redirect(array('action' => 'msf_step', $stepNumber+1));
-				} else {
-					/**
-					 * otherwise, this is the final step, so we have to save the data to the database
-					 */
-					$this->Order->save($currentSessionData);
-					$this->Session->setFlash('Account created!');
-					$this->redirect('/orders/msf_index');
-				}
-			}
-		} else {
-			$this->request->data = $this->Session->read('form.data');
-		}
-		
-		/**
-		 * here we load the proper view file, depending on the stepNumber variable passed via GET
-		 */
-		$this->render('msf_step_'.$stepNumber);
-	}
-
-
-##############################
-
-
 		public function view($order_id) {
 			$order_edit = $this->Order->find('first', 
 				array(
@@ -514,87 +416,56 @@ class OrdersController extends AppController {
 
 			// Si la commande existe et qu'elle appartient bien à l'user
 			if(!empty($order)){
+				
+				if(!empty($this->request->data)){
+					if($this->request->data['Order']['withdraw'] == 1){
+						$withdrawal = 1;
+					}
+					else {
+						$withdrawal = 2;
+					}
+				}
+				else {
+					$withdrawal = $order['Order']['state_withdrawal'];
+
+				}
+				$this->set('state_withdrawal', $withdrawal);
 
 				// On traite le formulaire si on modifie
 				if(!empty($this->request->data)){	
 
-						
+					$this->Order->set($this->request->data);
 					// Si les données sont validées
 					if($this->Order->validates() ){
-						$format = 'Y-m-d H:i:s';
 
-						if(!empty($this->request->data['Order']['date_deposit'])){
-							$deposit = $this->request->data['Order']['date_deposit'];
+						$deposit = $this->request->data['Order']['date_deposit'];
+
+
+
+						if($this->request->data['Order']['withdraw'] == 1){
+
+							$date_withdrawal = $this->request->data['Order']['date_deposit'];
+							$date = strtotime($date_withdrawal);
+
+
+							$day =  date('d', $date+((3600*24)*2));
+							$month = date('m', $date);
+							$year = date('Y', $date);
+
+
+							$withdrawal = $this->request->data['Order']['date_withdrawal'] = $day.'-'.$month.'-'.$year;
+							$state_withdraw = 0;
+							//print_r($this->request->data['Order']['date_withdrawal']);
 						}
 
-						if(!empty($this->request->data['Order']['date_withdrawal'])){
+						else{
+
+							$state_withdraw = 1;
 							$withdrawal = $this->request->data['Order']['date_withdrawal'];
-						}
-
-						// Si on met à jour la commande de dépot
-						if(!empty($deposit)){
-							$data_order = array(
-												"Order" =>
-															array(
-															'id' 				=> $order_id,
-															'user_id'			=> $this->Session->read('Auth.User.id'),
-															'nb_bacs'			=> $this->request->data['Order']['nb_bacs'],
-															'date_deposit' 		=> $deposit,
-															'hour_deposit'		=> $this->request->data['Order']['hours'],
-															'concierge_deposit'	=> $this->request->data['Order']['concierge_deposit'],
-
-															),
-												"Address" =>
-															array(
-																'id'				=> $order['Order']['address_id'],
-																'city_id'			=> $this->request->data['Order']['cities'],
-																'postal_id'			=> $this->request->data['Order']['postals'],
-																'firstname'			=> $this->request->data['Address']['firstname'],
-																'lastname'			=> $this->request->data['Address']['lastname'],
-																'street'			=> $this->request->data['Address']['street'],
-																'digicode'			=> $this->request->data['Address']['digicode'],
-																'floor'				=> $this->request->data['Address']['floor'],
-																'comment'			=> $this->request->data['Address']['comment'],
-																'phone'				=> $this->request->data['Address']['phone'],
-																'company'			=> $this->request->data['Address']['company'],
-																)
-							);
-
-						}
-						// Si on met à jour la commande retour
-						elseif(!empty($withdrawal)){
-							$data_order = array(
-												"Order" =>
-															array(
-															'id' 					=> $order_id,
-															'user_id'				=> $this->Session->read('Auth.User.id'),
-															'nb_bacs'				=> $this->request->data['Order']['nb_bacs'],
-															'date_withdrawal' 		=> $withdrawal,
-															'hour_withdrawal'		=> $this->request->data['Order']['hours'],
-															'concierge_withdrawal'	=> $this->request->data['Order']['concierge_withdrawal'],
-
-															),
-												"Address" =>
-															array(
-																'id'				=> $order['Order']['address_id'],
-																'city_id'			=> $this->request->data['Order']['cities'],
-																'postal_id'			=> $this->request->data['Order']['postals'],
-																'firstname'			=> $this->request->data['Address']['firstname'],
-																'lastname'			=> $this->request->data['Address']['lastname'],
-																'street'			=> $this->request->data['Address']['street'],
-																'digicode'			=> $this->request->data['Address']['digicode'],
-																'floor'				=> $this->request->data['Address']['floor'],
-																'comment'			=> $this->request->data['Address']['comment'],
-																'phone'				=> $this->request->data['Address']['phone'],
-																'company'			=> $this->request->data['Address']['company'],
-																)
-							);
 
 						}
 
-						// Si on édite les deux
-						else {
-							$data_order = array(
+						$data_order = array(
 												"Order" =>
 															array(
 															'id' 					=> $order_id,
@@ -606,6 +477,7 @@ class OrdersController extends AppController {
 															'date_withdrawal' 		=> $withdrawal,
 															'hour_withdrawal'		=> $this->request->data['Order']['hours'],
 															'concierge_withdrawal'	=> $this->request->data['Order']['concierge_withdrawal'],
+															'state_withdrawal'		=> $state_withdraw,
 
 															),
 												"Address" =>
@@ -615,26 +487,32 @@ class OrdersController extends AppController {
 																'postal_id'			=> $this->request->data['Order']['postals'],
 																'firstname'			=> $this->request->data['Address']['firstname'],
 																'lastname'			=> $this->request->data['Address']['lastname'],
-																'street'			=> $this->request->data['Address'][0]['street'],
-																'digicode'			=> $this->request->data['Address'][0]['digicode'],
-																'floor'				=> $this->request->data['Address'][0]['floor'],
-																'comment'			=> $this->request->data['Address'][0]['comment'],
-																'phone'				=> $this->request->data['Address'][0]['phone'],
-																'company'			=> $this->request->data['Address'][0]['company'],
+																'street'			=> $this->request->data['Address']['street'],
+																'digicode'			=> $this->request->data['Address']['digicode'],
+																'floor'				=> $this->request->data['Address']['floor'],
+																'comment'			=> $this->request->data['Address']['comment'],
+																'phone'				=> $this->request->data['Address']['phone'],
+																'company'			=> $this->request->data['Address']['company'],
 																)
-							);
+						);
 
-						}
 
-						
-						if($this->Order->saveAll($data_order, array('validate' => 'first', 'deep' => true) ) ){
-							$this->Session->setFlash('Données correctement sauvegardées', 'alert', array('class' => 'success'));
-							$this->redirect(array('controller' => 'users', 'action' => 'my_account', '#' => 'livraisons'));
+
+						if($this->Order->saveAll($data_order, array('deep' => true) ) ){
+								$this->Session->setFlash('Données correctement sauvegardées', 'alert', array('class' => 'success'));
+								$this->redirect(array('controller' => 'users', 'action' => 'my_account', '#' => 'livraisons'));
+
+
 						}
 						else {
-							$this->Session->setFlash('Erreur dans la sauvegarde', 'alert', array('class' => 'warning'));
-							//$this->redirect(array('action' => 'edit', $order_id));
+								//print_r($this->Order->validationErrors);
+								//debug($this->request->data['Order']['withdraw']);
+								$this->Session->setFlash("Erreur lors de la sauvegarde 2", 'alert', array('class' => 'danger'));
 						}
+
+					}
+					else {
+								$this->Session->setFlash('Erreur lors de la sauvegarde', 'alert', array('class' => 'danger'));
 					}
 				}
 
