@@ -418,8 +418,13 @@ class OrdersController extends AppController {
 			if(!empty($order)){
 				
 				if(!empty($this->request->data)){
-					if($this->request->data['Order']['withdraw'] == 1){
-						$withdrawal = 1;
+					if(array_key_exists('withdraw', $this->request->data['Order']) ){
+						if($this->request->data['Order']['withdraw'] == 1){
+							$withdrawal = 1;
+						}
+						else {
+							$withdrawal = 2;
+						}
 					}
 					else {
 						$withdrawal = 2;
@@ -427,7 +432,6 @@ class OrdersController extends AppController {
 				}
 				else {
 					$withdrawal = $order['Order']['state_withdrawal'];
-
 				}
 				$this->set('state_withdrawal', $withdrawal);
 
@@ -438,11 +442,8 @@ class OrdersController extends AppController {
 					// Si les données sont validées
 					if($this->Order->validates() ){
 
-						$deposit = $this->request->data['Order']['date_deposit'];
 
-
-
-						if($this->request->data['Order']['withdraw'] == 1){
+						if($withdrawal == 1){
 
 							$date_withdrawal = $this->request->data['Order']['date_deposit'];
 							$date = strtotime($date_withdrawal);
@@ -459,42 +460,78 @@ class OrdersController extends AppController {
 						}
 
 						else{
-
 							$state_withdraw = 1;
 							$withdrawal = $this->request->data['Order']['date_withdrawal'];
 
 						}
 
-						$data_order = array(
-												"Order" =>
-															array(
-															'id' 					=> $order_id,
-															'user_id'				=> $this->Session->read('Auth.User.id'),
-															'nb_bacs'				=> $this->request->data['Order']['nb_bacs'],
-															'date_deposit' 			=> $deposit,
-															'hour_deposit'			=> $this->request->data['Order']['hours'],
-															'concierge_deposit'		=> $this->request->data['Order']['concierge_deposit'],
-															'date_withdrawal' 		=> $withdrawal,
-															'hour_withdrawal'		=> $this->request->data['Order']['hours'],
-															'concierge_withdrawal'	=> $this->request->data['Order']['concierge_withdrawal'],
-															'state_withdrawal'		=> $state_withdraw,
 
-															),
-												"Address" =>
-															array(
-																'id'				=> $order['Order']['address_id'],
-																'city_id'			=> $this->request->data['Order']['cities'],
-																'postal_id'			=> $this->request->data['Order']['postals'],
-																'firstname'			=> $this->request->data['Address']['firstname'],
-																'lastname'			=> $this->request->data['Address']['lastname'],
-																'street'			=> $this->request->data['Address']['street'],
-																'digicode'			=> $this->request->data['Address']['digicode'],
-																'floor'				=> $this->request->data['Address']['floor'],
-																'comment'			=> $this->request->data['Address']['comment'],
-																'phone'				=> $this->request->data['Address']['phone'],
-																'company'			=> $this->request->data['Address']['company'],
-																)
-						);
+						if($order['Order']['state_deposit'] == 1){
+							$data_order = array(
+													"Order" =>
+																array(
+																'id' 					=> $order_id,
+																'user_id'				=> $this->Session->read('Auth.User.id'),
+																'nb_bacs'				=> $this->request->data['Order']['nb_bacs'],
+																'date_withdrawal' 		=> $withdrawal,
+																'hour_withdrawal'		=> $this->request->data['Order']['hours'],
+																'concierge_withdrawal'	=> $this->request->data['Order']['concierge_withdrawal'],
+																'state_withdrawal'		=> $state_withdraw,
+
+																),
+													"Address" =>
+																array(
+																	'id'				=> $order['Order']['address_id'],
+																	'city_id'			=> $this->request->data['Order']['cities'],
+																	'postal_id'			=> $this->request->data['Order']['postals'],
+																	'firstname'			=> $this->request->data['Address']['firstname'],
+																	'lastname'			=> $this->request->data['Address']['lastname'],
+																	'street'			=> $this->request->data['Address']['street'],
+																	'digicode'			=> $this->request->data['Address']['digicode'],
+																	'floor'				=> $this->request->data['Address']['floor'],
+																	'comment'			=> $this->request->data['Address']['comment'],
+																	'phone'				=> $this->request->data['Address']['phone'],
+																	'company'			=> $this->request->data['Address']['company'],
+																	)
+							);
+
+						}
+						else {
+							$deposit = $this->request->data['Order']['date_deposit'];
+
+							$data_order = array(
+													"Order" =>
+																array(
+																'id' 					=> $order_id,
+																'user_id'				=> $this->Session->read('Auth.User.id'),
+																'nb_bacs'				=> $this->request->data['Order']['nb_bacs'],
+																'date_deposit' 			=> $deposit,
+																'hour_deposit'			=> $this->request->data['Order']['hours'],
+																'concierge_deposit'		=> $this->request->data['Order']['concierge_deposit'],
+																'date_withdrawal' 		=> $withdrawal,
+																'hour_withdrawal'		=> $this->request->data['Order']['hours'],
+																'concierge_withdrawal'	=> $this->request->data['Order']['concierge_withdrawal'],
+																'state_withdrawal'		=> $state_withdraw,
+
+																),
+													"Address" =>
+																array(
+																	'id'				=> $order['Order']['address_id'],
+																	'city_id'			=> $this->request->data['Order']['cities'],
+																	'postal_id'			=> $this->request->data['Order']['postals'],
+																	'firstname'			=> $this->request->data['Address']['firstname'],
+																	'lastname'			=> $this->request->data['Address']['lastname'],
+																	'street'			=> $this->request->data['Address']['street'],
+																	'digicode'			=> $this->request->data['Address']['digicode'],
+																	'floor'				=> $this->request->data['Address']['floor'],
+																	'comment'			=> $this->request->data['Address']['comment'],
+																	'phone'				=> $this->request->data['Address']['phone'],
+																	'company'			=> $this->request->data['Address']['company'],
+																	)
+							);
+
+
+						}
 
 
 

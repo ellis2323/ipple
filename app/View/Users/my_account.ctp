@@ -42,8 +42,7 @@ $(function(){
                     if(!empty($user)):
                         ?>
                         
-                        Nom: <?= $user['User']['lastname'];?><br />
-                        Prénom: <?= $user['User']['firstname'];?><br />
+
                         Email: <?= $user['User']['email'];?><br />
 
                         Date de création du compte : <?= $user['User']['created'];?><br />

@@ -9,22 +9,38 @@ $( document ).ready(function() {
         $('#return').hide(); // on cache le bloc 
     }
   
+    // Checkbox concierge
+    $('#OrderConciergeDeposit').change(function(){
+         if($(this).is(':checked')) {
+                $('#return').fadeIn();
+                $("#OrderDateWithdrawal").prop('required',true);
+                $("#OrderWithdraw1").prop('checked',false);
+                $("#OrderWithdraw2").prop('checked',true);
 
+            }
+
+    });
+
+    // Bouton en même temps
+    $('#OrderWithdraw1').change(function(){
+     if($(this).is(':checked')) {
+            $('#return').fadeOut();
+            $("#OrderDateWithdrawal").prop('required',false);
+            $('#OrderConciergeDeposit').attr('checked',false);
+        }
+    }); 
+
+    // Bouton différé
     $('#OrderWithdraw2').change(function(){
      if($(this).is(':checked')) {
             $('#return').fadeIn();
-            $("#OrderSelectDate").prop('required',true);
+            $("#OrderDateWithdrawal").prop('required',true);
         }
     });
 
 
 
-    $('#OrderWithdraw1').change(function(){
-     if($(this).is(':checked')) {
-            $('#return').fadeOut();
-            $("#OrderSelectDate").prop('required',false);
-        }
-    }); 
+
 
 });
         
@@ -48,7 +64,12 @@ if($order['Order']['state'] < 3){?>
 	<div class="section">
 
         <div class="row">
-                <h3><?php echo $this->Html->image('fleche_liv.png', array('alt' => 'responsive image'));?> Où voulez-vous vous faire livrer les bacs?</h3>
+        <?php if($order['Order']['state_deposit'] == 0){?>
+               <h3><?php echo $this->Html->image('fleche_liv.png', array('alt' => 'responsive image'));?> Où voulez-vous vous faire livrer les bacs?</h3>
+        <?php }
+        else {?>
+               <h3><?php echo $this->Html->image('fleche_liv.png', array('alt' => 'responsive image'));?> Où voulez-vous vous que nous récupérions les bacs?</h3>
+        <?php }?>
         </div>
 
 		<div class="choix">    
@@ -328,8 +349,6 @@ if($order['Order']['state'] < 3){?>
 // Si la livraison n'est pas encore effectuée
  if($order['Order']['state_deposit'] == 0) { ?>
 
-
-
               <div class="row">
                 <!-- HEURE ET DATE -->
                     <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?> Quand voulez-vous faire livrer les bacs chez vous?</h3>  
@@ -444,62 +463,69 @@ if($order['Order']['state'] < 3){?>
 
 
 		</div> <!-- /choix -->
+
+
+
+        <div class="row">
+            <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?> Quand voulez-vous que les bacs soient récupérés chez vous ?</h3>  
+
+            <div class="radio col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
+
+            <?php 
+            if(empty($state_withdrawal)){
+
+                    echo $this->Form->input('withdraw', array(
+                     'type' => 'radio',
+                     'legend' => false,
+                     'options' => array(1 => 'En même temps (le chauffeur attendra jusqu\'à 20 minutes) '),
+                     'hiddenField'=>false,
+                     'checked' => 'checked',
+                    ));  
+
+                    echo $this->Form->input('withdraw', array(
+                     'type' => 'radio',
+                     'legend' => false,
+                     'options' => array(2 => 'Je prévois ma date et mon horaire de stockage'),
+                     'hiddenField'=>false
+                    ));  
+            }
+            else {
+                    echo $this->Form->input('withdraw', array(
+                     'type' => 'radio',
+                     'legend' => false,
+                     'options' => array(1 => 'En même temps (le chauffeur attendra jusqu\'à 20 minutes) '),
+                     'hiddenField'=>false,
+                    ));  
+
+                    echo $this->Form->input('withdraw', array(
+                     'type' => 'radio',
+                     'legend' => false,
+                     'options' => array(2 => 'Je prévois ma date et mon horaire de stockage'),
+                     'hiddenField'=>false,
+                     'checked' => 'checked',
+
+                    ));  
+
+            }
+            ?>
+
+            </div>  
+
+        </div> <!-- /row -->
+
 <?php } 
 // fin if livraison
 
-?>
-                <div class="row">
-                    <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?> Quand voulez-vous que les bacs soient récupérés chez vous ?</h3>  
-
-                    <div class="radio col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
-
-                    <?php 
-                    if(empty($state_withdrawal)){
-
-                            echo $this->Form->input('withdraw', array(
-                             'type' => 'radio',
-                             'legend' => false,
-                             'options' => array(1 => 'En même temps (le chauffeur attendra jusqu\'à 20 minutes) '),
-                             'hiddenField'=>false,
-                             'checked' => 'checked',
-                            ));  
-
-                            echo $this->Form->input('withdraw', array(
-                             'type' => 'radio',
-                             'legend' => false,
-                             'options' => array(2 => 'Je prévois ma date et mon horaire de stockage'),
-                             'hiddenField'=>false
-                            ));  
-                    }
-                    else {
-                            echo $this->Form->input('withdraw', array(
-                             'type' => 'radio',
-                             'legend' => false,
-                             'options' => array(1 => 'En même temps (le chauffeur attendra jusqu\'à 20 minutes) '),
-                             'hiddenField'=>false,
-                            ));  
-
-                            echo $this->Form->input('withdraw', array(
-                             'type' => 'radio',
-                             'legend' => false,
-                             'options' => array(2 => 'Je prévois ma date et mon horaire de stockage'),
-                             'hiddenField'=>false,
-                             'checked' => 'checked',
-
-                            ));  
-
-                    }
-                    ?>
-
-                    </div>  
-
-                </div> <!-- /row -->
-<?php
 
 
 // Si la récupération est disponible
-//if($order['Order']['state_withdrawal'] == 1) {
-?>
+ if($order['Order']['state_deposit'] == 1){?>
+ <div class='row'>
+        <p><br /></p>
+       <h3><?php echo $this->Html->image('fleche_liv.png', array('alt' => 'responsive image'));?> Quand voulez-vous que les bacs soient récupérés chez vous ?</h3>
+</div>
+<?php } ?>
+
                 <div class="row" id="return">
                 <!-- HEURE ET DATE -->
 
