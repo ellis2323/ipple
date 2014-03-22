@@ -4,6 +4,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('bac_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('code'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -14,6 +15,7 @@
 		<td>
 			<?php echo $this->Html->link($lock['Bac']['title'], array('controller' => 'bacs', 'action' => 'view', $lock['Bac']['id'])); ?>
 		</td>
+		<td><?php echo h($lock['Lock']['code']); ?>&nbsp;</td>
 		<td><?php echo h($lock['Lock']['created']); ?>&nbsp;</td>
 		<td><?php echo h($lock['Lock']['modified']); ?>&nbsp;</td>
 		<td class="actions">

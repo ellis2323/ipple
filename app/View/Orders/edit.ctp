@@ -1,3 +1,66 @@
+<?php
+if(!empty($this->request->data)){
+    //debug($this->request->data);
+
+
+    $state_withdrawal = $order['Order']['state_withdrawal'];
+    $state_deposit = $order['Order']['state_deposit'];
+
+    if(!array_key_exists('concierge_deposit', $this->request->data['Order']) ){
+        $this->request->data['Order']['concierge_deposit'] = $order['Order']['concierge_deposit'];
+    }
+    if(!array_key_exists('hour_deposit', $this->request->data) ){
+        $this->request->data['hour_deposit'] = $order['Order']['hour_deposit'];
+    }
+    else {
+
+    }
+   
+
+
+    $data = array(
+        'hour_deposit' => $this->request->data['hour_deposit'],
+        'hour_withdrawal' => $this->request->data['hour_withdrawal'],
+        'Order' => array(
+            'nb_bacs' => $this->request->data['Order']['nb_bacs'],
+            'date_deposit' => $this->request->data['Order']['date_deposit'],
+            'concierge_deposit' => $this->request->data['Order']['concierge_deposit'],
+            'date_withdrawal' => $this->request->data['Order']['date_withdrawal'],
+            'concierge_withdrawal' => $this->request->data['Order']['concierge_withdrawal'],
+            'withdraw' => $this->request->data['Order']['date_withdrawal'],
+
+        ),
+        'Address' => array(
+            'lastname' => $this->request->data['Address']['lastname'],
+            'firstname' => $this->request->data['Address']['firstname'],
+            'company' => $this->request->data['Address']['phone'],
+            'phone' => $this->request->data['Address']['phone'],
+            'street' => $this->request->data['Address']['street'],
+            'floor' => $this->request->data['Address']['floor'],
+            'digicode' => $this->request->data['Address']['digicode'],
+            'comment' => $this->request->data['Address']['comment'],
+            'city_id'   => $this->request->data['Order']['cities'],
+            'postal_id' => $this->request->data['Order']['postals'],
+        )
+    );
+
+    $state = $order['Order']['state'];
+    $order = $data;
+    $order['Order']['state_deposit'] = $state_deposit;
+    $order['Order']['state_withdrawal'] = $state_deposit;
+
+    $order['Order']['state'] = $state;
+
+
+
+}
+else {
+    $order['hour_deposit'] = $order['Order']['hour_deposit'];
+    $order['hour_withdrawal'] = $order['Order']['hour_withdrawal'];
+}
+
+?>
+
 <?= $this->start('radio_control');?>
 <script type='text/javascript'>
 $( document ).ready(function() {
@@ -18,7 +81,6 @@ $( document ).ready(function() {
                 $("#OrderWithdraw2").prop('checked',true);
 
             }
-
     });
 
     // Bouton en même temps
@@ -86,17 +148,24 @@ if($order['Order']['state'] < 3){?>
                                                                             'style' => 'text-align:right;',
                                                                         )
                             );
+  
+
+
+                            $value = array();
+
+                            for($i=$nb_bac_min;$i<=$nb_bac_max;$i++){
+                                $value[$i] = $i;
+                            }
                             ?>
-                            <?php
-                            echo $this->Form->input('Order.nb_bacs', array(
-                                                                            'type' => 'number',
-                                                                            'label' => false, 
-                                                                            'class' => 'form-control',
-                                                                            'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                            'value'     => $order['Order']['nb_bacs']
-                                                                            
-                                                                     )
-                            );?>
+
+                            <?= $this->Form->input('Order.nb_bacs', array(
+                                'options' => array($value),
+                                'empty' => '(choisissez)',
+                                'label' => false, 
+                                'class' => 'form-control',
+                                'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                'default'     => $order['Order']['nb_bacs']
+                              ));?>
 
                         </div>
                          <p><br></p>
@@ -448,9 +517,9 @@ if($order['Order']['state'] < 3){?>
                                                                                     'label' => false, 
                                                                                     'class' => 'form-control',
                                                                                     'id'    => 'OrderHoursDeposit',
-
+                                                                                    'name'  => 'hour_deposit',
                                                                                     'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                                    'default'     => $order['Order']['hour_deposit']
+                                                                                    'default'     => $order['hour_deposit']
                                                                              )
                                     );?>
                                 </div>
@@ -526,7 +595,24 @@ if($order['Order']['state'] < 3){?>
 
     <div class="row" id="return">
     <!-- HEURE ET DATE -->
+                         <?php
+                         debug($order);
 
+                          if($order['Order']['state_deposit'] == 1 && $order['Order']['state_withdrawal'] == 1) {
+                                echo $this->Form->input("date_deposit", 
+                                    array(
+                                        'label' => false, 
+                                        'type' => 'hidden',
+                                        'class' => 'form-control',
+                                        'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                        'required' => true,
+                                        'id'        => 'OrderDateDeposit',
+                                        'value'     => $order['Order']['date_deposit']
+
+                                    )
+                                ); 
+                         }
+                         ?>
 
         <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="form-group">                            
@@ -560,6 +646,7 @@ if($order['Order']['state'] < 3){?>
 
 
                             var delta = 86400000*'<?= $max_date;?>';
+                            var delta_min = 86400000*'<?= $min_date;?>';
                             var new_date = 0;
                             var date_deposit = $('#OrderDateDeposit').val(); // on récupères la date
 
@@ -570,9 +657,10 @@ if($order['Order']['state'] < 3){?>
                             new_date = Date.parse(new_date); // On transforme la chaine en timestamp Milliseconds
                             
                             new_date += delta; // On rajoute le nombre de jours max
-
                             new_date = new Date(new_date); // On convertis en date
 
+                            new_date_deposit = new Date(new_date);
+                            new_date_deposit += delta_min;
                             // Si il n'y à pas de date de dépot, alors on définis la date minimum
                             if(date_deposit == "" || date_deposit == null){
                                 date_deposit = '+<?= $min_date;?>d';
@@ -587,8 +675,9 @@ if($order['Order']['state'] < 3){?>
                                     new_date = date_deposit[2]+'-'+date_deposit[1]+'-'+date_deposit[0];
 
                                     new_date = Date.parse(new_date);
-                                    
+
                                     // date de dépot
+                                    new_date_deposit += delta_min;
                                     new_date_deposit = new Date(new_date);
 
                                     // Date maximale = date + delta
@@ -613,12 +702,7 @@ if($order['Order']['state'] < 3){?>
                                         }
                                     });
                             });
-    
-                            // Quand la valeur de la date de dépot change
-                            $("OrderDateDeposit").change(function(){
-                                
 
-                            });
 
                                     
                     });
@@ -658,18 +742,19 @@ if($order['Order']['state'] < 3){?>
             <div class="form-group">  
                 <?php
                 echo $this->Form->label('HoursWithdrawal', 'Heure de la livraison', array(
-                                                                'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
-                                                                'style' => 'text-align:right;',
+                                                                                        'class'     => 'col-lg-4 col-md-4 col-sm-4 control-label',
+                                                                                        'style'     => 'text-align:right;',
                                                             )
                 );
                 ?>
                 <?php
                 echo $this->Form->input('hours', array(
-                                                                'label' => false, 
-                                                                'class' => 'form-control',
-                                                                'id'    => 'OrderHoursWithdrawal',
-                                                                'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                'default'     => $order['Order']['hour_deposit']
+                                                                'label'     => false, 
+                                                                'class'     => 'form-control',
+                                                                'id'        => 'OrderHoursWithdrawal',
+                                                                'name'      => 'hour_withdrawal',
+                                                                'div'       => 'col-lg-6 col-md-6 col-sm-6',
+                                                                'default'     => $order['hour_withdrawal']
                                                          )
                 );?>
             </div>

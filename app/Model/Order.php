@@ -121,7 +121,6 @@ class Order extends AppModel {
 			//print_r('Champs withdraw:'.$withdraw.'<br />');
 
 			if(array_key_exists($withdraw, $this->data[$this->name]) ) {
-				//print_r($this->data[$this->name][$withdraw]);
 
 				$data_withdraw = $this->data[$this->name][$withdraw];
 
@@ -129,8 +128,6 @@ class Order extends AppModel {
 					return true;
 				}
 			}
-
-
 		}
 
 		if(array_key_exists($field, $this->data[$this->name])){
@@ -144,6 +141,8 @@ class Order extends AppModel {
 				return true;
 			}
 			else {
+
+
 				return false;
 			}
 		}
@@ -155,9 +154,7 @@ class Order extends AppModel {
 
 	// Permet de vérifier la disponibilité de la date
 	public function checkDate($data, $field=NULL){
-		print_r('<br /><br />Data 1:');
 
-		print_r($data);
 
 
 		if(array_key_exists($field, $this->data[$this->name])){
@@ -182,8 +179,23 @@ class Order extends AppModel {
 		$date = $data;
 		$date = array_shift($date);
 
+		/*print_r('0.Date before strtotime:');
+		print_r($date);
+		print_r('<br />');*/
+
 		$date = strtotime($date);
 		$today = time();
+		if(array_key_exists('date_deposit', $this->data[$this->name])){
+			$date_deposit = $this->data[$this->name]['date_deposit'];
+		}
+		else {
+			$date_deposit = $this->data['Order']['date_deposit'];
+		}
+		$date_deposit = strtotime($date_deposit);
+		echo "1: <br />";
+		print_r($this->data);
+		echo "<br />";
+
 
 		// On définis nos attributs
 		$day = date('d', $date); // Jour calendaire
@@ -199,6 +211,7 @@ class Order extends AppModel {
 		$day_week_block = $DatesBlock->findByValueAndType($day_week, 4);
 
 
+		$max_date_total = $date_deposit+((3600*24)*$max_date);
 
 		// Si on trouve la date
 		if(!empty($day_block) ||  !empty($month_block) || !empty($week_block) || !empty($day_week_block)){
@@ -206,26 +219,31 @@ class Order extends AppModel {
 
 		}
 		else {
-
-
 			// on vérifie la date de retrait
 			if(array_key_exists('date_withdrawal', $data)) {
-				if($date < $today+((3600*24)*$max_date) ) {
-					print_r('win');
-					return true;
-			
+				if($date < $max_date_total ) {
+					return true;			
 				}
 				else{
+					/*print_r('1.Date:');
+					print_r($date);
+					print_r('<br />');
+					print_r('2.Date max:');
+					print_r($max_date_total) ;
+					print_r('<br />');
+					print_r('3.Today:');
+					print_r($today) ;
+					print_r('<br />');*/
 					return false;
 				}
 			}
 			else {
 				// On vérifie que la date est supérieur à aujourd'hui
-				if($date < $today ) {
-					return false;
+				if($date > $today ) {
+					return true;
 				}
 				else {
-					return true;
+					return false;
 				}
 			}
 		}		

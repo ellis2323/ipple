@@ -155,12 +155,14 @@ class UsersController extends AppController {
 		public function my_bacs(){
 			
 				// On liste toutes les bacs utilisateurs
-				$bacs = $this->User->Bac->findAllByUserId($this->Session->read('Auth.User.id'));
+				$bacs = $this->User->Bac->findAllByUserIdAndState($this->Session->read('Auth.User.id'), '1');
 				// On les envois à la vue
 				$this->set(compact('bacs'));
 
 				// Si on à fait une demande de retrait de bac
 				if(!empty($this->request->data)){
+
+					// Si on veux que les bacs selectionnés
 					if(empty($this->request->data['select_all']) ){
 						//else {
 
@@ -184,11 +186,12 @@ class UsersController extends AppController {
 									$exist = $this->User->Order->Bac->findById($bac_id);
 
 									// Si le bac n'est pas déjà sortie
-									if($exist['Bac']['state'] == 0){
+									if($exist['Bac']['state'] == 1){
 
 										// On ajoute la liaison à la commande
 										$this->User->Order->BacR->create();
 
+										// /!\ Modifier le order_id /!\
 										$data = array(
 													'bac_id' => $bac_id,
 													'order_id' => $this->User->Order->id,
@@ -214,12 +217,15 @@ class UsersController extends AppController {
 						}								
 
 						$this->Session->setFlash('Vos bacs ont été récupérés', 'alert', array('class' => 'success'));
+						$this->redirect(array('controller' => 'users', 'action' => 'my_bacs') );
 
-					}
+					} // fin bacs selectionnés
+
+					// Si on veux tous les bacs
 					else {
 
 						
-					}
+					} // fin tous les bacs
 
 				}
 

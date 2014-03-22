@@ -11,6 +11,11 @@
 			<?php echo $this->Html->link($lock['Bac']['code'], array('controller' => 'bacs', 'action' => 'view', $lock['Bac']['id'])); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Code'); ?></dt>
+		<dd>
+			<?php echo h($lock['Lock']['code']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
 			<?php echo h($lock['Lock']['created']); ?>

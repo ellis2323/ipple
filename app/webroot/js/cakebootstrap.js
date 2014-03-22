@@ -33,9 +33,9 @@ var Bootstrappifier = {
 			$('.message').addClass('alert alert-info');
 			$('.flash_success').addClass('alert alert-success');
 			$('.flash_warning').addClass('alert');
-			$('.error-message').addClass('alert alert-error');
+			//$('.error-message').addClass('alert alert-danger');
 			$('.form-error').addClass('has-error');
-			$('.form-error').closest('.clearfix').addClass('has-error');
+			$('.form-error').closest('.form-group').addClass('has-error');
 			$('.required error').addClass('.has-error');
 		}
 	},

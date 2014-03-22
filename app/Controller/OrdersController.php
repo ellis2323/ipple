@@ -352,7 +352,8 @@ class OrdersController extends AppController {
 
 					} // Validates
 					else {
-						//debug($this->validationErrors);
+						debug($this->Order->invalidFields());
+						debug($this->request->data);
 						$this->Session->setFlash('Erreur de validation', 'alert', array('class' => 'danger'));
 					}
 
@@ -412,7 +413,13 @@ class OrdersController extends AppController {
 			$this->set('max_date', $max_date);
 
 
+			$nb_bac_max = $param->findByKey('nb_bac_max') ;
+			$nb_bac_max = $nb_bac_max['Param']['value'];
+			$this->set('nb_bac_max', $nb_bac_max);
 
+			$nb_bac_min = $param->findByKey('nb_bac_min') ;
+			$nb_bac_min = $nb_bac_min['Param']['value'];
+			$this->set('nb_bac_min', $nb_bac_min);
 
 			$order = $this->Order->find('first', 
 				array(
@@ -431,12 +438,7 @@ class OrdersController extends AppController {
 				
 				if(!empty($this->request->data)){
 					if(array_key_exists('withdraw', $this->request->data['Order']) ){
-						if($this->request->data['Order']['withdraw'] == 1){
-							$withdrawal = 1;
-						}
-						else {
-							$withdrawal = 2;
-						}
+						$withdrawal = $this->request->data['Order']['withdraw'] ;
 					}
 					else {
 						$withdrawal = 2;
@@ -450,10 +452,10 @@ class OrdersController extends AppController {
 				// On traite le formulaire si on modifie
 				if(!empty($this->request->data)){	
 
+
 					$this->Order->set($this->request->data);
 					// Si les données sont validées
 					if($this->Order->validates() ){
-
 
 						if($withdrawal == 1){
 
@@ -486,7 +488,7 @@ class OrdersController extends AppController {
 																'user_id'				=> $this->Session->read('Auth.User.id'),
 																'nb_bacs'				=> $this->request->data['Order']['nb_bacs'],
 																'date_withdrawal' 		=> $withdrawal,
-																'hour_withdrawal'		=> $this->request->data['Order']['hours'],
+																'hour_withdrawal'		=> $this->request->data['hour_withdrawal'],
 																'concierge_withdrawal'	=> $this->request->data['Order']['concierge_withdrawal'],
 																'state_withdrawal'		=> $state_withdraw,
 
@@ -518,10 +520,10 @@ class OrdersController extends AppController {
 																'user_id'				=> $this->Session->read('Auth.User.id'),
 																'nb_bacs'				=> $this->request->data['Order']['nb_bacs'],
 																'date_deposit' 			=> $deposit,
-																'hour_deposit'			=> $this->request->data['Order']['hours'],
+																'hour_deposit'			=> $this->request->data['hour_deposit'],
 																'concierge_deposit'		=> $this->request->data['Order']['concierge_deposit'],
 																'date_withdrawal' 		=> $withdrawal,
-																'hour_withdrawal'		=> $this->request->data['Order']['hours'],
+																'hour_withdrawal'		=> $this->request->data['hour_withdrawal'],
 																'concierge_withdrawal'	=> $this->request->data['Order']['concierge_withdrawal'],
 																'state_withdrawal'		=> $state_withdraw,
 
@@ -550,17 +552,19 @@ class OrdersController extends AppController {
 						if($this->Order->saveAll($data_order, array('deep' => true) ) ){
 								$this->Session->setFlash('Données correctement sauvegardées', 'alert', array('class' => 'success'));
 								$this->redirect(array('controller' => 'users', 'action' => 'my_account', '#' => 'livraisons'));
+								
 
+							$this->set('order', $data);
 
 						}
-						else {
-								//print_r($this->Order->validationErrors);
-								//debug($this->request->data['Order']['withdraw']);
+						else { // saveAll
 								$this->Session->setFlash("Erreur lors de la sauvegarde 2", 'alert', array('class' => 'danger'));
+								//debug($order);
+								//debug($this->request->data);							
 						}
 
 					}
-					else {
+					else { // validation
 								$this->Session->setFlash('Erreur lors de la sauvegarde', 'alert', array('class' => 'danger'));
 					}
 				}

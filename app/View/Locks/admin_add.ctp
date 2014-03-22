@@ -5,6 +5,9 @@
 	<?php
 		echo $this->Form->input('bac_id');
 	?>
+	<?php
+		echo $this->Form->input('code');
+	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>

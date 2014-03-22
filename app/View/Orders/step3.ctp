@@ -128,6 +128,7 @@ $( document ).ready(function() {
 
                                 )
                             ); ?>
+                            
                             <div id="datepicker"></div>
 
                                 <?= $this->start('datepicker'); ?>
@@ -176,7 +177,17 @@ $( document ).ready(function() {
                                 ?>
                             </div>
                         
-		                     
+		                     <?= $this->Form->input("date_deposit", 
+                                array(
+                                    'label' => false, 
+                                    'type' => 'hidden',
+                                    'class' => 'form-control',
+                                    'div' => 'col-lg-6 col-md-6 col-sm-6',
+                                    'required' => false,
+                                    'value'	=> $minDate,
+
+                                )
+                            ); ?>
 		            	</div>
 		            </div>
 
