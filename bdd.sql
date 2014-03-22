@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 21, 2014 at 05:50 PM
+-- Generation Time: Mar 22, 2014 at 02:49 PM
 -- Server version: 5.5.35
 -- PHP Version: 5.3.10-1ubuntu3.10
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `addresses`
 --
 
+DROP TABLE IF EXISTS `addresses`;
 CREATE TABLE IF NOT EXISTS `addresses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(255) NOT NULL,
@@ -42,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `addresses` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `addresses`
@@ -53,9 +54,15 @@ INSERT INTO `addresses` (`id`, `firstname`, `lastname`, `phone`, `company`, `str
 (2, '456456', 'cahteil', '0102030405', '', 'qsdqdqsd', 0, '', '', 2, 3, 2, '2014-03-20 19:35:44', '2014-03-20 19:35:44'),
 (3, 'Regis', 'PIETRASZEWSKI', '3364540731', '', '76 rue saint didier', 3, 'yiyi', 'yuyu', 2, 3, 1, '2014-03-21 10:43:49', '2014-03-21 10:43:49'),
 (4, 'Regis', 'PIETRASZEWSKI', '3364540731', '', '76 rue saint didier', 3, 'yiyiyiyi', 'yuyu', 5, 3, 1, '2014-03-21 10:44:09', '2014-03-21 13:15:53'),
-(5, '456456', 'cahteil', '0102030405', '', 'qsdqdqsd', 0, '', '', 2, 3, 2, '2014-03-21 11:15:39', '2014-03-21 16:49:00'),
+(5, '456456', 'cahteil', '0102030405', '', 'qsdqdqsd', 0, '', '', 2, 3, 2, '2014-03-21 11:15:39', '2014-03-21 18:50:15'),
 (6, 'Regis', 'PIETRASZEWSKI', '3364540731', '', '76 rue saint didier', 3, 'yiyiyiyi', 'yuyu', 5, 3, 1, '2014-03-21 13:17:48', '2014-03-21 14:25:27'),
-(7, 'Regis', 'PIETRASZEWSKI', '3364540731', 'lklk', '76 rue saint roger', 3, 'to\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\n', 'yuyu', 5, 3, 1, '2014-03-21 15:11:02', '2014-03-21 17:31:41');
+(7, 'Regis', 'PIETRASZEWSKI', '3364540731', 'lklk', '76 rue saint roger', 3, 'to\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\n', 'yuyu', 5, 3, 1, '2014-03-21 15:11:02', '2014-03-21 18:40:44'),
+(8, 'Regis', 'PIETRASZEWSKI', '3364540731', 'lklk', '76 rue saint roger', 3, 'to\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\n', 'yuyu', 5, 3, 1, '2014-03-21 23:31:13', '2014-03-22 12:12:34'),
+(9, '456456', 'cahteil', '0102030405', '', 'qsdqdqsd', 0, '', '', 2, 3, 2, '2014-03-22 11:17:25', '2014-03-22 11:43:54'),
+(10, '456456', 'cahteil', '0102030405', '', 'qsdqdqsd', 0, '', '', 2, 3, 2, '2014-03-22 11:42:49', '2014-03-22 11:59:35'),
+(11, '456456', 'cahteil', '0102030405', '', 'qsdqdqsd', 0, '', '', 2, 3, 2, '2014-03-22 12:00:31', '2014-03-22 12:54:19'),
+(12, 'Regis', 'PIETRASZEWSKI', '3364540731', 'lklk', '76 rue saint roger', 3, 'to\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\n', 'yuyu', 5, 3, 1, '2014-03-22 12:13:01', '2014-03-22 12:16:58'),
+(13, 'Regis', 'PIETRASZEWSKI', '3364540731', '3364540731', '76 rue saint roger', 3, 'to\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\n', 'yuyu', 5, 3, 1, '2014-03-22 14:17:19', '2014-03-22 14:18:32');
 
 -- --------------------------------------------------------
 
@@ -63,6 +70,7 @@ INSERT INTO `addresses` (`id`, `firstname`, `lastname`, `phone`, `company`, `str
 -- Table structure for table `bacs`
 --
 
+DROP TABLE IF EXISTS `bacs`;
 CREATE TABLE IF NOT EXISTS `bacs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `media_id` int(11) NOT NULL,
@@ -81,26 +89,26 @@ CREATE TABLE IF NOT EXISTS `bacs` (
 --
 
 INSERT INTO `bacs` (`id`, `media_id`, `user_id`, `title`, `description`, `modified`, `created`, `state`, `code`) VALUES
-(13, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez1'),
-(14, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez2'),
-(15, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez3'),
-(16, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez4'),
-(17, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez5'),
-(18, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez6'),
+(13, 2, 2, '', 'qdqsd', '2014-03-21 21:46:01', '2014-03-18 20:19:54', 1, 'dez1'),
+(14, 0, 2, '', '', '2014-03-21 21:42:49', '2014-03-18 20:19:54', 1, 'dez2'),
+(15, 0, 2, '', '', '2014-03-21 21:42:54', '2014-03-18 20:19:54', 1, 'dez3'),
+(16, 0, 2, '', '', '2014-03-21 21:42:58', '2014-03-18 20:19:54', 1, 'dez4'),
+(17, 0, 2, '', '', '2014-03-21 21:43:02', '2014-03-18 20:19:54', 1, 'dez5'),
+(18, 0, 0, '', '', '2014-03-21 21:40:56', '2014-03-18 20:19:54', 0, 'dez6'),
 (19, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez7'),
 (20, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez8'),
 (21, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez9'),
 (22, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez10'),
 (23, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez11'),
-(24, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez12'),
+(24, 0, 0, '', '', '2014-03-21 21:29:54', '2014-03-18 20:19:54', 0, 'dez12'),
 (25, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez13'),
 (26, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez14'),
 (27, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez15'),
-(28, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez16'),
-(29, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez17'),
-(30, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez18'),
-(31, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez19'),
-(32, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez20'),
+(28, 0, 0, '', '', '2014-03-21 21:35:41', '2014-03-18 20:19:54', 0, 'dez16'),
+(29, 0, 0, '', '', '2014-03-21 21:35:48', '2014-03-18 20:19:54', 0, 'dez17'),
+(30, 0, 0, '', '', '2014-03-21 21:35:54', '2014-03-18 20:19:54', 0, 'dez18'),
+(31, 0, 0, '', '', '2014-03-21 21:36:01', '2014-03-18 20:19:54', 0, 'dez19'),
+(32, 0, 0, '', '', '2014-03-21 21:36:52', '2014-03-18 20:19:54', 0, 'dez20'),
 (33, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez21'),
 (34, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez22'),
 (35, 0, 0, '', '', '2014-03-18 20:19:54', '2014-03-18 20:19:54', 0, 'dez23'),
@@ -188,19 +196,24 @@ INSERT INTO `bacs` (`id`, `media_id`, `user_id`, `title`, `description`, `modifi
 -- Table structure for table `bacs_orders`
 --
 
+DROP TABLE IF EXISTS `bacs_orders`;
 CREATE TABLE IF NOT EXISTS `bacs_orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bac_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `bacs_orders`
 --
 
 INSERT INTO `bacs_orders` (`id`, `bac_id`, `order_id`) VALUES
-(3, 14, 7);
+(1, 13, 5),
+(2, 14, 5),
+(3, 15, 5),
+(4, 16, 5),
+(5, 17, 5);
 
 -- --------------------------------------------------------
 
@@ -208,6 +221,7 @@ INSERT INTO `bacs_orders` (`id`, `bac_id`, `order_id`) VALUES
 -- Table structure for table `cities`
 --
 
+DROP TABLE IF EXISTS `cities`;
 CREATE TABLE IF NOT EXISTS `cities` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(255) NOT NULL,
@@ -229,6 +243,7 @@ INSERT INTO `cities` (`id`, `label`, `state`) VALUES
 -- Table structure for table `dates_block`
 --
 
+DROP TABLE IF EXISTS `dates_block`;
 CREATE TABLE IF NOT EXISTS `dates_block` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `value` tinyint(2) NOT NULL,
@@ -236,33 +251,28 @@ CREATE TABLE IF NOT EXISTS `dates_block` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
---
--- Dumping data for table `dates_block`
---
-
-INSERT INTO `dates_block` (`id`, `value`, `type`) VALUES
-(1, 3, 3);
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `hours`
 --
 
+DROP TABLE IF EXISTS `hours`;
 CREATE TABLE IF NOT EXISTS `hours` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `start_hour` time NOT NULL,
   `end_hour` time NOT NULL,
   `state` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `hours`
 --
 
 INSERT INTO `hours` (`id`, `start_hour`, `end_hour`, `state`) VALUES
-(3, '21:17:00', '23:17:00', 0);
+(3, '21:17:00', '23:17:00', 0),
+(4, '12:00:00', '15:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -270,6 +280,7 @@ INSERT INTO `hours` (`id`, `start_hour`, `end_hour`, `state`) VALUES
 -- Table structure for table `hours_block`
 --
 
+DROP TABLE IF EXISTS `hours_block`;
 CREATE TABLE IF NOT EXISTS `hours_block` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hour_id` int(11) NOT NULL,
@@ -284,9 +295,11 @@ CREATE TABLE IF NOT EXISTS `hours_block` (
 -- Table structure for table `locks`
 --
 
+DROP TABLE IF EXISTS `locks`;
 CREATE TABLE IF NOT EXISTS `locks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bac_id` int(11) NOT NULL,
+  `code` varchar(255) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -298,6 +311,7 @@ CREATE TABLE IF NOT EXISTS `locks` (
 -- Table structure for table `medias`
 --
 
+DROP TABLE IF EXISTS `medias`;
 CREATE TABLE IF NOT EXISTS `medias` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `ref` varchar(60) DEFAULT NULL,
@@ -307,7 +321,15 @@ CREATE TABLE IF NOT EXISTS `medias` (
   PRIMARY KEY (`id`),
   KEY `ref` (`ref`),
   KEY `ref_id` (`ref_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `medias`
+--
+
+INSERT INTO `medias` (`id`, `ref`, `ref_id`, `file`, `position`) VALUES
+(1, 'Bac', 13, '/img/uploads/2014/03/fond_ecran_hd_sexy_blond_allonge_sur_ventre_cheveux_mi_long_wallpaper_desktop_image_picture.jpg', 0),
+(2, 'Bac', 13, '/img/uploads/2014/03/Maverick.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -315,6 +337,7 @@ CREATE TABLE IF NOT EXISTS `medias` (
 -- Table structure for table `orders`
 --
 
+DROP TABLE IF EXISTS `orders`;
 CREATE TABLE IF NOT EXISTS `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -332,7 +355,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Permet de gérer les commandes et à lier les différentes livr' AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Permet de gérer les commandes et à lier les différentes livr' AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `orders`
@@ -343,9 +366,18 @@ INSERT INTO `orders` (`id`, `user_id`, `address_id`, `date_deposit`, `hour_depos
 (2, 3, 1, '2014-03-29 00:00:00', 3, 0, 0, NULL, NULL, 0, 0, 7, 1, '2014-03-20 19:32:57', '2014-03-20 19:32:57'),
 (3, 2, 2, '2014-03-29 00:00:00', 3, 0, 0, NULL, NULL, 0, 0, 8, 1, '2014-03-20 19:35:49', '2014-03-20 19:35:49'),
 (4, 1, 4, '25-03-2014', 3, 0, 0, '2014-03-28 00:00:00', 3, 1, 0, 5, 1, '2014-03-21 10:44:15', '2014-03-21 13:15:53'),
-(5, 2, 5, '28-06-2014', 3, 0, 1, '29-03-2014', 3, 1, 0, 8, 1, '2014-03-21 11:15:48', '2014-03-21 16:49:00'),
-(6, 1, 6, '25-03-2014', 3, 0, 0, '26-03-2014', 3, 0, 0, 5, 1, '2014-03-21 13:18:02', '2014-03-21 14:25:27'),
-(7, 1, 7, '26-03-2014', 3, 1, 0, '30-03-2014', 3, 1, 0, 5, 1, '2014-03-21 15:11:20', '2014-03-21 17:31:41');
+(5, 2, 5, '22-03-2014', 3, 0, 0, '29-03-2014', 3, 1, 0, 8, 1, '2014-03-21 11:15:48', '2014-03-21 18:50:15'),
+(6, 1, 6, '25-03-2014', 3, 1, 0, '26-03-2014', 3, 1, 0, 5, 1, '2014-03-21 13:18:02', '2014-03-21 14:25:27'),
+(7, 1, 7, '26-03-2014', 3, 1, 0, '26-04-2015', 3, 1, 0, 5, 1, '2014-03-21 15:11:20', '2014-03-21 18:40:44'),
+(8, 1, 8, '11-04-2014', 3, 0, 1, '17-04-2014', 3, 1, 0, 6, 1, '2014-03-21 23:32:13', '2014-03-22 12:12:34'),
+(9, 2, 9, '2014-03-31 00:00:00', 3, 0, 0, NULL, NULL, 0, 0, 10, 1, '2014-03-22 11:20:34', '2014-03-22 11:20:34'),
+(10, 2, 9, '31-03-2014', 3, 0, 1, '01-04-2014', 3, 1, 0, 10, 1, '2014-03-22 11:41:08', '2014-03-22 11:43:54'),
+(11, 2, 10, '28-03-2014', 3, 0, 0, '29-03-2014', 3, 1, 0, 10, 1, '2014-03-22 11:43:01', '2014-03-22 11:43:01'),
+(12, 2, 10, '23-03-2014', 3, 0, 1, '24-03-2014', 3, 1, 0, 10, 1, '2014-03-22 11:43:21', '2014-03-22 11:59:35'),
+(13, 2, 11, '29-03-2014', 4, 0, 0, '05-04-2014', 3, 1, 0, 9, 1, '2014-03-22 12:00:39', '2014-03-22 12:54:19'),
+(14, 1, 12, '24-03-2014', 3, 0, 0, '27-03-2014', 3, 1, 0, 7, 1, '2014-03-22 12:15:38', '2014-03-22 12:16:58'),
+(15, 1, 13, '18-04-2014', 3, 0, 0, '25-04-2014', 3, 1, 0, 6, 1, '2014-03-22 14:17:52', '2014-03-22 14:18:32'),
+(16, 2, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, NULL, 3, '2014-03-22 14:42:34', '2014-03-22 14:42:34');
 
 -- --------------------------------------------------------
 
@@ -353,6 +385,7 @@ INSERT INTO `orders` (`id`, `user_id`, `address_id`, `date_deposit`, `hour_depos
 -- Table structure for table `params`
 --
 
+DROP TABLE IF EXISTS `params`;
 CREATE TABLE IF NOT EXISTS `params` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `key` varchar(255) NOT NULL,
@@ -368,7 +401,7 @@ INSERT INTO `params` (`id`, `key`, `value`) VALUES
 (1, 'price_bac_monthly', '6.25'),
 (2, 'nb_bac_max', '10'),
 (3, 'nb_bac_min', '4'),
-(4, 'max_date_withdrawal', '8'),
+(4, 'max_date_withdrawal', '9'),
 (5, 'min_date_deposit', '1');
 
 -- --------------------------------------------------------
@@ -377,6 +410,7 @@ INSERT INTO `params` (`id`, `key`, `value`) VALUES
 -- Table structure for table `postals`
 --
 
+DROP TABLE IF EXISTS `postals`;
 CREATE TABLE IF NOT EXISTS `postals` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(255) NOT NULL,
@@ -400,6 +434,7 @@ INSERT INTO `postals` (`id`, `label`, `state`, `city_id`) VALUES
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
