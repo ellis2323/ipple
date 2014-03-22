@@ -212,36 +212,40 @@ class OrdersController extends AppController {
 			// On récupère les créneaux horaires
 		   	$hours = new Hour();
 
+		   	// On récupères les créneaux horaires et on les passes à la vue
 			$this->set('hwithdrawals', $hours->find('list'));
 
-			// Si des données on été passé
+			// Si des données on été passé en GET
 			if(!empty($data_get)){
 
-				// On récupères le tableau en forme
+				// On récupères le tableau et on unserialize
 				$data_get = unserialize(base64_decode($data_get) );
+
+				// On récupères notre date de dépôt
 				$date_deposit = $data_get['Order']['date_deposit'];
 
+				// On définis la date minimum de retrait
 				$this->set('minDate', $date_deposit);
 				
+				// On récupères l'id de l'adresse
 				$address_id = $data_get['Id'];
 
-				$concierge_deposit = $data_get['Order']['concierge_deposit'];
-				$this->set(compact('concierge_deposit'));
+				// On récupère la valeur de concierge_deposit (bool) et on la passe à la vue
+				$this->set('concierge_deposit', $data_get['Order']['concierge_deposit']);
 
-				$split_date=explode("/",$date_deposit);
+				// On explode notre date et on la passe à la vue
+				$split_date=explode("-",$date_deposit);
 				$this->set(compact('split_date'));
 
-
-				// Si on poste des données
+				// Si on poste des données via le formulaire step3
 				if(!empty($this->request->data)){	
 					$this->set('lol', 1);
 
+					// On récupères nos données POST
 					$data_post = $this->request->data;
 
-
-
+					// On passe les données au model
 					$this->Order->set($data_post);
-
 
 					// Si les données sont validées
 					if($this->Order->validates() ){
@@ -254,28 +258,36 @@ class OrdersController extends AppController {
 
 						// On assemble les tableaux
 						$data_order = array_merge($data_post_order, $data_get_order);
-						// On redéfinis l'index des informations de la commande
-						$data_order = array('Order' => $data_order);
 
-
-						$data_full = $data_order;
+						// On redéfinis l'index Order sur notre tableau
+						$data_full = = array('Order' => $data_order);
 
 						//Si tout est ok, on enregistre les données
 						/*#######################*/
+
+						// On crée une nouvelle ligne
 						$this->Order->create();
 
-						$format = 'Y-m-d H:i:s';
+						// On convertis nos en timestamp
+						$date_deposit = strtotime($data_full['Order']['date_deposit']);
+						$date_withdrawal = strtotime($data_full['Order']['date_withdrawal']);
 
-						$deposit = new DateTime($data_order['Order']['date_deposit']);
+						// On récupère le type de commande (immédiat ou différé, bool)
+						$state_withdrawal = $data_full['Order']['state_withdrawal'];
 
-						// Si on fait un retrait différé
-						if($data_full['Order']['withdraw'] == 2) {
-							$withdrawal = new DateTime($data_full['Order']['date_withdrawal']);
-							$withdrawal->format($format);
+						// Si la récupération est immédiate
+						if($state_withdrawal == 0){
+							// On redéfinis les informations de retrait à NULL
+							$this->request->data['Order']['hwithdrawals'] = NULL;
+							$this->request->data['Order']['concierge_withdrawal'] == NULL;
+							$data_full['Order']['date_withdrawal'] == NULL;
 
-							$data_order = array(
-												"Order" =>
-															array(
+						}
+
+						// On recréer notre tableau pour l'enregistrement en BDD
+						$data_order = array(
+											"Order" =>
+														array(
 															'user_id'					=> $this->Session->read('Auth.User.id'),
 															'nb_bacs'					=> $data_full['Order']['nb_bacs'],
 															'date_deposit'				=> $data_full['Order']['date_deposit'],
@@ -284,56 +296,37 @@ class OrdersController extends AppController {
 															'concierge_deposit'			=> $data_full['Order']['concierge_deposit'],
 															'date_withdrawal'			=> $data_full['Order']['date_withdrawal'],
 															'hour_withdrawal'			=> $this->request->data['Order']['hwithdrawals'],
-															'state_withdrawal'			=> 1,
+															'state_withdrawal'			=> $state_withdrawal,
 															'concierge_withdrawal'		=> $this->request->data['Order']['concierge_withdrawal'],
 															'state'						=> 1,
-															
-															),
+														),
 
-							);
+						);						
 
-						}
 
-						// sinon retrait immédiat
-						else {
-							$data_order = array(
-												"Order" =>
-															array(
-															'user_id'			=> $this->Session->read('Auth.User.id'),
-															'nb_bacs'			=> $data_full['Order']['nb_bacs'],
-															'hour_deposit'		=> $data_full['Order']['hour_deposit'],
-															'date_deposit'		=> $deposit->format($format),
-															'state_deposit'		=> 0,
-															'state_withdrawal'	=> 0,
-															'state'				=> 1,
-															),
-
-							);
-						}
-
-						if(!empty($data_full['Order']['cgv'])){
-							$data_user = 	array(		
-												"User"	=> 
-													array(
-															'id'			=> $this->Session->read('Auth.User.id'),
-															'rules'			=> $data_full['Order']['cgv'],
-													),
-										);
-
-							
-
-							$this->Order->saveAll($data_user);
-							$this->Session->write('Auth.User.rules', $data_full['Order']['cgv']);
-
-						}
-						
 						// Si la commande à bien été enregistré, on ajoute les livraisons associées
 						if($this->Order->saveAll($data_order)) {
 								
 								$this->Order->saveField('address_id', $address_id);
 
-								// Envoie de l'email de notification
+								// Si la case CGV à bien été coché, on update le profil utilisateur
+								if(!empty($data_full['Order']['cgv'])){
+									$data_user = array(		
+														"User"	=> 
+															array(
+																	'id'			=> $this->Session->read('Auth.User.id'),
+																	'rules'			=> $data_full['Order']['cgv'],
+															),
+												);
 
+											
+
+									$this->Order->saveAll($data_user);
+									$this->Session->write('Auth.User.rules', $data_full['Order']['cgv']);
+
+								}
+
+								// Envoie de l'email de notification à Dezordre
 								$CakeEmail = new CakeEmail('default');
 								$CakeEmail->to('rpietra@gmail.com');
 								$CakeEmail->subject('Dezordre: Commande #'.$this->Order->id);
@@ -341,8 +334,12 @@ class OrdersController extends AppController {
 								$CakeEmail->template('order');
 								//$CakeEmail->send();
 
+								// On redirige + flashmessage
 								$this->Session->setFlash('La commande à bien été enregistrée', 'alert', array('class' => 'success') );
 								$this->redirect(array('controller' => 'users', 'action' => 'my_account#livraisons'));
+
+														
+		
 
 						}
 						else {
@@ -350,15 +347,15 @@ class OrdersController extends AppController {
 							$this->Session->setFlash('Erreur lors de la sauvegarde.', 'alert', array('class' => 'danger'));
 						}
 
-					} // Validates
+					} // Validates fail
 					else {
-						debug($this->Order->invalidFields());
-						debug($this->request->data);
+						//debug($this->Order->invalidFields());
+						//debug($this->request->data);
 						$this->Session->setFlash('Erreur de validation', 'alert', array('class' => 'danger'));
 					}
 
-				} // Empty request data
-			}
+				} 
+			}// Pas de données GET
 			else {
 				$this->redirect(array('controller'=> 'orders','action' => 'step1'));
 			}
