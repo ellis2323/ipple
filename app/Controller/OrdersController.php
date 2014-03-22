@@ -352,8 +352,8 @@ class OrdersController extends AppController {
 
 					} // Validates
 					else {
-						debug($this->Order->invalidFields());
-						debug($this->request->data);
+						//debug($this->Order->invalidFields());
+						//debug($this->request->data);
 						$this->Session->setFlash('Erreur de validation', 'alert', array('class' => 'danger'));
 					}
 
@@ -437,12 +437,7 @@ class OrdersController extends AppController {
 			if(!empty($order)){
 				
 				if(!empty($this->request->data)){
-					if(array_key_exists('withdraw', $this->request->data['Order']) ){
-						$withdrawal = $this->request->data['Order']['withdraw'] ;
-					}
-					else {
-						$withdrawal = 2;
-					}
+                    $withdrawal = $this->request->data['Order']['state_withdrawal'];
 				}
 				else {
 					$withdrawal = $order['Order']['state_withdrawal'];
@@ -452,12 +447,14 @@ class OrdersController extends AppController {
 				// On traite le formulaire si on modifie
 				if(!empty($this->request->data)){	
 
+                    error_log($withdrawal, 0);
 
 					$this->Order->set($this->request->data);
 					// Si les données sont validées
 					if($this->Order->validates() ){
 
-						if($withdrawal == 1){
+                        error_log('validate reussi', 0);
+						if($withdrawal == 0){
 
 							$date_withdrawal = $this->request->data['Order']['date_deposit'];
 							$date = strtotime($date_withdrawal);
@@ -467,9 +464,10 @@ class OrdersController extends AppController {
 							$month = date('m', $date);
 							$year = date('Y', $date);
 
+                            $this->request->data['Order']['date_withdrawal'] = $day.'-'.$month.'-'.$year;
+							$withdrawal = $day.'-'.$month.'-'.$year;
 
-							$withdrawal = $this->request->data['Order']['date_withdrawal'] = $day.'-'.$month.'-'.$year;
-							$state_withdraw = 0;
+                            $state_withdraw = 0;
 							//print_r($this->request->data['Order']['date_withdrawal']);
 						}
 
@@ -481,6 +479,8 @@ class OrdersController extends AppController {
 
 
 						if($order['Order']['state_deposit'] == 1){
+                            // Si le dépot de bac vide à été effectué (1 ligne)
+                            error_log('deposit fait', 0);
 							$data_order = array(
 													"Order" =>
 																array(
@@ -511,6 +511,7 @@ class OrdersController extends AppController {
 
 						}
 						else {
+                            error_log('deposit non fait',0);
 							$deposit = $this->request->data['Order']['date_deposit'];
 
 							$data_order = array(
@@ -525,7 +526,7 @@ class OrdersController extends AppController {
 																'date_withdrawal' 		=> $withdrawal,
 																'hour_withdrawal'		=> $this->request->data['hour_withdrawal'],
 																'concierge_withdrawal'	=> $this->request->data['Order']['concierge_withdrawal'],
-																'state_withdrawal'		=> $state_withdraw,
+																'state_withdrawal'		=> $this->request->data['Order']['state_withdrawal'],
 
 																),
 													"Address" =>
@@ -547,26 +548,37 @@ class OrdersController extends AppController {
 
 						}
 
-
-
+                        error_log(serialize($data_order), 0);
 						if($this->Order->saveAll($data_order, array('deep' => true) ) ){
-								$this->Session->setFlash('Données correctement sauvegardées', 'alert', array('class' => 'success'));
+                            error_log('save reussi', 0);
+
+                            $this->Session->setFlash('Données correctement sauvegardées', 'alert', array('class' => 'success'));
 								$this->redirect(array('controller' => 'users', 'action' => 'my_account', '#' => 'livraisons'));
 								
 
-							$this->set('order', $data);
+							//$this->set('order', $data);
 
 						}
 						else { // saveAll
 								$this->Session->setFlash("Erreur lors de la sauvegarde 2", 'alert', array('class' => 'danger'));
 								//debug($order);
-								//debug($this->request->data);							
-						}
+								//debug($this->request->data);
+                                $errors = $this->Order->validationErrors;
+                                error_log('save fail', 0);
+                                error_log(serialize($data_order),0);
+                                error_log(serialize($errors));
+
+                        }
 
 					}
 					else { // validation
-								$this->Session->setFlash('Erreur lors de la sauvegarde', 'alert', array('class' => 'danger'));
-					}
+
+					    $this->Session->setFlash('Erreur lors de la sauvegarde', 'alert', array('class' => 'danger'));
+                        error_log('validate fail', 0);
+                        error_log(serialize($this->request->data), 0);
+                        //error_log(serialize($this->Order->invalidFields()), 0);
+
+                    }
 				}
 
 
@@ -758,8 +770,8 @@ class OrdersController extends AppController {
 
 	    ));
 	    //debug($nb_bac_current);
-	    print_r($nb_bac_current);
-	    print_r($nb_bac_max);
+	    //print_r($nb_bac_current);
+	    //print_r($nb_bac_max);
 		// Si on ajoute un bac
 		if ($this->request->is('post')) {
 			if($nb_bac_current < $nb_bac_max){

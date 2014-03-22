@@ -67,11 +67,11 @@ class Order extends AppModel {
 								),
 								'date_withdrawal' => array(	
 														'CheckWithdrawal' =>array(
-																			'rule' => array('checkWithdraw', 'date_deposit', 'withdraw'),
+																			'rule' => array('checkWithdraw', 'date_deposit', 'state_withdrawal'),
 																			'message' => 'Date de retrait inférieure',
 																		),							
 														'CheckDates' =>array(
-																			'rule' => array('checkDate', 'withdraw'),
+																			'rule' => array('checkDate', 'state_withdrawal'),
 																			'message' => 'Date indisponible',
 																		),
 														
@@ -116,6 +116,7 @@ class Order extends AppModel {
 
 	// Permet de vérifier que la date de retrait est supérieur à la date de dépot
 	public function checkWithdraw($data, $field=NULL, $withdraw=NULL){
+        error_log("checkWithdraw data:".serialize($data)." field:".serialize($field)." withdraw:".serialize($withdraw), 0);
 
 		if($withdraw != NULL) {
 			//print_r('Champs withdraw:'.$withdraw.'<br />');
@@ -124,10 +125,17 @@ class Order extends AppModel {
 
 				$data_withdraw = $this->data[$this->name][$withdraw];
 
-				if($data_withdraw){
+				if(!$data_withdraw){
+                    error_log('checkwith state withdra = 0 ', 0);
+                    error_log('Data withdraw win'.serialize($data_withdraw), 0);
 					return true;
 				}
+
 			}
+            else {
+                error_log(serialize($this->data), 0);
+                error_log('clé inexistante', 0);
+            }
 		}
 
 		if(array_key_exists($field, $this->data[$this->name])){
@@ -154,13 +162,15 @@ class Order extends AppModel {
 
 	// Permet de vérifier la disponibilité de la date
 	public function checkDate($data, $field=NULL){
-
+        error_log("data:".serialize($data)." field:".serialize($field), 0);
 
 
 		if(array_key_exists($field, $this->data[$this->name])){
-			if($this->data[$this->name][$field] == 1){
+			if($this->data[$this->name][$field] == 0){
+                error_log('checkdate state_withdraw = 0', 0);
 				return true;
 			}
+
 		}
 
 		// On charge le model contenant les dates bloquées
@@ -186,12 +196,13 @@ class Order extends AppModel {
 		$date = strtotime($date);
 		$today = time();
 		if(array_key_exists('date_deposit', $this->data[$this->name])){
+            error_log('date_deposit exist');
 			$date_deposit = $this->data[$this->name]['date_deposit'];
 		}
 		else {
 			$order = new Order();
 			$order_id= $order->findById($this->data[$this->name]['id']);
-
+            error_log('date_deposit false');
 			$date_deposit = $order_id[$this->name]['date_deposit'];
 		}
 		$date_deposit = strtotime($date_deposit);
@@ -218,16 +229,19 @@ class Order extends AppModel {
 
 		// Si on trouve la date
 		if(!empty($day_block) ||  !empty($month_block) || !empty($week_block) || !empty($day_week_block)){
-			return false;
+            error_log('date bloquée', 0);
+            return false;
 
 		}
 		else {
 			// on vérifie la date de retrait
 			if(array_key_exists('date_withdrawal', $data)) {
 				if($date < $max_date_total ) {
+                    error_log('+ que max date', 0);
 					return true;			
 				}
 				else{
+                    error_log('date de retrait inférieur', 0);
 					/*print_r('1.Date:');
 					print_r($date);
 					print_r('<br />');
@@ -243,9 +257,11 @@ class Order extends AppModel {
 			else {
 				// On vérifie que la date est supérieur à aujourd'hui
 				if($date > $today ) {
+                    error_log('> today', 0);
 					return true;
 				}
 				else {
+                    error_log('< today', 0);
 					return false;
 				}
 			}

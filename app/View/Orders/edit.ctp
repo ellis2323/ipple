@@ -1,9 +1,9 @@
 <?php
 if(!empty($this->request->data)){
     //debug($this->request->data);
+    // on est en mode resoumission de la page
 
-
-    $state_withdrawal = $order['Order']['state_withdrawal'];
+    $state_withdrawal = $this->request->data['Order']['state_withdrawal'];
     $state_deposit = $order['Order']['state_deposit'];
 
     if(!array_key_exists('concierge_deposit', $this->request->data['Order']) ){
@@ -47,10 +47,11 @@ if(!empty($this->request->data)){
     $state = $order['Order']['state'];
     $order = $data;
     $order['Order']['state_deposit'] = $state_deposit;
-    $order['Order']['state_withdrawal'] = $state_deposit;
+    $order['Order']['state_withdrawal'] = $state_withdrawal;
 
     $order['Order']['state'] = $state;
 
+    error_log("Onload state_withdrawal:".$state_withdrawal, 0);
 
 
 }
@@ -75,27 +76,31 @@ $( document ).ready(function() {
     // Checkbox concierge
     $('#OrderConciergeDeposit').change(function(){
          if($(this).is(':checked')) {
-                $('#return').fadeIn();
-                $("#OrderDateWithdrawal").prop('required',true);
-                $("#OrderWithdraw1").prop('checked',false);
-                $("#OrderWithdraw2").prop('checked',true);
-
-            }
+            $('#return').show();
+            $("#OrderDateWithdrawal").prop('required',true);
+            $("#OrderStateWithdrawal0").prop('checked',false);
+            $("#OrderStateWithdrawal1").prop('checked',true);
+         } else {
+            $('#return').hide();
+            $("#OrderDateWithdrawal").prop('required',false);
+            $("#OrderStateWithdrawal0").prop('checked',true);
+            $("#OrderStateWithdrawal1").prop('checked',false);
+         }
     });
 
     // Bouton en même temps
-    $('#OrderWithdraw1').change(function(){
+    $('#OrderStateWithdrawal0').change(function(){
      if($(this).is(':checked')) {
-            $('#return').fadeOut();
+            $('#return').hide();
             $("#OrderDateWithdrawal").prop('required',false);
             $('#OrderConciergeDeposit').attr('checked',false);
         }
     }); 
 
     // Bouton différé
-    $('#OrderWithdraw2').change(function(){
+    $('#OrderStateWithdrawal1').change(function(){
      if($(this).is(':checked')) {
-            $('#return').fadeIn();
+            $('#return').show();
             $("#OrderDateWithdrawal").prop('required',true);
         }
     });
@@ -535,42 +540,17 @@ if($order['Order']['state'] < 3){?>
 
                         <div class="radio col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
 
-                        <?php 
-                        if(empty($state_withdrawal)){
-
-                                echo $this->Form->input('withdraw', array(
+                        <?php
+                                echo $this->Form->input('Order.state_withdrawal', array(
                                  'type' => 'radio',
                                  'legend' => false,
-                                 'options' => array(1 => 'En même temps (le chauffeur attendra jusqu\'à 20 minutes) '),
+                                 'options' => array(
+                                                0 => 'En même temps (le chauffeur attendra jusqu\'à 20 minutes) ',
+                                                1 =>  'Je prévois ma date et mon horaire de stockage',
+                                                ),
                                  'hiddenField'=>false,
-                                 'checked' => 'checked',
-                                ));  
-
-                                echo $this->Form->input('withdraw', array(
-                                 'type' => 'radio',
-                                 'legend' => false,
-                                 'options' => array(2 => 'Je prévois ma date et mon horaire de stockage'),
-                                 'hiddenField'=>false
-                                ));  
-                        }
-                        else {
-                                echo $this->Form->input('withdraw', array(
-                                 'type' => 'radio',
-                                 'legend' => false,
-                                 'options' => array(1 => 'En même temps (le chauffeur attendra jusqu\'à 20 minutes) '),
-                                 'hiddenField'=>false,
-                                ));  
-
-                                echo $this->Form->input('withdraw', array(
-                                 'type' => 'radio',
-                                 'legend' => false,
-                                 'options' => array(2 => 'Je prévois ma date et mon horaire de stockage'),
-                                 'hiddenField'=>false,
-                                 'checked' => 'checked',
-
-                                ));  
-
-                        }
+                                 'default' => $state_withdrawal
+                                ));
                         ?>
 
                         </div>  <!-- /radio col-lg-offset-4 -->
