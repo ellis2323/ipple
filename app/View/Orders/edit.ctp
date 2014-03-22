@@ -596,7 +596,6 @@ if($order['Order']['state'] < 3){?>
     <div class="row" id="return">
     <!-- HEURE ET DATE -->
                          <?php
-                         debug($order);
 
                           if($order['Order']['state_deposit'] == 1 && $order['Order']['state_withdrawal'] == 1) {
                                 echo $this->Form->input("date_deposit", 

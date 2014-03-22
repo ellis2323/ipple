@@ -189,12 +189,15 @@ class Order extends AppModel {
 			$date_deposit = $this->data[$this->name]['date_deposit'];
 		}
 		else {
-			$date_deposit = $this->data['Order']['date_deposit'];
+			$order = new Order();
+			$order_id= $order->findById($this->data[$this->name]['id']);
+
+			$date_deposit = $order_id[$this->name]['date_deposit'];
 		}
 		$date_deposit = strtotime($date_deposit);
-		echo "1: <br />";
+		/*echo "1: <br />";
 		print_r($this->data);
-		echo "<br />";
+		echo "<br />";*/
 
 
 		// On définis nos attributs
