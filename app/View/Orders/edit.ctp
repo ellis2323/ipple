@@ -497,6 +497,7 @@ if($order['Order']['state'] < 3){?>
                                             echo $this->Form->input('Order.concierge_deposit', array(
                                                                 'label' => false,
                                                                 'type'  => 'checkbox',
+                                                                'default' => $order['Order']['concierge_deposit'],
 
                                             ));
                                         ?>
@@ -707,6 +708,7 @@ if($order['Order']['state'] < 3){?>
                         echo $this->Form->input('Order.concierge_withdrawal', array(
                                             'label' => false,
                                             'type'  => 'checkbox',
+                                            'default' => $order['Order']['concierge_withdrawal'],
 
                         ));
                     ?>
