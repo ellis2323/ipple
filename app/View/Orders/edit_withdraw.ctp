@@ -1,34 +1,16 @@
 <?php
+// Si on poste des données, on écrase les données renseigné par la BDD par celle du request->data
 if(!empty($this->request->data)){
-    //debug($this->request->data);
-    // on est en mode resoumission de la page
-
-    $state_withdrawal = $this->request->data['Order']['state_withdrawal'];
-    $state_deposit = $order['Order']['state_deposit'];
-
-    if(!array_key_exists('concierge_deposit', $this->request->data['Order']) ){
-        $this->request->data['Order']['concierge_deposit'] = $order['Order']['concierge_deposit'];
-    }
-    if(!array_key_exists('hour_deposit', $this->request->data) ){
-        $this->request->data['hour_deposit'] = $order['Order']['hour_deposit'];
-    }
-    else {
-
-    }
-   
+//debug($this->request->data);
 
 
-    $data = array(
-        'hour_deposit' => $this->request->data['hour_deposit'],
-        'hour_withdrawal' => $this->request->data['hour_withdrawal'],
+   $data = array(
         'Order' => array(
+            'id' => $this->request->data['Order']['id'],
             'nb_bacs' => $this->request->data['Order']['nb_bacs'],
-            'date_deposit' => $this->request->data['Order']['date_deposit'],
-            'concierge_deposit' => $this->request->data['Order']['concierge_deposit'],
             'date_withdrawal' => $this->request->data['Order']['date_withdrawal'],
             'concierge_withdrawal' => $this->request->data['Order']['concierge_withdrawal'],
-            'withdraw' => $this->request->data['Order']['date_withdrawal'],
-
+            'hour_withdrawal' => $this->request->data['hour_withdrawal'],
         ),
         'Address' => array(
             'lastname' => $this->request->data['Address']['lastname'],
@@ -44,77 +26,11 @@ if(!empty($this->request->data)){
         )
     );
 
-    $state = $order['Order']['state'];
+    // On réassigne les valeurs sur $order
     $order = $data;
-    $order['Order']['state_deposit'] = $state_deposit;
-    $order['Order']['state_withdrawal'] = $state_withdrawal;
-
-    $order['Order']['state'] = $state;
-
-    error_log("Onload state_withdrawal:".$state_withdrawal, 0);
-
 
 }
-else {
-    $order['hour_deposit'] = $order['Order']['hour_deposit'];
-    $order['hour_withdrawal'] = $order['Order']['hour_withdrawal'];
-}
-
 ?>
-
-<?= $this->start('radio_control');?>
-<script type='text/javascript'>
-$( document ).ready(function() {
-
-    var withdraw = "<?= $state_withdrawal;?>";
-
-
-    if(withdraw == 0 ){
-        $('#return').hide(); // on cache le bloc 
-    }
-  
-    // Checkbox concierge
-    $('#OrderConciergeDeposit').change(function(){
-         if($(this).is(':checked')) {
-            $('#return').show();
-            $("#OrderDateWithdrawal").prop('required',true);
-            $("#OrderStateWithdrawal0").prop('checked',false);
-            $("#OrderStateWithdrawal1").prop('checked',true);
-         } else {
-            $('#return').hide();
-            $("#OrderDateWithdrawal").prop('required',false);
-            $("#OrderStateWithdrawal0").prop('checked',true);
-            $("#OrderStateWithdrawal1").prop('checked',false);
-         }
-    });
-
-    // Bouton en même temps
-    $('#OrderStateWithdrawal0').change(function(){
-     if($(this).is(':checked')) {
-            $('#return').hide();
-            $("#OrderDateWithdrawal").prop('required',false);
-            $('#OrderConciergeDeposit').attr('checked',false);
-        }
-    }); 
-
-    // Bouton différé
-    $('#OrderStateWithdrawal1').change(function(){
-     if($(this).is(':checked')) {
-            $('#return').show();
-            $("#OrderDateWithdrawal").prop('required',true);
-        }
-    });
-
-
-
-
-
-});
-        
-</script>
-
-
-<?= $this->end();?>
 
 
 <div class="container-fluid">
@@ -122,25 +38,16 @@ $( document ).ready(function() {
 <?= $this->Form->create('Order', array(
 'class' => 'horizontal-form',
 ));  ?>
-<?php
-// Si la commande est editable
-if($order['Order']['state'] < 3){?>
+
 
     <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">     
     	<div class="section">
 
             <div class="row">
-            <?php if($order['Order']['state_deposit'] == 0){?>
-                   <h3><?php echo $this->Html->image('fleche_liv.png', array('alt' => 'responsive image'));?> Où voulez-vous vous faire livrer les bacs?</h3>
-            <?php }
-            else {?>
                    <h3><?php echo $this->Html->image('fleche_liv.png', array('alt' => 'responsive image'));?> Où voulez-vous vous que nous récupérions les bacs?</h3>
-            <?php }?>
             </div>
 
     		<div class="choix">    
-
-                   
 
                 <div class="row">
                     
@@ -154,7 +61,6 @@ if($order['Order']['state'] < 3){?>
                                                                         )
                             );
   
-
 
                             $value = array();
 
@@ -171,11 +77,15 @@ if($order['Order']['state'] < 3){?>
                                 'div' => 'col-lg-6 col-md-6 col-sm-6',
                                 'default'     => $order['Order']['nb_bacs']
                               ));?>
+                               <?= $this->Form->input('Order.id', array(
+                                                                    'type' => 'hidden',
+                                                                    'value'=> $order['Order']['id'],
 
+                               ));?>
                         </div>
                          <p><br></p>
                     </div>                    
-                
+
                 </div> <!-- /row -->
 
                 <div class="row">
@@ -418,183 +328,17 @@ if($order['Order']['state'] < 3){?>
 
                 </div> <!-- /row -->
 
-    <?php
-    // Si la livraison n'est pas encore effectuée
-    if($order['Order']['state_deposit'] == 0) { 
-    ?>
-
-                    <div class="row">
-                        <!-- HEURE ET DATE -->
-                            <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?> Quand voulez-vous faire livrer les bacs chez vous?</h3>  
-
-
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="form-group">                            
-                                    <?php
-                                    echo $this->Form->label('date_deposit', 'Date de livraison<span class="blue">*</span>', array(
-                                                                                    'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
-                                                                                    'style' => 'text-align:right;',
-                                                                                )
-                                    );
-                                    ?>
-
-                                    <!-- DATEPICKER -->
-                                    <?= $this->Form->input("date_deposit", 
-                                        array(
-                                            'label' => false, 
-                                            'type' => 'text',
-                                            'class' => 'form-control',
-                                            'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                            'required' => true,
-                                            'id'        => 'OrderDateDeposit',
-                                            'value'     => $order['Order']['date_deposit']
-
-                                        )
-                                    ); ?>
-                                    <div id="datepicker"></div>
-
-                                        <?= $this->start('datepicker'); ?>
-
-                                        <script type='text/javascript'>
-                                         $(document).ready(function(){
-                                                    var datesBlocked = ["2014-03-14","2014-03-15","2014-03-16"];
-
-                                                      $("#OrderDateDeposit").click(function(){
-                                                             $("#datepicker").datepicker(
-                                                            {
-                                                                   dateFormat: 'dd-mm-yy',
-                                                                   minDate : '+<?= $min_date;?>d',
-                                                                   monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
-                                                                   beforeShowDay: function(date){
-                                                                        var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
-                                                                        return [ datesBlocked.indexOf(string) == -1 ];
-                                                                    },
-                                                                   onSelect: function(dateText, inst){
-                                                                         $('#OrderDateDeposit').val(dateText);
-                                                                         $("#datepicker").datepicker("destroy");
-                                                                  }
-                                                             });
-                                                       });
-                                                });
-                                         </script>
-
-
-                                         
-                                         <?= $this->end(); ?> 
-
-                                         <!-- /DATEPICKER --> 
-
-
-
-
-                                    
-
-
-                                </div>
-
-                                <div class="checkbox">
-                                    <?php
-                                    echo $this->Form->label('concierge_deposit', 'Concierge? Oui, laisser les bacs chez mon concierge', array(
-                                                                                                                                        'class' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                                                                                    )
-                                    );
-                                    ?>
-                                    <?php
-                                        echo $this->Form->input('Order.concierge_deposit', array(
-                                                            'label' => false,
-                                                            'type'  => 'checkbox',
-                                                            'default' => $order['Order']['concierge_deposit'],
-
-                                        ));
-                                    ?>
-                                </div>
-
-                            </div>
-
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="form-group">  
-                                    <?php
-                                    echo $this->Form->label('HoursDeposit', 'Heure de la livraison', array(
-                                                                                    'class' => 'col-lg-4 col-md-4 col-sm-4 control-label',
-                                                                                    'style' => 'text-align:right;',
-                                                                                )
-                                    );
-                                    ?>
-                                    <?php
-                                    echo $this->Form->input('hours', array(
-                                                                                    'label' => false, 
-                                                                                    'class' => 'form-control',
-                                                                                    'id'    => 'OrderHoursDeposit',
-                                                                                    'name'  => 'hour_deposit',
-                                                                                    'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                                    'default'     => $order['hour_deposit']
-                                                                             )
-                                    );?>
-                                </div>
-                                <p><br></p>
-                            </div>
-
-
-                    </div> <!-- /row -->
-
-
-                    <div class="row">
-                        <h3><?php echo $this->Html->image('fleche_recup.png', array('alt' => 'responsive image'));?> Quand voulez-vous que les bacs soient récupérés chez vous ?</h3>  
-
-                        <div class="radio col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
-
-                        <?php
-                                echo $this->Form->input('Order.state_withdrawal', array(
-                                 'type' => 'radio',
-                                 'legend' => false,
-                                 'options' => array(
-                                                0 => 'En même temps (le chauffeur attendra jusqu\'à 20 minutes) ',
-                                                1 =>  'Je prévois ma date et mon horaire de stockage',
-                                                ),
-                                 'hiddenField'=>false,
-                                 'default' => $state_withdrawal
-                                ));
-                        ?>
-
-                        </div>  <!-- /radio col-lg-offset-4 -->
-
-                    </div> <!-- /row -->
-
-    <?php } 
-    // fin if livraison
-
-
-
-    // Si le dépot est disponible
-     if($order['Order']['state_deposit'] == 1){?>
 
 
          <div class='row'>
                 <p><br /></p>
                <h3><?php echo $this->Html->image('fleche_liv.png', array('alt' => 'responsive image'));?> Quand voulez-vous que les bacs soient récupérés chez vous ?</h3>
         </div>
-    <?php } ?>
 
 
     <div class="row" id="return">
     <!-- HEURE ET DATE -->
-                         <?php
 
-                          if($order['Order']['state_deposit'] == 1 && $order['Order']['state_withdrawal'] == 1) {
-                                echo $this->Form->input("date_deposit", 
-                                    array(
-                                        'label' => false, 
-                                        'type' => 'hidden',
-                                        'class' => 'form-control',
-                                        'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                        'required' => true,
-                                        'id'        => 'OrderDateDeposit',
-                                        'value'     => $order['Order']['date_deposit']
-
-                                    )
-                                ); 
-                         }
-                         ?>
 
         <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="form-group">                            
@@ -624,16 +368,16 @@ if($order['Order']['state'] < 3){?>
                     <?= $this->start('datepicker2'); ?>
                     <script type='text/javascript'>
                      $(document).ready(function(){
-                            var datesBlocked = ["14-04-2014"];
+                            var datesBlocked = ["2014-04-14","2014-04-15","2014-03-16"];
 
 
                             var delta = 86400000*'<?= $max_date;?>';
                             var delta_min = 86400000*'<?= $min_date;?>';
                             var new_date = 0;
-                            var date_deposit = $('#OrderDateDeposit').val(); // on récupères la date
+                            var date_deposit = '<?= $date_deposit_value; ?>'; // on récupères la date
 
 
-                            date_deposit = date_deposit.split('-'); // On split la date 
+                            date_deposit = date_deposit.split('-'); // On split la date
                             new_date = date_deposit[2]+'-'+date_deposit[1]+'-'+date_deposit[0]; // on reforme la chaine 
 
                             new_date = Date.parse(new_date); // On transforme la chaine en timestamp Milliseconds
@@ -651,7 +395,7 @@ if($order['Order']['state'] < 3){?>
 
                             // Quand on clic sur la date de dépot
                             $("#OrderDateWithdrawal").click(function(){
-                                    date_deposit = $('#OrderDateDeposit').val();
+                                    var date_deposit = '<?= $date_deposit_value; ?>';
                                     date_deposit = date_deposit.split('-');
 
                                     new_date = date_deposit[2]+'-'+date_deposit[1]+'-'+date_deposit[0];
@@ -694,39 +438,36 @@ if($order['Order']['state'] < 3){?>
                      
                      <?= $this->end(); ?> 
 
-                     <!-- /DATEPICKER --> 
-
-
-
-
-                
+                     <!-- /DATEPICKER -->
 
 
             </div> <!-- /formgroup -->
 
-                <div class="checkbox">
-                    <?php
-                    echo $this->Form->label('concierge_withdrawal', 'Concierge? Oui, récupérez les bacs chez mon concierge', array(
-                                                                                                                        'class' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                                                                    )
-                    );
-                    ?>
-                    <?php
-                        echo $this->Form->input('Order.concierge_withdrawal', array(
-                                            'label' => false,
-                                            'type'  => 'checkbox',
-                                            'default' => $order['Order']['concierge_withdrawal'],
+            <div class="checkbox">
+                <?php
+                echo $this->Form->label('concierge_withdrawal', 'Concierge? Oui, récupérez les bacs chez mon concierge', array(
+                                                                                                                    'class' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                                                                )
+                );
+                ?>
+                <?php
+                    echo $this->Form->input('Order.concierge_withdrawal', array(
+                                        'label' => false,
+                                        'type'  => 'checkbox',
+                                        'default' => $order['Order']['concierge_withdrawal'],
 
-                        ));
-                    ?>
-                </div>
+                    ));
+                ?>
+            </div>
 
         </div> <!-- col lg 6 -->
+
+
 
         <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="form-group">  
                 <?php
-                echo $this->Form->label('HoursWithdrawal', 'Heure de la livraison', array(
+                echo $this->Form->label('HourWithdrawal', 'Heure de la livraison', array(
                                                                                         'class'     => 'col-lg-4 col-md-4 col-sm-4 control-label',
                                                                                         'style'     => 'text-align:right;',
                                                             )
@@ -736,10 +477,10 @@ if($order['Order']['state'] < 3){?>
                 echo $this->Form->input('hours', array(
                                                                 'label'     => false, 
                                                                 'class'     => 'form-control',
-                                                                'id'        => 'OrderHoursWithdrawal',
+                                                                'id'        => 'OrderHourWithdrawal',
                                                                 'name'      => 'hour_withdrawal',
                                                                 'div'       => 'col-lg-6 col-md-6 col-sm-6',
-                                                                'default'     => $order['hour_withdrawal']
+                                                                'default'     => $order['Order']['hour_withdrawal']
                                                          )
                 );?>
             </div>
@@ -762,10 +503,7 @@ if($order['Order']['state'] < 3){?>
             <p> <span class="blue">*</span> Champs obligatoires</p>
         </div>                                   
     </div>
-<?php
-}
-// fin IF order disponible
-?>
+
 
 
 

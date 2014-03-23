@@ -139,10 +139,8 @@ class UsersController extends AppController {
 			
 
 
-			if(!empty($orders_current)){
 				// Si on a des commandes on liste les commandes
 				$this->set(compact('orders_current'));
-			}
 			if(!empty($orders_history)){
 
 				// Si on a des commandes on liste les commandes

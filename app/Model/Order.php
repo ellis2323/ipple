@@ -68,7 +68,7 @@ class Order extends AppModel {
 								'date_withdrawal' => array(	
 														'CheckWithdrawal' =>array(
 																			'rule' => array('checkWithdraw', 'date_deposit', 'state_withdrawal'),
-																			'message' => 'Date de retrait inférieure',
+																			'message' => 'Date de retrait incorrecte',
 																		),							
 														'CheckDates' =>array(
 																			'rule' => array('checkDate', 'state_withdrawal'),
@@ -118,51 +118,104 @@ class Order extends AppModel {
 	public function checkWithdraw($data, $field=NULL, $withdraw=NULL){
         error_log("checkWithdraw data:".serialize($data)." field:".serialize($field)." withdraw:".serialize($withdraw), 0);
 
+       // On récupère la première valeur du tableau
+       $date_withdrawal = strtotime(array_shift($data));
+
+        // 1) Si le champs associé $withdraw est renseigné
 		if($withdraw != NULL) {
-			//print_r('Champs withdraw:'.$withdraw.'<br />');
-
+        error_log('$withdraw non null');
+            // Et qu'il existe dans le tableau de donnée
 			if(array_key_exists($withdraw, $this->data[$this->name]) ) {
-
+                error_log('$withdraw dans $this->data');
 				$data_withdraw = $this->data[$this->name][$withdraw];
 
+                // Et qu'il est égal à false (0)
 				if(!$data_withdraw){
-                    error_log('checkwith state withdra = 0 ', 0);
-                    error_log('Data withdraw win'.serialize($data_withdraw), 0);
-					return true;
+                    error_log('$withdraw state == 0');
+					return true; // On ne vérifie pas le champs (retrait immédiat)
 				}
+                else {
+                    error_log('$withdraw state == 1');
+                }
 
 			}
             else {
-                error_log(serialize($this->data), 0);
-                error_log('clé inexistante', 0);
+                error_log('$withdraw PAS dans $this->data');
             }
 		}
+        error_log('$withdraw null');
 
-		if(array_key_exists($field, $this->data[$this->name])){
-			$deposit = $this->data[$this->name][$field];
+        // 2) Si le champs $field est renseigné
+        if($field != NULL) {
+        error_log('$field non null');
 
-			// On convertis le datetime en timestamp
-			$withdraw = strtotime($data['date_withdrawal']);
-			$deposit = strtotime($deposit);
+            // et qu'il est présent dans le tableau de donnée
+            if(array_key_exists($field, $this->data[$this->name])){
+                error_log('$field présent dans $this->data');
 
-			if($deposit < $withdraw){
-				return true;
-			}
-			else {
+                // On récupère sa valeur
+                $date_deposit = $this->data[$this->name][$field];
+                error_log(serialize($date_deposit));
+
+            }
+            else {
+                error_log('$field non présent, requete BDD');
+                $order = new Order();
+                $order_date_deposit = $order->find('first', array(
+                                                                   'conditions' => array(
+                                                                                            'Order.id' => $this->data[$this->name]['id'],
+                                                                   ),
+                ));
+
+                $date_deposit = $order_date_deposit[$this->name][$field];
+                error_log(serialize($date_deposit));
+            }
+
+            // Et on convertis la date en timestamp
+            $date_deposit = strtotime($date_deposit);
+        }
+        else {
+            error_log('$field null, on ne peux pas comparer');
+            return false;
+        }
 
 
-				return false;
-			}
-		}
-		else {
+        error_log('$field null');
 
-			return true;
-		}	
+        // 3) On vérifie que la date de retrait est supérieur à la date de dépot
+        if($date_withdrawal > $date_deposit){
+            error_log('WIN $date_withdrawal > $date_deposit');
+
+            // On récupère les paramètres dans la BDD
+            $params = new Param();
+            $max = $params->findByKey('max_date_withdrawal');
+            $max_date = $max['Param']['value'];
+
+            $min = $params->findByKey('min_date_deposit');
+            $min_date = $min['Param']['value'];
+
+            $day = (3600*24); // sec dans un day
+            $max_date_withdrawal = $date_deposit+($day*$max_date); // date maximal de retrait en timestamp par rapport à date deposit
+
+            if($date_withdrawal < $max_date_withdrawal){
+                error_log('WIN $date_withdrawal < $max_date_withdrawal');
+
+                return true;
+            }
+            else {
+                error_log('FAIL $date_withdrawal > $max_date_withdrawal');
+                return false;
+            }
+        }
+        else {
+            error_log('FAIL $date_withdrawal < $date_deposit');
+            return false;
+        }
 	}
 
 	// Permet de vérifier la disponibilité de la date
 	public function checkDate($data, $field=NULL){
-        error_log("data:".serialize($data)." field:".serialize($field), 0);
+        error_log("checkdate data:".serialize($data)." field:".serialize($field), 0);
 
 
 		if(array_key_exists($field, $this->data[$this->name])){
@@ -174,15 +227,8 @@ class Order extends AppModel {
 		}
 
 		// On charge le model contenant les dates bloquées
-		$params = new Param();
 		$DatesBlock = new DatesBlock();
-		
-		//$date = $data['date_deposit'];
-		$max_date = $params->findByKey('max_date_withdrawal');
-		$max_date = $max_date['Param']['value'];
 
-		$min_date = $params->findByKey('min_date_deposit');
-		$min_date = $min_date['Param']['value'];
 
 		// On convertis le datetime en timestamp
 		$date = array();
@@ -193,16 +239,17 @@ class Order extends AppModel {
 		print_r($date);
 		print_r('<br />');*/
 
+         // timestamp de notre date $data
 		$date = strtotime($date);
 		$today = time();
 		if(array_key_exists('date_deposit', $this->data[$this->name])){
-            error_log('date_deposit exist');
+            error_log('date_deposit dans le tableau de data');
 			$date_deposit = $this->data[$this->name]['date_deposit'];
 		}
 		else {
-			$order = new Order();
+            error_log('date_deposit pas dans data');
+            $order = new Order();
 			$order_id= $order->findById($this->data[$this->name]['id']);
-            error_log('date_deposit false');
 			$date_deposit = $order_id[$this->name]['date_deposit'];
 		}
 		$date_deposit = strtotime($date_deposit);
@@ -210,13 +257,15 @@ class Order extends AppModel {
 		print_r($this->data);
 		echo "<br />";*/
 
+        // Valeur de la date de dépot associé
+        $date_deposit_value = $date_deposit/(24*3600);
 
 		// On définis nos attributs
 		$day = date('d', $date); // Jour calendaire
 		$month = date('n', $date); // Mois
 		$day_week = date('w', $date); // Jour de la semaine
 		$week = date('W', $date); // Semaine
-		
+
 		
 		// On cherche si les attributs sont présent dans la table de blocage
 		$day_block = $DatesBlock->findByValueAndType($day, 1);
@@ -225,46 +274,38 @@ class Order extends AppModel {
 		$day_week_block = $DatesBlock->findByValueAndType($day_week, 4);
 
 
-		$max_date_total = $date_deposit+((3600*24)*$max_date);
+        $dates_block = $DatesBlock->findAllByType(5); // On récupère toues l es dates en timestamp
+        //$date_block_max = $date_block + (3600*24);
 
 		// Si on trouve la date
 		if(!empty($day_block) ||  !empty($month_block) || !empty($week_block) || !empty($day_week_block)){
-            error_log('date bloquée', 0);
             return false;
-
 		}
 		else {
-			// on vérifie la date de retrait
-			if(array_key_exists('date_withdrawal', $data)) {
-				if($date < $max_date_total ) {
-                    error_log('+ que max date', 0);
-					return true;			
-				}
-				else{
-                    error_log('date de retrait inférieur', 0);
-					/*print_r('1.Date:');
-					print_r($date);
-					print_r('<br />');
-					print_r('2.Date max:');
-					print_r($max_date_total) ;
-					print_r('<br />');
-					print_r('3.Today:');
-					print_r($today) ;
-					print_r('<br />');*/
-					return false;
-				}
-			}
-			else {
-				// On vérifie que la date est supérieur à aujourd'hui
-				if($date > $today ) {
-                    error_log('> today', 0);
-					return true;
-				}
-				else {
-                    error_log('< today', 0);
-					return false;
-				}
-			}
+            $date_value = round( $date/(3600*24) );
+
+            foreach($dates_block as $date_block){
+
+                $date_block_value =  round($date_block['DatesBlock']['value']/(3600*24) );
+               // debug($date_value);
+
+                if($date_value == $date_block_value){
+                    error_log('date bloquée', 0);
+                    return false;
+                }
+
+
+            }
+
+            // On vérifie que la date est supérieur à aujourd'hui
+            if($date > $today ) {
+                error_log('> today', 0);
+                return true;
+            }
+            else {
+                error_log('< today', 0);
+                return false;
+            }
 		}		
 
 	}

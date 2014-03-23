@@ -142,6 +142,7 @@ $( document ).ready(function() {
                                                     {
                                                            dateFormat: 'dd-mm-yy',
                                                            minDate : '<?= $minDate;?>',
+                                                           default : ,
                                                            monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
                                                            beforeShowDay: function(date){
                                                                 var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
@@ -159,23 +160,6 @@ $( document ).ready(function() {
                                  
                                  <?= $this->end(); ?> 
 
-
-
-
-                            <div class="checkbox">
-                            	<?php
-                                echo $this->Form->label('concierge_withdrawal', 'Concierge? Oui, récupérer les bacs chez mon concierge', array(
-                                                                                'class' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                            )
-                                );
-                                ?>                                
-                                <?php
-                                    echo $this->Form->input('concierge_withdrawal', array(
-                                                        'label' => false,
-                                                        'type'  => 'checkbox',
-                                    ));
-                                ?>
-                            </div>
                         
 		                     <?= $this->Form->input("date_deposit", 
                                 array(
@@ -190,6 +174,21 @@ $( document ).ready(function() {
                             ); ?>
 		            	</div>
 		            </div>
+
+                    <div class="checkbox">
+                        <?php
+                        echo $this->Form->label('concierge_withdrawal', 'Concierge? Oui, récupérer les bacs chez mon concierge', array(
+                                                                        'class' => 'col-lg-6 col-md-6 col-sm-6',
+                                                                    )
+                        );
+                        ?>
+                        <?php
+                            echo $this->Form->input('concierge_withdrawal', array(
+                                                'label' => false,
+                                                'type'  => 'checkbox',
+                            ));
+                        ?>
+                    </div>
 
 		            <div class="col-lg-6 col-md-6 col-sm-6">
 		                <div class="form-group">

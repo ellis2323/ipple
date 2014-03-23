@@ -248,9 +248,10 @@ $(function(){
 
 
                 <!-- Livraisons -->
+
                 <div class="tab-pane fade" id="livraisons">
                 <!-- Si aucune commandes -->
-                <?php if(empty($orders_current) && empty($orders_history)){
+                <?php if(empty($orders_current)){
                 ?>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
                         <div class="row">
@@ -267,9 +268,10 @@ $(function(){
                 }
                 ?>
 
-
                     <!-- Commande en cours -->
-                    <?php if(!empty($orders_current)){?>
+                    <?php if(!empty($orders_current)){
+                    ?>
+
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <caption><h3 class="text-left">Livraison(s) prévues</h3></caption>
@@ -347,7 +349,7 @@ $(function(){
                                     <td class="blue"><a href="<?= $this->Html->url(
                                                 array(
                                                             'controller' => 'orders', 
-                                                            'action' => 'edit', $orders_current[$i]['Order']['id']
+                                                            'action' => 'edit_withdraw', $orders_current[$i]['Order']['id']
                                                         )
                                                 , true
                                         ); 
@@ -363,6 +365,8 @@ $(function(){
                         </table>
                     </div>
                     <?php } // if total orders ?>
+
+
 
                     <!-- Commande passée -->
                     <?php if(!empty($orders_history)){?>
@@ -397,7 +401,7 @@ $(function(){
 
 
 
-                                    if($orders_current[$i]['Order']['state_deposit'] == 1){
+                                    if($orders_history[$i]['Order']['state_deposit'] == 1){
                                     ?>
                                     <tr class="text-center">
                                         <td><?php echo $orders_history[$i]['Order']['id']; ?></td>
@@ -413,7 +417,7 @@ $(function(){
 
                                   <?php 
                                     }
-                                     if($orders_current[$i]['Order']['state_withdrawal'] > 1){
+                                     if($orders_history[$i]['Order']['state_withdrawal'] > 1){
                                             $hour_withdrawal = $orders_history[$i]['Order']['hour_withdrawal'];
                                             $state_withdrawal = $orders_history[$i]['Order']['state_withdrawal'];
                                         ?>
