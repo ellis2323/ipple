@@ -64,19 +64,32 @@ else {
 
 <?= $this->start('radio_control');?>
 <script type='text/javascript'>
+
+
+
 $( document ).ready(function() {
 
     var withdraw = "<?= $state_withdrawal;?>";
+    var delta_min = 86400000;
 
 
     if(withdraw == 0 ){
         $('#return').hide(); // on cache le bloc 
     }
-  
+
     // Checkbox concierge
     $('#OrderConciergeDeposit').change(function(){
          if($(this).is(':checked')) {
             $('#return').show();
+            var dateDepositStr = $("#OrderDateDeposit").val();
+            var dateDepositSplitted = dateDepositStr.split('-');
+            var newDateDeposit = Date.parse(dateDepositSplitted[2]+'-'+dateDepositSplitted[1]+'-'+dateDepositSplitted[0]);
+            newDateDeposit += delta_min;
+            var newDateDepositJs = new Date(newDateDeposit);
+
+            var newDateDepositStr = ("0" + newDateDepositJs.getDate()).slice(-2) + '-' + ("0" + (newDateDepositJs.getMonth() + 1)).slice(-2) + '-' + newDateDepositJs.getFullYear();
+            $('#OrderDateWithdrawal').val(newDateDepositStr);
+
             $("#OrderDateWithdrawal").prop('required',true);
             $("#OrderStateWithdrawal0").prop('checked',false);
             $("#OrderStateWithdrawal1").prop('checked',true);
@@ -102,6 +115,14 @@ $( document ).ready(function() {
      if($(this).is(':checked')) {
             $('#return').show();
             $("#OrderDateWithdrawal").prop('required',true);
+            var dateDepositStr = $("#OrderDateDeposit").val();
+            var dateDepositSplitted = dateDepositStr.split('-');
+            var newDateDeposit = Date.parse(dateDepositSplitted[2]+'-'+dateDepositSplitted[1]+'-'+dateDepositSplitted[0]);
+            newDateDeposit += delta_min;
+            var newDateDepositJs = new Date(newDateDeposit);
+
+            var newDateDepositStr = ("0" + newDateDepositJs.getDate()).slice(-2) + '-' + ("0" + (newDateDepositJs.getMonth() + 1)).slice(-2) + '-' + newDateDepositJs.getFullYear();
+            $('#OrderDateWithdrawal').val(newDateDepositStr);
         }
     });
 
@@ -694,11 +715,7 @@ if($order['Order']['state'] < 3){?>
                      
                      <?= $this->end(); ?> 
 
-                     <!-- /DATEPICKER --> 
-
-
-
-
+                     <!-- /DATEPICKER -->
                 
 
 
