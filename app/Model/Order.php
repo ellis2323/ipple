@@ -114,136 +114,140 @@ class Order extends AppModel {
 		}
 	}
 
-#############
-
 	// Permet de vérifier que la date de retrait est supérieur à la date de dépot
-	// $data = données du champs en validation
-	// $date_deposit = champs associé pour vérifier la date
-	// $state_withdraw = champs associé qui définis le type de commande (0 = retrait immédiat -> on passe la vérification / 1 retrait différé -> on vérifie)
-	public function checkWithdraw($data, $date_deposit=NULL, $state_withdraw=NULL){
+	public function checkWithdraw($data, $field=NULL, $withdraw=NULL){
 
-		# vérification de la validation via le champs $withdraw
-		// Si $withdraw n'est pas nul (et contient donc le nom d'un champ)
-		if($state_withdraw != NULL) {
+		if($withdraw != NULL) {
 			//print_r('Champs withdraw:'.$withdraw.'<br />');
 
-			// On vérifie que la clé du champs existe dans le tableau des données postées
-			if(array_key_exists($state_withdraw, $this->data[$this->name]) ) {
+			if(array_key_exists($withdraw, $this->data[$this->name]) ) {
 
-				// On récupère le type de récupération : immédiate (0) ou différé (1) 
-				$state_withdraw = $this->data[$this->name][$withdraw];
+				$data_withdraw = $this->data[$this->name][$withdraw];
 
-				// Si la récupération est immédiate, alors on valide le champs (on ne le vérifie pas)
-				if($state_withdraw == 0){
+				if($data_withdraw){
 					return true;
 				}
 			}
 		}
 
-		# vérification de la date (dans le cas ou $state_withdraw == 1)
-		// On vérifie que la clé $date_deposit existe dans le tableau de donnée postée, sinon on ne peux pas vérifier les dates
-		if(array_key_exists($date_deposit, $this->data[$this->name])){
+		if(array_key_exists($field, $this->data[$this->name])){
+			$deposit = $this->data[$this->name][$field];
 
-			// On récupère notre date date de dépot et date de retrait
-			$date_deposit_value = $this->data[$this->name][$date_deposit];
-			$date_withdraw = array_shift($data);
+			// On convertis le datetime en timestamp
+			$withdraw = strtotime($data['date_withdrawal']);
+			$deposit = strtotime($deposit);
 
-			// On convertis les dates en timestamp pour faciliter la vérification
-			$date_withdraw_value = strtotime($date_withdraw); //
-			$date_deposit_value = strtotime($date_deposit_value);
-
-			// Si la date de dépot est inférieur à la date actuelle
-			if($date_deposit_value < $date_withdraw_value){
-
-
-				// On récupères la date minimum et la date maximum pour une livraison différé
-				$Params = new Param();	// on charge le modèle des paramètres
-
-				$max_date = $Params->findByKey('max_date_withdrawal');
-				$max_date = $max_date['Param']['value'];
-
-				$min_date = $Params->findByKey('min_date_deposit');
-				$min_date = $min_date['Param']['value'];
-
-				$day = (3600*24);
-
-				$max_date_total = $date_deposit_value+($day*$max_date);
-				$min_date_total = $date_deposit_value+($day*$min_date);
-
-
-				// On vérifie que la date de retrait est inférieur au délai maximal, et supérieur au délai minimum
-				if($date_withdraw_value < $max_date_total && $date_withdraw_value > $min_date_total) {
-					return true;			
-				}
-				else{
-					return false;
-				}
+			if($deposit < $withdraw){
+				return true;
 			}
-			// La de dépot est supérieur au retrait = impossible
 			else {
+
+
 				return false;
 			}
 		}
-		// Le champs n'existe pas dans les données postées, le champs ne peux pas  être validé
 		else {
-			return false;
-		}
+
+			return true;
+		}	
 	}
 
-############
-
 	// Permet de vérifier la disponibilité de la date
-	// $data = données du champs en validation
-	// $state_withdrawal = permet de vérifier le type de livraison, si retrait immédiat (0 =  ne pas vérifier date_withdrawal)
-	public function checkDate($data, $state_withdrawal=NULL){
+	public function checkDate($data, $field=NULL){
 
-		# On  vérifie que la date doit être validé ou non
-		// Si le champs $state_withdrawal est présent dans le tableau de données postées
-		if(array_key_exists($state_withdrawal, $this->data[$this->name])){
 
-			$state_withdrawal_value = $this->data[$this->name][$state_withdrawal];
-			// Et que sa valeur est égale à 0 (retrait immédiat) alors on saute la vérification
-			if($state_withdrawal_value == 0){
+
+		if(array_key_exists($field, $this->data[$this->name])){
+			if($this->data[$this->name][$field] == 1){
 				return true;
 			}
 		}
 
-		# La date doit être validé
-		// On charge le model contenant les dates bloquée
+		// On charge le model contenant les dates bloquées
+		$params = new Param();
 		$DatesBlock = new DatesBlock();
+		
+		//$date = $data['date_deposit'];
+		$max_date = $params->findByKey('max_date_withdrawal');
+		$max_date = $max_date['Param']['value'];
 
-		// On récupère la première valeur du tableau et on la convertis en timestamp
-		$date = array_shift($data); 
+		$min_date = $params->findByKey('min_date_deposit');
+		$min_date = $min_date['Param']['value'];
+
+		// On convertis le datetime en timestamp
+		$date = array();
+		$date = $data;
+		$date = array_shift($date);
+
+		/*print_r('0.Date before strtotime:');
+		print_r($date);
+		print_r('<br />');*/
+
 		$date = strtotime($date);
-
-		// On récupères le timestamp du jour
 		$today = time();
+		if(array_key_exists('date_deposit', $this->data[$this->name])){
+			$date_deposit = $this->data[$this->name]['date_deposit'];
+		}
+		else {
+			$order = new Order();
+			$order_id= $order->findById($this->data[$this->name]['id']);
+
+			$date_deposit = $order_id[$this->name]['date_deposit'];
+		}
+		$date_deposit = strtotime($date_deposit);
+		/*echo "1: <br />";
+		print_r($this->data);
+		echo "<br />";*/
+
 
 		// On définis nos attributs
-		$day = date('d', $date); // Date du mois bloqué
+		$day = date('d', $date); // Jour calendaire
 		$month = date('n', $date); // Mois
 		$day_week = date('w', $date); // Jour de la semaine
 		$week = date('W', $date); // Semaine
 		
+		
 		// On cherche si les attributs sont présent dans la table de blocage
-		$day_block = $DatesBlock->findByValueAndType($day, 1); // Date du mois bloqué
-		$week_block = $DatesBlock->findByValueAndType($week, 2); // Semaine bloqué
-		$month_block = $DatesBlock->findByValueAndType($month, 3); // Mois bloqué
-		$day_week_block = $DatesBlock->findByValueAndType($day_week, 4); // Jour de la semaine bloqué
+		$day_block = $DatesBlock->findByValueAndType($day, 1);
+		$week_block = $DatesBlock->findByValueAndType($week, 2);
+		$month_block = $DatesBlock->findByValueAndType($month, 3);
+		$day_week_block = $DatesBlock->findByValueAndType($day_week, 4);
 
 
-		// Si on trouve la date , la validation échoue
+		$max_date_total = $date_deposit+((3600*24)*$max_date);
+
+		// Si on trouve la date
 		if(!empty($day_block) ||  !empty($month_block) || !empty($week_block) || !empty($day_week_block)){
 			return false;
+
 		}
-		// Sinon
 		else {
-			// On vérifie que la date soit supérieur à aujourd'hui
-			if($date > $today ) {
-				return true;
+			// on vérifie la date de retrait
+			if(array_key_exists('date_withdrawal', $data)) {
+				if($date < $max_date_total ) {
+					return true;			
+				}
+				else{
+					/*print_r('1.Date:');
+					print_r($date);
+					print_r('<br />');
+					print_r('2.Date max:');
+					print_r($max_date_total) ;
+					print_r('<br />');
+					print_r('3.Today:');
+					print_r($today) ;
+					print_r('<br />');*/
+					return false;
+				}
 			}
 			else {
-				return false;
+				// On vérifie que la date est supérieur à aujourd'hui
+				if($date > $today ) {
+					return true;
+				}
+				else {
+					return false;
+				}
 			}
 		}		
 
