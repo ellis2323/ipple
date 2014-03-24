@@ -115,16 +115,42 @@ class Order extends AppModel {
 	}
 
 	// Permet de vérifier que la date de retrait est supérieur à la date de dépot
-	public function checkWithdraw($data, $field=NULL, $withdraw=NULL){
-        error_log("checkWithdraw data:".serialize($data)." field:".serialize($field)." withdraw:".serialize($withdraw), 0);
+	public function checkWithdraw($data){
+        error_log("checkWithdraw data:".serialize($data), 0);
 
-       // On récupère la première valeur du tableau
-       $date_withdrawal = strtotime(array_shift($data));
+        $paramMaxDateWithdrawal = Configure::read('__max_date_withdrawal');
+        error_log("param", $paramMaxDateWithdrawal);
 
-        // 1) Si le champs associé $withdraw est renseigné
-		if($withdraw != NULL) {
-            error_log('$withdraw non null');
-            // Et qu'il existe dans le tableau de donnée
+        if (!array_key_exists("withdraw", $this->data[$this->name])) {
+            error_log("checkWithdraw with no withdraw field", 0);
+            return false;
+        }
+        $withdraw = $this->data[$this->name]["withdraw"];
+
+        // check empty field
+        if (empty($data['date_withdrawal'])) {
+            error_log("checkWithdraw with no date_withdrawal", 0);
+            return false;
+        }
+        // check empty field
+        if (empty($data['date_deposit'])) {
+            error_log("checkWithdraw with no date_deposit", 0);
+            return false;
+        }
+
+        // get date_withdrawal
+        $date_withdrawal = strtotime($data['date_withdrawal']);
+        $date_deposit = strtotime($data['$date_deposit']);
+
+        // cas facile: same day
+        if ($withdraw == "1") {
+            return true;
+        }
+
+        // verification sur les dates
+
+        /*
+        // Et qu'il existe dans le tableau de donnée
 			if(array_key_exists($withdraw, $this->data[$this->name]) ) {
                 error_log('$withdraw dans $this->data');
 				$data_withdraw = $this->data[$this->name][$withdraw];
@@ -209,7 +235,7 @@ class Order extends AppModel {
         else {
             error_log('FAIL $date_withdrawal < $date_deposit');
             return false;
-        }
+        }*/
 	}
 
 	// Permet de vérifier la validité de la date
