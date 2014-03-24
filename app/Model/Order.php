@@ -60,18 +60,18 @@ class Order extends AppModel {
 
 												),
 								'date_deposit' => array(
-														'CheckDates' =>array(
-																			'rule' => array('checkDate', null),
+														'checkDate' =>array(
+																			'rule' => array('checkDate'),
 																			'message' => 'La date selectionnée est indisponible',
 																		),
 								),
 								'date_withdrawal' => array(	
 														'CheckWithdrawal' =>array(
-																			'rule' => array('checkWithdraw', 'date_deposit', 'state_withdrawal'),
+																			'rule' => array('checkWithdraw'),
 																			'message' => 'Date de retrait incorrecte',
 																		),							
-														'CheckDates' =>array(
-																			'rule' => array('checkDate', 'state_withdrawal'),
+														'CheckDate' =>array(
+																			'rule' => array('checkDate'),
 																			'message' => 'Date indisponible',
 																		),
 														
@@ -123,7 +123,7 @@ class Order extends AppModel {
 
         // 1) Si le champs associé $withdraw est renseigné
 		if($withdraw != NULL) {
-        error_log('$withdraw non null');
+            error_log('$withdraw non null');
             // Et qu'il existe dans le tableau de donnée
 			if(array_key_exists($withdraw, $this->data[$this->name]) ) {
                 error_log('$withdraw dans $this->data');
@@ -143,7 +143,6 @@ class Order extends AppModel {
                 error_log('$withdraw PAS dans $this->data');
             }
 		}
-        error_log('$withdraw null');
 
         // 2) Si le champs $field est renseigné
         if($field != NULL) {
@@ -213,18 +212,9 @@ class Order extends AppModel {
         }
 	}
 
-	// Permet de vérifier la disponibilité de la date
-	public function checkDate($data, $field=NULL){
-        error_log("checkdate data:".serialize($data)." field:".serialize($field), 0);
-
-
-		if(array_key_exists($field, $this->data[$this->name])){
-			if($this->data[$this->name][$field] == 0){
-                error_log('checkdate state_withdraw = 0', 0);
-				return true;
-			}
-
-		}
+	// Permet de vérifier la validité de la date
+	public function checkDate($data){
+        error_log("checkdate data:".serialize($data), 0);
 
 		// On charge le model contenant les dates bloquées
 		$DatesBlock = new DatesBlock();
@@ -309,7 +299,4 @@ class Order extends AppModel {
 		}		
 
 	}
-
-
-
 }

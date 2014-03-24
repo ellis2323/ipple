@@ -142,7 +142,6 @@ $( document ).ready(function() {
                                                     {
                                                            dateFormat: 'dd-mm-yy',
                                                            minDate : '<?= $minDate;?>',
-                                                           default : ,
                                                            monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
                                                            beforeShowDay: function(date){
                                                                 var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
