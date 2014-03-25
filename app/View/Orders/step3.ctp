@@ -3,34 +3,30 @@
 <script type='text/javascript'>
 $( document ).ready(function() {
 
-	var concierge = "<?= $concierge_deposit;?>";
+	var concierge = "<?= $withdraw;?>";
 
-	var lol = "<?= $lol;?>";
-
-	if(lol==0){
+	if(concierge==0){
 		// Si on ne dépose pas chez le concierge
 		if(concierge == 0 ){
 	    	$('#return').hide(); // on cache le bloc 
 		}
-	}	
-
-
+	}
 	else {
 	    $("#OrderSelectDate").prop('required',true);
 	};
 
-    $('#OrderWithdraw2').change(function(){
+    $('#OrderWithdraw1').change(function(){
 	 if($(this).is(':checked')) {
-	        $('#return').fadeIn();
+	        $('#return').show();
 	        $("#OrderSelectDate").prop('required',true);
 	    }
 	});
 
 
 
-    $('#OrderWithdraw1').change(function(){
+    $('#OrderWithdraw0').change(function(){
 	 if($(this).is(':checked')) {
-	        $('#return').fadeOut();
+	        $('#return').hide();
 	        $("#OrderSelectDate").prop('required',false);
 	    }
 	});	
@@ -57,12 +53,12 @@ $( document ).ready(function() {
 		            <div class="radio col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
 
 		            <?php 
-		            if($concierge_deposit != 1){
-
+		            if($withdraw != 1){
+                            // withdraw == 0
 		                    echo $this->Form->input('withdraw', array(
 							 'type' => 'radio',
 							 'legend' => false,
-							 'options' => array(1 => 'En même temps (le chauffeur attendra jusqu\'à 20 minutes) '),
+							 'options' => array(0 => 'En même temps (le chauffeur attendra jusqu\'à 20 minutes) '),
 							 'hiddenField'=>false,
 							 'checked' => 'checked',
 							));  
@@ -70,7 +66,7 @@ $( document ).ready(function() {
 		                    echo $this->Form->input('withdraw', array(
 							 'type' => 'radio',
 							 'legend' => false,
-							 'options' => array(2 => 'Je prévois ma date et mon horaire de stockage'),
+							 'options' => array(1 => 'Je prévois ma date et mon horaire de stockage'),
 							 'hiddenField'=>false
 							));  
 		            }
@@ -78,14 +74,14 @@ $( document ).ready(function() {
 		                    echo $this->Form->input('withdraw', array(
 							 'type' => 'radio',
 							 'legend' => false,
-							 'options' => array(1 => 'En même temps (le chauffeur attendra jusqu\'à 20 minutes) '),
+							 'options' => array(0 => 'En même temps (le chauffeur attendra jusqu\'à 20 minutes) '),
 							 'hiddenField'=>false,
 							));  
 
 		                    echo $this->Form->input('withdraw', array(
 							 'type' => 'radio',
 							 'legend' => false,
-							 'options' => array(2 => 'Je prévois ma date et mon horaire de stockage'),
+							 'options' => array(1 => 'Je prévois ma date et mon horaire de stockage'),
 							 'hiddenField'=>false,
 							 'checked' => 'checked',
 
@@ -125,7 +121,7 @@ $( document ).ready(function() {
                                     'class' => 'form-control',
                                     'div' => 'col-lg-6 col-md-6 col-sm-6',
                                     'required' => false,
-
+                                    'default' => $date_withdrawal,
                                 )
                             ); ?>
                             
@@ -191,11 +187,11 @@ $( document ).ready(function() {
 
 		            <div class="col-lg-6 col-md-6 col-sm-6">
 		                <div class="form-group">
-		                    <label for="OrderHwithdrawals" class="col-lg-4 col-md-4 col-sm-4 control-label">Heure de récupération<span class="blue">*</span></label>
+		                    <label for="Order.hwithdrawals" class="col-lg-4 col-md-4 col-sm-4 control-label">Heure de récupération<span class="blue">*</span></label>
 		                    <div class="col-lg-6 col-md-6 col-sm-6">
 								<?php
 
-								echo $this->Form->input('hwithdrawals', array(
+								echo $this->Form->input('Order.hwithdrawals', array(
 		                                            'class' => 'form-control',
 		                                            'label' => false
 		                      	));?>                                  

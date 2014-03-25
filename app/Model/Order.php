@@ -118,124 +118,43 @@ class Order extends AppModel {
 	public function checkWithdraw($data){
         error_log("checkWithdraw data:".serialize($data), 0);
 
-        $paramMaxDateWithdrawal = Configure::read('__max_date_withdrawal');
-        error_log("param", $paramMaxDateWithdrawal);
+//        if (!array_key_exists("withdraw", $this->data[$this->name])) {
+//            error_log("checkWithdraw with no withdraw field", 0);
+//            return false;
+//        }
 
-        if (!array_key_exists("withdraw", $this->data[$this->name])) {
-            error_log("checkWithdraw with no withdraw field", 0);
-            return false;
-        }
         $withdraw = $this->data[$this->name]["withdraw"];
+        // cas facile: same day
+        if ($withdraw == "0") {
+            return true;
+        }
 
         // check empty field
         if (empty($data['date_withdrawal'])) {
             error_log("checkWithdraw with no date_withdrawal", 0);
             return false;
         }
-        // check empty field
-        if (empty($data['date_deposit'])) {
-            error_log("checkWithdraw with no date_deposit", 0);
-            return false;
-        }
 
         // get date_withdrawal
         $date_withdrawal = strtotime($data['date_withdrawal']);
-        $date_deposit = strtotime($data['$date_deposit']);
+        $date_deposit = strtotime($this->data['Order']['date_deposit']);
 
-        // cas facile: same day
-        if ($withdraw == "1") {
-            return true;
-        }
-
-        // verification sur les dates
-
-        /*
-        // Et qu'il existe dans le tableau de donnée
-			if(array_key_exists($withdraw, $this->data[$this->name]) ) {
-                error_log('$withdraw dans $this->data');
-				$data_withdraw = $this->data[$this->name][$withdraw];
-
-                // Et qu'il est égal à false (0)
-				if(!$data_withdraw){
-                    error_log('$withdraw state == 0');
-					return true; // On ne vérifie pas le champs (retrait immédiat)
-				}
-                else {
-                    error_log('$withdraw state == 1');
-                }
-
-			}
-            else {
-                error_log('$withdraw PAS dans $this->data');
-            }
-		}
-
-        // 2) Si le champs $field est renseigné
-        if($field != NULL) {
-        error_log('$field non null');
-
-            // et qu'il est présent dans le tableau de donnée
-            if(array_key_exists($field, $this->data[$this->name])){
-                error_log('$field présent dans $this->data');
-
-                // On récupère sa valeur
-                $date_deposit = $this->data[$this->name][$field];
-                error_log(serialize($date_deposit));
-
-            }
-            else {
-                error_log('$field non présent, requete BDD');
-                $order = new Order();
-                $order_date_deposit = $order->find('first', array(
-                                                                   'conditions' => array(
-                                                                                            'Order.id' => $this->data[$this->name]['id'],
-                                                                   ),
-                ));
-
-                $date_deposit = $order_date_deposit[$this->name][$field];
-                error_log(serialize($date_deposit));
-            }
-
-            // Et on convertis la date en timestamp
-            $date_deposit = strtotime($date_deposit);
-        }
-        else {
-            error_log('$field null, on ne peux pas comparer');
-            return false;
-        }
-
-
-        error_log('$field null');
-
-        // 3) On vérifie que la date de retrait est supérieur à la date de dépot
-        if($date_withdrawal > $date_deposit){
-            error_log('WIN $date_withdrawal > $date_deposit');
-
-            // On récupère les paramètres dans la BDD
-            $params = new Param();
-            $max = $params->findByKey('max_date_withdrawal');
-            $max_date = $max['Param']['value'];
-
-            $min = $params->findByKey('min_date_deposit');
-            $min_date = $min['Param']['value'];
-
-            $day = (3600*24); // sec dans un day
-            $max_date_withdrawal = $date_deposit+($day*$max_date); // date maximal de retrait en timestamp par rapport à date deposit
-
-            if($date_withdrawal < $max_date_withdrawal){
-                error_log('WIN $date_withdrawal < $max_date_withdrawal');
-
-                return true;
-            }
-            else {
-                error_log('FAIL $date_withdrawal > $max_date_withdrawal');
-                return false;
-            }
-        }
-        else {
+        if($date_withdrawal <= $date_deposit){
             error_log('FAIL $date_withdrawal < $date_deposit');
             return false;
-        }*/
+        }
+
+        // On récupère les paramètres dans la BDD
+        $params = new Param();
+        $max = $params->findByKey('max_date_withdrawal');
+        $max_date = $max['Param']['value'];
+        $max_date_withdrawal = $date_deposit+((3600*24)*$max_date); // date maximal de retrait en timestamp par rapport à date deposit
+
+        if($date_withdrawal >= $max_date_withdrawal){
+            error_log('WIN $date_withdrawal < $max_date_withdrawal');
+            return false;
+        }
+        return true;
 	}
 
 	// Permet de vérifier la validité de la date
@@ -268,6 +187,7 @@ class Order extends AppModel {
 			$order_id= $order->findById($this->data[$this->name]['id']);
 			$date_deposit = $order_id[$this->name]['date_deposit'];
 		}
+        // conversion timestamp
 		$date_deposit = strtotime($date_deposit);
 		/*echo "1: <br />";
 		print_r($this->data);

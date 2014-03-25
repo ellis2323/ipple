@@ -1,30 +1,6 @@
 <?= $this->Html->css('latoja.datepicker', array('inline' => false)); ?>
 <?= $this->Html->script('search_ajax', array('inline' => false)); ?>
 
-<?php
-
-
-if(empty($data_user)) {
-    // Sinon on met les valeurs à null
-    $data_user= array( 
-                        0 => array(
-                                    'lastname'  => null,
-                                    'firstname' => null,
-                                    'phone'     => null,
-                                    'company'   => null,
-                                    'street'    => null,
-                                    'floor'     => null,
-                                    'comment'   => null,
-                                    'digicode'  => null,
-                                    'postal_id' => null,
-                                    'city_id'   => null,
-                                    )
-                    );
-}
-
-
-?>
-
 <div class="container-fluid">
 <?= $this->Form->create('Address', array(
                                         'class' => 'horizontal-form',
@@ -287,7 +263,7 @@ if(empty($data_user)) {
                             ?>
 
                             <!-- DATEPICKER -->
-                            <?= $this->Form->input("Order.date_deposit", 
+                            <?= $this->Form->input("Order.date_deposit",
                                 array(
                                     'label' => false, 
                                     'type' => 'text',
@@ -295,6 +271,7 @@ if(empty($data_user)) {
                                     'class' => 'form-control',
                                     'div' => 'col-lg-6 col-md-6 col-sm-6',
                                     'required'  => true,
+                                    'default' => $date_deposit,
 
                                 )
                             ); ?>

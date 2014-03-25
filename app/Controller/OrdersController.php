@@ -102,112 +102,122 @@ class OrdersController extends AppController {
 
 		// Commande : Etape 2
 		public function step2($data_get = null) {
-			// Si des données on été passé
-			if(!empty($data_get)){
+            // Si aucune data n'a été transmise
+            if (empty($data_get)) {
+                $this->redirect(array('controller'=> 'orders','action' => 'step1'));
+                return;
+            }
+            // definir une adresse vide par defaut
+            $data_user = array(
+                0 => array(
+                    'lastname'  => null,
+                    'firstname' => null,
+                    'phone'     => null,
+                    'company'   => null,
+                    'street'    => null,
+                    'floor'     => null,
+                    'comment'   => null,
+                    'digicode'  => null,
+                    'postal_id' => null,
+                    'city_id'   => null,
+                )
+            );
+            if (empty($this->request->data)) {
+                // formulaire vide => on recharge la dernière entrée dans la base de données
+                $address_user = new Address();
+                $data_user_bdd = $address_user->find('first', array(
+                                                        'conditions' => array(
+                                                                                'user_id' => $this->Session->read('Auth.User.id'),
+                                                        ),
+                                                        'order'		=> array(
+                                                                                'Address.created' => 'desc',
+                                                        ),
+                                                        'recursive'	=> -1
 
+                ));
+                if ($data_user_bdd) {
+                    $data_user[0] = $data_user_bdd['Address'];
+                }
+            }
+            // on définit les infos relatives à l'adresse dans le formulaire
+            $this->set('data_user', $data_user);
 
-				if(empty($this->request->data)){
-					// Si l'utilisateur à déjà une adresse enregistrée
-					$address_user = new Address();
-					$data_user = $address_user->find('first', array(
-															'conditions' => array(
-																					'user_id' => $this->Session->read('Auth.User.id'),
-															),
-															'order'		=> array(
-																					'Address.created' => 'desc',
-															),
-															'recursive'	=> -1
+            // On récupère les créneaux horaires
+            $hours = new Hour();
+            $this->set('hdeposits', $hours->find('list'));
 
-					));
+            // On récupère les codes postaux
+            $postals = new Postal();
+            $this->set('postals', $postals->find('list'));
 
-					// les données de la bdd
-					if($data_user){
-						$data_address[0] = $data_user['Address'];
-						$this->set('data_user', $data_address);
-					}
-				}
-				// les données du formulaire
-				else {
+            // On récupères le tableau en forme
+            $data_get = unserialize(base64_decode($data_get));
 
-					$var[0] = $this->request->data['Address'];
-					$var[0]['postal_id'] = $this->request->data['Address']['postals'];
+            // Si on ne poste pas de données
+            if (empty($this->request->data)) {
+                $now = date('d-m-Y');
+                $next_day = date('d-m-Y', strtotime($now . ' + 1 day'));
+                $this->set('date_deposit', $next_day);
+                return;
+            }
 
-					$this->set('data_user', $var);
-				}
+            // injection des datas
+            $data_post = $this->request->data;
+            $this->Order->set($data_post);
+            $isValidated = $this->Order->validates();
 
+            if(!$isValidated) {
+                $date_deposit = $this->request['data']['Order'];
+                $this->set('date_deposit', $date_deposit);
+                $this->Session->setFlash('Erreur lors de l\'enregistrement, merci de corriger vos erreurs', 'alert', array('class' => 'danger'));
+                return;
+            }
 
-				// On récupère les créneaux horaires
-			   	$hours = new Hour();
-			    $this->set('hdeposits', $hours->find('list'));
+            // les données sont validées
+            // injection des donnees si validated
+            $address = new Address();
+            $this->request->data['Address']['postal_id'] = $this->request->data['Address']['postals'];
+            $this->request->data['Address']['city_id'] = $data_get['Order']['cities'];
 
-				// On récupère les codes postaux
-			   	$postals = new Postal();
-			    $this->set('postals', $postals->find('list'));
+            // save l'adresse
+            $isSaved = $address->save($this->request->data);
+            if (!$isSaved) {
+                //! grave Erreur
+                $this->Session->setFlash('Erreur lors de l\'enregistrement, merci de corriger vos erreurs', 'alert', array('class' => 'danger'));
+                error_log("Critical Error in step 2 validation:ok save:ko", 0);
+                return;
+            }
 
-				// On récupères le tableau en forme
-				$data_get = unserialize(base64_decode($data_get) );
-				//debug($data_get);
+            // injection de address id
+            $address->saveField('user_id', $this->Session->read('Auth.User.id'));
+            $address_id = $address->id;
 
-				// Si on poste des données
-				if(!empty($this->request->data)){	
-					//$address = new Address();
-
-					$data_post = $this->request->data;
-
-					$this->Order->set($data_post);
-
-					$r = $this->Order->validates() ;
-
-					// Si les données sont validées
-					if($r){
-						$address = new Address();
-						//debug($this->request->data);
-						$this->request->data['Address']['postal_id'] = $this->request->data['Address']['postals'];
-						$this->request->data['Address']['city_id'] = $data_get['Order']['cities'];
-
-						if($address->save($this->request->data) ){
-							$address->saveField('user_id', $this->Session->read('Auth.User.id'));
-
-							$address_id = $address->id;
-
-							$data = array(
-								'Order' => array(
-										'cities' => $data_get['Order']['cities'],
-										'nb_bacs' => $data_get['Order']['nb_bacs'],
-										'date_deposit' => $this->request->data['Order']['date_deposit'],
-										'hour_deposit' => $this->request->data['Order']['hdeposits'],
-										'concierge_deposit' => $this->request->data['Order']['concierge_deposit'],
-								),
-								'Id' => $address_id,
-
-							);
-							// On convertis les données avant de les envoyer
-							$data = base64_encode(serialize($data));
-
-							$this->redirect(array('controller'=> 'orders','action' => 'step3', $data) );
-							
-
-						}
-						else { 
-
-							$this->Session->setFlash('Erreur lors de l\'enregistrement, merci de corriger vos erreurs', 'alert', array('class' => 'danger'));
-						}
-
-						
-					}
-					else {
-
-						$this->Session->setFlash('Erreur lors de l\'enregistrement, merci de corriger vos erreurs', 'alert', array('class' => 'danger'));
-					}
-				}
-			}
-			else {
-				$this->redirect(array('controller'=> 'orders','action' => 'step1'));
-			}
-		}
+            $data = array(
+                'Order' => array(
+                    'cities' => $data_get['Order']['cities'],
+                    'nb_bacs' => $data_get['Order']['nb_bacs'],
+                    'hour_deposit' => $this->request->data['Order']['hdeposits'],
+                    'concierge_deposit' => $this->request->data['Order']['concierge_deposit'],
+                    'date_deposit' => $this->request->data['Order']['date_deposit'],
+                ),
+                'Id' => $address_id,
+            );
+            // On convertit les données avant de les envoyer
+            $data = base64_encode(serialize($data));
+            $this->redirect(array('controller' => 'orders', 'action' => 'step3', $data));
+        }
 
 		// Commande : Etape 3
+        /* variable pour la vue:
+           - concierge_checked: 0 / 1
+           - minDate: date de deposit
+           - concierge_deposit: 0/1
+        */
 		public function step3($data_get = null) {
+            // definit les créneaux horaires pour le formulaire
+            $hours = new Hour();
+            $this->set('hwithdrawals', $hours->find('list'));
+
 			// Si aucune data n'a été transmise
 			if(empty($data_get)){
                 $this->redirect(array('controller'=> 'orders','action' => 'step1'));
@@ -215,145 +225,123 @@ class OrdersController extends AppController {
             }
 
             // On récupères le tableau sérialisé et on le remet en forme
-            $data_get = unserialize(base64_decode($data_get) );
-
-            $date_deposit = $data_get['Order']['date_deposit'];
-            $this->set('minDate', $date_deposit);
-
-            $address_id = $data_get['Id'];
-
-            $concierge_deposit = $data_get['Order']['concierge_deposit'];
-            $this->set(compact('concierge_deposit'));
-
-            $split_date=explode("/",$date_deposit);
-            $this->set(compact('split_date'));
+            $data_get = unserialize(base64_decode($data_get));
 
             // Si on ne poste pas de données
+            $date_deposit = $data_get['Order']['date_deposit'];
             if (empty($this->request->data)) {
+                if ($data_get['Order']['concierge_deposit'] == 0) {
+                    $this->set("withdraw", 0);
+                    // on definit la variable minDate pour la vue
+                    $this->set('minDate', $date_deposit);
+                    $this->set('date_withdrawal', $date_deposit);
+                } else {
+                    $this->set("withdraw", 1);
+                    $this->set('minDate', $date_deposit);
+                    $date_withdrawal = strtotime($date_deposit) + (24*3600);
+                    $next_day = date('d-m-Y', $date_withdrawal);
+                    $this->set('date_withdrawal', $next_day);
+                }
+                $this->set('date_deposit', $date_deposit);
                 return;
             }
 
-            // on set les data dans le post
+            // post data
             $data_post = &$this->request->data;
-
-            // on lit la valeur de withdraw
-            if ($data_post['Order']['withdraw'] == "1") {
-                $data_post['Order']['date_withdrawal'] = $data_get['Order']['date_deposit'];
-            }
-            $this->Order->set($data_post);
-
-            // Si les données ne sont pas validées
-            if (!$this->Order->validates()) {
-                debug($this->Order->validationErrors);
-                //debug($this->request->data);
-                $this->Session->setFlash('Erreur de validation', 'alert', array('class' => 'danger'));
-                return;
-            }
-
-            // On transforme les données pour les passer au controller
-            $data = base64_encode(serialize($this->request->data));
-
-            // On récupères les données transmises en post et en get
-            $data_post_order = $data_post['Order'];
-            $data_get_order = $data_get['Order'];
-
-            // On assemble les tableaux
-            $data_order = array_merge($data_post_order, $data_get_order);
-            // On redéfinis l'index des informations de la commande
-            $data_order = array('Order' => $data_order);
-
-
-            $data_full = $data_order;
-
-            //Si tout est ok, on enregistre les données
-            /*#######################*/
-            $this->Order->create();
-
-            $format = 'Y-m-d H:i:s';
-
-            $deposit = new DateTime($data_order['Order']['date_deposit']);
-
-            // Si on fait un retrait différé
-            if($data_full['Order']['withdraw'] == 2) {
-                $withdrawal = new DateTime($data_full['Order']['date_withdrawal']);
-                $withdrawal->format($format);
-
+            // on definit la date withdrawal
+            if ($data_post['Order']['withdraw'] == "0") {
+                // save data
+                $data_post['Order']['hwithdrawals'] = $data_get['Order']['hour_deposit'];
+                $address_id = $data_get['Id'];
+                $format = 'Y-m-d H:i:s';
+                $deposit = new DateTime($data_get['Order']['date_deposit']);
+                $this->set('concierge_deposit', 0);
                 $data_order = array(
-                                    "Order" =>
-                                                array(
-                                                'user_id'					=> $this->Session->read('Auth.User.id'),
-                                                'nb_bacs'					=> $data_full['Order']['nb_bacs'],
-                                                'date_deposit'				=> $data_full['Order']['date_deposit'],
-                                                'hour_deposit'				=> $data_full['Order']['hour_deposit'],
-                                                'state_deposit'				=> 0,
-                                                'concierge_deposit'			=> $data_full['Order']['concierge_deposit'],
-                                                'date_withdrawal'			=> $data_full['Order']['date_withdrawal'],
-                                                'hour_withdrawal'			=> $this->request->data['Order']['hwithdrawals'],
-                                                'state_withdrawal'			=> 1,
-                                                'concierge_withdrawal'		=> $this->request->data['Order']['concierge_withdrawal'],
-                                                'state'						=> 1,
-
-                                                ),
+                    "Order" =>
+                        array(
+                            'user_id'			=> $this->Session->read('Auth.User.id'),
+                            'nb_bacs'			=> $data_get['Order']['nb_bacs'],
+                            'hour_deposit'		=> $data_get['Order']['hour_deposit'],
+                            'date_deposit'		=> $deposit->format($format),
+                            'hour_withdrawal'   => $data_get['Order']['hour_deposit'],
+                            'date_withdrawal'   => $deposit->format($format),
+                            'concierge_deposit' => 0,
+                            'state_deposit'		=> 0,
+                            'state_withdrawal'	=> 0,
+                            'state'				=> 1,
+                            'withdraw'          => 0,
+                        ),
 
                 );
-
-            }
-
-            // sinon retrait immédiat
-            else {
-                $data_order = array(
-                                    "Order" =>
-                                                array(
-                                                'user_id'			=> $this->Session->read('Auth.User.id'),
-                                                'nb_bacs'			=> $data_full['Order']['nb_bacs'],
-                                                'hour_deposit'		=> $data_full['Order']['hour_deposit'],
-                                                'date_deposit'		=> $deposit->format($format),
-                                                'state_deposit'		=> 0,
-                                                'state_withdrawal'	=> 0,
-                                                'state'				=> 1,
-                                                ),
-
-                );
-            }
-
-            if(!empty($data_full['Order']['cgv'])){
-                $data_user = 	array(
-                                    "User"	=>
-                                        array(
-                                                'id'			=> $this->Session->read('Auth.User.id'),
-                                                'rules'			=> $data_full['Order']['cgv'],
-                                        ),
-                            );
-
-
-
-                $this->Order->saveAll($data_user);
-                $this->Session->write('Auth.User.rules', $data_full['Order']['cgv']);
-
-            }
-
-            // Si la commande à bien été enregistré, on ajoute les livraisons associées
-            if($this->Order->saveAll($data_order)) {
-
+                if($this->Order->saveAll($data_order)) {
                     $this->Order->saveField('address_id', $address_id);
-
                     // Envoie de l'email de notification
-
                     $CakeEmail = new CakeEmail('default');
                     $CakeEmail->to('rpietra@gmail.com');
                     $CakeEmail->subject('Dezordre: Commande #'.$this->Order->id);
                     $CakeEmail->emailFormat('text');
                     $CakeEmail->template('order');
                     //$CakeEmail->send();
-
                     $this->Session->setFlash('La commande à bien été enregistrée', 'alert', array('class' => 'success') );
                     $this->redirect(array('controller' => 'users', 'action' => 'my_account#livraisons'));
+                }
+                else {
+                    debug($this->Order->validationErrors);
+                    $this->Session->setFlash('Erreur lors de la sauvegarde.', 'alert', array('class' => 'danger'));
+                }
+                return;
+            }
 
+            // withdraw = 1 mais concierge_deposit peut valoir 0 ou 1
+            $this->set('date_withdrawal', $data_get['Order']['date_deposit']);
+            $this->set('minDate', $date_deposit);
+
+            $address_id = $data_get['Id'];
+            $this->set(compact('concierge_deposit'));
+
+            // Si les données ne sont pas validées
+            $this->Order->set($data_post);
+            $isValidated = $this->Order->validates();
+            if (!$isValidated) {
+                $this->set("withdraw", 1);
+                $this->Session->setFlash('Erreur de validation', 'alert', array('class' => 'danger'));
+                return;
             }
-            else {
-                //debug($this->Order->invalidFields());
-                $this->Session->setFlash('Erreur lors de la sauvegarde.', 'alert', array('class' => 'danger'));
+
+            $data_order = array(
+                "Order" =>
+                    array(
+                        'user_id'					=> $this->Session->read('Auth.User.id'),
+                        'nb_bacs'					=> $data_get['Order']['nb_bacs'],
+                        'date_deposit'				=> $data_get['Order']['date_deposit'],
+                        'hour_deposit'				=> $data_get['Order']['hour_deposit'],
+                        'state_deposit'				=> 0,
+                        'concierge_deposit'			=> $data_get['Order']['concierge_deposit'],
+                        'date_withdrawal'			=> $data_post['Order']['date_withdrawal'],
+                        'hour_withdrawal'			=> $data_post['Order']['hwithdrawals'],
+                        'state_withdrawal'			=> 1,
+                        'concierge_withdrawal'		=> $data_post['Order']['concierge_withdrawal'],
+                        'state'						=> 1,
+                        'withdraw'                  => 1,
+                    ),
+            );
+            if($this->Order->saveAll($data_order)) {
+                $this->Order->saveField('address_id', $address_id);
+                // Envoie de l'email de notification
+                $CakeEmail = new CakeEmail('default');
+                $CakeEmail->to('rpietra@gmail.com');
+                $CakeEmail->subject('Dezordre: Commande #'.$this->Order->id);
+                $CakeEmail->emailFormat('text');
+                $CakeEmail->template('order');
+                //$CakeEmail->send();
+                $this->Session->setFlash('La commande à bien été enregistrée', 'alert', array('class' => 'success') );
+                $this->redirect(array('controller' => 'users', 'action' => 'my_account#livraisons'));
+            } else {
+                debug($this->Order->validationErrors);
+                $this->Session->setFlash('Erreur de sauvegarde', 'alert', array('class' => 'danger'));
             }
+
+
         }
 
 		/* FIN COMMANDE DES BACS */
