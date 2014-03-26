@@ -1,67 +1,3 @@
-<?php
-if(!empty($this->request->data)){
-    //debug($this->request->data);
-    // on est en mode resoumission de la page
-
-    $state_withdrawal = $this->request->data['Order']['state_withdrawal'];
-    $state_deposit = $order['Order']['state_deposit'];
-
-    if(!array_key_exists('concierge_deposit', $this->request->data['Order']) ){
-        $this->request->data['Order']['concierge_deposit'] = $order['Order']['concierge_deposit'];
-    }
-    if(!array_key_exists('hour_deposit', $this->request->data) ){
-        $this->request->data['hour_deposit'] = $order['Order']['hour_deposit'];
-    }
-    else {
-
-    }
-
-
-
-    $data = array(
-        'hour_deposit' => $this->request->data['hour_deposit'],
-        'hour_withdrawal' => $this->request->data['hour_withdrawal'],
-        'Order' => array(
-            'nb_bacs' => $this->request->data['Order']['nb_bacs'],
-            'date_deposit' => $this->request->data['Order']['date_deposit'],
-            'concierge_deposit' => $this->request->data['Order']['concierge_deposit'],
-            'date_withdrawal' => $this->request->data['Order']['date_withdrawal'],
-            'concierge_withdrawal' => $this->request->data['Order']['concierge_withdrawal'],
-            'withdraw' => $this->request->data['Order']['date_withdrawal'],
-
-        ),
-        'Address' => array(
-            'lastname' => $this->request->data['Address']['lastname'],
-            'firstname' => $this->request->data['Address']['firstname'],
-            'company' => $this->request->data['Address']['phone'],
-            'phone' => $this->request->data['Address']['phone'],
-            'street' => $this->request->data['Address']['street'],
-            'floor' => $this->request->data['Address']['floor'],
-            'digicode' => $this->request->data['Address']['digicode'],
-            'comment' => $this->request->data['Address']['comment'],
-            'city_id'   => $this->request->data['Order']['cities'],
-            'postal_id' => $this->request->data['Order']['postals'],
-        )
-    );
-
-    $state = $order['Order']['state'];
-    $order = $data;
-    $order['Order']['state_deposit'] = $state_deposit;
-    $order['Order']['state_withdrawal'] = $state_withdrawal;
-
-    $order['Order']['state'] = $state;
-
-    error_log("Onload state_withdrawal:".$state_withdrawal, 0);
-
-
-}
-else {
-    $order['hour_deposit'] = $order['Order']['hour_deposit'];
-    $order['hour_withdrawal'] = $order['Order']['hour_withdrawal'];
-}
-
-?>
-
 <?= $this->start('radio_control');?>
 <script type='text/javascript'>
 
@@ -69,7 +5,7 @@ else {
 
 $( document ).ready(function() {
 
-    var withdraw = "<?= $state_withdrawal;?>";
+    var withdraw = "<?= $withdraw;?>";
     var delta_min = 86400000;
 
 
@@ -548,7 +484,7 @@ if($order['Order']['state'] < 3){?>
                                                                                     'id'    => 'OrderHoursDeposit',
                                                                                     'name'  => 'hour_deposit',
                                                                                     'div' => 'col-lg-6 col-md-6 col-sm-6',
-                                                                                    'default'     => $order['hour_deposit']
+                                                                                    'default'     => $order['Order']['hour_deposit']
                                                                              )
                                     );?>
                                 </div>
@@ -573,7 +509,7 @@ if($order['Order']['state'] < 3){?>
                                                 1 =>  'Je prévois ma date et mon horaire de stockage',
                                                 ),
                                  'hiddenField'=>false,
-                                 'default' => $state_withdrawal
+                                 'default' => $withdraw
                                 ));
                         ?>
 
@@ -756,7 +692,7 @@ if($order['Order']['state'] < 3){?>
                                                                 'id'        => 'OrderHoursWithdrawal',
                                                                 'name'      => 'hour_withdrawal',
                                                                 'div'       => 'col-lg-6 col-md-6 col-sm-6',
-                                                                'default'     => $order['hour_withdrawal']
+                                                                'default'     => $order['Order']['hour_withdrawal']
                                                          )
                 );?>
             </div>

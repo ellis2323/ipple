@@ -401,194 +401,89 @@ class OrdersController extends AppController {
 			$nb_bac_min = $nb_bac_min['Param']['value'];
 			$this->set('nb_bac_min', $nb_bac_min);
 
-			$order = $this->Order->find('first', 
-				array(
-					'conditions' => 
-					array(
-						'Order.id' 		=> $order_id, 
-						'Order.user_id' => $this->Session->read('Auth.User.id'),
-						'Order.state <=' => 2
-					) 
-				) 
-			);
 
-            $box_chez_client = 0;
-			// Si la commande existe et qu'elle appartient bien à l'user
-			if(!empty($order)){
-				
-				if(!empty($this->request->data)){
-                    if (array_key_exists('state_withdrawal', $this->request->data['Order'])) {
-                        $withdrawal = $this->request->data['Order']['state_withdrawal'];
-                    } else {
-                        $withdrawal = 1;
-                        $box_chez_client = 1;
+            $withdraw = 0;
+            // relecture de la commande
+            $order = $this->Order->find('first',
+                array(
+                    'conditions' =>
+                        array(
+                            'Order.id' 		=> $order_id,
+                            'Order.user_id' => $this->Session->read('Auth.User.id'),
+                            'Order.state <=' => 2
+                        )
+                )
+            );
+            unset($order['User']);
+            if (empty($this->request->data)) {
+                // Pas d'entrèe dans la db => error
+                if (empty($order)) {
+                    throw new NotFoundException('Commande archivé"');
+                    return;
+                }
+                // lecture des données
+                $date_deposit = $order['Order']['date_deposit'];
+                $date_withdrawal = $order['Order']['date_withdrawal'];
+                if ($date_deposit == $date_withdrawal) {
+                    $withdraw = 0;
+                } else {
+                    $withdraw = 1;
+                }
+            } else {
+                if (array_key_exists('state_withdrawal', $this->request->data['Order'])) {
+                    $withdraw = $this->request->data['Order']['state_withdrawal'];
+                } else {
+                    // cas bacs chez le client
+                    $withdraw = 1;
+                }
+            }
+            $this->set('withdraw', $withdraw);
+
+
+            // On récupère les villes
+            $cities = $this->Order->Address->City->find('list');
+            $this->set(compact('cities'));
+
+            // On récupère les codes postaux
+            $postals = $this->Order->Address->Postal->find('list');
+            $this->set(compact('postals'));
+
+            // On récupère les créneaux
+            $hours = new Hour();
+            $hours = $hours->find('list');
+            $this->set(compact('hours'));
+
+            $this->set(compact('order'));
+
+            // On traite le formulaire si on modifie
+            if (!empty($this->request->data)){
+                // injection de withdraw
+                $alias = $this->request->data;
+                $this->request->data['Order']['withdraw'] = $withdraw;
+                $order_src = $order['Order'];
+                $order_replace = $this->request->data['Order'];
+                $order['Order'] = array_merge($order_src, $order_replace);
+                $address_src = $order['Address'];
+                $address_replace = $this->request->data['Address'];
+                $order['Address'] = array_merge($address_src, $address_replace);
+                $order['Order']['withdraw'] = $withdraw;
+                $this->set(compact('order'));
+                // Si les données sont validées
+                if ($this->Order->validates()){
+                    if($this->Order->saveAll($order, array('deep' => true) )){
+                        $this->Session->setFlash('Données correctement sauvegardées', 'alert', array('class' => 'success'));
+                        $this->redirect(array('controller' => 'users', 'action' => 'my_account', '#' => 'livraisons'));
                     }
-				}
-				else {
-					$withdrawal = $order['Order']['state_withdrawal'];
-				}
-				$this->set('state_withdrawal', $withdrawal);
-
-				// On traite le formulaire si on modifie
-				if(!empty($this->request->data)){	
-
-                    error_log($withdrawal, 0);
-
-					$this->Order->set($this->request->data);
-					// Si les données sont validées
-					if($this->Order->validates() ){
-
-                        error_log('validate reussi', 0);
-						if($withdrawal == 0){
-
-							$date_withdrawal = $this->request->data['Order']['date_deposit'];
-							$date = strtotime($date_withdrawal);
-
-
-							$day =  date('d', $date+((3600*24)*2));
-							$month = date('m', $date);
-							$year = date('Y', $date);
-
-                            $this->request->data['Order']['date_withdrawal'] = $day.'-'.$month.'-'.$year;
-							$withdrawal = $day.'-'.$month.'-'.$year;
-
-                            $state_withdraw = 0;
-							//print_r($this->request->data['Order']['date_withdrawal']);
-						}
-
-						else{
-							$state_withdraw = 1;
-							$withdrawal = $this->request->data['Order']['date_withdrawal'];
-
-						}
-
-
-						if($order['Order']['state_deposit'] == 1){
-                            // Si le dépot de bac vide à été effectué (1 ligne)
-                            error_log('deposit fait', 0);
-							$data_order = array(
-													"Order" =>
-																array(
-																'id' 					=> $order_id,
-																'user_id'				=> $this->Session->read('Auth.User.id'),
-																'nb_bacs'				=> $this->request->data['Order']['nb_bacs'],
-																'date_withdrawal' 		=> $withdrawal,
-																'hour_withdrawal'		=> $this->request->data['hour_withdrawal'],
-																'concierge_withdrawal'	=> $this->request->data['Order']['concierge_withdrawal'],
-																'state_withdrawal'		=> $state_withdraw,
-
-																),
-													"Address" =>
-																array(
-																	'id'				=> $order['Order']['address_id'],
-																	'city_id'			=> $this->request->data['Order']['cities'],
-																	'postal_id'			=> $this->request->data['Order']['postals'],
-																	'firstname'			=> $this->request->data['Address']['firstname'],
-																	'lastname'			=> $this->request->data['Address']['lastname'],
-																	'street'			=> $this->request->data['Address']['street'],
-																	'digicode'			=> $this->request->data['Address']['digicode'],
-																	'floor'				=> $this->request->data['Address']['floor'],
-																	'comment'			=> $this->request->data['Address']['comment'],
-																	'phone'				=> $this->request->data['Address']['phone'],
-																	'company'			=> $this->request->data['Address']['company'],
-																	)
-							);
-
-						}
-						else {
-                            error_log('deposit non fait',0);
-							$deposit = $this->request->data['Order']['date_deposit'];
-
-							$data_order = array(
-													"Order" =>
-																array(
-																'id' 					=> $order_id,
-																'user_id'				=> $this->Session->read('Auth.User.id'),
-																'nb_bacs'				=> $this->request->data['Order']['nb_bacs'],
-																'date_deposit' 			=> $deposit,
-																'hour_deposit'			=> $this->request->data['hour_deposit'],
-																'concierge_deposit'		=> $this->request->data['Order']['concierge_deposit'],
-																'date_withdrawal' 		=> $withdrawal,
-																'hour_withdrawal'		=> $this->request->data['hour_withdrawal'],
-																'concierge_withdrawal'	=> $this->request->data['Order']['concierge_withdrawal'],
-																'state_withdrawal'		=> $this->request->data['Order']['state_withdrawal'],
-
-																),
-													"Address" =>
-																array(
-																	'id'				=> $order['Order']['address_id'],
-																	'city_id'			=> $this->request->data['Order']['cities'],
-																	'postal_id'			=> $this->request->data['Order']['postals'],
-																	'firstname'			=> $this->request->data['Address']['firstname'],
-																	'lastname'			=> $this->request->data['Address']['lastname'],
-																	'street'			=> $this->request->data['Address']['street'],
-																	'digicode'			=> $this->request->data['Address']['digicode'],
-																	'floor'				=> $this->request->data['Address']['floor'],
-																	'comment'			=> $this->request->data['Address']['comment'],
-																	'phone'				=> $this->request->data['Address']['phone'],
-																	'company'			=> $this->request->data['Address']['company'],
-																	)
-							);
-
-
-						}
-
-                        error_log(serialize($data_order), 0);
-						if($this->Order->saveAll($data_order, array('deep' => true) ) ){
-                            error_log('save reussi', 0);
-
-                            $this->Session->setFlash('Données correctement sauvegardées', 'alert', array('class' => 'success'));
-								$this->redirect(array('controller' => 'users', 'action' => 'my_account', '#' => 'livraisons'));
-								
-
-							//$this->set('order', $data);
-
-						}
-						else { // saveAll
-								$this->Session->setFlash("Erreur lors de la sauvegarde 2", 'alert', array('class' => 'danger'));
-								//debug($order);
-								//debug($this->request->data);
-                                $errors = $this->Order->validationErrors;
-                                error_log('save fail', 0);
-                                error_log(serialize($data_order),0);
-                                error_log(serialize($errors));
-
-                        }
-
-					}
-					else { // validation
-                        if ($box_chez_client) {
-                            $this->set('state_withdrawal', 1);
-                        }
-					    $this->Session->setFlash('Erreur lors de la sauvegarde', 'alert', array('class' => 'danger'));
-
-                        error_log('validate fail', 0);
-                        error_log(serialize($this->request->data), 0);
-                        //error_log(serialize($this->Order->invalidFields()), 0);
-
+                    else { // saveAll
+                        error_log("Erreur: ".serialize($this->Order->validationErrors), 0);
+                        $this->Session->setFlash("Erreur lors de la sauvegarde 2", 'alert', array('class' => 'danger'));
                     }
-				}
-
-
-				// On récupère les villes
-			    $cities = $this->Order->Address->City->find('list');
-				$this->set(compact('cities'));
-
-				// On récupère les codes postaux
-				$postals = $this->Order->Address->Postal->find('list');
-				$this->set(compact('postals'));
-		
-				// On récupère les créneaux
-				$hours = new Hour();
-				$hours = $hours->find('list');
-				$this->set(compact('hours'));
-
-				$this->set(compact('order'));
-			}
-			// sinon erreur 404
-			else {
-				throw new NotFoundException('Commande archivé"');
-			}
+                }
+                else {
+                    $this->Session->setFlash('Erreur lors de la sauvegarde', 'alert', array('class' => 'danger'));
+                    error_log(serialize($this->Order->validationErrors), 0);
+                }
+            }
 		}
 
         public function edit_withdraw($order_id=null) {

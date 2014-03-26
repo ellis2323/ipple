@@ -349,7 +349,7 @@ $(function(){
                                     <td class="blue"><a href="<?= $this->Html->url(
                                                 array(
                                                             'controller' => 'orders', 
-                                                            'action' => 'edit_withdraw', $orders_current[$i]['Order']['id']
+                                                            'action' => 'edit', $orders_current[$i]['Order']['id']
                                                         )
                                                 , true
                                         ); 
