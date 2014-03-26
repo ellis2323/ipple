@@ -217,10 +217,15 @@ class OrdersController extends AppController {
 		// Commande : Etape 3
         /* variable pour la vue:
            - concierge_checked: 0 / 1
-           - minDate: date de deposit
+           - minDate: date deposit + 1
+           - maxDate: date deposit + $max_date
            - concierge_deposit: 0/1
         */
 		public function step3($data_get = null) {
+            // params
+            $param = new Param();
+            $max_delta = $param->findByKey('max_date_withdrawal');
+            $max_delta = $max_delta['Param']['value'];
             // definit les créneaux horaires pour le formulaire
             $hours = new Hour();
             $this->set('hwithdrawals', $hours->find('list'));
@@ -236,20 +241,27 @@ class OrdersController extends AppController {
 
             // Si on ne poste pas de données
             $date_deposit = $data_get['Order']['date_deposit'];
+            $this->set('date_deposit', $date_deposit);
+            $minDateTime = new DateTime($date_deposit);
+            $minDateTime->modify('+1 day');
+            $minDate = $minDateTime->format('d-m-Y');
+            $this->set('minDate', $minDate);
+            $maxDateTime = new DateTime($date_deposit);
+            $maxDateTime->modify('+'.$max_delta.' day');
+            $maxDate = $maxDateTime->format('d-m-Y');
+            $this->set('maxDate', $maxDate);
+
             if (empty($this->request->data)) {
                 if ($data_get['Order']['concierge_deposit'] == 0) {
                     $this->set("withdraw", 0);
                     // on definit la variable minDate pour la vue
-                    $this->set('minDate', $date_deposit);
                     $this->set('date_withdrawal', $date_deposit);
                 } else {
                     $this->set("withdraw", 1);
-                    $this->set('minDate', $date_deposit);
                     $date_withdrawal = strtotime($date_deposit) + (24*3600);
                     $next_day = date('d-m-Y', $date_withdrawal);
                     $this->set('date_withdrawal', $next_day);
                 }
-                $this->set('date_deposit', $date_deposit);
                 return;
             }
 
@@ -301,7 +313,7 @@ class OrdersController extends AppController {
 
             // withdraw = 1 mais concierge_deposit peut valoir 0 ou 1
             $this->set('date_withdrawal', $data_get['Order']['date_deposit']);
-            $this->set('minDate', $date_deposit);
+
 
             $address_id = $data_get['Id'];
             $this->set(compact('concierge_deposit'));

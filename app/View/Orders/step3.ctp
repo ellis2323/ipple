@@ -138,7 +138,7 @@ $( document ).ready(function() {
                                                     {
                                                            dateFormat: 'dd-mm-yy',
                                                            minDate : '<?= $minDate;?>',
-                                                           monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
+                                                           maxDate : '<?= $maxDate;?>',
                                                            beforeShowDay: function(date){
                                                                 var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
                                                                 return [ datesBlocked.indexOf(string) == -1 ];
@@ -163,7 +163,7 @@ $( document ).ready(function() {
                                     'class' => 'form-control',
                                     'div' => 'col-lg-6 col-md-6 col-sm-6',
                                     'required' => false,
-                                    'value'	=> $minDate,
+                                    'value'	=> $date_deposit,
 
                                 )
                             ); ?>
