@@ -1,33 +1,26 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.10.1deb1
+-- version 4.1.9
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Mar 22, 2014 at 02:49 PM
--- Server version: 5.5.35
--- PHP Version: 5.3.10-1ubuntu3.10
+-- Client :  localhost:8889
+-- Généré le :  Mer 26 Mars 2014 à 16:39
+-- Version du serveur :  5.5.34
+-- Version de PHP :  5.5.10
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
 --
--- Database: `dezordre`
+-- Base de données :  `dezordre`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `addresses`
+-- Structure de la table `addresses`
 --
 
-DROP TABLE IF EXISTS `addresses`;
-CREATE TABLE IF NOT EXISTS `addresses` (
+CREATE TABLE `addresses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
@@ -43,35 +36,15 @@ CREATE TABLE IF NOT EXISTS `addresses` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
-
---
--- Dumping data for table `addresses`
---
-
-INSERT INTO `addresses` (`id`, `firstname`, `lastname`, `phone`, `company`, `street`, `floor`, `comment`, `digicode`, `postal_id`, `city_id`, `user_id`, `created`, `modified`) VALUES
-(1, 'Regis', 'PIETRASZEWSKI', '3364540731', '', '76 rue saint didier', 0, 'kill regis', 'ret', 5, 3, 3, '2014-03-20 19:32:49', '2014-03-20 19:32:49'),
-(2, '456456', 'cahteil', '0102030405', '', 'qsdqdqsd', 0, '', '', 2, 3, 2, '2014-03-20 19:35:44', '2014-03-20 19:35:44'),
-(3, 'Regis', 'PIETRASZEWSKI', '3364540731', '', '76 rue saint didier', 3, 'yiyi', 'yuyu', 2, 3, 1, '2014-03-21 10:43:49', '2014-03-21 10:43:49'),
-(4, 'Regis', 'PIETRASZEWSKI', '3364540731', '', '76 rue saint didier', 3, 'yiyiyiyi', 'yuyu', 5, 3, 1, '2014-03-21 10:44:09', '2014-03-21 13:15:53'),
-(5, '456456', 'cahteil', '0102030405', '', 'qsdqdqsd', 0, '', '', 2, 3, 2, '2014-03-21 11:15:39', '2014-03-21 18:50:15'),
-(6, 'Regis', 'PIETRASZEWSKI', '3364540731', '', '76 rue saint didier', 3, 'yiyiyiyi', 'yuyu', 5, 3, 1, '2014-03-21 13:17:48', '2014-03-21 14:25:27'),
-(7, 'Regis', 'PIETRASZEWSKI', '3364540731', 'lklk', '76 rue saint roger', 3, 'to\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\n', 'yuyu', 5, 3, 1, '2014-03-21 15:11:02', '2014-03-21 18:40:44'),
-(8, 'Regis', 'PIETRASZEWSKI', '3364540731', 'lklk', '76 rue saint roger', 3, 'to\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\n', 'yuyu', 5, 3, 1, '2014-03-21 23:31:13', '2014-03-22 12:12:34'),
-(9, '456456', 'cahteil', '0102030405', '', 'qsdqdqsd', 0, '', '', 2, 3, 2, '2014-03-22 11:17:25', '2014-03-22 11:43:54'),
-(10, '456456', 'cahteil', '0102030405', '', 'qsdqdqsd', 0, '', '', 2, 3, 2, '2014-03-22 11:42:49', '2014-03-22 11:59:35'),
-(11, '456456', 'cahteil', '0102030405', '', 'qsdqdqsd', 0, '', '', 2, 3, 2, '2014-03-22 12:00:31', '2014-03-22 12:54:19'),
-(12, 'Regis', 'PIETRASZEWSKI', '3364540731', 'lklk', '76 rue saint roger', 3, 'to\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\n', 'yuyu', 5, 3, 1, '2014-03-22 12:13:01', '2014-03-22 12:16:58'),
-(13, 'Regis', 'PIETRASZEWSKI', '3364540731', '3364540731', '76 rue saint roger', 3, 'to\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\nh\r\n', 'yuyu', 5, 3, 1, '2014-03-22 14:17:19', '2014-03-22 14:18:32');
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bacs`
+-- Structure de la table `bacs`
 --
 
-DROP TABLE IF EXISTS `bacs`;
-CREATE TABLE IF NOT EXISTS `bacs` (
+CREATE TABLE `bacs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `media_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -85,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `bacs` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=113 ;
 
 --
--- Dumping data for table `bacs`
+-- Contenu de la table `bacs`
 --
 
 INSERT INTO `bacs` (`id`, `media_id`, `user_id`, `title`, `description`, `modified`, `created`, `state`, `code`) VALUES
@@ -193,36 +166,23 @@ INSERT INTO `bacs` (`id`, `media_id`, `user_id`, `title`, `description`, `modifi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bacs_orders`
+-- Structure de la table `bacs_orders`
 --
 
-DROP TABLE IF EXISTS `bacs_orders`;
-CREATE TABLE IF NOT EXISTS `bacs_orders` (
+CREATE TABLE `bacs_orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bac_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
-
---
--- Dumping data for table `bacs_orders`
---
-
-INSERT INTO `bacs_orders` (`id`, `bac_id`, `order_id`) VALUES
-(1, 13, 5),
-(2, 14, 5),
-(3, 15, 5),
-(4, 16, 5),
-(5, 17, 5);
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cities`
+-- Structure de la table `cities`
 --
 
-DROP TABLE IF EXISTS `cities`;
-CREATE TABLE IF NOT EXISTS `cities` (
+CREATE TABLE `cities` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(255) NOT NULL,
   `state` tinyint(1) NOT NULL,
@@ -230,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `cities` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `cities`
+-- Contenu de la table `cities`
 --
 
 INSERT INTO `cities` (`id`, `label`, `state`) VALUES
@@ -240,25 +200,31 @@ INSERT INTO `cities` (`id`, `label`, `state`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dates_block`
+-- Structure de la table `dates_block`
 --
 
-DROP TABLE IF EXISTS `dates_block`;
-CREATE TABLE IF NOT EXISTS `dates_block` (
+CREATE TABLE `dates_block` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `value` tinyint(2) NOT NULL,
+  `value` int(11) NOT NULL,
   `type` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `dates_block`
+--
+
+INSERT INTO `dates_block` (`id`, `value`, `type`) VALUES
+(1, 1397426399, 5),
+(2, 1398290400, 5);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hours`
+-- Structure de la table `hours`
 --
 
-DROP TABLE IF EXISTS `hours`;
-CREATE TABLE IF NOT EXISTS `hours` (
+CREATE TABLE `hours` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `start_hour` time NOT NULL,
   `end_hour` time NOT NULL,
@@ -267,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `hours` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `hours`
+-- Contenu de la table `hours`
 --
 
 INSERT INTO `hours` (`id`, `start_hour`, `end_hour`, `state`) VALUES
@@ -277,11 +243,10 @@ INSERT INTO `hours` (`id`, `start_hour`, `end_hour`, `state`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hours_block`
+-- Structure de la table `hours_block`
 --
 
-DROP TABLE IF EXISTS `hours_block`;
-CREATE TABLE IF NOT EXISTS `hours_block` (
+CREATE TABLE `hours_block` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hour_id` int(11) NOT NULL,
   `value` int(2) NOT NULL,
@@ -292,11 +257,10 @@ CREATE TABLE IF NOT EXISTS `hours_block` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `locks`
+-- Structure de la table `locks`
 --
 
-DROP TABLE IF EXISTS `locks`;
-CREATE TABLE IF NOT EXISTS `locks` (
+CREATE TABLE `locks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bac_id` int(11) NOT NULL,
   `code` varchar(255) NOT NULL,
@@ -308,11 +272,10 @@ CREATE TABLE IF NOT EXISTS `locks` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `medias`
+-- Structure de la table `medias`
 --
 
-DROP TABLE IF EXISTS `medias`;
-CREATE TABLE IF NOT EXISTS `medias` (
+CREATE TABLE `medias` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `ref` varchar(60) DEFAULT NULL,
   `ref_id` int(11) DEFAULT NULL,
@@ -324,7 +287,7 @@ CREATE TABLE IF NOT EXISTS `medias` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `medias`
+-- Contenu de la table `medias`
 --
 
 INSERT INTO `medias` (`id`, `ref`, `ref_id`, `file`, `position`) VALUES
@@ -334,11 +297,10 @@ INSERT INTO `medias` (`id`, `ref`, `ref_id`, `file`, `position`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Structure de la table `orders`
 --
 
-DROP TABLE IF EXISTS `orders`;
-CREATE TABLE IF NOT EXISTS `orders` (
+CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `address_id` int(11) NOT NULL,
@@ -355,38 +317,15 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Permet de gérer les commandes et à lier les différentes livr' AUTO_INCREMENT=17 ;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`id`, `user_id`, `address_id`, `date_deposit`, `hour_deposit`, `state_deposit`, `concierge_deposit`, `date_withdrawal`, `hour_withdrawal`, `state_withdrawal`, `concierge_withdrawal`, `nb_bacs`, `state`, `created`, `modified`) VALUES
-(1, 3, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, '2014-03-20 19:32:57', '2014-03-20 19:32:57'),
-(2, 3, 1, '2014-03-29 00:00:00', 3, 0, 0, NULL, NULL, 0, 0, 7, 1, '2014-03-20 19:32:57', '2014-03-20 19:32:57'),
-(3, 2, 2, '2014-03-29 00:00:00', 3, 0, 0, NULL, NULL, 0, 0, 8, 1, '2014-03-20 19:35:49', '2014-03-20 19:35:49'),
-(4, 1, 4, '25-03-2014', 3, 0, 0, '2014-03-28 00:00:00', 3, 1, 0, 5, 1, '2014-03-21 10:44:15', '2014-03-21 13:15:53'),
-(5, 2, 5, '22-03-2014', 3, 0, 0, '29-03-2014', 3, 1, 0, 8, 1, '2014-03-21 11:15:48', '2014-03-21 18:50:15'),
-(6, 1, 6, '25-03-2014', 3, 1, 0, '26-03-2014', 3, 1, 0, 5, 1, '2014-03-21 13:18:02', '2014-03-21 14:25:27'),
-(7, 1, 7, '26-03-2014', 3, 1, 0, '26-04-2015', 3, 1, 0, 5, 1, '2014-03-21 15:11:20', '2014-03-21 18:40:44'),
-(8, 1, 8, '11-04-2014', 3, 0, 1, '17-04-2014', 3, 1, 0, 6, 1, '2014-03-21 23:32:13', '2014-03-22 12:12:34'),
-(9, 2, 9, '2014-03-31 00:00:00', 3, 0, 0, NULL, NULL, 0, 0, 10, 1, '2014-03-22 11:20:34', '2014-03-22 11:20:34'),
-(10, 2, 9, '31-03-2014', 3, 0, 1, '01-04-2014', 3, 1, 0, 10, 1, '2014-03-22 11:41:08', '2014-03-22 11:43:54'),
-(11, 2, 10, '28-03-2014', 3, 0, 0, '29-03-2014', 3, 1, 0, 10, 1, '2014-03-22 11:43:01', '2014-03-22 11:43:01'),
-(12, 2, 10, '23-03-2014', 3, 0, 1, '24-03-2014', 3, 1, 0, 10, 1, '2014-03-22 11:43:21', '2014-03-22 11:59:35'),
-(13, 2, 11, '29-03-2014', 4, 0, 0, '05-04-2014', 3, 1, 0, 9, 1, '2014-03-22 12:00:39', '2014-03-22 12:54:19'),
-(14, 1, 12, '24-03-2014', 3, 0, 0, '27-03-2014', 3, 1, 0, 7, 1, '2014-03-22 12:15:38', '2014-03-22 12:16:58'),
-(15, 1, 13, '18-04-2014', 3, 0, 0, '25-04-2014', 3, 1, 0, 6, 1, '2014-03-22 14:17:52', '2014-03-22 14:18:32'),
-(16, 2, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, NULL, 3, '2014-03-22 14:42:34', '2014-03-22 14:42:34');
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Permet de gérer les commandes et à lier les différentes livr' AUTO_INCREMENT=98 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `params`
+-- Structure de la table `params`
 --
 
-DROP TABLE IF EXISTS `params`;
-CREATE TABLE IF NOT EXISTS `params` (
+CREATE TABLE `params` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `key` varchar(255) NOT NULL,
   `value` text NOT NULL,
@@ -394,7 +333,7 @@ CREATE TABLE IF NOT EXISTS `params` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `params`
+-- Contenu de la table `params`
 --
 
 INSERT INTO `params` (`id`, `key`, `value`) VALUES
@@ -407,11 +346,10 @@ INSERT INTO `params` (`id`, `key`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `postals`
+-- Structure de la table `postals`
 --
 
-DROP TABLE IF EXISTS `postals`;
-CREATE TABLE IF NOT EXISTS `postals` (
+CREATE TABLE `postals` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(255) NOT NULL,
   `state` tinyint(1) NOT NULL,
@@ -420,7 +358,7 @@ CREATE TABLE IF NOT EXISTS `postals` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `postals`
+-- Contenu de la table `postals`
 --
 
 INSERT INTO `postals` (`id`, `label`, `state`, `city_id`) VALUES
@@ -431,11 +369,10 @@ INSERT INTO `postals` (`id`, `label`, `state`, `city_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -450,17 +387,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `modified` datetime NOT NULL,
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
--- Dumping data for table `users`
+-- Contenu de la table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `rules`, `bac_count`, `order_count`, `role`, `token`, `created`, `modified`, `active`) VALUES
-(1, 'rpietra@gmail.com', '3efb6a65d6d0559f7d59bed9b5216384d8d3e509', '', '', 1, 0, 0, 0, 'a48e0f6d99833fbe6858ccb183fcd343', '2014-03-20 16:04:58', '2014-03-21 15:50:38', 1),
-(2, 'admin@admin.admin', '9202ec82c91242c5f4ff29f27bd6b63425ca4b9e', '', '', 1, 0, 0, 0, '', '2014-03-20 16:11:36', '2014-03-20 19:18:01', 1),
-(3, 'laurentmallet@gmail.com', '8c7fd3b2abc66a1b2e110aa592a639d526c64f25', '', '', 1, 0, 0, 0, '', '2014-03-20 19:19:54', '2014-03-21 16:37:27', 1);
+(1, 'rpietra@gmail.com', 'f6f765068a7b0033b49cdad2e08f599d08dbc338', '', '', 1, 0, 0, 0, 'a48e0f6d99833fbe6858ccb183fcd343', '2014-03-20 16:04:58', '2014-03-24 10:22:31', 1),
+(2, 'admin@admin.admin', 'f6f765068a7b0033b49cdad2e08f599d08dbc338', '', '', 1, 0, 0, 90, '', '2014-03-20 16:11:36', '2014-03-20 19:18:01', 1),
+(3, 'laurentmallet@gmail.com', '8c7fd3b2abc66a1b2e110aa592a639d526c64f25', '', '', 1, 0, 0, 0, '', '2014-03-20 19:19:54', '2014-03-21 16:37:27', 1),
+(16, 'rpie.tra@gmail.com', 'f6f765068a7b0033b49cdad2e08f599d08dbc338', '', '', 0, 0, 0, 0, 'e0e24beaf3329cd51de2373d13ab2dbd', '2014-03-25 13:57:13', '2014-03-25 13:57:13', 0),
+(13, 'corentingc@gmail.Com', '58395719ba91fc17f1eed8e70d1e06d5b7c511d9', '', '', 1, 0, 0, 0, '', '2014-03-22 16:23:06', '2014-03-22 16:37:24', 1),
+(14, 'benjamin.fanget@happymove.fr', 'a14c7de1cf75523c363a31d4d0f4a49ff4f40b81', '', '', 1, 0, 0, 0, '', '2014-03-24 10:07:16', '2014-03-24 10:26:45', 1),
+(15, 'l.aurentmallet@gmail.com', 'a07776fe329a86574cae68689010b0495bb02b27', '', '', 0, 0, 0, 90, '237781988da8b913a99b318b50ab7a0b', '2014-03-25 13:52:49', '2014-03-25 13:52:49', 1);
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
