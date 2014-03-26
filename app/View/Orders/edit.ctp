@@ -612,7 +612,6 @@ if($order['Order']['state'] < 3){?>
                                     date_deposit = date_deposit.split('-');
 
                                     new_date = date_deposit[2]+'-'+date_deposit[1]+'-'+date_deposit[0];
-
                                     new_date = Date.parse(new_date);
 
                                     // date de dépot

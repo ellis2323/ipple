@@ -102,6 +102,11 @@ class OrdersController extends AppController {
 
 		// Commande : Etape 2
 		public function step2($data_get = null) {
+            $param = new Param();
+            $min_date = $param->findByKey('min_date_deposit');
+            $min_date = $min_date['Param']['value'];
+            $this->set('min_date', $min_date);
+
             // Si aucune data n'a été transmise
             if (empty($data_get)) {
                 $this->redirect(array('controller'=> 'orders','action' => 'step1'));
@@ -182,7 +187,9 @@ class OrdersController extends AppController {
             // save l'adresse
             $isSaved = $address->save($this->request->data);
             if (!$isSaved) {
-                //! grave Erreur
+                $date_deposit = $this->request['data']['Order'];
+                $this->set('date_deposit', $date_deposit);
+                //! erreur dans l'adresse
                 $this->Session->setFlash('Erreur lors de l\'enregistrement, merci de corriger vos erreurs', 'alert', array('class' => 'danger'));
                 error_log("Critical Error in step 2 validation:ok save:ko", 0);
                 return;
@@ -253,7 +260,7 @@ class OrdersController extends AppController {
                 // save data
                 $data_post['Order']['hwithdrawals'] = $data_get['Order']['hour_deposit'];
                 $address_id = $data_get['Id'];
-                $format = 'Y-m-d H:i:s';
+                $format = 'd-m-Y';
                 $deposit = new DateTime($data_get['Order']['date_deposit']);
                 $this->set('concierge_deposit', 0);
                 $data_order = array(
