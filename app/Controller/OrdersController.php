@@ -254,14 +254,12 @@ class OrdersController extends AppController {
             if (empty($this->request->data)) {
                 if ($data_get['Order']['concierge_deposit'] == 0) {
                     $this->set("withdraw", 0);
-                    // on definit la variable minDate pour la vue
-                    $this->set('date_withdrawal', $date_deposit);
                 } else {
                     $this->set("withdraw", 1);
-                    $date_withdrawal = strtotime($date_deposit) + (24*3600);
-                    $next_day = date('d-m-Y', $date_withdrawal);
-                    $this->set('date_withdrawal', $next_day);
                 }
+                $date_withdrawal = strtotime($date_deposit) + (24*3600);
+                $next_day = date('d-m-Y', $date_withdrawal);
+                $this->set('date_withdrawal', $next_day);
                 return;
             }
 
