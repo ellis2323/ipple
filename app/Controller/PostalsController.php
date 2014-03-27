@@ -1,8 +1,5 @@
 <?php
 App::uses('AppController', 'Controller');
-
-App::import('Model','City');
-App::import('Model', 'Postals');
 /**
  * Postals Controller
  *
@@ -18,23 +15,6 @@ class PostalsController extends AppController {
  */
 	public $components = array('Paginator');
 
-
-
-
-
-
-	public function listing($city_id=null){
-
-
-		$postals = $this->Postal->findAllByCityId($city_id);
-		if(!empty($postals)){
-			debug($postals);
-
-		}
-	}
-
-
-
 /**
  * admin_index method
  *
@@ -43,8 +23,6 @@ class PostalsController extends AppController {
 	public function admin_index() {
 		$this->Postal->recursive = 0;
 		$this->set('postals', $this->Paginator->paginate());
-
-
 	}
 
 /**
@@ -70,18 +48,13 @@ class PostalsController extends AppController {
 	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->Postal->create();
-			$this->request->data['Postal']['city_id'] = $this->request->data['cities'];
 			if ($this->Postal->save($this->request->data)) {
-				$this->Session->setFlash(__('The postal has been saved.'), 'alert', array('class' => 'success'));
+				$this->Session->setFlash(__('The postal has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The postal could not be saved. Please, try again.'), 'alert', array('class' => 'danger'));
+				$this->Session->setFlash(__('The postal could not be saved. Please, try again.'));
 			}
 		}
-
-		$cities = new City();
-		$cities = $cities->find('list');
-		$this->set(compact('cities'));
 	}
 
 /**
@@ -96,21 +69,15 @@ class PostalsController extends AppController {
 			throw new NotFoundException(__('Invalid postal'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			$this->request->data['Postal']['city_id'] = $this->request->data['Postal']['cities'];
 			if ($this->Postal->save($this->request->data)) {
-				
-				$this->Session->setFlash(__('The postal has been saved.'), 'alert', array('class' => 'success'));
+				$this->Session->setFlash(__('The postal has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The postal could not be saved. Please, try again.'), 'alert', array('class' => 'danger'));
+				$this->Session->setFlash(__('The postal could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('Postal.' . $this->Postal->primaryKey => $id));
 			$this->request->data = $this->Postal->find('first', $options);
-
-			$cities = new City();
-			$cities = $cities->find('list');
-			$this->set(compact('cities'));
 		}
 	}
 
@@ -128,9 +95,9 @@ class PostalsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Postal->delete()) {
-			$this->Session->setFlash(__('The postal has been deleted.'), 'alert', array('class' => 'success'));
+			$this->Session->setFlash(__('The postal has been deleted.'));
 		} else {
-			$this->Session->setFlash(__('The postal could not be deleted. Please, try again.'), 'alert', array('class' => 'danger'));
+			$this->Session->setFlash(__('The postal could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

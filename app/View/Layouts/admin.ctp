@@ -180,6 +180,8 @@
 
                         <li><a href="<?= $this->Html->url(array('controller' => 'bacs', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Bacs</span></a></li>
 
+                        <li><a href="<?= $this->Html->url(array('controller' => 'addresses', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Adresses</span></a></li>
+
                         <li><a href="<?= $this->Html->url(array('controller' => 'locks', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Scellés</span></a></li>
 
                         <li><a href="<?= $this->Html->url(array('controller' => 'cities', 'action' => 'index', 'admin' => true));?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Villes</span></a></li>

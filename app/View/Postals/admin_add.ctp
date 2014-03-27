@@ -3,8 +3,9 @@
 	<fieldset>
 		<legend><?php echo __('Admin Add Postal'); ?></legend>
 	<?php
-		echo $this->Form->input('label', array('label' => 'Code postal'));
-		echo $this->Form->input('cities', array('label' => 'Ville'));
+		echo $this->Form->input('label');
+		echo $this->Form->input('state');
+		echo $this->Form->input('city_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -14,7 +15,5 @@
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Postals'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Addresses'), array('controller' => 'addresses', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Address'), array('controller' => 'addresses', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

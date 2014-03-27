@@ -25,8 +25,7 @@ class Address extends AppModel {
 	// Une adresse à plusieurs livraisons et plusieurs commandes
 
 	// Une adresse à une ville et un code postal
-	public $hasOne = array('Postal','City');
-
+	public $belongsTo = array('Postal','City', 'User');
 
 /**
  * Validation rules
