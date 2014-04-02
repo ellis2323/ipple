@@ -420,8 +420,9 @@ if($order['Order']['state'] < 3){?>
                                                              $("#datepicker").datepicker(
                                                             {
                                                                    dateFormat: 'dd-mm-yy',
-                                                                   minDate : '+<?= $min_date;?>d',
                                                                    monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
+                                                                   minDate : '+<?= $min_date;?>d',
+                                                                   defaultDate: $("#OrderDateDeposit").val(),
                                                                    beforeShowDay: function(date){
                                                                         var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
                                                                         return [ datesBlocked.indexOf(string) == -1 ];
@@ -604,9 +605,8 @@ if($order['Order']['state'] < 3){?>
                             if(date_deposit == "" || date_deposit == null){
                                 date_deposit = '+<?= $min_date;?>d';
                             }
-                            
 
-                            // Quand on clic sur la date de dépot
+                             // Quand on clic sur la date de dépot
                             $("#OrderDateWithdrawal").click(function(){
                                     date_deposit = $('#OrderDateDeposit').val();
                                     date_deposit = date_deposit.split('-');

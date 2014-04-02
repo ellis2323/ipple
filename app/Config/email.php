@@ -41,13 +41,12 @@ class EmailConfig {
 
 	public $default = array(
 		'transport' => 'Smtp',
-		'from' => array('site@localhost.com' => 'My Site'),
+		'from' => array('contact@dezordre.com' => 'My Site'),
 		'host' => 'smtp.orange.fr',
 		'port' => 25,
 		'timeout' => 30,
 		'username' => null,
 		'password' => null,
-		'client' => null,
 		'log' => false,
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
@@ -55,12 +54,12 @@ class EmailConfig {
 
 	public $smtp = array(
 		'transport' => 'Smtp',
-		'from' => array('site@localhost.com' => 'My Site'),
+		'from' => array('site@localhost' => 'My Site'),
 		'host' => 'smtp.orange.fr',
 		'port' => 25,
 		'timeout' => 30,
-		'username' => null,
-		'password' => null,
+		'username' => 'user',
+		'password' => 'secret',
 		'client' => null,
 		'log' => false,
 		//'charset' => 'utf-8',
